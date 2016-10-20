@@ -46,7 +46,7 @@ Skizzen sollten im den Unterordner `doc/sketches` gespeichert werden.
 
 ## Enwicklungsgeschichte
 
-**TODO:** Entwicklungsgeschichte auflisten
+**TODO:** [Changelog](CHANGELOG.md)
 
 ## Lizenz
 
