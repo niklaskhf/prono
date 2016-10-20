@@ -6,6 +6,16 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
 
+## Aufnahme-/Speicher- und Abspiel-Möglichkeit für die Aussprache von Namen
+
+> Als Vertriebsmitarbeiter möchte ich die Aussprache von Namen aufnehmen/speichern und abspielen können, um jederzeit Zugriff auf die korrekte Aussprache zu haben.
+
+- Aufwandsschätzung: *TODO*
+- Akzeptanztests: 
+    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Namen (Vor-/Zweit-/Nachname) und der Region (mind. Land) gespeichert werden
+    - [ ] Die Audio-Aufnahme muss nach dem vollständigen Schließen der App gespeichert bleiben
+    - [ ] Die gespeicherten Audio-Aufnahmen können in der App abgespielt werden
+
 ### Feature *Titel*
 
 > Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
