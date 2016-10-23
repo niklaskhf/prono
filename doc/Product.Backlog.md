@@ -16,17 +16,16 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Aufnehmen von Aussprache
     - Eintrag erstellen
     - Eintrag aufrufen
-    - Eintrag erstellen
 
 
 ### Feature *Aufnehmen von Aussprache*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aussprache von Namen aufnehmen können*, um *eine temporäre Audio-Aufnahme abspielen zu koennen*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: M-L
 - Akzeptanztests:
     - [ ] Audio-Aufnahme muss abspielbar sein
-    - TODO
+ 
 
 #### Implementable Story *Titel*
 > Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
@@ -147,14 +146,14 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Tatsächliche Zeit: [0-72] Stunden
 
 
-### Feature *Eintrag erstellen*
+### Feature *Eintrag speichern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Vor-/Zweit-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: M 
 - Akzeptanztests:
-    - [ ] Kontakt muss nach Schließen der App noch existieren
-    - TODO
+    - [ ] Eintrag muss nach Schließen der App noch existieren
+    - [ ] Eintrag muss mindestens Nachname und Aussprache enthalten
 
 
 
@@ -162,15 +161,14 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag aufrufen*, um *die gespeicherten Informationen einzusehen*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: L 
 - Akzeptanztests:
-    - TODO
-    - TODO
+    - [ ] Navigierbare Liste aller Eintraege ist vorhanden
 
-## Epic 2 *Existierende Eintrag editieren/löschen/verwalten*
+## Epic 2 *Existierenden Eintrag editieren/löschen/verwalten*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die bereits existierenden Eintraege editieren/löschen/verwalten*, um *Informationen zu ändern/korrigieren*.
-- Beinhaltete Features:
+- Enthaltene Features:
     - Eintrag editieren
     - Eintrag loeschen
     
@@ -178,19 +176,17 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: M
 - Akzeptanztests:
-    - TODO
-    - TODO
+    - [ ] Eintrag auch nach Schließen der App aktualisiert
 
 ### Feature *Eintrag loeschen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag löschen*, um *den Eintrag nicht mehr angezeigt zu bekommen*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: M
 - Akzeptanztests:
-    - TODO
-    - TODO
+    - [ ] Eintrag ist permanent geloescht
 
 ## Epic 3 *Eintraege filtern und durchsuchen*
 
@@ -204,16 +200,14 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Eintraege durch Eingabe des Namen durchsuchen*, um *meinen gesuchten Eintrag zu finden*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: XL
 - Akzeptanztests:
-    - TODO
-    - TODO
+    - [ ] Nach Eingabe einer Suche werden alle Eintraege, die teilweise mit der Suche uebereinstimmen, angezeigt
 
 ### Feature *Eintraege filtern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Eintraege auf ein Land einschränken*, um *die angezeigten Eintraege einzugrenzen*.
 
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: L
 - Akzeptanztests:
-    - TODO
-    - TODO
+    - [ ] Es werden nur Eintraege der geforderten Kategorie angezeigt 
