@@ -4,6 +4,9 @@
 - Die Testabdeckung beträgt mindestens 75 %.
 - Der Entwurf wurde aktualisiert.
 - Der Code ist kommentiert.
-- **TODO zusätzliches Kriterium 1** Changelog-Eintrag hinzugefuegt
-- **TODO zusätzliches Kriterium 2**
-- **TODO zusätzliches Kriterium 3**
+- Changelog-Eintrag wurde hinzugefuegt.
+- Tatsaechlicher Aufwand in User Story wurde aktualisiert.
+- Code Review abgeschlossen.
+- Zugehoerige Issue geschlossen.
+- Code wurde eingecheckt.
+
