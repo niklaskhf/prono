@@ -29,7 +29,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Audio-Aufnahme muss abspielbar sein
     
     
- ### Feature *Verwerfen von temporärer Aufnahme*
+### Feature *Verwerfen von temporärer Aufnahme*
  
 > Als *Vertriebsmitarbeiter* moechte ich *eine temporär erstellte Aufnahme verwerfen*, um *eine bessere Aufnahme zu erstellen*.
 
