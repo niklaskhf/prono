@@ -20,6 +20,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag aufrufen
     - Aufnahme abspielen
 
+
 ### Feature *Aufnehmen von Aussprache*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aussprache von Namen aufnehmen können*, um *eine temporäre Audio-Aufnahme abspielen zu koennen*.
@@ -27,6 +28,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: M-L
 - Akzeptanztests:
     - [ ] Audio-Aufnahme muss abspielbar sein
+    
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    - 
+    
     
     
 ### Feature *Verwerfen von temporärer Aufnahme*
@@ -37,6 +44,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Akzeptanztests:
     - [ ] Verworfene Aufnahme ist nicht mehr im Speicher vorhanden
 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
+
 ### Feature *Abspielen von temporärer Aufnahme*
 
 > Als *Vertriebsmitarbeiter* moechte ich *eine temporär erstelle Aufnahme abspielen*, um *die Qualitaet zu ueberpruefen*.
@@ -44,7 +58,14 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: XS
 - Akzeptanztests:
     - [ ] Android-Geraet spielt Aufnahme ab 
-    
+ 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
+
 #### Implementable Story *Titel*
 > Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
 
@@ -173,6 +194,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Eintrag muss nach Schließen der App noch existieren
     - [ ] Eintrag muss mindestens Nachname und Aussprache enthalten
 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+ 
 
 
 ### Feature *Eintrag aufrufen*
@@ -183,6 +209,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Akzeptanztests:
     - [ ] Navigierbare Liste aller Eintraege ist vorhanden
     - [ ] Kontakt wird auf Android-Geraet-Display sichtbar
+ 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
     
     
 ### Feature *Aufnahme abpspielen*
@@ -192,7 +223,16 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: S
 - Akzeptanztests: 
    - [ ] Das Android-Geraet spielt die Aufnahme ab.
+ 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
    
+
+
+
+
 
 ## Epic 2 *Existierenden Eintrag editieren/löschen/verwalten/durchsuchen*
 
@@ -206,6 +246,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Sprache aendern
     - Favoriten erstellen
     - Favoriten abrufen
+    - Favoriten entfernen
     - Loeschen von Eintrag rueckgaengig machen
 
 - Aufwandsschätzung: XL
@@ -215,6 +256,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
    - [ ] Audio-Aufnahmen koennen geloescht werden
    - [ ] Audio-Aufnahmen koennen bearbeitet werden (Name/Region/... und Aufnahme selbst)
 
+
+
 ### Feature *Eintrag editieren*
 
 > Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
@@ -223,6 +266,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Akzeptanztests:
     - [ ] Eintrag auch nach Schließen der App aktualisiert
 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
+
 ### Feature *Eintrag loeschen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag löschen*, um *den Eintrag nicht mehr angezeigt zu bekommen*.
@@ -230,6 +280,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: M
 - Akzeptanztests:
     - [ ] Eintrag ist permanent von dem Android-Geraete-Speicher geloescht
+
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
 
 ### Feature *Eintraege durchsuchen*
 
@@ -240,6 +297,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Nach Eingabe einer Suche werden alle Eintraege, die teilweise mit der Suche uebereinstimmen, angezeigt
     
 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
+
 ### Feature *Eintraege sortieren*
 
 > Als *Vertriebsmitarbeiter* moechte ich *die angezeigten Eintraege nach einem Kriterium sortieren*, um *meine gewuenschte Reihenfolge angezeigt zu bekommen*.
@@ -247,6 +311,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: M
 - Akzeptanztests:
     - [ ] Die Liste ist nach Kriterium sortiert
+
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
 
 ### Feature *Eintraege filtern*
 
@@ -257,6 +328,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Alle angezeigten Eintraege entsprechen dem Filter-Kriterium
     - [ ] Eintraege, die nicht dem Filter-Kriterium entsprechen, werden nicht angezeigt 
 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
+
 ### Feature *Sprache anpassen*
 
 > Als *Vertriebsmitarbeiter* moechte ich *die Sprache der Oberflaeche aendern*, um *eine andere Sprache zu lesen*.
@@ -264,7 +342,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: L
 - Akzeptanztests: 
     - [ ] Alle Oberflaechenelemente sind in der ausgewaehlten Sprache
+ 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
     
+
 
 ### Feature *Favoriten erstellen*
 
@@ -273,7 +357,28 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: S
 - Akzeptanztests: 
     - [ ] Der ausgewaehlte Eintrag ist als Favorit markiert
-    
+ 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
+
+### Feature *Favoriten entfernen*
+
+> Als *Vertriebsmitarbeiter* moechte ich *einen als Favorit markierten Eintrag unfavorisieren*, um *diesen nicht mehr als Favorit angezeigt zu bekommen*.
+
+- Aufwandsschätzung: S
+- Akzeptanztests:
+    - [ ] Der Eintrag ist nicht mehr als Favorit markiert 
+
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
 
 ### Feature *Favoriten abrufen*
 
@@ -283,7 +388,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Akzeptanztests:
     - [ ] Alle angezeigten Eintraege sind als Favoriten markiert
     - [ ] Alle nicht angezeigten Eintraege sind nicht als Favoriten markiert
+ 
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
     
+
 
 ### Feature *Loeschen von Eintrag rueckgaengig machen*
 
@@ -292,4 +403,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: XL
 - Akzeptanztests:
     - [ ] Der geloeschte Eintrag ist auch nach Schließen der App noch verfuegbar
-    - [ ] Der geloeschte Eintrag ist weiterhin aufrufbar
+    - [ ] Der geloeschte Eintrag ist weiterhin aufrufba
+
+- Enthaltene Implementable Stories:
+    - 
+    - 
+    -
+
+
