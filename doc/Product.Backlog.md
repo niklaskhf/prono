@@ -6,7 +6,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aussprache von Namen aufnehmen/speichern und abspielen* können, um *jederzeit Zugriff auf die korrekte Aussprache zu haben*.
 
-- Aufwandsschätzung: *TODO*
+- Aufwandsschätzung: XL
 - Akzeptanztests: 
     - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Zweit-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
     - [ ] Die Audio-Aufnahme muss nach dem vollständigen Schließen der App gespeichert bleiben
@@ -27,9 +27,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: M-L
 - Akzeptanztests:
     - [ ] Audio-Aufnahme muss abspielbar sein
- ### Feature *Verwerfen von temporärr Aufnahme*
+    
+    
+ ### Feature *Verwerfen von temporärer Aufnahme*
  
-
 > Als *Vertriebsmitarbeiter* moechte ich *eine temporär erstellte Aufnahme verwerfen*, um *eine bessere Aufnahme zu erstellen*.
 
 - Aufwandsschätzung: XS
@@ -206,7 +207,14 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Favoriten erstellen
     - Favoriten abrufen
     - Loeschen von Eintrag rueckgaengig machen
-    
+
+- Aufwandsschätzung: XL
+- Akzeptanztests: 
+   - [ ] Audio-Aufnahmen koennen nach Namen dursucht werden
+   - [ ] Audio-Aufnahmen koennen erstellt werden, siehe Epic 1
+   - [ ] Audio-Aufnahmen koennen geloescht werden
+   - [ ] Audio-Aufnahmen koennen bearbeitet werden (Name/Region/... und Aufnahme selbst)
+
 ### Feature *Eintrag editieren*
 
 > Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
