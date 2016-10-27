@@ -30,159 +30,66 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Audio-Aufnahme muss abspielbar sein
     
 - Enthaltene Implementable Stories:
-    - 
-    - 
-    - 
+    - Temporäre Aufnahme erstellen  
+    - Temporäre Aufnahme speichern/verwerfen
+    - Temporäre Aufnahme abspielen
     
-    
-    
-### Feature *Verwerfen von temporärer Aufnahme*
+  
+### Implementable Story *Temporäre Aufnahme erstellen*
  
-> Als *Vertriebsmitarbeiter* möoechte ich *eine temporär erstellte Aufnahme verwerfen*, um *eine bessere Aufnahme zu erstellen*.
+> Als *Vertriebsmitarbeiter* möchte ich *eine temporäre Aufnahme erstellen*, um *diese später speichern zu können*.
 
-- Aufwandsschätzung: XS
+- Aufwandsschätzung: 60
 - Akzeptanztests:
-    - [ ] Verworfene Aufnahme ist nicht mehr im Speicher vorhanden
+    - [ ] Temporäre Aufnahme ist im Speicher vorhanden 
 
-- Enthaltene Implementable Stories:
-    - (Temporäre Aufnahme abspielen) 
-    - (Button klicken)
-    -
-
-
-
-### Feature *Abspielen von temporärer Aufnahme*
-
-> Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstelle Aufnahme abspielen*, um *die Qualität zu ueberpruefen*.
-
-- Aufwandsschätzung: XS
-- Akzeptanztests:
-    - [ ] Android-Gerät spielt Aufnahme ab 
+- Enthaltene Tasks:
+    - Record-Button klicken
+    - Namen aussprechen
+    - Stop-Button klicken
+    
+### Implementable Story *Temporäre Aufnahme verwerfen*
  
-- Enthaltene Implementable Stories:
-    - 
-    - 
-    -
+> Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme verwerfen*, um *eine neue Aufnahme erstellen zu können*.
 
-
-
-#### Implementable Story *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-100] Story Points
+- Aufwandsschätzung: 20
 - Akzeptanztests:
-    - TODO
-    - TODO
-    - TODO
+    - [ ] Aufnahme ist nicht mehr vorhanden
+    - [ ] Aufforderung zu neuer Aufnahme 
 
-##### Task *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
+- Enthaltene Tasks:
+    - Verwerfen-Button klicken
+    - Verwerfen bestätigen
 
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
+### Implementable Story *Temporäre Aufnahme akzeptieren*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme akzeptieren*, um *sie danach in einem Eintrag speichern zu können*.
 
-##### Task 2 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-##### Task 3 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-#### Implementable Story 2 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-100] Story Points
+- Aufwandsschätzung: 10
 - Akzeptanztests:
-    - TODO
-    - TODO
-    - TODO
+    - [ ] Temporäre Aufnahme nicht gelöscht
+    - [ ] Temporäre Aufname ist im temporärem Speicher
+    
+- Enthaltene Tasks:
+    - Klicke auf Accept-Button
 
-##### Task *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
+### Implementable Story *Temporäre Aufnahme abspielen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme abspielen*, um *sie auf Qualität zu testen*.
 
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-##### Task 2 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-##### Task 3 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-### Feature 2 *Titel*
-
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [XS, S, M, L, XL]
+- Aufwandsschätzung: 20
 - Akzeptanztests:
-    - TODO
-    - TODO
-    - TODO
+    - [ ] Temporäre Aufnahme wird von dem Android-Gerät einmal abgespielt 
+    
+- Enthaltene Tasks:
+    - Klicke auf Play-Button
 
-#### Implementable Story *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
 
-- Aufwandsschätzung: [0-100] Story Points
-- Akzeptanztests:
-    - TODO
-    - TODO
-    - TODO
 
-##### Task *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
 
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
 
-##### Task 2 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
 
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
 
-##### Task 3 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-#### Implementable Story 2 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-100] Story Points
-- Akzeptanztests:
-    - TODO
-    - TODO
-    - TODO
-
-##### Task *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-##### Task 2 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
-
-##### Task 3 *Titel*
-> Als *Rolle* möchte ich *Ziel/Wunsch*, um *Nutzen*.
-
-- Aufwandsschätzung: [0-24] Stunden
-- Tatsächliche Zeit: [0-72] Stunden
 
 
 ### Feature *Eintrag erstellen*
@@ -197,9 +104,58 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Implementable Stories:
     - Editor öffnen 
     - Informationen eingeben
-    - Aussprache aufnehmen
+    - Aufnahme speichern, siehe Feature 'Temporäre Aufnahme erstellen'
     - Eintrag speichern
  
+### Implementable Story *Editor öffnen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *den Editor öffnen*, um *einen neuen Eintrag zu erstellen*.
+
+- Aufwandsschätzung: 60
+- Akzeptanztests:
+    - [ ] Ein neuer Eintrag kann erstellt werden
+    - [ ] Android-Gerät-Bildschirm zeigt Editor
+    
+- Enthaltene Tasks:
+    - Klicke auf Create-Button
+
+### Implementable Story *Informationen eingeben*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *in dem Editor Informationen über den Kontakt eingeben*, um *diese später zu speichern*.
+
+- Aufwandsschätzung: 5
+- Akzeptanztests:
+    - [ ] Eingabe wird angezeigt
+    
+- Enthaltene Tasks:
+    - Gib Titel ein
+    - Gib Vorname ein
+    - Gib Zweitname ein
+    - Gib Nachname ein
+    - Wähle Geschlecht
+    - Wähle Land
+
+
+### Implementable Story *Eintrag speichern*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *die eingegebenen Informationen speichern*, um *später auf sie zugreifen zu können*.
+
+- Aufwandsschätzung: 90 
+- Akzeptanztests:
+    - [ ] Eintrag ist in permanenten Speicher vorhanden
+    - [ ] Eintrag ist auch nach Neustart des Geräts verfügbar
+
+- Enthaltene Tasks:
+    - Save-Button klicken
+
+
+
+
+
+
+
+
+
 
 
 ### Feature *Eintrag einsehen*
@@ -212,11 +168,52 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Kontakt wird auf Android-Geraet-Display sichtbar
  
 - Enthaltene Implementable Stories:
-    - Eintrag anzeigen
+    - Einträge in Liste anzeigen
     - Eintrag öffnen
     - Eintrag schließen
     
-    
+### Implementable Story *Einträge in Liste anzeigen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *die existierenden Einträge in einer Liste sehen*, um *sie öffnen zu können*.
+
+- Aufwandsschätzung: 40
+- Akzeptanztests:
+    - [ ] Alle existierenden Einträge werden in Listenform auf Android-Gerät-Bildschirm angezeigt
+
+- Enthaltene Tasks:
+    - Einträge anzeigen
+
+### Implementable Story *Eintrag öffnen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag öffnen*, um *die gespeicherten Informationen einzusehen*.
+
+- Aufwandsschätzung: 60
+- Akzeptanztests:
+    - [ ] Android-Gerät-Bildschirm zeigt den Eintrag an 
+
+- Enthaltene Tasks:
+    - Auf Eintrag klicken
+
+### Implementable Story *Eintrag schließen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *einen geöffneten Eintrag schließen*, um *auf andere Einträge zugreifen zu können*.
+
+- Aufwandsschätzung: 5
+- Akzeptanztests:
+    - [ ] Android-Gerät-Bildschirm nimmt Zustand vor Öffnen an 
+
+- Enthaltene Tasks:
+    - Zurück-Button klicken
+
+
+
+
+
+
+
+
+
+
 ### Feature *Aufnahme abpspielen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine gespeicherte Aufnahme abspielen*, um *die korrekte Aussprache eines Namen zu erfahren*.
@@ -226,10 +223,33 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
    - [ ] Das Android-Gerät spielt die Aufnahme ab.
  
 - Enthaltene Implementable Stories:
-    - Eintrag finden
     - Eintrag auswählen
     - Gespeicherte Datei abspielen
-   
+ 
+
+
+### Implementable Story *Gespeicherte Datei abspielen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *eine zu einem Eintrag assoziierte Aussprache abspielen*, um *die Person richtig anreden zu können*.
+
+- Aufwandsschätzung: 40
+- Akzeptanztests:
+    - [ ] Android-Gerät spielt vorher gespeicherte Aussprache genau einmal ab
+
+- Enthaltene Tasks:
+    - Eintrag finden
+    - Play-Button klicken
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -245,10 +265,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Einträge sortieren
     - Einträge filtern
     - Sprache ändern
-    - Favoriten erstellen
-    - Favoriten abrufen
-    - Favoriten entfernen
-    - Löschen von Eintrag rueckgängig machen
+    - Favoriten verwalten
+    - Löschen von Eintrag rückgängig machen
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
@@ -268,30 +286,96 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Eintrag auch nach Schließen der App aktualisiert
 
 - Enthaltene Implementable Stories:
-    - Eintrag öffnen
-    - Editor starten
+    - Eintrag öffnen, siehe Feature 'Eintrag einsehen'
+    - Editiermodus starten
     - Informationen ändern
     - Eintrag speichern
 
+### Implementable Story *Editiermodus starten*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *den Editiermodus starten*, um *Informationen und Aussprache eines Eintrags zu verändern*.
 
-### Feature *Eintrag loeschen*
+- Aufwandsschätzung: 60
+- Akzeptanztests:
+    - [ ] Android-Gerät-Bildschirm zeigt Editor 
+    - [ ] Informationen lassen sich in Eingabefelder ändern
+
+- Enthaltene Tasks:
+    - Edit-Button klicken
+
+### Implementable Story *Informationen ändern*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *bereits gespeicherte Informationen ändern*, um *sie zu korrigieren*.
+
+- Aufwandsschätzung: 15
+- Akzeptanztests:
+    - [ ] Die Eingabe-Felder zeigen veränderte Informationen an 
+
+- Enthaltene Tasks:
+    - Titel ändern
+    - Vorname ändern
+    - Zweitname ändern
+    - Nachname ändern
+    - Geschlecht ändern
+    - Land ändern
+    - Aussprache ändern
+
+### Implementable Story *Eintrag speichern*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *einen veränderten Eintrag speichern*, um *die veränderten Informationen beizubehalten*.
+
+- Aufwandsschätzung: 50
+- Akzeptanztests:
+    - [ ] Der alte Eintrag wurde durch den veränderten Eintrag im permanenten Speicher ersetzt
+
+- Enthaltene Tasks:
+    - Save-Button klicken
+
+
+
+
+
+
+
+
+### Feature *Eintrag löschen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag löschen*, um *den Eintrag nicht mehr angezeigt zu bekommen*.
 
 - Aufwandsschätzung: M
 - Akzeptanztests:
-    - [ ] Eintrag ist permanent von dem Android-Geraete-Speicher gelöscht
+    - [ ] Eintrag ist permanent von dem Android-Geräte-Speicher gelöscht
     - [ ] Eintrag wird nicht mehr in Listen angezeigt
     - [ ] Eintrag ist nicht Ergebnis von Suche
     
 - Enthaltene Implementable Stories:
-    - Eintrag öffnen 
+    - Eintrag öffnen, siehe Implementable Story in Feature 'Eintrag einsehen', Epic 1 
     - Eintrag löschen
-    - 
+
+### Implementable Story *Eintrag löschen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag löschen*, um *ihn nicht mehr verfügbar zu haben*.
+
+- Aufwandsschätzung: 50
+- Akzeptanztests:
+    - [ ] Eintrag ist permanent von dem Android-Geräte-Speicher gelöscht
+    - [ ] Eintrag wird nicht mehr in Listen angezeigt
+    - [ ] Eintrag ist nicht Ergebnis von Suche
+
+- Enthaltene Tasks:
+    - Delete-Button klicken
+    - Löschen Bestätigen
 
 
 
-### Feature *Einträaege durchsuchen*
+
+
+
+
+
+
+
+### Feature *Einträge durchsuchen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Einträge durch Eingabe des Namen durchsuchen*, um *meinen gesuchten Eintrag zu finden*.
 
@@ -301,24 +385,73 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     
 
 - Enthaltene Implementable Stories:
-    - Suche eingeben
+    - Suche durchführen
+    - Suche abbrechen
+    
+    
+### Implementable Story *Suche durchführen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *einen Suchbegriff eingeben*, um *alle Einträge danach zu durchsuchen*.
+
+- Aufwandsschätzung: 75
+- Akzeptanztests:
+    - [ ] Suchbegriff wird erfolgreich gelesen
+    - [ ] Alle Einträge, die mit dem Suchbegriff übereinstimmen, werden angezeigt
+
+- Enthaltene Tasks:
+    - Suchbegriff eingeben
     - Suche starten
-    - Suche verlassen
+
+
+### Implementable Story *Suche verlassen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *die Suche verlassen*, um *den vorherigen Modus einzunehmen*.
+
+- Aufwandsschätzung: 5
+- Akzeptanztests:
+    - [ ] Vorherige Bildschirm wird angezeigt 
+
+- Enthaltene Tasks:
+    - Zurück-Button klicken
+
+
+
+
+
+
+
 
 
 
 ### Feature *Einträge sortieren*
 
-> Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium sortieren*, um *meine gewünschte Reihenfolge angezeigt zu bekommen*.
+> Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium alphabetisch sortieren*, um *meine gewünschte Reihenfolge angezeigt zu bekommen*.
 
 - Aufwandsschätzung: M
 - Akzeptanztests:
     - [ ] Die Liste ist nach Kriterium sortiert
 
 - Enthaltene Implementable Stories:
-    - Einträge nach Land sortieren
-    - Einträge nach Nachnamen sortieren
-    - Einträge nach Vornamen sortieren
+    - Einträge nach gewünschtem Krtierium sortieren
+
+### Implementable Story *Einträge nach gewünschtem Kriterium sortieren*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *die Einträge sortieren*, um *eine bessere Übersicht zu haben*.
+
+- Aufwandsschätzung: 60
+- Akzeptanztests:
+    - [ ] Angezeigte Reihenfolge der Einträge enspricht Kriterium
+
+- Enthaltene Tasks:
+    - Nach Vornamen sortieren
+    - Nach Nachnamen sortieren
+    - Nach Land sortieren
+
+
+
+
+
+
 
 
 
@@ -332,9 +465,27 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Einträge, die nicht dem Filter-Kriterium entsprechen, werden nicht angezeigt 
 
 - Enthaltene Implementable Stories:
+    - Einträge nach Kriterium filtern
+
+### Implementable Story *Einträge nach Kriterium filtern*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium filtern*, um *nur gewünschte Einträge angezeigt zu bekommen*.
+
+- Aufwandsschätzung: 50
+- Akzeptanztests:
+    - [ ] Alle angezeigten Einträge entsprechen dem Kriterium
+
+- Enthaltene Tasks:
     - Einträge nach Land filtern
-    - Einträge nach Geschlecht sortieren
-    - 
+    - Einträge nach Geschlecht filtern
+    - Einträge nach Favoriten filtern, siehe Feature 'Favoriten verwalten'
+
+
+
+
+
+
+
 
 
 
@@ -349,11 +500,42 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Implementable Stories:
     - Einstellungen öffnen 
     - Sprache auswählen
-    - Einstellungen anwenden
+    
+    
+### Implementable Story *Einstellungen öffnen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *das Einstellungs-Menü öffnen*, um *sie zu verändern*.
+
+- Aufwandsschätzung: 35
+- Akzeptanztests:
+    - [ ] Einstellungs-Menü wird angezeigt 
+
+- Enthaltene Tasks:
+    - Auf Settings-Button klicken
+
+### Implementable Story *Sprache auswählen*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *eine Sprache auswählen*, um *die Oberflächensprache zu verändern*.
+
+- Aufwandsschätzung: 
+- Akzeptanztests:
+    - [ ] Die Oberflächensprache entspricht der Auswahl 
+
+- Enthaltene Tasks:
+    - Englisch auswählen
+    - Deutsch auswählen
+    - Einstellungs-Menü schließen
     
 
 
-### Feature *Favoriten erstellen*
+
+
+
+
+
+
+
+### Feature *Favoriten verwalten*
 
 > Als *Vertriebsmitarbeiter* möchte ich *aus den existierenden Einträgen Favoriten wählen*, um *diese schnell abrufen zu können*.
 
@@ -362,28 +544,39 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Der ausgewählte Eintrag ist als Favorit markiert
  
 - Enthaltene Implementable Stories:
-    - Eintrag als Favorit markieren
-    - 
-    - 
+    - Favorit erstellen
+    - Favorit entfernen
+    - Favoriten abrufen 
+
+### Implementable Story *Favorit erstellen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *aus den existierenden Einträgen Favoriten wählen*, um *diese schnell abrufen zu können*.
+
+- Aufwandsschätzung: S
+- Akzeptanztests: 
+    - [ ] Der ausgewählte Eintrag ist als Favorit markiert
+    - [ ] Der Favorite-Button des Eintrags ist gelb
+    
+- Enthaltene Tasks:
+    - Favorite-Button klicken     
 
 
 
-### Feature *Favoriten entfernen*
+### Implementable Story *Favorit entfernen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen als Favorit markierten Eintrag unfavorisieren*, um *diesen nicht mehr als Favorit angezeigt zu bekommen*.
 
 - Aufwandsschätzung: S
 - Akzeptanztests:
     - [ ] Der Eintrag ist nicht mehr als Favorit markiert 
-
-- Enthaltene Implementable Stories:
-    - Eintrag von Favoriten entfernen
-    - 
-    -
-
+    - [ ] Der Favorite-Button des Eintrags ist grau
+    
+- Enthaltene Tasks:
+    - Favorite-Button klicken
 
 
-### Feature *Favoriten abrufen*
+
+### Implementable Story *Favoriten abrufen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *meine vorher als Favoriten markierte Einträge abrufen*, um *diese einsehen zu können*.
 
@@ -392,25 +585,47 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Alle angezeigten Einträge sind als Favoriten markiert
     - [ ] Alle nicht angezeigten Einträge sind nicht als Favoriten markiert
  
-- Enthaltene Implementable Stories:
-    - Favoriten anzeigen
-    - 
-    - 
+- Enthaltene Tasks:
+    - Liste nach Favoriten filtern 
+     
+     
     
 
 
-### Feature *Loeschen von Eintrag rueckgängig machen*
+### Feature *Aktion rückgängig machen*
 
-> Als *Vertriebsmitarbeiter* möchte ich *das Löschen eines Eintrages rueckgängig machen*, um *den Eintrag weiterhin verfügbar zu haben*.
+> Als *Vertriebsmitarbeiter* möchte ich *eine durchgeführte Aktion rückgängig machen*, um *den Eintrag unverändert zu haben*.
 
 - Aufwandsschätzung: XL
 - Akzeptanztests:
-    - [ ] Der geloeschte Eintrag ist auch nach Schließen der App noch verfügbar
-    - [ ] Der geloeschte Eintrag ist weiterhin aufrufbar
+    - [ ] Der Eintrag ist identisch zu der vorigen Version
 
 - Enthaltene Implementable Stories:
-    - (Auf Button klicken?)
-    - 
-    - 
+    - Löschen von Eintrag rückgängig machen
+    - Editieren von Eintrag rückgängig machen
+
+
+### Implementable Story *Löschen von Eintrag rückgängig machen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *einen gelöschten Eintrag wiederherstellen*, um *nicht gelöscht zu haben*.
+
+- Aufwandsschätzung: 70
+- Akzeptanztests:
+    - [ ] Datenbank ist unverändert 
+
+- Enthaltene Tasks:
+    - Undo-Button klicken
+
+
+### Implementable Story *Editieren von Eintrag rückgängig machen* 
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *das Editieren eines Eintrages rückgängig machen*, um *meine Änderungen zu verwerfen*.
+
+- Aufwandsschätzung: 70
+- Akzeptanztests:
+    - [ ] Datenbank ist unverändert 
+
+- Enthaltene Tasks:
+    - Undo-Button klicken
 
 
