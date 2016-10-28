@@ -273,7 +273,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
    - [ ] Audio-Aufnahmen können nach Namen dursucht werden
    - [ ] Audio-Aufnahmen können erstellt werden, siehe Epic 1
    - [ ] Audio-Aufnahmen können gelöscht werden
-   - [ ] Audio-Aufnahmen können bearbeitet werden (Name/Region/... und Aufnahme selbst)
+   - [ ] Audio-Aufnahmen können bearbeitet werden (Name/Land/... und Aufnahme selbst)
+   - [ ] Audio-Aufnahmen können gefiltert werden
+   - [ ] Oberflächensprache kann angepasst werden
+   - [ ] Favoriten können verwalten werden
+   - [ ] Editier/Lösch-Aktionen können rückgängig gemacht werden
 
 
 
@@ -361,7 +365,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - [ ] Eintrag ist permanent von dem Android-Geräte-Speicher gelöscht
     - [ ] Eintrag wird nicht mehr in Listen angezeigt
     - [ ] Eintrag ist nicht Ergebnis von Suche
-
+    
 - Enthaltene Tasks:
     - Delete-Button klicken
     - Löschen Bestätigen
@@ -405,11 +409,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Implementable Story *Suche verlassen*
  
-> Als *Vertriebsmitarbeiter* möchte ich *die Suche verlassen*, um *den vorherigen Modus einzunehmen*.
+> Als *Vertriebsmitarbeiter* möchte ich *die Suche verlassen*, um *die vorherigen Einträge angezeigt zu bekommen*.
 
 - Aufwandsschätzung: 5
 - Akzeptanztests:
-    - [ ] Vorherige Bildschirm wird angezeigt 
+    - [ ] Vorheriger Bildschirm wird angezeigt 
 
 - Enthaltene Tasks:
     - Zurück-Button klicken
@@ -541,7 +545,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: S
 - Akzeptanztests: 
-    - [ ] Der ausgewählte Eintrag ist als Favorit markiert
+    - [ ] Akzeptanstests der Implementables erfüllt
  
 - Enthaltene Implementable Stories:
     - Favorit erstellen
@@ -592,14 +596,15 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     
 
 
-### Feature *Aktion rückgängig machen*
+### Feature *Letzte Aktion rückgängig machen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine durchgeführte Aktion rückgängig machen*, um *den Eintrag unverändert zu haben*.
 
 - Aufwandsschätzung: XL
 - Akzeptanztests:
     - [ ] Der Eintrag ist identisch zu der vorigen Version
-
+    - [ ] Undo-Button wird nicht angezeigt 
+    
 - Enthaltene Implementable Stories:
     - Löschen von Eintrag rückgängig machen
     - Editieren von Eintrag rückgängig machen
@@ -611,7 +616,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 70
 - Akzeptanztests:
-    - [ ] Datenbank ist unverändert 
+    - [ ] Datenbank entspricht Zustand vor Aktoin
+    - [ ] Undo-Button wird nicht angezeigt 
 
 - Enthaltene Tasks:
     - Undo-Button klicken
@@ -623,7 +629,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 70
 - Akzeptanztests:
-    - [ ] Datenbank ist unverändert 
+    - [ ] Datenbank entspricht Zustand vor Aktion
+    - [ ] Undo-Button wird nicht angezeigt 
 
 - Enthaltene Tasks:
     - Undo-Button klicken
