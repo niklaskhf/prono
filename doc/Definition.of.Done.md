@@ -9,4 +9,4 @@
 - Code Review abgeschlossen.
 - Zugehoerige Issue geschlossen.
 - Code wurde eingecheckt.
-
+- App funktioniert auf Testgeraet(en).
