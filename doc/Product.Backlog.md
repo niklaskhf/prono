@@ -14,39 +14,38 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Enthaltene Features:
     - Aufnehmen von Aussprache
-    - Verwerfen von temporärer Aufnahme
-    - Abspielen von temporärer Aufnahme
     - Eintrag erstellen
     - Eintrag einsehen
     - Aufnahme abspielen
 
 
-### Feature *Aufnehmen von Aussprache*
+### Feature 1 *Aufnehmen von Aussprache*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aussprache von Namen aufnehmen können*, um *eine temporäre Audio-Aufnahme abspielen zu können*.
 
 - Aufwandsschätzung: M-L
 - Akzeptanztests:
     - [ ] Audio-Aufnahme muss abspielbar sein
-    
+
 - Enthaltene Implementable Stories:
-    - Temporäre Aufnahme erstellen  
-    - Temporäre Aufnahme speichern/verwerfen
+    - Temporäre Aufnahme erstellen
+    - Temporäre Aufnahme speichern
+    - Temporäre Aufnahme verwerfen
     - Temporäre Aufnahme abspielen
-    
-  
+
+
 ### Implementable Story *Temporäre Aufnahme erstellen*
- 
+
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporäre Aufnahme erstellen*, um *diese später speichern zu können*.
 
 - Aufwandsschätzung: 60
 - Akzeptanztests:
-    - [ ] Temporäre Aufnahme ist im Speicher vorhanden 
+    - [ ] Temporäre Aufnahme ist im Speicher vorhanden
 
 - Enthaltene Tasks:
-    - Record-Button klicken
-    - Namen aussprechen
-    - Stop-Button klicken
+    - Aufnahme starten
+    - Aufnahme aufzeichnen
+    - Aufnahme stoppen
     
 ### Implementable Story *Temporäre Aufnahme verwerfen*
  
@@ -55,11 +54,23 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 20
 - Akzeptanztests:
     - [ ] Aufnahme ist nicht mehr vorhanden
-    - [ ] Aufforderung zu neuer Aufnahme 
+    - [ ] Aufforderung zu neuer Aufnahme
 
 - Enthaltene Tasks:
     - Verwerfen-Button klicken
     - Verwerfen bestätigen
+
+### Implementable Story *Temporäre Aufnahme speichern*
+ 
+> Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme speichern*, um *die aufgenommene Aufnahme speichern zu können*.
+
+- Aufwandsschätzung: 20
+- Akzeptanztests:
+    - [ ] Aufnahme ist im temporären Speicher vorhanden
+
+- Enthaltene Tasks:
+    - Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons
+
 
 ### Implementable Story *Temporäre Aufnahme akzeptieren*
  
@@ -92,11 +103,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Eintrag erstellen*
+### Feature 2 *Eintrag erstellen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Zweit-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
 
-- Aufwandsschätzung: M 
+- Aufwandsschätzung: L 
 - Akzeptanztests:
     - [ ] Eintrag muss nach Schließen der App noch existieren
     - [ ] Eintrag muss mindestens Nachname und Aussprache enthalten
@@ -104,8 +115,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Implementable Stories:
     - Editor öffnen 
     - Informationen eingeben
-    - Aufnahme speichern, siehe Feature 'Temporäre Aufnahme erstellen'
     - Eintrag speichern
+    - Aufnahme speichern, siehe Implementable Story 'Temporäre Aufnahme erstellen'
  
 ### Implementable Story *Editor öffnen*
  
@@ -158,7 +169,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Eintrag einsehen*
+### Feature 3 *Eintrag einsehen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag aufrufen*, um *die gespeicherten Informationen einzusehen*.
 
@@ -214,7 +225,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Aufnahme abpspielen*
+### Feature 4 *Aufnahme abspielen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine gespeicherte Aufnahme abspielen*, um *die korrekte Aussprache eines Namen zu erfahren*.
 
@@ -258,15 +269,16 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ## Epic 2 *Existierenden Eintrag editieren/löschen/verwalten/durchsuchen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die bereits existierenden Einträge editieren/löschen/verwalten*, um *Informationen zu ändern/korrigieren*.
+
 - Enthaltene Features:
     - Eintrag editieren
     - Eintrag löschen
     - Einträge durchsuchen
     - Einträge sortieren
     - Einträge filtern
-    - Sprache ändern
+    - Sprache anpassen
     - Favoriten verwalten
-    - Löschen von Eintrag rückgängig machen
+    - Letzte Aktion rückgängig machen
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
@@ -281,7 +293,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Eintrag editieren*
+### Feature 5 *Eintrag editieren*
 
 > Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
 
@@ -302,7 +314,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 60
 - Akzeptanztests:
     - [ ] Android-Gerät-Bildschirm zeigt Editor 
-    - [ ] Informationen lassen sich in Eingabefelder ändern
+    - [ ] Informationen lassen sich in Eingabefeldern ändern
 
 - Enthaltene Tasks:
     - Edit-Button klicken
@@ -313,7 +325,9 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 15
 - Akzeptanztests:
-    - [ ] Die Eingabe-Felder zeigen veränderte Informationen an 
+
+    - [ ] Die Eingabefelder zeigen veränderte Informationen an
+    - [ ] Die geänderten Informationen befinden sich im flüchtigen Speicher 
 
 - Enthaltene Tasks:
     - Titel ändern
@@ -342,13 +356,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Eintrag löschen*
+### Feature 6 *Eintrag löschen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag löschen*, um *den Eintrag nicht mehr angezeigt zu bekommen*.
 
 - Aufwandsschätzung: M
 - Akzeptanztests:
-    - [ ] Eintrag ist permanent von dem Android-Geräte-Speicher gelöscht
+    - [ ] Eintrag ist nach Ablauf des Countdowns für die Möglichkeit der Rückgängigoption (Feature 13) permanent von dem Android-Geräte-Speicher gelöscht
     - [ ] Eintrag wird nicht mehr in Listen angezeigt
     - [ ] Eintrag ist nicht Ergebnis von Suche
     
@@ -362,7 +376,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 50
 - Akzeptanztests:
-    - [ ] Eintrag ist permanent von dem Android-Geräte-Speicher gelöscht
+    - [ ] Eintrag ist nach Ablauf des Countdowns für die Möglichkeit der Rückgängigoption (Feature 13) permanent von dem Android-Geräte-Speicher gelöscht
     - [ ] Eintrag wird nicht mehr in Listen angezeigt
     - [ ] Eintrag ist nicht Ergebnis von Suche
     
@@ -379,13 +393,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Einträge durchsuchen*
+### Feature 7 *Einträge durchsuchen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Einträge durch Eingabe des Namen durchsuchen*, um *meinen gesuchten Eintrag zu finden*.
 
 - Aufwandsschätzung: L
 - Akzeptanztests: 
-    - [ ] Nach Eingabe einer Suche werden alle Einträge, die teilweise mit der Suche übereinstimmen, angezeigt
+    - [ ] Nach Eingabe einer Suche werden alle Einträge, die mit der Suche übereinstimmen, angezeigt
     
 
 - Enthaltene Implementable Stories:
@@ -427,13 +441,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Einträge sortieren*
+### Feature 8 *Einträge sortieren*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium alphabetisch sortieren*, um *meine gewünschte Reihenfolge angezeigt zu bekommen*.
 
 - Aufwandsschätzung: M
 - Akzeptanztests:
-    - [ ] Die Liste ist nach Kriterium sortiert
+    - [ ] Die Liste ist nach ausgewählten Kriterium (Vorname/Zweitname/Nachname/Land/Geschlecht)  sortiert
 
 - Enthaltene Implementable Stories:
     - Einträge nach gewünschtem Krtierium sortieren
@@ -444,7 +458,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 60
 - Akzeptanztests:
-    - [ ] Angezeigte Reihenfolge der Einträge enspricht Kriterium
+    - [ ] Angezeigte Reihenfolge der Einträge entspricht Kriterium (Vorname/Zweitname/Nachname/Land/Geschlecht) 
 
 - Enthaltene Tasks:
     - Nach Vornamen sortieren
@@ -459,12 +473,14 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Einträge filtern*
+### Feature 9 *Einträge filtern*
 
-> Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Filter-Kriterium anpassen*, um *die Einträge, die dem gewünschten Filter-Kriterium entsprechen, angezeigt zu bekommen*.
+> Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Filter-Kriterium anpassen*, um *diese nach dem ausgewählten Filter-Kriterium entsprechend angezeigt zu bekommen*.
 
 - Aufwandsschätzung: M
 - Akzeptanztests: 
+	- [ ] Einträge erfolgreich nach Land gefiltert
+	- [ ] Einträge erfolgreich nach Geschlecht gefiltert
     - [ ] Alle angezeigten Einträge entsprechen dem Filter-Kriterium
     - [ ] Einträge, die nicht dem Filter-Kriterium entsprechen, werden nicht angezeigt 
 
@@ -493,7 +509,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Sprache anpassen*
+### Feature 10 *Sprache anpassen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Sprache der Oberfläche ändern*, um *eine andere Sprache zu lesen*.
 
@@ -521,7 +537,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine Sprache auswählen*, um *die Oberflächensprache zu verändern*.
 
-- Aufwandsschätzung: 
+- Aufwandsschätzung: 50
 - Akzeptanztests:
     - [ ] Die Oberflächensprache entspricht der Auswahl 
 
@@ -539,11 +555,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Feature *Favoriten verwalten*
+### Feature 11 *Favoriten verwalten*
 
 > Als *Vertriebsmitarbeiter* möchte ich *aus den existierenden Einträgen Favoriten wählen*, um *diese schnell abrufen zu können*.
 
-- Aufwandsschätzung: S
+- Aufwandsschätzung: M
 - Akzeptanztests: 
     - [ ] Akzeptanstests der Implementables erfüllt
  
@@ -556,7 +572,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *aus den existierenden Einträgen Favoriten wählen*, um *diese schnell abrufen zu können*.
 
-- Aufwandsschätzung: S
+- Aufwandsschätzung: 20
 - Akzeptanztests: 
     - [ ] Der ausgewählte Eintrag ist als Favorit markiert
     - [ ] Der Favorite-Button des Eintrags ist gelb
@@ -570,7 +586,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen als Favorit markierten Eintrag unfavorisieren*, um *diesen nicht mehr als Favorit angezeigt zu bekommen*.
 
-- Aufwandsschätzung: S
+- Aufwandsschätzung: 20
 - Akzeptanztests:
     - [ ] Der Eintrag ist nicht mehr als Favorit markiert 
     - [ ] Der Favorite-Button des Eintrags ist grau
@@ -584,7 +600,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *meine vorher als Favoriten markierte Einträge abrufen*, um *diese einsehen zu können*.
 
-- Aufwandsschätzung: M
+- Aufwandsschätzung: 50
 - Akzeptanztests:
     - [ ] Alle angezeigten Einträge sind als Favoriten markiert
     - [ ] Alle nicht angezeigten Einträge sind nicht als Favoriten markiert
@@ -596,13 +612,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     
 
 
-### Feature *Letzte Aktion rückgängig machen*
+### Feature 12 *Letzte Aktion rückgängig machen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine durchgeführte Aktion rückgängig machen*, um *den Eintrag unverändert zu haben*.
 
-- Aufwandsschätzung: XL
+- Aufwandsschätzung: L
 - Akzeptanztests:
-    - [ ] Der Eintrag ist identisch zu der vorigen Version
+    - [ ] Der Eintrag ist identisch zu der vorherigen Version
     - [ ] Undo-Button wird nicht angezeigt 
     
 - Enthaltene Implementable Stories:
@@ -616,7 +632,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 70
 - Akzeptanztests:
-    - [ ] Datenbank entspricht Zustand vor Aktoin
+    - [ ] Datenbank entspricht Zustand vor Aktion
     - [ ] Undo-Button wird nicht angezeigt 
 
 - Enthaltene Tasks:

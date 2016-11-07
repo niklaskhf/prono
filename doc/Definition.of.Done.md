@@ -4,9 +4,9 @@
 - Die Testabdeckung beträgt mindestens 75 %.
 - Der Entwurf wurde aktualisiert.
 - Der Code ist kommentiert.
-- Changelog-Eintrag wurde hinzugefuegt.
-- Tatsaechlicher Aufwand in User Story wurde aktualisiert.
+- Changelog-Eintrag wurde hinzugefügt.
+- Tatsächlicher Aufwand in User Story wurde aktualisiert.
+- Zugehörige Issue geschlossen.
 - Code Review abgeschlossen.
-- Zugehoerige Issue geschlossen.
 - Code wurde eingecheckt.
-- App funktioniert auf Testgeraet(en).
+- App funktioniert auf eigenem physischem Testgerät.
