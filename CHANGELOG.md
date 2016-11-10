@@ -4,12 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 # Template
-## [27.10.2016] - Initial Product Backlog created
+## [0.1.2] - Initial Product Backlog created
 ### Added
 [Product Backlog](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/blob/master/doc/Product.Backlog.md)
 
 # Template
-## [11.11.11] - Reviewed Product Backlog, sketches and first draft
+## [0.1.1] - Reviewed Product Backlog, sketches and first draft
 ### Added
 [Entwurf](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/blob/master/doc/Entwurf.md)
 [sketches](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/tree/master/doc/sketches)
