@@ -34,7 +34,7 @@ Verwendung in View um Benutzerfreundlichkeit zu fördern.
 
 # Klassendiagramm
 
-![](sketches/CD_SopraGruppe16.png)
+![](sketches/cd_SopraGruppe16.png)
 
 # Beschreibung der wichtigen Klassenhierarchie
 
