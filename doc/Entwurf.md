@@ -2,9 +2,9 @@
 
 *Dieser Entwurf legt die prinzipielle Lösungsstruktur fest und enthält alles, was man benötigt, um einem Außenstehenden den prinzipiellen Aufbau der App erklären zu können.* (**keep it simple**)
 
-**TODO:** Beschreibung des grundlegenden Aufbaus.
+Die Datenbank (Model) liefert den Controller und dem View Informationen. Der Kontroller steuert den Ablauf des Programms. Der View dient zur Darstellung der Daten.
 
-**TODO:** Verweis auf Standards wie zum Beispiel verwendete Entwurfsmuster o.ä.
+Verwendete Entwurfsmuster: Model-View-Controller, Singleton
 
 # Komponentendiagramm
 
@@ -14,17 +14,26 @@ Gubaer at the German language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.h
 
 **TODO:** Komponentendiagramm der eigenen und externen Komponenten der App erstellen.
 
-## Komponente 1
+## Komponente 1: Model
 
-**TODO:** Beschreibung der Komponente inklusive seiner verwendeten und bereitgestellten Schnittstellen
+Datenhaltung von Kontakten, Einstellungen und Sprachprofilen. Providet für View und Controller.
 
-## Komponente 2
+## Komponente 2: Controller
 
-**TODO:** Beschreibung der Komponente inklusive seiner verwendeten und bereitgestellten Schnittstellen
+Verwendet von Model bereitgestellte Daten, um den View zu steuern. Kann Daten in Model manipulieren und View kontrollieren.
+
+## Komponente 3: View
+
+Stellt Daten von Model in GUI dar. Schnittstelle zu Nutzer.
 
 ## Externe Komponente 1
 
 **TODO:** Beschreibung der **externen** Komponente/Bibliothek und wie diese verwendet werden soll.
+
+Material.io/icons
+
+Verwendung in View um Benutzerfreundlichkeit zu fördern.
+
 
 # Klassendiagramm
 
@@ -34,13 +43,16 @@ Gubaer at the German language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.h
 
 **TODO:** Klassendiagramm der Aufteilung der eigenen Komponenten in Klassen darstellen.
 
-## Beschreibung der wichtigen Klassenhierarchie 1
+## Beschreibung der wichtigen Klassenhierarchie
 
-**TODO:** Die wichtigen Klassen und ihre Hierarchie beschreiben.
+## Datenbank:
+Speichert sämliche Informationen aller Kontakte und sonstige Einstellungen auf dem Gerätespeicher.
 
-## Beschreibung der wichtigen Klasse 2
+## Contact: 
+Enthält alle Informationen eines Kontaktes. Informationen werden in der Datenbank permanent gespeichert.
 
-## Beschreibung der wichtigen Klasse 3
+## ContactManager:
+Implementiert Critical Features. Verwaltet Daten bezüglich Kontakten über die Datenbank. 
 
 
 # GUI-Skizze
