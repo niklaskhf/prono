@@ -34,7 +34,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Temporäre Aufnahme abspielen
 
 
-### Implementable Story *Temporäre Aufnahme erstellen*
+### Implementable Story 1 *Temporäre Aufnahme erstellen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporäre Aufnahme erstellen*, um *diese später speichern zu können*.
 
@@ -47,7 +47,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Aufnahme aufzeichnen
     - Aufnahme stoppen
     
-### Implementable Story *Temporäre Aufnahme verwerfen*
+### Implementable Story 2 *Temporäre Aufnahme verwerfen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme verwerfen*, um *eine neue Aufnahme erstellen zu können*.
 
@@ -60,7 +60,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Verwerfen-Button klicken
     - Verwerfen bestätigen
 
-### Implementable Story *Temporäre Aufnahme speichern*
+### Implementable Story 3 *Temporäre Aufnahme speichern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme speichern*, um *die aufgenommene Aufnahme speichern zu können*.
 
@@ -72,7 +72,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons
 
 
-### Implementable Story *Temporäre Aufnahme akzeptieren*
+### Implementable Story 4 *Temporäre Aufnahme akzeptieren*
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme akzeptieren*, um *sie danach in einem Eintrag speichern zu können*.
 
@@ -84,7 +84,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Klicke auf Accept-Button
 
-### Implementable Story *Temporäre Aufnahme abspielen*
+### Implementable Story 5 *Temporäre Aufnahme abspielen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporär erstellte Aufnahme abspielen*, um *sie auf Qualität zu testen*.
 
@@ -118,7 +118,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag speichern
     - Aufnahme speichern, siehe Implementable Story 'Temporäre Aufnahme erstellen'
  
-### Implementable Story *Editor öffnen*
+### Implementable Story 1 *Editor öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *den Editor öffnen*, um *einen neuen Eintrag zu erstellen*.
 
@@ -130,7 +130,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Klicke auf Create-Button
 
-### Implementable Story *Informationen eingeben*
+### Implementable Story 2 *Informationen eingeben*
  
 > Als *Vertriebsmitarbeiter* möchte ich *in dem Editor Informationen über den Kontakt eingeben*, um *diese später zu speichern*.
 
@@ -147,7 +147,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Wähle Land
 
 
-### Implementable Story *Eintrag speichern*
+### Implementable Story 3 *Eintrag speichern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die eingegebenen Informationen speichern*, um *später auf sie zugreifen zu können*.
 
@@ -183,7 +183,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag öffnen
     - Eintrag schließen
     
-### Implementable Story *Einträge in Liste anzeigen*
+### Implementable Story 1 *Einträge in Liste anzeigen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die existierenden Einträge in einer Liste sehen*, um *sie öffnen zu können*.
 
@@ -194,7 +194,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Einträge anzeigen
 
-### Implementable Story *Eintrag öffnen*
+### Implementable Story 2 *Eintrag öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag öffnen*, um *die gespeicherten Informationen einzusehen*.
 
@@ -205,7 +205,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Auf Eintrag klicken
 
-### Implementable Story *Eintrag schließen*
+### Implementable Story 3 *Eintrag schließen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *einen geöffneten Eintrag schließen*, um *auf andere Einträge zugreifen zu können*.
 
@@ -239,7 +239,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
  
 
 
-### Implementable Story *Gespeicherte Datei abspielen*
+### Implementable Story 1 *Gespeicherte Datei abspielen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine zu einem Eintrag assoziierte Aussprache abspielen*, um *die Person richtig anreden zu können*.
 
@@ -307,7 +307,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Informationen ändern
     - Eintrag speichern
 
-### Implementable Story *Editiermodus starten*
+### Implementable Story 1 *Editiermodus starten*
  
 > Als *Vertriebsmitarbeiter* möchte ich *den Editiermodus starten*, um *Informationen und Aussprache eines Eintrags zu verändern*.
 
@@ -319,7 +319,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Edit-Button klicken
 
-### Implementable Story *Informationen ändern*
+### Implementable Story 2 *Informationen ändern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *bereits gespeicherte Informationen ändern*, um *sie zu korrigieren*.
 
@@ -338,7 +338,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Land ändern
     - Aussprache ändern
 
-### Implementable Story *Eintrag speichern*
+### Implementable Story 3 *Eintrag speichern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *einen veränderten Eintrag speichern*, um *die veränderten Informationen beizubehalten*.
 
@@ -370,7 +370,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag öffnen, siehe Implementable Story in Feature 'Eintrag einsehen', Epic 1 
     - Eintrag löschen
 
-### Implementable Story *Eintrag löschen*
+### Implementable Story 1 *Eintrag löschen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *einen existierenden Eintrag löschen*, um *ihn nicht mehr verfügbar zu haben*.
 
@@ -407,7 +407,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Suche abbrechen
     
     
-### Implementable Story *Suche durchführen*
+### Implementable Story 1 *Suche durchführen* 
  
 > Als *Vertriebsmitarbeiter* möchte ich *einen Suchbegriff eingeben*, um *alle Einträge danach zu durchsuchen*.
 
@@ -421,7 +421,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Suche starten
 
 
-### Implementable Story *Suche verlassen*
+### Implementable Story 2 *Suche verlassen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die Suche verlassen*, um *die vorherigen Einträge angezeigt zu bekommen*.
 
@@ -452,7 +452,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Implementable Stories:
     - Einträge nach gewünschtem Krtierium sortieren
 
-### Implementable Story *Einträge nach gewünschtem Kriterium sortieren*
+### Implementable Story 1 *Einträge nach gewünschtem Kriterium sortieren*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die Einträge sortieren*, um *eine bessere Übersicht zu haben*.
 
@@ -487,7 +487,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Implementable Stories:
     - Einträge nach Kriterium filtern
 
-### Implementable Story *Einträge nach Kriterium filtern*
+### Implementable Story 2 *Einträge nach Kriterium filtern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium filtern*, um *nur gewünschte Einträge angezeigt zu bekommen*.
 
@@ -522,7 +522,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Sprache auswählen
     
     
-### Implementable Story *Einstellungen öffnen*
+### Implementable Story 1 *Einstellungen öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *das Einstellungs-Menü öffnen*, um *sie zu verändern*.
 
@@ -533,7 +533,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Auf Settings-Button klicken
 
-### Implementable Story *Sprache auswählen*
+### Implementable Story 2 *Sprache auswählen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *eine Sprache auswählen*, um *die Oberflächensprache zu verändern*.
 
@@ -568,7 +568,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Favorit entfernen
     - Favoriten abrufen 
 
-### Implementable Story *Favorit erstellen*
+### Implementable Story 1 *Favorit erstellen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *aus den existierenden Einträgen Favoriten wählen*, um *diese schnell abrufen zu können*.
 
@@ -582,7 +582,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Implementable Story *Favorit entfernen*
+### Implementable Story 2 *Favorit entfernen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen als Favorit markierten Eintrag unfavorisieren*, um *diesen nicht mehr als Favorit angezeigt zu bekommen*.
 
@@ -596,7 +596,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Implementable Story *Favoriten abrufen*
+### Implementable Story 3 *Favoriten abrufen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *meine vorher als Favoriten markierte Einträge abrufen*, um *diese einsehen zu können*.
 
@@ -626,7 +626,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Editieren von Eintrag rückgängig machen
 
 
-### Implementable Story *Löschen von Eintrag rückgängig machen*
+### Implementable Story 1 *Löschen von Eintrag rückgängig machen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen gelöschten Eintrag wiederherstellen*, um *nicht gelöscht zu haben*.
 
@@ -639,7 +639,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Undo-Button klicken
 
 
-### Implementable Story *Editieren von Eintrag rückgängig machen* 
+### Implementable Story 2 *Editieren von Eintrag rückgängig machen* 
  
 > Als *Vertriebsmitarbeiter* möchte ich *das Editieren eines Eintrages rückgängig machen*, um *meine Änderungen zu verwerfen*.
 
@@ -651,4 +651,4 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Undo-Button klicken
 
-
+   
