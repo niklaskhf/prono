@@ -156,7 +156,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons
 
 
-### Task 1 *Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons*
+### Task 1 *Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons)*
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf Aufnahme stoppen klicken*, um *sie später abhören zu können*.
 
@@ -506,7 +506,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 2 *Play-Button klicken*
+### Task 2 *Play-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Play-Button klicken*, um *die Aussprache abzuspielen*.
 
