@@ -64,9 +64,9 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Aufnahme aufzeichnen
     - Aufnahme stoppen
     
+
     
 ### Task 1 *Aufnahme starten*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aufnahme starten*, um *die Aussprache eines Kontaktes im Android-Gerät zu speichern*.
 
@@ -79,7 +79,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Task 2 *Aufnahme aufzeichnen*
 
-
 > Als *Vertriebsmitarbeiter* möchte ich *die Aufnahme aufzeichnen*, um *sie später abhören zu können*.
 
 
@@ -88,7 +87,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 ### Task 3 *Aufnahme stoppen*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aufnahme stoppen*, um *sie nicht unnötig lang zu machen*.
 
@@ -122,7 +120,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Task 1 *Verwerfen-Button klicken*
 
-
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-Button klicken*, um *eine qualitativ schlechte Aufnahme zu verwerfen*.
 
 
@@ -135,7 +132,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 ### Task 2 *Verwerfen bestätigen*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-bestätigen Button klicken*, um *sicher zu gehen, dass man sich zuvor nicht aus versehen auf verwerfen geklickt hat*.
 
@@ -161,7 +157,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 ### Task 1 *Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf Aufnahme stoppen klicken*, um *sie später abhören zu können*.
 
@@ -190,7 +185,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Task 1 *Klicke auf Accept-Button*
 
-
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporäre Aufname akzeptieren*, um *sie im Android-Gerät gespeichert zu haben*.
 
 
@@ -216,7 +210,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 ### Task 1 *Klicke auf Play-Button*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Play-Button klicken*, um *überprüfen zu können, ob die Aufnahme den Erwartungen entspricht*.
 
@@ -275,7 +268,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Task 1 *Klicke auf Create-Button*
 
-
 > Als *Vertriebsmitarbeiter* möchte ich *einen neuen Eintrag erstellen können*, um *diesen in meiner Datenbank hinzufügen zu können*.
 
 
@@ -300,8 +292,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-### Task 1 *Gin Informationen ein*
-
+### Task 1 *Gib Informationen ein*
 
 > Als *Vertriebsmitarbeiter* möchte ich *meinen Kontakten Daten zuweisen*, um *sie später abrufen zu können*.
 
@@ -334,7 +325,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 ### Task 1 *Save-Button klicken*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *meinen neu erstellten Kontakt speichern*, um *ihn permanent gespeichert zu haben*.
 
@@ -393,7 +383,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Task 1 *Einträge anzeigen*
 
-
 > Als *Vertriebsmitarbeiter* möchte ich *meine Einträge einsehen*, um *Informationen von ihnen zu bekommen*.
 
 
@@ -422,7 +411,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 ### Task 1 *Auf Eintrag klicken*
-
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf einen Eintrag klicken*, um *genauere Informationen von ihm zu bekommen*.
 
