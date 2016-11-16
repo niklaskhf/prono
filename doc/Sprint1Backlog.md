@@ -18,4 +18,4 @@ Enthält alle Features, die in dem ersten Sprint bearbeitet werden sollen.
     
     
     
-[Product.Backlog.md](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/edit/master/doc/Product.Backlog.md) als Referenz
+[Product.Backlog.md](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/blob/master/doc/Product.Backlog.md) als Referenz
