@@ -65,35 +65,35 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Aufnahme stoppen
     
     
- # Task 1 *Aufnahme starten*
+### Task 1 *Aufnahme starten*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aufnahme starten*, um *die Aussprache eines Kontaktes im Android-Gerät zu speichern*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit:
 
 
 
 
- # Task 2 *Aufnahme aufzeichnen*
+### Task 2 *Aufnahme aufzeichnen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aufnahme aufzeichnen*, um *sie später abhören zu können*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 6 Stunden 
 - Tatsächliche Zeit:
 
 
- # Task 3 *Aufnahme stoppen*
+### Task 3 *Aufnahme stoppen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aufnahme stoppen*, um *sie nicht unnötig lang zu machen*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -120,13 +120,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Verwerfen-Button klicken*
+### Task 1 *Verwerfen-Button klicken*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-Button klicken*, um *eine qualitativ schlechte Aufnahme zu verwerfen*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -134,13 +134,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 2 *Verwerfen bestätigen*
+### Task 2 *Verwerfen bestätigen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-bestätigen Button klicken*, um *sicher zu gehen, dass man sich zuvor nicht aus versehen auf verwerfen geklickt hat*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 3 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -160,7 +160,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons
 
 
- # Task 1 *Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons*
+### Task 1 *Stopp-Button klicken (automatische Speicherung nach Betätigung des Buttons*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf Aufnahme stoppen klicken*, um *sie später abhören zu können*.
@@ -188,13 +188,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Klicke auf Accept-Button*
+### Task 1 *Klicke auf Accept-Button*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine temporäre Aufname akzeptieren*, um *sie im Android-Gerät gespeichert zu haben*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 6 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -215,13 +215,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Klicke auf Play-Button*
+### Task 1 *Klicke auf Play-Button*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Play-Button klicken*, um *überprüfen zu können, ob die Aufnahme den Erwartungen entspricht*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung:  Stunden 
 - Tatsächliche Zeit:
 
 
@@ -273,13 +273,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Klicke auf Create-Button*
+### Task 1 *Klicke auf Create-Button*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen neuen Eintrag erstellen können*, um *diesen in meiner Datenbank hinzufügen zu können*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 6 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -300,7 +300,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Gin Informationen ein*
+### Task 1 *Gin Informationen ein*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *meinen Kontakten Daten zuweisen*, um *sie später abrufen zu können*.
@@ -333,13 +333,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Save-Button klicken*
+### Task 1 *Save-Button klicken*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *meinen neu erstellten Kontakt speichern*, um *ihn permanent gespeichert zu haben*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 12 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -391,13 +391,13 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Einträge anzeigen*
+### Task 1 *Einträge anzeigen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *meine Einträge einsehen*, um *Informationen von ihnen zu bekommen*.
 
 
-- Aufwandsschätzung: 2 Stunden 
+- Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -421,7 +421,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
- # Task 1 *Auf Eintrag klicken*
+### Task 1 *Auf Eintrag klicken*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf einen Eintrag klicken*, um *genauere Informationen von ihm zu bekommen*.
@@ -438,7 +438,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *einen geöffneten Eintrag schließen*, um *auf andere Einträge zugreifen zu können*.
 
 
-- Aufwandsschätzung: 5
+- Aufwandsschätzung: 10
 - Akzeptanztests:
     - [ ] Android-Gerät-Bildschirm nimmt Zustand vor Öffnen an 
 
@@ -449,13 +449,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Zurück-Button klicken*
-
+### Task 1 *Zurück-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Zurück-Button klicken*, um *auf die HomePage zurückzukehren*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 2 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -509,13 +508,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Eintrag finden*
-
+### Task 1 *Eintrag finden*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag in der angezeigten Liste finden*, um *die dazugehörige Aussprache abspielen zu können*.
 
-
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 1 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -523,11 +520,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 # Task 2 *Play-Button klicken*
 
-
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Play-Button klicken*, um *die Aussprache abzuspielen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -625,13 +621,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Edit-Button klicken
 
 
-# Task 1 *Edit-Button klicken*
-
+### Task 1 *Edit-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Edit-Button klicken*, um *den Editiermodus zu starten*.
 
 
-- Aufwandsschätzung:  Stunden 
+- Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -655,23 +650,21 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Aussprache ändern
 
 
-# Task 1 *Informationen ändern*
-
+### Task 1 *Informationen ändern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Informationen einen Eintrags ändern*, um *den Kontakt zu aktualisieren*.
 
 
-- Aufwandsschätzung:  Stunden 
-- Tatsächliche Zeit:
+- Aufwandsschätzung: 3 Stunden 
+- Tatsächliche Zeit: 
 
 
-# Task 2 *Aussprache ändern*
-
+### Task 2 *Aussprache ändern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Aussprache ändern*, um *die vorhandene Aussprache zu aktualisieren*.
 
 
-- Aufwandsschätzung:  Stunden 
+- Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -691,13 +684,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Save-Button klicken
 
 
-# Task 1 *Save-Button klicken*
-
+### Task 1 *Save-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Save-Button klicken*, um *den aktualisierten Eintrag zu speichern*.
 
-
-- Aufwandsschätzung:  Stunden 
+- Aufwandsschätzung: 6 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -746,23 +737,22 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Löschen Bestätigen
 
 
-# Task 1 *Delete-Button klicken*
-
+### Task 1 *Delete-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Delete-Button klicken*, um *den ausgewählten Eintrag zu löschen*.
 
 
-- Aufwandsschätzung:  Stunden 
+- Aufwandsschätzung: 6 Stunden 
 - Tatsächliche Zeit:
 
 
-# Task 2 *löschen bestätigen*
+# Task 2 *Löschen bestätigen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Löschvorgang bestätigen müssen*, um *den Eintrag nicht aus Versehen gelöscht zu haben*.
 
 
-- Aufwandsschätzung:  Stunden 
+- Aufwandsschätzung: 2 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -803,6 +793,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Suche abbrechen
     
     
+
 ### Implementable Story 1 *Suche durchführen* 
  
 > Als *Vertriebsmitarbeiter* möchte ich *einen Suchbegriff eingeben*, um *alle Einträge danach zu durchsuchen*.
@@ -821,25 +812,23 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Suchbegriff eingeben*
-
+### Task 1 *Suchbegriff eingeben*
 
 > Als *Vertriebsmitarbeiter* möchte ich *einen Suchbegriff eingeben*, um *die Einträge nach diesem zu durchsuchen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
 
 
-# Task 2 *Suche starte*
-
+### Task 2 *Suche starten*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die Suche starten*, um *Einträge, die dem Suchbegriff entsprechen, angezeigt zu bekommen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 8 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -865,13 +854,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Zurück-Button klicken*
-
+### Task 1 *Zurück-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Zurück-Button klicken*, um *die Suche abzubrechen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 2 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -920,37 +908,35 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Nach Vornamen sortieren*
+### Task 1 *Nach Vornamen sortieren*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach Vornamen sortieren*, um *einen Kontakt schneller finden zu können*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
 
 
-# Task 2 *Nach Nachnamen sortieren*
-
+### Task 2 *Nach Nachnamen sortieren*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach Nachnamen sortieren*, um *einen Kontakt schneller finden zu können*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
 
 
-# Task 3 *Nach Land sortieren*
-
+### Task 3 *Nach Land sortieren*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach Land sortieren*, um *einen Kontakt schneller finden zu können*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1004,25 +990,23 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Einträge nach Land filtern*
-
+### Task 1 *Einträge nach Land filtern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach Land filtern*, um *nur Einträge des entsprechenden Landes angezeigt zu bekommen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
 
 
-# Task 2 *Einträge nach Geschlecht filtern*
-
+### Task 2 *Einträge nach Geschlecht filtern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach Geschlecht filtern*, um *nur Einträge des entsprechenden Geschlechtes angezeigt zu bekommen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1049,6 +1033,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Sprache auswählen
     
     
+
 ### Implementable Story 1 *Einstellungen öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *das Einstellungs-Menü öffnen*, um *sie zu verändern*.
@@ -1067,13 +1052,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Auf Settings-Button klicken*
-
+### Task 1 *Auf Settings-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Settings-Button klicken*, um *Einstellungen verändern zu können*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 3 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1094,37 +1078,34 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     
 
 
-# Task 1 *Englisch auswählen*
-
+### Task 1 *Englisch auswählen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *das Sprachprofil Englisch auswählen*, um *die Oberfläche in englischer Sprache zu sehen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
 
 
-# Task 2 *Deutsch auswählen*
-
+### Task 2 *Deutsch auswählen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *das Sprachprofil Deutsch wählen*, um *die Oberfläche in deutscher Sprache zu sehen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
 
 
-# Task 3 *Eintstellungs-Menü schließen*
-
+### Task 3 *Eintstellungs-Menü schließen*
 
 > Als *Vertriebsmitarbeiter* möchte ich *das Einstellungs-Menü schließen*, um *auf die HomePage zu sehen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 2 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1179,13 +1160,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Favorite-Button klicken*
-
+### Task 1 *Favorite-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Favorite-Button klicken*, um *einen Eintrag als Favoriten zu markieren*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1208,13 +1188,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Favorite-Button klicken*
-
+### Task 1 *Favorite-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Favorite-Button klicken*, um *einen Favoriten nicht mehr als Favorit angezeigt zu bekommen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1238,13 +1217,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
      
 
 
-# Task 1 *Liste nach Favoriten filtern*
-
+### Task 1 *Liste nach Favoriten filtern*
 
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigte Liste nach Favoriten filtern*, um *nur Favoriten angezeigt zu bekommen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 5 Stunden
 - Tatsächliche Zeit: 
      
     
@@ -1288,13 +1266,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
-# Task 1 *Undo-Button klicken*
-
+### Task 1 *Undo-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Undo-Button klicken*, um *das Löschen eines Eintrages rückgängig zu machen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 10 Stunden
 - Tatsächliche Zeit: 
 
 
@@ -1315,13 +1292,12 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Undo-Button klicken
 
 
-# Task 1 *Undo-Button*
-
+### Task 1 *Undo-Button klicken*
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Undo-Button klicken*, um *das Editieren eines Eintrages rückgängig zu machen*.
 
 
-- Aufwandsschätzung:  Stunden
+- Aufwandsschätzung: 12 Stunden
 - Tatsächliche Zeit: 
 
 
