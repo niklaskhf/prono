@@ -1,101 +1,164 @@
 package com.team16.sopra.sopra16team16;
 
+
+import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
-public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+
+public class HomeActivity extends AppCompatActivity {
+    private String[] mPlanetTitles = new String[]{"Favorites", "Settings", "About"};
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private String[] testArray = new String[] {"test", "test", "test"};
+    private ArrayList<Item> testCollection = new ArrayList<Item>();
+    private TextView tv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        this.setContentView(R.layout.activity_home);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // configure Toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        myToolbar.setTitle("");
+        myToolbar.setSubtitle("");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
+
+        // populate Collection with dummy items
+        for (int i = 0; i < 50; i++) {
+            testCollection.add(new Item("first","last","title","country"));
+        }
+
+
+
+
+        // add the ListFragment
+        FragmentManager fragmentManager = getFragmentManager();
+        HomeFragment fragment = new HomeFragment();
+        fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
+
+        // populate the ListView
+        fragment.setListAdapter(new ListAdapter(this, R.layout.contact_item, testCollection));
+
+        // populate the drawer ListView
+        //mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // populate the drawer ListView
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
+
+
+        Button drawer = (Button) findViewById(R.id.action_menu);
+
+        drawer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                mDrawerLayout.openDrawer(mDrawerList);
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        tv = (TextView) findViewById(R.id.dummy_sorter);
+        tv.setVisibility(View.GONE);
+        Button expandSorter = (Button) findViewById(R.id.sort_button);
+
+        OnClickListener expand = new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (tv.getVisibility() == View.GONE) {
+                    expandOrCollapse(tv, "expand");
+                }
+                else {
+                    expandOrCollapse(tv, "collapse");
+                }
+            }
+        };
+
+        expandSorter.setOnClickListener(expand);
+
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    public void expandOrCollapse(final View v,String exp_or_colpse) {
+        TranslateAnimation anim = null;
+        if(exp_or_colpse.equals("expand"))
+        {
+            anim = new TranslateAnimation(0.0f, 0.0f, -v.getHeight(), 0.0f);
+            v.setVisibility(View.VISIBLE);
         }
+        else{
+            anim = new TranslateAnimation(0.0f, 0.0f, 0.0f, -v.getHeight());
+            AnimationListener collapselistener= new AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    v.setVisibility(View.GONE);
+                }
+            };
+
+            anim.setAnimationListener(collapselistener);
+        }
+
+        // To Collapse
+        //
+
+        anim.setDuration(300);
+        anim.setInterpolator(new AccelerateInterpolator(0.5f));
+        v.startAnimation(anim);
     }
 
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        // TODO CHANGE THIS TO SEARCH DIALOG
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // open search
+                return true;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }
