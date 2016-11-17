@@ -20,18 +20,18 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Model.Item;
+import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Controller.ListAdapter;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    private String[] mPlanetTitles = new String[]{"Favorites", "Settings", "About"};
+    private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private String[] testArray = new String[] {"test", "test", "test"};
-    private ArrayList<Item> testCollection = new ArrayList<Item>();
+    private ArrayList<Contact> testCollection = new ArrayList<Contact>();
     private TextView tv;
 
 
@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // populate Collection with dummy items
         for (int i = 0; i < 50; i++) {
-            testCollection.add(new Item("first","last","title","country", "gender"));
+            testCollection.add(new Contact("first","last","title","country", "gender"));
         }
 
 
@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         // populate the drawer ListView
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy));
 
 
         Button drawer = (Button) findViewById(R.id.action_menu);

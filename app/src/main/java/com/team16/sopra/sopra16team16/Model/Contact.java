@@ -5,7 +5,7 @@ package com.team16.sopra.sopra16team16.Model;
  * Created by moo on 11/11/2016.
  */
 
-public class Item {
+public class Contact {
     private String firstName;
     private String lastName;
     private String title;
@@ -13,7 +13,7 @@ public class Item {
     private String gender;
 
 
-    public Item(String f, String l, String t, String c, String g) {
+    public Contact(String f, String l, String t, String c, String g) {
         this.firstName = f;
         this.lastName = l;
         this.title = t;

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Model.Item;
+import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.List;
@@ -16,13 +16,13 @@ import java.util.List;
  * Created by moo on 11/11/2016.
  */
 
-public class ListAdapter extends ArrayAdapter<Item> {
+public class ListAdapter extends ArrayAdapter<Contact> {
 
     public ListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
 
-    public ListAdapter(Context context, int resource, List<Item> items) {
+    public ListAdapter(Context context, int resource, List<Contact> items) {
         super(context, resource, items);
     }
 
@@ -37,7 +37,7 @@ public class ListAdapter extends ArrayAdapter<Item> {
             v = vi.inflate(R.layout.contact_item, null);
         }
 
-        Item p = getItem(position);
+        Contact p = getItem(position);
 
         if (p != null) {
             TextView tt1 = (TextView) v.findViewById(R.id.list_firstname);
