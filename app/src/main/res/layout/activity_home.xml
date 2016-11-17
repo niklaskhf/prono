@@ -21,8 +21,8 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
             <Button
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:id="@+id/action_menu"
                 android:background="@drawable/menu_icon"
                 android:title="menu"
@@ -43,13 +43,14 @@
             </ListView>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="15dp"
                 android:layout_marginRight="15dp"
-                android:text="new"/>
+                android:background="@drawable/add_new_contact_icon"
+                app:showAsAction="ifRoom"/>
 
         </RelativeLayout>
 

@@ -5,7 +5,6 @@
     android:weightSum="1">
 
     <Button
-        android:text="Confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/confirm_edit_button"
@@ -14,10 +13,10 @@
         android:layout_marginBottom="18dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp" />
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/accept_icon"/>
 
     <Button
-        android:text="Record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/record_button"
@@ -25,10 +24,10 @@
         android:layout_gravity="center"
         android:layout_alignBaseline="@+id/confirm_edit_button"
         android:layout_alignBottom="@+id/confirm_edit_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/mic_icon"/>
 
     <Button
-        android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cancel_edit_button"
@@ -36,7 +35,8 @@
         android:layout_marginStart="22dp"
         android:layout_alignBaseline="@+id/record_button"
         android:layout_alignBottom="@+id/record_button"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/cancel_icon"/>
 
     <SeekBar
         android:layout_width="match_parent"
@@ -138,10 +138,10 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="back"
         android:layout_width="78dp"
         android:layout_height="wrap_content"
         android:id="@+id/back_button"
+        android:background="@drawable/arrow_back_icon"
         android:layout_above="@+id/first_text"
         android:layout_alignParentStart="true" />
 
