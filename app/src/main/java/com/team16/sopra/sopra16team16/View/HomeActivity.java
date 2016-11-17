@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Model.Item;
+import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Controller.ListAdapter;
 import com.team16.sopra.sopra16team16.R;
 
@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private String[] testArray = new String[] {"test", "test", "test"};
-    private ArrayList<Item> testCollection = new ArrayList<Item>();
+    private ArrayList<Contact> testCollection = new ArrayList<Contact>();
     private TextView tv;
 
 
@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // populate Collection with dummy items
         for (int i = 0; i < 50; i++) {
-            testCollection.add(new Item("first","last","title","country", "gender"));
+            testCollection.add(new Contact("first","last","title","country", "gender"));
         }
 
 
