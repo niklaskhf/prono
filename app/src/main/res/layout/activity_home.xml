@@ -28,20 +28,7 @@
                 android:title="menu"
                 app:showAsAction="ifRoom"/>
 
-
         </android.support.v7.widget.Toolbar>
-        <Button
-            android:id="@+id/sort_button"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:text="sort"
-            android:textSize="5sp"/>
-
-        <TextView
-            android:id="@+id/dummy_sorter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DUMMY SORTER"/>
 
         <RelativeLayout
             android:id="@+id/content_frame"

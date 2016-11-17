@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:text="back"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_button" />
+
+
+    <TextView
+        android:text="First Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/first_text"
+        android:textSize="18sp"
+        android:layout_below="@+id/back_button"/>
+
+
+    <TextView
+        android:text="blablabla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/real_first_name"
+        android:layout_below="@+id/first_text"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:text="Last Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/last_text"
+        android:textSize="18dp"
+        android:layout_below="@+id/real_first_name"/>
+
+    <TextView
+        android:text="blablabla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/real_last_name"
+        android:layout_below="@+id/last_text"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:text="Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_text"
+        android:textSize="18dp"
+        android:layout_below="@id/real_last_name"/>
+
+    <TextView
+        android:text="blablabla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/real_title"
+        android:layout_below="@+id/title_text"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:text="Country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/country_text"
+        android:textSize="18dp"
+        android:layout_below="@id/real_title"/>
+
+    <TextView
+        android:text="blablabla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/real_country"
+        android:layout_below="@+id/country_text"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:text="Gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gender_text"
+        android:textSize="18dp"
+        android:layout_below="@id/real_country"/>
+
+    <TextView
+        android:text="blablabla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/real_gender"
+        android:layout_below="@+id/gender_text"
+        android:textSize="30sp"/>
+
+    <Button
+        android:text="Delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delete_button"
+        android:layout_weight="0.06"
+        android:layout_below="@id/audio_seekBar"/>
+
+    <Button
+        android:text="Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm_edit_button"
+        android:layout_weight="0.06"
+        android:layout_gravity="right"
+        android:layout_marginBottom="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="21dp" />
+
+    <Button
+        android:text="Record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/record_button"
+        android:layout_weight="0.06"
+        android:layout_gravity="center"
+        android:layout_alignBaseline="@+id/confirm_edit_button"
+        android:layout_alignBottom="@+id/confirm_edit_button"
+        android:layout_centerHorizontal="true" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/audio_seekBar"
+        android:layout_above="@+id/confirm_edit_button"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="39dp" />
+</RelativeLayout>

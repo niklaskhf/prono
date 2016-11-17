@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // populate Collection with dummy items
         for (int i = 0; i < 50; i++) {
-            testCollection.add(new Item("first","last","title","country"));
+            testCollection.add(new Item("first","last","title","country", "gender"));
         }
 
 
@@ -83,23 +83,23 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        tv = (TextView) findViewById(R.id.dummy_sorter);
-        tv.setVisibility(View.GONE);
-        Button expandSorter = (Button) findViewById(R.id.sort_button);
-
-        OnClickListener expand = new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (tv.getVisibility() == View.GONE) {
-                    expandOrCollapse(tv, "expand");
-                }
-                else {
-                    expandOrCollapse(tv, "collapse");
-                }
-            }
-        };
-
-        expandSorter.setOnClickListener(expand);
+//        tv = (TextView) findViewById(R.id.dummy_sorter);
+//        tv.setVisibility(View.GONE);
+//        Button expandSorter = (Button) findViewById(R.id.sort_button);
+//
+//        OnClickListener expand = new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (tv.getVisibility() == View.GONE) {
+//                    expandOrCollapse(tv, "expand");
+//                }
+//                else {
+//                    expandOrCollapse(tv, "collapse");
+//                }
+//            }
+//        };
+//
+//        expandSorter.setOnClickListener(expand);
 
     }
 

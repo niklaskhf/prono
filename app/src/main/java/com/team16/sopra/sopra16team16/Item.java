@@ -10,13 +10,15 @@ public class Item {
     private String lastName;
     private String title;
     private String country;
+    private String gender;
 
 
-    public Item(String f, String l, String t, String c) {
+    public Item(String f, String l, String t, String c, String g) {
         this.firstName = f;
         this.lastName = l;
         this.title = t;
         this.country = c;
+        this.gender = g;
     }
 
 
@@ -35,5 +37,7 @@ public class Item {
     public String getCountry() {
         return country;
     }
+
+    public String getGender() { return gender;}
 }
 

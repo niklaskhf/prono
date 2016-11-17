@@ -42,6 +42,7 @@ public class ListAdapter extends ArrayAdapter<Item> {
             TextView tt2 = (TextView) v.findViewById(R.id.list_lastname);
             TextView tt3 = (TextView) v.findViewById(R.id.list_title);
             TextView tt4 = (TextView) v.findViewById(R.id.list_country);
+            TextView tt5 = (TextView) v.findViewById(R.id.list_gender);
 
             if (tt1 != null) {
                 tt1.setText(p.getFirstName());
@@ -57,6 +58,10 @@ public class ListAdapter extends ArrayAdapter<Item> {
 
             if (tt4 != null) {
                 tt4.setText(p.getCountry());
+            }
+
+            if (tt5 != null) {
+                tt2.setText(p.getGender());
             }
         }
         return v;
