@@ -6,19 +6,23 @@ package com.team16.sopra.sopra16team16.Model;
  */
 
 public class Contact {
+    private int id;
     private String firstName;
     private String lastName;
     private String title;
     private String country;
     private String gender;
+    private boolean favoriteFlag;
+// private boolean deleteFlag;
 
-
-    public Contact(String f, String l, String t, String c, String g) {
-        this.firstName = f;
-        this.lastName = l;
-        this.title = t;
-        this.country = c;
-        this.gender = g;
+    public Contact(String first, String last, String title, String country, String gender, String favorite, int id) {
+        this.id = id;
+        this.firstName = first;
+        this.lastName = last;
+        this.title = title;
+        this.country = country;
+        this.gender = gender;
+        this.favoriteFlag = Boolean.getBoolean(favorite);
     }
 
 
@@ -39,5 +43,9 @@ public class Contact {
     }
 
     public String getGender() { return gender;}
+
+    public boolean getFavorite() { return favoriteFlag;}
+
+    public int getId() { return id;}
 }
 
