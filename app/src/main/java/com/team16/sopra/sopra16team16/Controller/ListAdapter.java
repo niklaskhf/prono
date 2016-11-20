@@ -13,7 +13,7 @@ import com.team16.sopra.sopra16team16.R;
 import java.util.List;
 
 /**
- * Created by moo on 11/11/2016.
+ * Custom ArrayAdapter to display Contact objects
  */
 
 public class ListAdapter extends ArrayAdapter<Contact> {
@@ -63,7 +63,7 @@ public class ListAdapter extends ArrayAdapter<Contact> {
             }
 
             if (tt5 != null) {
-                tt2.setText(p.getGender());
+                tt5.setText(p.getGender());
             }
         }
         return v;

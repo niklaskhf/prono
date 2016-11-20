@@ -1,26 +1,40 @@
 package com.team16.sopra.sopra16team16.Controller;
 
+import android.content.Context;
+import android.util.Log;
+
 import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Model.Database;
 
-import java.util.ArrayList;
-
 /**
- * Created by moo on 11/17/16.
+ * Contains methods for managing contacts.
  */
 
 public class ContactManager {
     private static int contId;
-    Database db;
+    private Database db;
+    private Context context;
+    private ListAdapter listAdapter;
 
-    public ContactManager() {
+    /**
+     * Constructor
+     *
+     * @param context
+     * @param adapter
+     */
+    public ContactManager(Context context, ListAdapter adapter) {
         this.contId = 0;
-        db = Database.getInstance();
+        this.context = context;
+        db = Database.getInstance(this.context);
+        listAdapter = adapter;
     }
 
-    public void addContact(String first, String last, String country, String title, String gender) {
-        Contact contact = new Contact(first, last, title, country, gender, "false", contId++);
-        db.addContact(contact);
-
+    /**
+     * Adds a contact to the database
+     * @param contact
+     */
+    public void addContact(Contact contact) {
+        db.addContactJson(contact);
+        listAdapter.notifyDataSetChanged();
     }
 }
