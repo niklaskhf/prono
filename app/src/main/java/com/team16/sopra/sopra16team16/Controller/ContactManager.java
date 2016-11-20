@@ -32,6 +32,14 @@ public class ContactManager {
         listAdapter = adapter;
     }
 
+    /**
+     * Constructor when parameters are not required
+     */
+    public ContactManager(Context context) {
+        db = Database.getInstance(this.context);
+
+    }
+
 
     /**
      * Adds a contact to the database
@@ -40,13 +48,12 @@ public class ContactManager {
      * @param title
      * @param country
      * @param gender
-     * @param favorite
      */
-    public void addContact(String first, String last, String title, String country, String gender, String favorite) {
+    public void addContact(String first, String last, String title, String country, String gender) {
         // TODO set object every time or just once in constructor and it updates?
         prefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
         contId = prefs.getInt("contId", 0);
-        db.addContactJson(new Contact(first, last, title, country, gender, favorite, contId++));
+        db.addContactJson(new Contact(first, last, title, country, gender, contId++));
         listAdapter.notifyDataSetChanged();
 
         // update contId in SharedPreferences
@@ -58,5 +65,27 @@ public class ContactManager {
         // commit() for forced, apply() for background
 
         listAdapter.notifyDataSetChanged();
+    }
+
+    public void toggleFavorite(Contact contact) {
+        if (!contact.getFavorite()) {
+            contact.setFavorite(true);
+        } else {
+            contact.setFavorite(false);
+        }
+
+        db.updateContacts();
+
+
+    }
+
+    public void toggleDelete(Contact contact) {
+        if (!contact.getDelete()) {
+            contact.setDelete(true);
+        } else {
+            contact.setDelete(false);
+        }
+
+        db.updateContacts();
     }
 }

@@ -20,12 +20,11 @@
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-            <Button
+            <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/action_menu"
                 android:background="@drawable/menu_icon"
-                android:title="menu"
                 app:showAsAction="ifRoom"/>
 
         </android.support.v7.widget.Toolbar>
@@ -50,8 +49,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/add_new_contact_icon"
-                app:showAsAction="ifRoom"/>
+                android:background="@drawable/add_new_contact_icon" />
 
         </RelativeLayout>
 

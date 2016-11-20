@@ -36,18 +36,6 @@ public class Database {
         return contactList;
     }
 
-    public void addContactCsv(Contact contact) {
-        contactList.add(contact);
-        Storage.writeContact(contact);
-    }
-
-    public void initializeCsv() {
-        ArrayList<String[]> list = CSVUtils.readContactFile("filepath");
-        for (int i = 0; i < list.size(); i++) {
-            String[] cur = list.get(i);
-            this.addContactCsv(new Contact(cur[0], cur[1], cur[2], cur[3], cur[4], cur[5], Integer.getInteger(cur[6])));
-        }
-    }
 
     public void initializeJson() {
         contactList = storage.loadContactsJson();
@@ -55,6 +43,11 @@ public class Database {
 
     public void addContactJson(Contact contact) {
         contactList.add(contact);
+        Log.i("contactAdded", "added new contact, id: " + contact.getId());
+        storage.saveContactsJson(contactList);
+    }
+
+    public void updateContacts() {
         storage.saveContactsJson(contactList);
     }
 }

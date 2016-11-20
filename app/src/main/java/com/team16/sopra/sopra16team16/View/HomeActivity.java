@@ -18,6 +18,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -118,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // add the drawer action
-        Button drawer = (Button) findViewById(R.id.action_menu);
+        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
 
         drawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +139,7 @@ public class HomeActivity extends AppCompatActivity {
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy));
 
         // add the drawer action
-        Button drawer = (Button) findViewById(R.id.action_menu);
+        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
 
         drawer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,11 +173,11 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ContactManager manager = new ContactManager(contextOfApplication, listAdapter);
                 for (int i = 0; i < 5; i++) {
-                    manager.addContact("first", "last", "title", "germany", "male", "false");
+                    manager.addContact("first", "last", "title", "germany", "male");
                 }
             }
         });
-        // TESTING TESTING TESTINg
+        // TESTING TESTING TESTING
     }
 
     /**
@@ -222,7 +223,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * Returns the application Context object
-     * @return
+     * @return Context object of the application
      */
     public static Context getContextOfApplication() {
         return contextOfApplication;
