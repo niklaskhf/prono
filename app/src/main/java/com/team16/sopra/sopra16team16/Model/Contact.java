@@ -11,16 +11,23 @@ public class Contact {
     private String lastName;
     private String title;
 
-    // TODO change this to country enum?
+    // TODO implement some kind of java.util.Locale?
     private String country;
-
-    // TODO change this to gender enum?
-    private String gender;
+    private Gender gender;
 
     private boolean favoriteFlag;
-    private boolean deleteFlag;
+    private boolean deletedFlag;
 
-    public Contact(String first, String last, String title, String country, String gender,  int id) {
+    /**
+     * Constructor
+     * @param first
+     * @param last
+     * @param title
+     * @param country
+     * @param gender
+     * @param id
+     */
+    public Contact(String first, String last, String title, String country, Gender gender,  int id) {
         this.id = id;
         this.firstName = first;
         this.lastName = last;
@@ -28,62 +35,122 @@ public class Contact {
         this.country = country;
         this.gender = gender;
         this.favoriteFlag = false;
-        this.deleteFlag = false;
+        this.deletedFlag = false;
     }
 
 
+    /**
+     * Returns the firstName attribute of the Contact object
+     * @return firstName
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Returns the lastName attribute of the Contact object
+     * @return lastName
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Returns the title attribute of the Contact object
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Returns the country attribute of the Contact object
+     * @return country
+     */
     public String getCountry() {
         return country;
     }
 
-    public String getGender() { return gender;}
+    /**
+     * Returns the gender attribute of the Contact object
+     * @return gender
+     */
+    public Gender getGender() { return gender;}
 
+    /**
+     * Returns the favoriteFlag attribute of the Contact object
+     * @return favoriteFlag
+     */
     public boolean getFavorite() { return favoriteFlag;}
 
+    /**
+     * Returns the id attribute of the Contact object
+     * @return id
+     */
     public int getId() { return id;}
 
-    public boolean getDelete() {
-        return deleteFlag;
+    /**
+     * Returns the deletedFlag attribute of the Contact object
+     * @return deletedFlag
+     */
+    public boolean getDeleted() {
+        return deletedFlag;
     }
 
+    /**
+     * Sets the firstName attribute
+     * @param first
+     */
     public void setFirstName(String first) {
         this.firstName = first;
     }
 
+    /**
+     * Sets the lastName attribute
+     * @param last
+     */
     public void setLastName(String last) {
         this.lastName = last;
     }
 
+    /**
+     * Sets the title attribute
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Sets the country attribute
+     * @param country
+     */
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public void setGender(String gender) {
+    /**
+     * Sets the gender attribute
+     * @param gender
+     */
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
+    /**
+     * Sets the favoriteFlag attribute
+     * @param bool
+     */
     public void setFavorite(boolean bool) {
         this.favoriteFlag = bool;
     }
 
-    public void setDelete(boolean bool) {
-        this.deleteFlag = bool;
+    /**
+     * Sets the deletedFlag attribute
+     * @param bool
+     */
+    public void setDeleted(boolean bool) {
+        this.deletedFlag = bool;
     }
 }
 

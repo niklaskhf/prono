@@ -2,20 +2,20 @@ package com.team16.sopra.sopra16team16.Controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Model.Database;
+import com.team16.sopra.sopra16team16.Model.Gender;
 
 /**
  * Contains methods for managing contacts.
  */
 
 public class ContactManager {
-    private static int contId;
+    private int contId;
     private Database db;
     private Context context;
-    private ListAdapter listAdapter;
+    private ContactListAdapter listAdapter = null;
     private SharedPreferences prefs;
 
     /**
@@ -24,7 +24,7 @@ public class ContactManager {
      * @param context
      * @param adapter
      */
-    public ContactManager(Context context, ListAdapter adapter) {
+    public ContactManager(Context context, ContactListAdapter adapter) {
         //prefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
         //this.contId = prefs.getInt("contId", 0);
         this.context = context;
@@ -37,7 +37,7 @@ public class ContactManager {
      */
     public ContactManager(Context context) {
         db = Database.getInstance(this.context);
-
+        this.context = context;
     }
 
 
@@ -49,12 +49,14 @@ public class ContactManager {
      * @param country
      * @param gender
      */
-    public void addContact(String first, String last, String title, String country, String gender) {
+    public void addContact(String first, String last, String title, String country, Gender gender) {
         // TODO set object every time or just once in constructor and it updates?
         prefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
         contId = prefs.getInt("contId", 0);
         db.addContactJson(new Contact(first, last, title, country, gender, contId++));
-        listAdapter.notifyDataSetChanged();
+        if (listAdapter != null) {
+            listAdapter.notifyDataSetChanged();
+        }
 
         // update contId in SharedPreferences
         SharedPreferences myPrefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
@@ -63,8 +65,6 @@ public class ContactManager {
         e.putInt("contId", contId);
         e.apply();
         // commit() for forced, apply() for background
-
-        listAdapter.notifyDataSetChanged();
     }
 
     public void toggleFavorite(Contact contact) {
@@ -80,10 +80,10 @@ public class ContactManager {
     }
 
     public void toggleDelete(Contact contact) {
-        if (!contact.getDelete()) {
-            contact.setDelete(true);
+        if (!contact.getDeleted()) {
+            contact.setDeleted(true);
         } else {
-            contact.setDelete(false);
+            contact.setDeleted(false);
         }
 
         db.updateContacts();

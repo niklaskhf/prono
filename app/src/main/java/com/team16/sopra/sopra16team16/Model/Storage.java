@@ -42,13 +42,12 @@ public class Storage {
         String listJson = gson.toJson(list);
         // get R.string.contactsFileKey entry from SharedPreferences
         // TODO maybe change to direct string or include as parameter
-        SharedPreferences prefs = context.getSharedPreferences(
-                context.getResources().getString(R.string.contactsFileKey), Context.MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences("contactsList", Context.MODE_PRIVATE);
         // get the editor
         SharedPreferences.Editor editor = prefs.edit();
 
         // write the new json string
-        editor.putString(context.getResources().getString(R.string.contactsFileKey), listJson);
+        editor.putString("contactsList", listJson);
         editor.apply();
         //editor.commit(); for forced writing, apply() for background
     }
@@ -69,13 +68,15 @@ public class Storage {
         String defaultPrefs = gson.toJson(new ArrayList<Contact>());
 
         // get the preferences
-        SharedPreferences prefs = context.getSharedPreferences(
-                context.getResources().getString(R.string.contactsFileKey), Context.MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences("contactsList", Context.MODE_PRIVATE);
 
         // get the string from the preferences
         String restoredJson = prefs.getString(
-                context.getResources().getString(R.string.contactsFileKey), defaultPrefs);
+                "contactsList", gson.toJson(new ArrayList<Contact>()));
 
+        if (gson.fromJson(restoredJson, listType) == null) {
+            return new ArrayList<Contact>();
+        }
 
         // deserialize json to ArrayList<Contact>
 

@@ -22,10 +22,11 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Model.Contact;
-import com.team16.sopra.sopra16team16.Controller.ListAdapter;
 import com.team16.sopra.sopra16team16.Model.Database;
+import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.ArrayList;
@@ -43,8 +44,9 @@ public class HomeActivity extends AppCompatActivity {
     private ArrayList<Contact> testCollection = new ArrayList<Contact>();
     private TextView tv;
 
-    private ListAdapter listAdapter;
+    private ContactListAdapter listAdapter;
     public static Context contextOfApplication;
+    public static Context contextOfActivity;
 
 
     @Override
@@ -159,7 +161,7 @@ public class HomeActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
         // populate the ListView
-        this.listAdapter = new ListAdapter(this, R.layout.contact_item, Database.getInstance(contextOfApplication).getContact());
+        this.listAdapter = new ContactListAdapter(this, R.layout.contact_item, Database.getInstance(contextOfApplication).getContact());
         fragment.setListAdapter(listAdapter);
 
         // TESTING TESTING TESTING without unit tests
@@ -173,7 +175,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ContactManager manager = new ContactManager(contextOfApplication, listAdapter);
                 for (int i = 0; i < 5; i++) {
-                    manager.addContact("first", "last", "title", "germany", "male");
+                    manager.addContact("first", "last", "title", "germany", Gender.MALE);
                 }
             }
         });

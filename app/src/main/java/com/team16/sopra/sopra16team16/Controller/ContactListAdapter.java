@@ -1,14 +1,12 @@
 package com.team16.sopra.sopra16team16.Controller;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Space;
 import android.widget.TextView;
@@ -22,13 +20,13 @@ import java.util.List;
  * Custom ArrayAdapter to display Contact objects
  */
 
-public class ListAdapter extends ArrayAdapter<Contact> {
+public class ContactListAdapter extends ArrayAdapter<Contact> {
 
-    public ListAdapter(Context context, int textViewResourceId) {
+    public ContactListAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
     }
 
-    public ListAdapter(Context context, int resource, List<Contact> items) {
+    public ContactListAdapter(Context context, int resource, List<Contact> items) {
         super(context, resource, items);
     }
 
@@ -39,7 +37,8 @@ public class ListAdapter extends ArrayAdapter<Contact> {
 
         if (v == null) {
             LayoutInflater vi;
-            vi = LayoutInflater.from(getContext());
+            //vi = LayoutInflater.from(getContext());
+            vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.contact_item, null);
         }
 
@@ -52,7 +51,7 @@ public class ListAdapter extends ArrayAdapter<Contact> {
             TextView tt4 = (TextView) v.findViewById(R.id.list_country);
             TextView tt5 = (TextView) v.findViewById(R.id.list_gender);
 
-            if (p.getDelete()) {
+            if (p.getDeleted()) {
                 v = new Space(getContext());
             }
             if (tt1 != null) {
@@ -72,7 +71,8 @@ public class ListAdapter extends ArrayAdapter<Contact> {
             }
 
             if (tt5 != null) {
-                tt5.setText(p.getGender());
+                // TODO this is supposed to be an icon anyways?
+                tt5.setText(p.getGender().toString());
             }
 
 

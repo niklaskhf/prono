@@ -11,10 +11,11 @@ import java.util.ArrayList;
  * Contains all permanent data relevant to the application
  */
 public class Database {
+    // not sure if this is a problem
     private static Database ourInstance = null;
     private static ArrayList<Contact> contactList;
     private Gson gson = new Gson();
-    private Context context;
+    //private Context context;
     private Storage storage;
 
     public static Database getInstance(Context context) {
@@ -27,7 +28,7 @@ public class Database {
     }
 
     private Database(Context context) {
-        this.context = context;
+        //this.context = context;  //.getApplicationContext();
         this.storage = new Storage(context);
         this.initializeJson();
     }
@@ -37,13 +38,13 @@ public class Database {
     }
 
 
-    public void initializeJson() {
+    private void initializeJson() {
         contactList = storage.loadContactsJson();
     }
 
     public void addContactJson(Contact contact) {
         contactList.add(contact);
-        Log.i("contactAdded", "added new contact, id: " + contact.getId());
+        //Log.i("contactAdded", "added new contact, id: " + contact.getId());
         storage.saveContactsJson(contactList);
     }
 
