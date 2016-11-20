@@ -172,8 +172,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ContactManager manager = new ContactManager(contextOfApplication, listAdapter);
                 for (int i = 0; i < 5; i++) {
-                    Contact contact = new Contact("first", "last", "title", "germany", "male", "false", i);
-                    manager.addContact(contact);
+                    manager.addContact("first", "last", "title", "germany", "male", "false");
                 }
             }
         });
