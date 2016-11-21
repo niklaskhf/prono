@@ -3,6 +3,7 @@ package com.team16.sopra.sopra16team16.View;
 
 import android.app.FragmentManager;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,24 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
+import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
-import com.team16.sopra.sopra16team16.Model.Contact;
-import com.team16.sopra.sopra16team16.Model.Database;
 import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
-
-import java.util.ArrayList;
 
 
 /**
@@ -40,13 +32,17 @@ public class HomeActivity extends AppCompatActivity {
     private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private String[] testArray = new String[] {"test", "test", "test"};
-    private ArrayList<Contact> testCollection = new ArrayList<Contact>();
-    private TextView tv;
-
-    private ContactListAdapter listAdapter;
+    private static ContactManager contactManager;
+    private ContactCursorAdapter cursorAdapter;
     public static Context contextOfApplication;
-    public static Context contextOfActivity;
+
+    // TODO replace this with some kind of interface and callbacks!
+    // http://stackoverflow.com/questions/9891360/getting-activity-from-context-in-android - Nepster
+    public static HomeActivity instance = null;
+
+
+    private ContactListFragment fragment;
+
 
 
     @Override
@@ -64,32 +60,12 @@ public class HomeActivity extends AppCompatActivity {
         // add the ListFragment
         initializeFragments();
 
-
-        // code for testing filter/menu expanding view
-
-//        tv = (TextView) findViewById(R.id.dummy_sorter);
-//        tv.setVisibility(View.GONE);
-//        Button expandSorter = (Button) findViewById(R.id.sort_button);
-//
-//        OnClickListener expand = new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (tv.getVisibility() == View.GONE) {
-//                    expandOrCollapse(tv, "expand");
-//                }
-//                else {
-//                    expandOrCollapse(tv, "collapse");
-//                }
-//            }
-//        };
-//
-//        expandSorter.setOnClickListener(expand);
-
     }
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        // add searchItem to toolbar
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // TODO CHANGE THIS TO SEARCH DIALOG
@@ -98,6 +74,9 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // configure menuItems in toolbar
+        // only search right now
+        // possibly also filter/sort?
         switch (item.getItemId()) {
             case R.id.action_search:
                 // open search
@@ -114,8 +93,11 @@ public class HomeActivity extends AppCompatActivity {
      * Initializes the toolbar
      */
     public void initializeToolbar() {
+        // get the toolbar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        // set it
         setSupportActionBar(myToolbar);
+        // configure it
         myToolbar.setTitle("");
         myToolbar.setSubtitle("");
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -157,72 +139,73 @@ public class HomeActivity extends AppCompatActivity {
     public void initializeFragments() {
         // add the ListFragment
         FragmentManager fragmentManager = getFragmentManager();
-        ContactListFragment fragment = new ContactListFragment();
+        fragment = new ContactListFragment();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
         // populate the ListView
-        this.listAdapter = new ContactListAdapter(this, R.layout.contact_item, Database.getInstance(contextOfApplication).getContact());
-        fragment.setListAdapter(listAdapter);
+        contactManager = ContactManager.getInstance(contextOfApplication);
+        Cursor cursor = contactManager.selectContacts();
 
-        // TESTING TESTING TESTING without unit tests
+        // set cursorAdapter
+        this.cursorAdapter = new ContactCursorAdapter(contextOfApplication, cursor);
+        fragment.setListAdapter(cursorAdapter);
+
+
+
         // testing add button
         Button addButton = (Button) findViewById(R.id.addNew);
-
 
         // this is just for testing right now
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ContactManager manager = new ContactManager(contextOfApplication, listAdapter);
-                for (int i = 0; i < 5; i++) {
-                    manager.addContact("first", "last", "title", "germany", Gender.MALE);
-                }
+                contactManager.createContact("first", "last", "title", "germany", Gender.MALE);
+                updateAdapter();
             }
         });
         // TESTING TESTING TESTING
     }
 
     /**
-     * Expands or collapses a View based on its current state.
-     * Uses a smooth animation.
-     * @param v
-     * @param exp_or_colpse
+     * Starts an activity UNKONWN_NAME to add a new contact.
      */
-    public void expandOrCollapse(final View v,String exp_or_colpse) {
-        TranslateAnimation anim = null;
-        if(exp_or_colpse.equals("expand"))
-        {
-            anim = new TranslateAnimation(0.0f, 0.0f, -v.getHeight(), 0.0f);
-            v.setVisibility(View.VISIBLE);
-        }
-        else{
-            anim = new TranslateAnimation(0.0f, 0.0f, 0.0f, -v.getHeight());
-            AnimationListener collapselistener= new AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    v.setVisibility(View.GONE);
-                }
-            };
-
-            anim.setAnimationListener(collapselistener);
-        }
-
-        // To Collapse
-        //
-
-        anim.setDuration(300);
-        anim.setInterpolator(new AccelerateInterpolator(0.5f));
-        v.startAnimation(anim);
+    public void addNewContact() {
+        // open new activity etc etc
+        // intent ...
     }
 
+    /**
+     * Toggles the favorite status of a contact
+     * @param id id of the contact
+     * @param fav current fav value of the contact
+     */
+    public void toggleFavorite(int id, int fav) {
+        contactManager.toggleFavorite(id, fav);
+
+        updateAdapter();
+    }
+
+    /**
+     * Replaces the adapter with an up to date version
+     * TODO replace with LoadManager...
+     */
+    public void updateAdapter() {
+        cursorAdapter.changeCursor(contactManager.selectContacts());
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        instance = this;
+        updateAdapter();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        instance = null;
+    }
     /**
      * Returns the application Context object
      * @return Context object of the application

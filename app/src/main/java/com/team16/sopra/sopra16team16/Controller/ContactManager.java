@@ -1,91 +1,114 @@
 package com.team16.sopra.sopra16team16.Controller;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
-import com.team16.sopra.sopra16team16.Model.Contact;
-import com.team16.sopra.sopra16team16.Model.Database;
 import com.team16.sopra.sopra16team16.Model.Gender;
+import com.team16.sopra.sopra16team16.Model.MyDatabaseHelper;
 
-/**
- * Contains methods for managing contacts.
- */
 
 public class ContactManager {
-    private int contId;
-    private Database db;
-    private Context context;
-    private ContactListAdapter listAdapter = null;
-    private SharedPreferences prefs;
+    private static ContactManager currentInstance = null;
+    private MyDatabaseHelper dbHelper;
+
+    private static SQLiteDatabase database;
+
+    public final static String TABLE_NAME ="contacts";
+
+    public final static String _ID ="_id"; // id
+    public static final String COLUMN_FIRSTNAME = "first";
+    public static final String COLUMN_LASTNAME = "last";
+    public static final String COLUMN_TITLE = "title";
+    public static final String COLUMN_COUNTRY = "country";
+    public static final String COLUMN_GENDER = "gender";
+    public static final String COLUMN_FAVORITE = "favorite";
+    public static final String COLUMN_DELETED = "deleted";
+
+    public static ContactManager getInstance(Context context) {
+        if (currentInstance == null) {
+            currentInstance = new ContactManager(context);
+            return currentInstance;
+        } else {
+            return currentInstance;
+        }
+    }
 
     /**
-     * Constructor
      *
      * @param context
-     * @param adapter
      */
-    public ContactManager(Context context, ContactListAdapter adapter) {
-        //prefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
-        //this.contId = prefs.getInt("contId", 0);
-        this.context = context;
-        db = Database.getInstance(this.context);
-        listAdapter = adapter;
-    }
-
-    /**
-     * Constructor when parameters are not required
-     */
-    public ContactManager(Context context) {
-        db = Database.getInstance(this.context);
-        this.context = context;
+    private ContactManager(Context context){
+        dbHelper = new MyDatabaseHelper(context);
+        database = dbHelper.getWritableDatabase();
     }
 
 
-    /**
-     * Adds a contact to the database
-     * @param first
-     * @param last
-     * @param title
-     * @param country
-     * @param gender
-     */
-    public void addContact(String first, String last, String title, String country, Gender gender) {
-        // TODO set object every time or just once in constructor and it updates?
-        prefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
-        contId = prefs.getInt("contId", 0);
-        db.addContactJson(new Contact(first, last, title, country, gender, contId++));
-        if (listAdapter != null) {
-            listAdapter.notifyDataSetChanged();
+    public long createContact(String first, String last, String title, String country, Gender gender){
+        ContentValues values = new ContentValues();
+        // id auto increments
+        values.put(COLUMN_FIRSTNAME, first);
+        values.put(COLUMN_LASTNAME, last);
+        values.put(COLUMN_TITLE, title);
+        values.put(COLUMN_COUNTRY, country);
+        values.put(COLUMN_GENDER, gender.toString());
+        values.put(COLUMN_FAVORITE, false);
+        values.put(COLUMN_DELETED, false);
+        return database.insert(TABLE_NAME, null, values);
+    }
+
+    public Cursor selectContacts() {
+        String[] cols = new String[] {_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_DELETED};
+        Cursor mCursor = database.query(true, TABLE_NAME,cols,null
+                , null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor; // iterate to get each value.
+    }
+
+    public void updateContact(String first, String last, String title, String country, Gender gender, boolean fav, boolean del, int id) {
+        String strFilter = "_id=" + id;
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FIRSTNAME, first);
+        values.put(COLUMN_LASTNAME, last);
+        values.put(COLUMN_TITLE, title);
+        values.put(COLUMN_COUNTRY, country);
+        values.put(COLUMN_GENDER, gender.toString());
+        values.put(COLUMN_FAVORITE, fav);
+        values.put(COLUMN_DELETED, del);
+
+        // which row to update?
+        database.replace(TABLE_NAME, null, values);
+        //database.update(TABLE_NAME, values, strFilter, null);
+    }
+
+
+    // no idea why this isnt working tbh
+    public void toggleFavorite(int id, int fav) {
+        database.beginTransaction();
+        try {
+        Log.i("updating favorite", Integer.toString(id) + " " + Integer.toString(fav));
+        String strFilter = "_id=" + id;
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_FAVORITE, (fav+1)%2);
+
+        int res = database.update(TABLE_NAME, values, strFilter, null);
+            Log.i("favorited" , Integer.toString(res));
+        database.setTransactionSuccessful();}
+        finally {
+            database.endTransaction();
         }
 
-        // update contId in SharedPreferences
-        SharedPreferences myPrefs = context.getSharedPreferences("contId", Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor e = myPrefs.edit();
-        e.putInt("contId", contId);
-        e.apply();
-        // commit() for forced, apply() for background
+        Cursor test = selectContacts();
+        String testS= test.getString(test.getColumnIndexOrThrow("favorite"));
+        Log.i("cursor", testS);
     }
 
-    public void toggleFavorite(Contact contact) {
-        if (!contact.getFavorite()) {
-            contact.setFavorite(true);
-        } else {
-            contact.setFavorite(false);
-        }
-
-        db.updateContacts();
-
-
-    }
-
-    public void toggleDelete(Contact contact) {
-        if (!contact.getDeleted()) {
-            contact.setDeleted(true);
-        } else {
-            contact.setDeleted(false);
-        }
-
-        db.updateContacts();
+    public void deleteContact(int id) {
+        int res = database.delete(TABLE_NAME, "_id = ?", new String[] {Integer.toString(id)});
+        Log.i("deleted", Integer.toString(id));
     }
 }
