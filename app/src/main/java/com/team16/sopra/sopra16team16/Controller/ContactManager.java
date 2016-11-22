@@ -6,13 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
-import com.team16.sopra.sopra16team16.Model.MyDatabaseHelper;
+import com.team16.sopra.sopra16team16.Model.DBHelper;
 
 
 public class ContactManager {
     private static ContactManager currentInstance = null;
-    private MyDatabaseHelper dbHelper;
+    private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
     private Context context;
 
@@ -31,7 +32,7 @@ public class ContactManager {
 
     public static ContactManager getInstance(Context context) {
         if (currentInstance == null) {
-            currentInstance = new ContactManager(context);
+            currentInstance = new ContactManager(context.getApplicationContext());
             return currentInstance;
         } else {
             return currentInstance;
@@ -43,8 +44,8 @@ public class ContactManager {
      * @param context
      */
     private ContactManager(Context context){
-        dbHelper = new MyDatabaseHelper(context);
-        database = dbHelper.getWritableDatabase();
+        dbManager = new DBManager(context);
+        database = dbManager.getDbContacts();
         this.context = context;
     }
 

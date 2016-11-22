@@ -4,20 +4,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Model.Contact;
-import com.team16.sopra.sopra16team16.Model.Database;
+import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
-import com.team16.sopra.sopra16team16.Model.Storage;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.ArrayList;
 
@@ -46,7 +43,7 @@ public class ContactManagerTest {
     }
     @Test
     public void addContact_test() throws Exception {
-        Database db = Database.getInstance(mockContext);
+        DBManager db = DBManager.getInstance(mockContext);
         Gson gson = new Gson();
         int id = 0;
         ArrayList<Contact> testList = new ArrayList<Contact>();

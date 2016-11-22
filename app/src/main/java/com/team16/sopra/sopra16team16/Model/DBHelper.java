@@ -7,7 +7,8 @@ import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 
-public class MyDatabaseHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
+    private static DBHelper currentInstance = null;
 
     private static final String DATABASE_NAME = "DBcontact";
 
@@ -27,8 +28,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     ContactManager.COLUMN_FAVORITE + TEXT_TYPE + COMMA_SEP +
                     ContactManager.COLUMN_DELETED + TEXT_TYPE + " )";
 
+    public static DBHelper getCurrentInstance(Context context) {
+        if (currentInstance == null) {
+            currentInstance = new DBHelper(context.getApplicationContext());
+            return currentInstance;
+        } else {
+            return currentInstance;
+        }
+    }
 
-    public MyDatabaseHelper(Context context) {
+    private DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -41,7 +50,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     // Method is called during an upgrade of the database,
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion){
-        Log.w(MyDatabaseHelper.class.getName(),
+        Log.w(DBHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         database.execSQL("DROP TABLE IF EXISTS contacts");
