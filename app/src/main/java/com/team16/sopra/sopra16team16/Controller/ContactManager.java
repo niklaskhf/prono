@@ -13,6 +13,8 @@ import com.team16.sopra.sopra16team16.Model.MyDatabaseHelper;
 public class ContactManager {
     private static ContactManager currentInstance = null;
     private MyDatabaseHelper dbHelper;
+    private ContactCursorAdapter cursorAdapter = null;
+    private Context context;
 
     private static SQLiteDatabase database;
 
@@ -43,6 +45,7 @@ public class ContactManager {
     private ContactManager(Context context){
         dbHelper = new MyDatabaseHelper(context);
         database = dbHelper.getWritableDatabase();
+        this.context = context;
     }
 
 
@@ -56,7 +59,10 @@ public class ContactManager {
         values.put(COLUMN_GENDER, gender.toString());
         values.put(COLUMN_FAVORITE, false);
         values.put(COLUMN_DELETED, false);
-        return database.insert(TABLE_NAME, null, values);
+        Long res =  database.insert(TABLE_NAME, null, values);
+
+        this.updateCursorAdapter();
+        return res;
     }
 
     public Cursor selectContacts() {
@@ -83,6 +89,8 @@ public class ContactManager {
         // which row to update?
         database.replace(TABLE_NAME, null, values);
         //database.update(TABLE_NAME, values, strFilter, null);
+
+        this.updateCursorAdapter();
     }
 
 
@@ -102,13 +110,28 @@ public class ContactManager {
             database.endTransaction();
         }
 
-        Cursor test = selectContacts();
-        String testS= test.getString(test.getColumnIndexOrThrow("favorite"));
-        Log.i("cursor", testS);
+        this.updateCursorAdapter();
     }
 
     public void deleteContact(int id) {
         int res = database.delete(TABLE_NAME, "_id = ?", new String[] {Integer.toString(id)});
         Log.i("deleted", Integer.toString(id));
+        this.updateCursorAdapter();
+    }
+
+    public ContactCursorAdapter getCursorAdapterDefault() {
+        if (cursorAdapter == null) {
+            cursorAdapter = new ContactCursorAdapter(context, selectContacts());
+            return cursorAdapter;
+        } else {
+            cursorAdapter.changeCursor(selectContacts());
+            return cursorAdapter;
+        }
+    }
+
+    public void updateCursorAdapter() {
+        if (cursorAdapter != null) {
+            cursorAdapter.changeCursor(selectContacts());
+        }
     }
 }

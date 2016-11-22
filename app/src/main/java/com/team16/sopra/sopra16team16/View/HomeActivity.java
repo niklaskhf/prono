@@ -33,7 +33,6 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private static ContactManager contactManager;
-    private ContactCursorAdapter cursorAdapter;
     public static Context contextOfApplication;
 
     // TODO replace this with some kind of interface and callbacks!
@@ -144,11 +143,9 @@ public class HomeActivity extends AppCompatActivity {
 
         // populate the ListView
         contactManager = ContactManager.getInstance(contextOfApplication);
-        Cursor cursor = contactManager.selectContacts();
 
         // set cursorAdapter
-        this.cursorAdapter = new ContactCursorAdapter(contextOfApplication, cursor);
-        fragment.setListAdapter(cursorAdapter);
+        fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
 
 
@@ -160,7 +157,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 contactManager.createContact("first", "last", "title", "germany", Gender.MALE);
-                updateAdapter();
             }
         });
         // TESTING TESTING TESTING
@@ -174,31 +170,12 @@ public class HomeActivity extends AppCompatActivity {
         // intent ...
     }
 
-    /**
-     * Toggles the favorite status of a contact
-     * @param id id of the contact
-     * @param fav current fav value of the contact
-     */
-    public void toggleFavorite(int id, int fav) {
-        contactManager.toggleFavorite(id, fav);
-
-        updateAdapter();
-    }
-
-    /**
-     * Replaces the adapter with an up to date version
-     * TODO replace with LoadManager...
-     */
-    public void updateAdapter() {
-        cursorAdapter.changeCursor(contactManager.selectContacts());
-
-    }
 
     @Override
     public void onResume() {
         super.onResume();
         instance = this;
-        updateAdapter();
+        contactManager.updateCursorAdapter();
     }
 
     @Override

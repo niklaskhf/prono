@@ -118,7 +118,7 @@ public class ContactCursorAdapter extends CursorAdapter {
                     favButton.setImageDrawable(d);
                 }
 
-                HomeActivity.instance.toggleFavorite(id, favValue);
+                contactManager.toggleFavorite(id, favValue);
                 notifyDataSetChanged();
 
             }
@@ -129,7 +129,6 @@ public class ContactCursorAdapter extends CursorAdapter {
             @Override
             public void onClick(View viewC) {
                 contactManager.deleteContact(id);
-                HomeActivity.instance.updateAdapter();
             }
         });
     }
