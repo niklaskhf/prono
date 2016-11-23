@@ -25,7 +25,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     ContactManager.COLUMN_TITLE + TEXT_TYPE + COMMA_SEP +
                     ContactManager.COLUMN_COUNTRY + TEXT_TYPE + COMMA_SEP +
                     ContactManager.COLUMN_GENDER + TEXT_TYPE + COMMA_SEP +
-                    ContactManager.COLUMN_FAVORITE + TEXT_TYPE + COMMA_SEP +
+                    // TODO CHANGE FLAGS TO INTEGER
+                    ContactManager.COLUMN_FAVORITE + "INTEGER" + COMMA_SEP +
                     ContactManager.COLUMN_DELETED + TEXT_TYPE + " )";
 
     public static DBHelper getCurrentInstance(Context context) {

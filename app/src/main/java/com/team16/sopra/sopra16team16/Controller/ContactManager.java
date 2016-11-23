@@ -5,16 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.support.v4.widget.CursorAdapter;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
-import com.team16.sopra.sopra16team16.Model.DBHelper;
 
 
 public class ContactManager {
     private static ContactManager currentInstance = null;
     private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
+    private SearchCursorAdapter searchAdapter = null;
     private Context context;
 
     private static SQLiteDatabase database;
@@ -95,7 +96,6 @@ public class ContactManager {
     }
 
 
-    // no idea why this isnt working tbh
     public void toggleFavorite(int id, int fav) {
         database.beginTransaction();
         try {
@@ -133,6 +133,19 @@ public class ContactManager {
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
+        }
+        if (searchAdapter != null) {
+            searchAdapter.changeCursor(selectContacts());
+        }
+    }
+
+    public SearchCursorAdapter getSearchAdapter() {
+        if (searchAdapter == null) {
+            searchAdapter = new SearchCursorAdapter(context, selectContacts());
+            return searchAdapter;
+        } else {
+            searchAdapter.changeCursor(selectContacts());
+            return searchAdapter;
         }
     }
 }
