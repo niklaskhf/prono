@@ -231,7 +231,7 @@ public class HomeActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contactManager.createContact("test", "last", "title", "germany", Gender.MALE);
+                contactManager.createContact("test", "test", "title", "germany", Gender.MALE);
             }
         });
         // TESTING TESTING TESTING
