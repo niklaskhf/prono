@@ -2,177 +2,92 @@ package com.team16.sopra.sopra16team16.View;
 
 
 import android.app.FragmentManager;
-import android.content.Intent;
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FilterQueryProvider;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Model.Contact;
-import com.team16.sopra.sopra16team16.Controller.ListAdapter;
+import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
+import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * HomeActivity
+ * Contains methods for initializing the various elements
+ */
 public class HomeActivity extends AppCompatActivity {
-    private String[] mPlanetTitles = new String[]{"Favorites", "Settings", "About"};
+    private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private ArrayList<Contact> testCollection = new ArrayList<Contact>();
-    private TextView tv;
+    private static ContactManager contactManager;
+    public static Context contextOfApplication;
+
+    private ContactListFragment fragment;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
+        contextOfApplication = MyApp.getContext();
 
+        // initialize Toolbar
+        initializeToolbar();
+
+        // initialize menu drawer
+        initializeMenu();
+
+        // add the ListFragment
+        initializeFragments();
         // open contact creator
-        Button btn = (Button)findViewById(R.id.add_new_contact_button);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, NewContactActivity.class));
-            }
-        });
-
-        // configure Toolbar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-        myToolbar.setTitle("");
-        myToolbar.setSubtitle("");
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
 
-        // populate Collection with dummy items
-        for (int i = 0; i < 1; i++) {
-            testCollection.add(new Contact("Kanan ","Allahyrli","Herr","Deutschland", "M"));
-        }
-
-
-//        // add the ListFragment
-//        FragmentManager fragmentManager = getFragmentManager();
-//        ContactListFragment fragment = new ContactListFragment();
-//        fragmentManager.beginTransaction().add(R.id.fragment2, fragment).commit();
-//
-//        // populate the ListView
-//        fragment.setListAdapter(new ListAdapter(this, R.layout.contact_item, testCollection));
-//
-//
-        ListView listButton =  (ListView) findViewById(R.id.fragment2);
-        listButton.setAdapter(new ListAdapter(this, R.layout.contact_item, testCollection));
-        listButton.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View childView,
-            int position, long id)
-            {
-                startActivity(new Intent(HomeActivity.this, ContactViewerActivity.class));
-            }
-
-        });
-
-        // populate the drawer ListView
-        //mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        // populate the drawer ListView
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
-
-
-        Button drawer = (Button) findViewById(R.id.action_menu);
-
-        drawer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDrawerLayout.openDrawer(mDrawerList);
-            }
-        });
-
-
-//        tv = (TextView) findViewById(R.id.dummy_sorter);
-//        tv.setVisibility(View.GONE);
-//        Button expandSorter = (Button) findViewById(R.id.sort_button);
-//
-//        OnClickListener expand = new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (tv.getVisibility() == View.GONE) {
-//                    expandOrCollapse(tv, "expand");
-//                }
-//                else {
-//                    expandOrCollapse(tv, "collapse");
-//                }
-//            }
-//        };
-//
-//        expandSorter.setOnClickListener(expand);
-
-    }
-
-    public void expandOrCollapse(final View v,String exp_or_colpse) {
-        TranslateAnimation anim = null;
-        if(exp_or_colpse.equals("expand"))
-        {
-            anim = new TranslateAnimation(0.0f, 0.0f, -v.getHeight(), 0.0f);
-            v.setVisibility(View.VISIBLE);
-        }
-        else{
-            anim = new TranslateAnimation(0.0f, 0.0f, 0.0f, -v.getHeight());
-            AnimationListener collapselistener= new AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    v.setVisibility(View.GONE);
-                }
-            };
-
-            anim.setAnimationListener(collapselistener);
-        }
-
-        // To Collapse
-        //
-
-        anim.setDuration(300);
-        anim.setInterpolator(new AccelerateInterpolator(0.5f));
-        v.startAnimation(anim);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        // add searchItem to toolbar
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        // TODO CHANGE THIS TO SEARCH DIALOG
+
+        FilterQueryProvider test = new FilterQueryProvider() {
+            @Override
+            public Cursor runQuery(CharSequence charSequence) {
+                contactManager.getSearchAdapter().getCursor();
+                return null;
+            }
+        };
+
+        searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // configure menuItems in toolbar
+        // only search right now
+        // possibly also filter/sort?
         switch (item.getItemId()) {
             case R.id.action_search:
                 // open search
@@ -184,4 +99,97 @@ public class HomeActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-}
+
+    /**
+     * Initializes the toolbar
+     */
+    public void initializeToolbar() {
+        // get the toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        // set it
+        setSupportActionBar(myToolbar);
+        // configure it
+        myToolbar.setTitle("");
+        myToolbar.setSubtitle("");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        // add the drawer action
+        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
+
+        drawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(mDrawerList);
+            }
+        });
+    }
+
+    /**
+     * Initializes the menu drawer
+     */
+    public void initializeMenu() {
+        // populate the drawer ListView
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy));
+
+        // add the drawer action
+        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
+
+        drawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(mDrawerList);
+            }
+        });
+    }
+
+    /**
+     * Initializes the main content of the activity
+     */
+    public void initializeFragments() {
+        // add the ListFragment
+        FragmentManager fragmentManager = getFragmentManager();
+        fragment = new ContactListFragment();
+        fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
+
+        // populate the ListView
+        contactManager = ContactManager.getInstance(contextOfApplication);
+
+        // set cursorAdapter
+        fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+
+
+
+        // testing add button
+        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
+
+        // this is just for testing right now
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                contactManager.createContact("first", "last", "title", "germany", Gender.MALE);
+            }
+        });
+        // TESTING TESTING TESTING
+    }
+
+    /**
+     * Starts an activity UNKONWN_NAME to add a new contact.
+     */
+    public void addNewContact() {
+        // open new activity etc etc
+        // intent ...
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        contactManager.updateCursorAdapter();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }

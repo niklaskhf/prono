@@ -74,7 +74,13 @@
         android:gravity="right"
         android:orientation="horizontal"
         >
+
         <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="delete"
+            android:id="@+id/contact_delete"/>
+        <ImageButton
             android:id="@+id/contact_play"
             android:layout_width="54dp"
             android:layout_height="wrap_content"
@@ -82,7 +88,7 @@
             android:background="@drawable/play_icon"
             />
 
-        <Button
+        <ImageButton
             android:id="@+id/contact_fav"
             android:layout_width="54dp"
             android:layout_height="wrap_content"
