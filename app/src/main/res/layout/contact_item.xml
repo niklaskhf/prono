@@ -82,7 +82,7 @@
             android:id="@+id/contact_delete"/>
         <ImageButton
             android:id="@+id/contact_play"
-            android:layout_width="54dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:background="@drawable/play_icon"
@@ -90,7 +90,7 @@
 
         <ImageButton
             android:id="@+id/contact_fav"
-            android:layout_width="54dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:background="@drawable/favorite_unmarked_icon"/>

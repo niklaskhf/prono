@@ -19,7 +19,13 @@ import android.widget.TextView;
 import com.team16.sopra.sopra16team16.R;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 
-
+/**
+ * CursorAdapter that populates search_item
+ * Result is:
+ *
+ *     FIRST LAST
+ *      title country gender
+ */
 public class SearchCursorAdapter extends CursorAdapter {
     private Context context;
     private ContactManager contactManager;

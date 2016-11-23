@@ -11,8 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
-import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 
@@ -32,7 +30,7 @@ import android.support.test.InstrumentationRegistry;
 /**
  * Tests the ListAdapter class
  */
-
+/*
 public class ContactListAdapterTest{
     /////////////////////////////////////////
     /////////////////////////////////////////
@@ -140,4 +138,4 @@ public class ContactListAdapterTest{
         // TODO test buttons
 
     }
-}
+}*/

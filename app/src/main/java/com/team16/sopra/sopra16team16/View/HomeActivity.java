@@ -4,6 +4,7 @@ package com.team16.sopra.sopra16team16.View;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
@@ -17,7 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -38,9 +39,11 @@ public class HomeActivity extends AppCompatActivity {
     private ListView mDrawerList;
     private static ContactManager contactManager;
     public static Context contextOfApplication;
-
+    private FragmentManager fragmentManager;
     private ContactListFragment fragment;
-
+    private FloatingActionButton addButton;
+    private FilterQueryProvider filterQuery;
+    private SearchView searchView;
 
 
     @Override
@@ -48,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
         contextOfApplication = MyApp.getContext();
-
+        contactManager = ContactManager.getInstance(contextOfApplication);
         // initialize Toolbar
         initializeToolbar();
 
@@ -60,29 +63,92 @@ public class HomeActivity extends AppCompatActivity {
         // open contact creator
 
 
-
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // add searchItem to toolbar
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-        FilterQueryProvider test = new FilterQueryProvider() {
-            @Override
-            public Cursor runQuery(CharSequence charSequence) {
-                contactManager.getSearchAdapter().getCursor();
-                return null;
-            }
-        };
+        hideSearchDropDown(searchView);
 
+        searchFilterActions(searchItem);
+
+        // set searchView adapter
+        contactManager.getSearchAdapter().setFilterQueryProvider(filterQuery);
         searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Hides the dropDown of the searchView
+     * @param searchView
+     */
+    public void hideSearchDropDown(SearchView searchView) {
+        // id of AutoCompleteTextView
+        int searchEditTextId = R.id.search_src_text; // for AppCompat
+
+        // get AutoCompleteTextView from SearchView
+        final AutoCompleteTextView searchEditText = (AutoCompleteTextView) searchView.findViewById(searchEditTextId);
+
+        // remove dropdown
+        searchEditText.setDropDownHeight(0);
+    }
+
+
+    /**
+     * Sets the appropriate adapters.
+     * @param searchItem MenuItem related to the searchView
+     */
+    public void searchFilterActions(MenuItem searchItem) {
+        filterQuery = new FilterQueryProvider() {
+            @Override
+            public Cursor runQuery(CharSequence charSequence) {
+                Cursor mCursor = null;
+                if (charSequence != null) {
+                    mCursor = contactManager.getSearchResults(charSequence.toString());
+                }
+                return mCursor;
+            }
+        };
+
+        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                Log.i("listAdapter", "is now filterQuery");
+                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                Log.i("listAdapter", "is now default");
+                fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                return true;
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
+                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.i("listAdapter", "is now filterQuery");
+                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
+                return true;
+            }
+        });
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // configure menuItems in toolbar
@@ -149,26 +215,23 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void initializeFragments() {
         // add the ListFragment
-        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager = getFragmentManager();
         fragment = new ContactListFragment();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
         // populate the ListView
-        contactManager = ContactManager.getInstance(contextOfApplication);
-
         // set cursorAdapter
         fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
 
-
         // testing add button
-        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
+        addButton = (FloatingActionButton) findViewById(R.id.addNew);
 
         // this is just for testing right now
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                contactManager.createContact("first", "last", "title", "germany", Gender.MALE);
+                contactManager.createContact("test", "last", "title", "germany", Gender.MALE);
             }
         });
         // TESTING TESTING TESTING
@@ -193,3 +256,4 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
+}

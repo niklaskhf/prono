@@ -10,7 +10,9 @@ import android.support.v4.widget.CursorAdapter;
 import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
 
-
+/**
+ * Contains methods for manipulating or receiving contact related data.
+ */
 public class ContactManager {
     private static ContactManager currentInstance = null;
     private DBManager dbManager;
@@ -31,6 +33,11 @@ public class ContactManager {
     public static final String COLUMN_FAVORITE = "favorite";
     public static final String COLUMN_DELETED = "deleted";
 
+    /**
+     * Returns the current and only instance of the ContactManager class
+     * @param context Context object
+     * @return ContactManager object, used to manipulate and receive contact related data
+     */
     public static ContactManager getInstance(Context context) {
         if (currentInstance == null) {
             currentInstance = new ContactManager(context.getApplicationContext());
@@ -42,15 +49,23 @@ public class ContactManager {
 
     /**
      *
-     * @param context
+     * @param context Context object
      */
     private ContactManager(Context context){
-        dbManager = new DBManager(context);
+        dbManager = new DBManager(context.getApplicationContext());
         database = dbManager.getDbContacts();
         this.context = context;
     }
 
-
+    /**
+     * Adds a new row to the table 'contacts'
+     * @param first first name - String
+     * @param last last name - String
+     * @param title title - String
+     * @param country country - String
+     * @param gender gender - Gender
+     * @return
+     */
     public long createContact(String first, String last, String title, String country, Gender gender){
         ContentValues values = new ContentValues();
         // id auto increments
@@ -67,8 +82,13 @@ public class ContactManager {
         return res;
     }
 
+    /**
+     * Executes query on the 'contacts' table
+     * @return Cursor with rows based on query results
+     */
     public Cursor selectContacts() {
         String[] cols = new String[] {_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_DELETED};
+        // TODO ADD FILTERS AND SORT
         Cursor mCursor = database.query(true, TABLE_NAME,cols,null
                 , null, null, null, null, null);
         if (mCursor != null) {
@@ -77,6 +97,17 @@ public class ContactManager {
         return mCursor; // iterate to get each value.
     }
 
+    /**
+     * Updates a row with new values
+     * @param first first name - String
+     * @param last last name - String
+     * @param title title - String
+     * @param country country - String
+     * @param gender gender - Gender
+     * @param fav favorite - boolean
+     * @param del delete - boolean
+     * @param id used to find the correct row
+     */
     public void updateContact(String first, String last, String title, String country, Gender gender, boolean fav, boolean del, int id) {
         String strFilter = "_id=" + id;
         ContentValues values = new ContentValues();
@@ -96,6 +127,11 @@ public class ContactManager {
     }
 
 
+    /**
+     * Inverts the favorite value of a contact/row
+     * @param id unique id to identify the row
+     * @param fav current value, result will be !fav
+     */
     public void toggleFavorite(int id, int fav) {
         database.beginTransaction();
         try {
@@ -114,12 +150,20 @@ public class ContactManager {
         this.updateCursorAdapter();
     }
 
+    /**
+     * Removes a row from the database
+     * @param id unique id of row that will be removed
+     */
     public void deleteContact(int id) {
         int res = database.delete(TABLE_NAME, "_id = ?", new String[] {Integer.toString(id)});
         Log.i("deleted", Integer.toString(id));
         this.updateCursorAdapter();
     }
 
+    /**
+     * Returns a ContactCursorAdapter, populates menu_item
+     * @return ContactCursorAdapter
+     */
     public ContactCursorAdapter getCursorAdapterDefault() {
         if (cursorAdapter == null) {
             cursorAdapter = new ContactCursorAdapter(context, selectContacts());
@@ -130,6 +174,9 @@ public class ContactManager {
         }
     }
 
+    /**
+     * Update cursorAdapter with new dataset
+     */
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
@@ -139,6 +186,10 @@ public class ContactManager {
         }
     }
 
+    /**
+     * Returns a SearchCursorAdapter, populates search_item
+     * @return searchAdapter populating search_item
+     */
     public SearchCursorAdapter getSearchAdapter() {
         if (searchAdapter == null) {
             searchAdapter = new SearchCursorAdapter(context, selectContacts());
@@ -148,4 +199,63 @@ public class ContactManager {
             return searchAdapter;
         }
     }
+
+    /**
+     * Queries the table 'contacts' for the search String.
+     * Returns a cursor that includes all matches with any column.
+     * @param search search query - String
+     * @return Cursor
+     */
+    public Cursor getSearchResults(String search) {
+        Cursor cursor = null;
+        // get individual search words
+        String[] searchWords = search.split(" ");
+        // add wildcards to match if substring
+        for (int i = 0; i < searchWords.length; i++) {
+            searchWords[i] = "%" + searchWords[i] + "%";
+        }
+        for (String s:searchWords) {
+            Log.i("searchWords", s);
+
+        }
+        // create query
+        // columns to add in cursor
+        String[] cols = new String[] {_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_DELETED};
+        // no idea why this query isnt working
+        // arguments with wild cards
+        // wild cards replaced by any entry in searchWords
+        String query =
+                COLUMN_FIRSTNAME + " LIKE ? OR " +
+                COLUMN_LASTNAME + " LIKE ? OR " +
+                COLUMN_TITLE + " LIKE ? OR " +
+                COLUMN_COUNTRY + " LIKE ? OR " +
+                COLUMN_GENDER + " LIKE ?";
+        Log.i("query", query);
+
+
+        // attempting to manually construct, same result
+        /*String query2 =
+                "SELECT ";
+        for(String s: cols) {
+            query2 = query2 + s +", ";
+        }
+        query2 = query2.substring(0, query2.length()-2);
+
+        query2 = query2 + " FROM " + TABLE_NAME + " WHERE (" +
+                COLUMN_FIRSTNAME + " LIKE ?) OR (" +
+                COLUMN_LASTNAME + " LIKE ?);";*/
+
+
+        // query database
+        cursor = database.query(TABLE_NAME, cols, query,
+                searchWords, null, null, null, null);
+        //Cursor cursor = database.rawQuery(query2, searchWords);
+        Log.i("cursor count", Integer.toString(cursor.getCount()));
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
 }
