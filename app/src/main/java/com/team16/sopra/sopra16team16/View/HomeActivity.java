@@ -5,16 +5,20 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -35,9 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     private static ContactManager contactManager;
     public static Context contextOfApplication;
 
-    // TODO replace this with some kind of interface and callbacks!
-    // http://stackoverflow.com/questions/9891360/getting-activity-from-context-in-android - Nepster
-    public static HomeActivity instance = null;
+
 
 
     private ContactListFragment fragment;
@@ -67,7 +69,16 @@ public class HomeActivity extends AppCompatActivity {
         // add searchItem to toolbar
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        // TODO CHANGE THIS TO SEARCH DIALOG
+
+        FilterQueryProvider test = new FilterQueryProvider() {
+            @Override
+            public Cursor runQuery(CharSequence charSequence) {
+                contactManager.getSearchAdapter().getCursor();
+                return null;
+            }
+        };
+
+        searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -150,7 +161,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // testing add button
-        Button addButton = (Button) findViewById(R.id.addNew);
+        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
 
         // this is just for testing right now
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -174,14 +185,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        instance = this;
         contactManager.updateCursorAdapter();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        instance = null;
     }
     /**
      * Returns the application Context object
