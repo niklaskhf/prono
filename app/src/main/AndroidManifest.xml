@@ -18,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".View.NewContactActivity"
+            android:label="ContactEditor">
+        </activity>
+        <activity
+            android:name=".View.ContactViewerActivity"
+            android:label="ConctactViewr">
+        </activity>
     </application>
 
 </manifest>

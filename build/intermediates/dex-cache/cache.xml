@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="b17af7580fb8d510052bbf7e3cb71ba91d571a14">
+        sha1="cc63de454504dff0357d458a8f0428b96ab84ff6">
         <dex dex="/home/prime/git/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_bd3bf6a38d543f481f27b7eaf5a3a2eb16cf260e/classes.dex" />
     </item>
     <item
@@ -63,6 +63,15 @@
         revision="24.0.3"
         sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
         <dex dex="/home/prime/git/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.1_527c29424d5698fe5b06b2ce60261327eff84b7d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/prime/git/sopra-team-16/app/libs/opencsv-3.8.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="248d4d05fe253a02a05601978f7de1305b8a961e">
+        <dex dex="/home/prime/git/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/2/opencsv-3.8_dfe6f08d442f9ac74c2a6bb7b8f378f95769dc1e/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -124,7 +133,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="3524635b000bc837bce7766052423999a8b5b250">
+        sha1="61ddaa105b2034494359537b03666bf5bbb210c3">
         <dex dex="/home/prime/git/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_7e1561e9fe662462d35193a17c32d403119b81d0/classes.dex" />
     </item>
     <item

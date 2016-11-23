@@ -3,6 +3,7 @@ package com.team16.sopra.sopra16team16.View;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ListFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +23,9 @@ public class ContactListFragment extends ListFragment{
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
-
-
-
-
-
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        startActivity(new Intent(getActivity(), ContactViewerActivity.class));
+    }
 }

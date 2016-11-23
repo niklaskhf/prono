@@ -2,6 +2,7 @@ package com.team16.sopra.sopra16team16.View;
 
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,12 +27,12 @@ import com.team16.sopra.sopra16team16.Controller.ListAdapter;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private String[] mPlanetTitles = new String[]{"Favorites", "Settings", "About"};
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private String[] testArray = new String[] {"test", "test", "test"};
     private ArrayList<Contact> testCollection = new ArrayList<Contact>();
     private TextView tv;
 
@@ -39,6 +41,16 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
+
+        // open contact creator
+        Button btn = (Button)findViewById(R.id.add_new_contact_button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, NewContactActivity.class));
+            }
+        });
 
         // configure Toolbar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -50,20 +62,30 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // populate Collection with dummy items
-        for (int i = 0; i < 50; i++) {
-            testCollection.add(new Contact("first","last","title","country", "gender"));
+        for (int i = 0; i < 1; i++) {
+            testCollection.add(new Contact("Kanan ","Allahyrli","Herr","Deutschland", "M"));
         }
 
 
+//        // add the ListFragment
+//        FragmentManager fragmentManager = getFragmentManager();
+//        ContactListFragment fragment = new ContactListFragment();
+//        fragmentManager.beginTransaction().add(R.id.fragment2, fragment).commit();
+//
+//        // populate the ListView
+//        fragment.setListAdapter(new ListAdapter(this, R.layout.contact_item, testCollection));
+//
+//
+        ListView listButton =  (ListView) findViewById(R.id.fragment2);
+        listButton.setAdapter(new ListAdapter(this, R.layout.contact_item, testCollection));
+        listButton.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View childView,
+            int position, long id)
+            {
+                startActivity(new Intent(HomeActivity.this, ContactViewerActivity.class));
+            }
 
-
-        // add the ListFragment
-        FragmentManager fragmentManager = getFragmentManager();
-        ContactListFragment fragment = new ContactListFragment();
-        fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
-
-        // populate the ListView
-        fragment.setListAdapter(new ListAdapter(this, R.layout.contact_item, testCollection));
+        });
 
         // populate the drawer ListView
         //mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
