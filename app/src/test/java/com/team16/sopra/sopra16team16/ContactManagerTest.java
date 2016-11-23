@@ -1,6 +1,6 @@
 package com.team16.sopra.sopra16team16;
 
-import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
+//import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
 
 /**
  * Tests the ContactManager class

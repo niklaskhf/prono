@@ -6,8 +6,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
+//import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
 import com.team16.sopra.sopra16team16.Model.Gender;
+import com.team16.sopra.sopra16team16.Model.Contact;
 
 
 import org.junit.Before;

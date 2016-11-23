@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.CursorAdapter;
+//import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -34,7 +34,7 @@ import com.team16.sopra.sopra16team16.R;
  */
 public class HomeActivity extends AppCompatActivity {
     private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
-    private DrawerLayout mDrawerLayout;
+    private  DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private static ContactManager contactManager;
     public static Context contextOfApplication;

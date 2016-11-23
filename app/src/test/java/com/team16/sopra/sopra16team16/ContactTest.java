@@ -1,6 +1,7 @@
 package com.team16.sopra.sopra16team16;
 
 import com.team16.sopra.sopra16team16.Model.Gender;
+import com.team16.sopra.sopra16team16.Model.Contact;
 
 import org.junit.Test;
 

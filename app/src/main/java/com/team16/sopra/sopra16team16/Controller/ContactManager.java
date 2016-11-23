@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.support.v4.widget.CursorAdapter;
-
+//import android.support.v4.widget.CursorAdapter;
+import android.widget.CursorAdapter;
 import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
 
