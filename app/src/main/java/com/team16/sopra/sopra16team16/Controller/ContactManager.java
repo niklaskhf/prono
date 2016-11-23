@@ -68,7 +68,7 @@ public class ContactManager {
     }
 
     public Cursor selectContacts() {
-        String[] cols = new String[] {_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_DELETED};
+        String[] cols = new String[] {_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_FAVORITE, COLUMN_DELETED};
         Cursor mCursor = database.query(true, TABLE_NAME,cols,null
                 , null, null, null, null, null);
         if (mCursor != null) {

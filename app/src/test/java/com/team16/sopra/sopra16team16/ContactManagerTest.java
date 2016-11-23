@@ -3,10 +3,7 @@ package com.team16.sopra.sopra16team16;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.gson.Gson;
-import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
-import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
 

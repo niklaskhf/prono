@@ -73,8 +73,12 @@ public class HomeActivity extends AppCompatActivity {
         FilterQueryProvider test = new FilterQueryProvider() {
             @Override
             public Cursor runQuery(CharSequence charSequence) {
-                contactManager.getSearchAdapter().getCursor();
-                return null;
+                Cursor mCursor = contactManager.getSearchAdapter().getCursor();
+                // filter cursor results
+                // iterate through cursor and compare string
+
+
+                return mCursor;
             }
         };
 

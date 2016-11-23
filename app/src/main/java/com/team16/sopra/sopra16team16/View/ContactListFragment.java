@@ -32,4 +32,6 @@ public class ContactListFragment extends ListFragment{
        // registerForContextMenu(getListView());
     }
 
+
+
 }
