@@ -734,7 +734,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Tatsächliche Zeit:
 
 
-# Task 2 *Löschen bestätigen*
+### Task 2 *Löschen bestätigen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Löschvorgang bestätigen müssen*, um *den Eintrag nicht aus Versehen gelöscht zu haben*.
