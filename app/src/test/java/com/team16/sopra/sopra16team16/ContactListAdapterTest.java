@@ -1,20 +1,13 @@
 package com.team16.sopra.sopra16team16;
 
-import android.app.Instrumentation;
 import android.content.Context;
-import android.os.Bundle;
-import android.test.AndroidTestCase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactListAdapter;
-import com.team16.sopra.sopra16team16.Model.Contact;
 import com.team16.sopra.sopra16team16.Model.Gender;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 
 import org.junit.Before;
@@ -24,10 +17,8 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-import static com.team16.sopra.sopra16team16.View.MyApp.getContext;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
-import android.support.test.InstrumentationRegistry;
 
 /**
  * Tests the ListAdapter class

@@ -42,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     private ContactListFragment fragment;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +59,11 @@ public class HomeActivity extends AppCompatActivity {
         // open contact creator
 
 
-
     }
 
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // add searchItem to toolbar
         MenuItem searchItem = menu.findItem(R.id.action_search);
@@ -160,7 +158,6 @@ public class HomeActivity extends AppCompatActivity {
         fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
 
-
         // testing add button
         FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
 
@@ -193,3 +190,4 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
+}
