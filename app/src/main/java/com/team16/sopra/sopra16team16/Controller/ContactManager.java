@@ -18,6 +18,7 @@ public class ContactManager {
     private ContactCursorAdapter cursorAdapter = null;
     private SearchCursorAdapter searchAdapter = null;
     private Context context;
+    private QueryBuilder queryBuilder = null;
 
     private static SQLiteDatabase database;
 
@@ -55,6 +56,7 @@ public class ContactManager {
     private ContactManager(Context context) {
         dbManager = new DBManager(context.getApplicationContext());
         database = dbManager.getDbContacts();
+        this.queryBuilder = new QueryBuilder(cols);
         this.context = context;
     }
 
@@ -254,8 +256,13 @@ public class ContactManager {
         ////////////////////////////////////////////////////////////////////*/
 
 
+        String query;
+        if (queryBuilder != null) {
+            query = queryBuilder.buildSearchQuery(searchWords);
 
-        String query = buildSearchQuery(searchWords);
+        } else {
+            throw new IllegalStateException("queryBuilder is null");
+        }
         Log.i("query", query);
 
         cursor = database.rawQuery(query, null);
@@ -265,38 +272,6 @@ public class ContactManager {
             cursor.moveToFirst();
         }
         return cursor;
-    }
-
-    /**
-     * Constructs a search query that finds all rows containing every word in searchWords as substring
-     *
-     * @param searchWords String[], rows will be filtered based on every element
-     * @return complete SELECT FROM WHEN query
-     */
-    public String buildSearchQuery(String[] searchWords) {
-        String query_COLUMNS =
-                "SELECT ";
-        for (String s : cols) {
-            query_COLUMNS = query_COLUMNS + s + ", ";
-        }
-        query_COLUMNS = query_COLUMNS.substring(0, query_COLUMNS.length() - 2);
-        String query_TABLE = " FROM " + TABLE_NAME + " WHERE ";
-        String query_EXPRESSION = "";
-        for (int i = 0; i < searchWords.length; i++) {
-            query_EXPRESSION = query_EXPRESSION +
-                    query_COLUMNS + query_TABLE +
-                    COLUMN_FIRSTNAME + " LIKE '" + searchWords[i] + "' OR " +
-                    COLUMN_LASTNAME + " LIKE '" + searchWords[i] + "' OR " +
-                    COLUMN_COUNTRY + " LIKE '" + searchWords[i] + "' OR " +
-                    COLUMN_TITLE + " LIKE '" + searchWords[i] + "' OR " +
-                    COLUMN_GENDER + " LIKE '" + searchWords[i] + "'" +
-                    " INTERSECT ";
-        }
-
-        query_EXPRESSION = query_EXPRESSION.substring(0, query_EXPRESSION.length() - 11);
-        query_EXPRESSION = query_EXPRESSION + ";";
-
-        return query_EXPRESSION;
     }
 
 }
