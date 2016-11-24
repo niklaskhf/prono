@@ -182,9 +182,9 @@ public class ContactManager {
         int res = 0;
         database.beginTransaction();
         try {
-
             res = database.delete(TABLE_NAME, "_id = ?", new String[]{Integer.toString(id)});
             Log.i("deleted", Integer.toString(id));
+            database.setTransactionSuccessful();
         } catch(Exception e) {
             Log.i("deleteContactDb", e.getMessage());
         } finally {
