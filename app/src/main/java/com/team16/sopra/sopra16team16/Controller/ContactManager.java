@@ -55,7 +55,7 @@ public class ContactManager {
      */
     private ContactManager(Context context) {
         dbManager = new DBManager(context.getApplicationContext());
-        database = dbManager.getDbContacts();
+        open();
         this.queryBuilder = new QueryBuilder(cols);
         this.context = context;
     }
@@ -71,17 +71,25 @@ public class ContactManager {
      * @return
      */
     public long createContact(String first, String last, String title, String country, Gender gender) {
-        ContentValues values = new ContentValues();
-        // id auto increments
-        values.put(COLUMN_FIRSTNAME, first);
-        values.put(COLUMN_LASTNAME, last);
-        values.put(COLUMN_TITLE, title);
-        values.put(COLUMN_COUNTRY, country);
-        values.put(COLUMN_GENDER, gender.toString());
-        values.put(COLUMN_FAVORITE, false);
-        values.put(COLUMN_DELETED, false);
-        Long res = database.insert(TABLE_NAME, null, values);
-
+        long res = 0;
+        database.beginTransaction();
+        try{
+            ContentValues values = new ContentValues();
+            // id auto increments
+            values.put(COLUMN_FIRSTNAME, first);
+            values.put(COLUMN_LASTNAME, last);
+            values.put(COLUMN_TITLE, title);
+            values.put(COLUMN_COUNTRY, country);
+            values.put(COLUMN_GENDER, gender.toString());
+            values.put(COLUMN_FAVORITE, false);
+            values.put(COLUMN_DELETED, false);
+            res = database.insert(TABLE_NAME, null, values);
+            database.setTransactionSuccessful();
+        } catch(Exception e) {
+            Log.i("createContactDb", e.getMessage());
+        } finally {
+            database.endTransaction();
+        }
         this.updateCursorAdapter();
         return res;
     }
@@ -113,22 +121,31 @@ public class ContactManager {
      * @param del     delete - boolean
      * @param id      used to find the correct row
      */
-    public void updateContact(String first, String last, String title, String country, Gender gender, boolean fav, boolean del, int id) {
-        String strFilter = "_id=" + id;
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_FIRSTNAME, first);
-        values.put(COLUMN_LASTNAME, last);
-        values.put(COLUMN_TITLE, title);
-        values.put(COLUMN_COUNTRY, country);
-        values.put(COLUMN_GENDER, gender.toString());
-        values.put(COLUMN_FAVORITE, fav);
-        values.put(COLUMN_DELETED, del);
+    public long updateContact(String first, String last, String title, String country, Gender gender, boolean fav, boolean del, int id) {
+        long res = 0;
+        database.beginTransaction();
+        try {
+            String strFilter = "_id=" + id;
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_FIRSTNAME, first);
+            values.put(COLUMN_LASTNAME, last);
+            values.put(COLUMN_TITLE, title);
+            values.put(COLUMN_COUNTRY, country);
+            values.put(COLUMN_GENDER, gender.toString());
+            values.put(COLUMN_FAVORITE, fav);
+            values.put(COLUMN_DELETED, del);
 
-        // which row to update?
-        database.replace(TABLE_NAME, null, values);
-        //database.update(TABLE_NAME, values, strFilter, null);
-
+            // which row to update?
+            res = database.replace(TABLE_NAME, null, values);
+            //database.update(TABLE_NAME, values, strFilter, null);
+            database.setTransactionSuccessful();
+        } catch(Exception e) {
+            Log.i("updateContactDb", e.getMessage());
+        } finally {
+            database.endTransaction();
+        }
         this.updateCursorAdapter();
+        return res;
     }
 
 
@@ -161,10 +178,21 @@ public class ContactManager {
      *
      * @param id unique id of row that will be removed
      */
-    public void deleteContact(int id) {
-        int res = database.delete(TABLE_NAME, "_id = ?", new String[]{Integer.toString(id)});
-        Log.i("deleted", Integer.toString(id));
+    public int deleteContact(int id) {
+        int res = 0;
+        database.beginTransaction();
+        try {
+
+            res = database.delete(TABLE_NAME, "_id = ?", new String[]{Integer.toString(id)});
+            Log.i("deleted", Integer.toString(id));
+        } catch(Exception e) {
+            Log.i("deleteContactDb", e.getMessage());
+        } finally {
+            database.endTransaction();
+        }
+
         this.updateCursorAdapter();
+        return res;
     }
 
     /**
@@ -272,6 +300,20 @@ public class ContactManager {
             cursor.moveToFirst();
         }
         return cursor;
+    }
+
+    /**
+     * Closes the database connection.
+     */
+    public void close() {
+        dbManager.close();
+    }
+
+    /**
+     * Opens a new database connection.
+     */
+    public void open() {
+        database = dbManager.getDbContacts();
     }
 
 }

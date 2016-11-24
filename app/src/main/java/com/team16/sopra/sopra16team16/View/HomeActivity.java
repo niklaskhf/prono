@@ -251,11 +251,16 @@ public class HomeActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         contactManager.updateCursorAdapter();
+        //contactManager.open();
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
+    public void onDestroy() {
+        super.onDestroy();
 
+        // according to google theres nothing wrong with keeping the connection open
+        // and letting the kernel handle the cleanup after exiting
+        // http://stackoverflow.com/questions/6608498/best-place-to-close-database-connection
+        //contactManager.close();
+    }
 }

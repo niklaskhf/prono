@@ -13,10 +13,13 @@ public class DBManager {
 
     public DBManager(Context context) {
         dbHelper = DBHelper.getCurrentInstance(context);
-        dbContacts = dbHelper.getWritableDatabase();
     }
 
     public SQLiteDatabase getDbContacts() {
-        return dbContacts;
+        return dbContacts=dbHelper.getWritableDatabase();
+    }
+
+    public void close() {
+        dbContacts.close();
     }
 }
