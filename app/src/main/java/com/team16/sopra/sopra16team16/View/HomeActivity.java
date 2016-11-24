@@ -1,8 +1,10 @@
 package com.team16.sopra.sopra16team16.View;
 
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -51,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
         contextOfApplication = MyApp.getContext();
-        contactManager = ContactManager.getInstance(contextOfApplication);
+        contactManager = ContactManager.getInstance(this);
         // initialize Toolbar
         initializeToolbar();
 
@@ -245,7 +247,6 @@ public class HomeActivity extends AppCompatActivity {
         // intent ...
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -256,4 +257,5 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
+
 }

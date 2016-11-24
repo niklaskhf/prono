@@ -1,7 +1,9 @@
 package com.team16.sopra.sopra16team16.Controller;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -19,16 +21,19 @@ import android.widget.TextView;
 import com.team16.sopra.sopra16team16.R;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 
-
 public class ContactCursorAdapter extends CursorAdapter {
     private Context context;
     private ContactManager contactManager;
+
 
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
         this.context = context;
         contactManager = ContactManager.getInstance(context);
     }
+
+
+
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
@@ -126,6 +131,7 @@ public class ContactCursorAdapter extends CursorAdapter {
         });
 
         // delete item
+        // temporary TODO remove this and the entire button
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View viewC) {
