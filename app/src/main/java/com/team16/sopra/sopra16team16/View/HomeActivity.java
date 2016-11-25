@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -221,30 +222,37 @@ public class HomeActivity extends AppCompatActivity {
         fragment = new ContactListFragment();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
+        String first, last, title, country;
+        Bundle bundle = getIntent().getExtras();
+
         // populate the ListView
         // set cursorAdapter
         fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
 
+        if(bundle != null) {
+            first = bundle.getString(contactManager.COLUMN_FIRSTNAME);
+            last = bundle.getString(contactManager.COLUMN_LASTNAME);
+            title = bundle.getString(contactManager.COLUMN_TITLE);
+            country = bundle.getString(contactManager.COLUMN_COUNTRY);
+            contactManager.createContact(first, last, title, country, Gender.MALE );
+        }
         // testing add button
-        addButton = (FloatingActionButton) findViewById(R.id.addNew);
-
-        // this is just for testing right now
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contactManager.createContact("test", "test", "title", "germany", Gender.MALE);
-            }
-        });
-        // TESTING TESTING TESTING
+        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
+        addNewContact(addButton);
     }
 
     /**
      * Starts an activity UNKONWN_NAME to add a new contact.
      */
-    public void addNewContact() {
-        // open new activity etc etc
-        // intent ...
+    public void addNewContact(FloatingActionButton addButton) {
+        addButton = (FloatingActionButton) findViewById(R.id.addNew);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, NewContactActivity.class));
+            }
+        });
     }
 
     @Override
