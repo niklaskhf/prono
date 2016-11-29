@@ -22,13 +22,19 @@ import com.team16.sopra.sopra16team16.R;
 public class ContactViewerActivity extends AppCompatActivity {
 
     private ContactManager contactManager = null;
-    private String firstName;
-    private String lastName;
-    private String title;
-    private String country;
-    private String gender;
+    private String firstName = "";
+    private String lastName = "";
+    private String title = "";
+    private String country = "";
+    private String gender = "";
     private int id;
 
+    TextView firstView;
+    TextView lastView;
+    TextView titleView;
+    TextView countryView;
+    // TODO GENDER VIEW
+    // TODO PLAY BUTTON
 
 
     @Override
@@ -71,9 +77,9 @@ public class ContactViewerActivity extends AppCompatActivity {
 
     /**
      * Deletes a contact after asking the user for confirmation.
-     * @param id
-     * @param f
-     * @param l
+     * @param id - unique id of row in database - int
+     * @param f first name of contact - String
+     * @param l last name of contact - String
      */
     public void deleteContactDialog(int id, String f, String l) {
         // im sure this is god awful
@@ -114,8 +120,20 @@ public class ContactViewerActivity extends AppCompatActivity {
         alertBuilder.show();
     }
 
+    /**
+     * Populates the textViews in the contact_viewer layout
+     */
     public void setTextViews() {
         // populate textViews
+        firstView = (TextView) findViewById(R.id.real_first_name);
+        lastView = (TextView) findViewById(R.id.real_last_name);
+        titleView = (TextView) findViewById(R.id.real_title);
+        countryView = (TextView) findViewById(R.id.real_country);
+
+        firstView.setText(firstName);
+        lastView.setText(lastName);
+        titleView.setText(title);
+        countryView.setText(country);
     }
 
 }

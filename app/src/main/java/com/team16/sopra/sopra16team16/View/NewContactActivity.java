@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.ArrayList;
@@ -130,7 +131,8 @@ public class NewContactActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
-        setContact(i);
+        //setContact(i);
+        setContact();
         startActivity(i);
         finish();
     }
@@ -170,6 +172,13 @@ public class NewContactActivity extends AppCompatActivity {
         i.putExtra(contactManager.COLUMN_TITLE, title.getText().toString());
 
         return i;
+    }
+
+    public void setContact() {
+        ContactManager contactManager = ContactManager.getInstance(this);
+        // TODO update gender
+        // TODO create string attributes for all of this, this is ridiculous lmao
+        contactManager.createContact(firstNameText.getText().toString(), lastNameText.getText().toString(), titleText.getText().toString(), countryText.getText().toString(), Gender.MALE);
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
