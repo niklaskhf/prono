@@ -44,10 +44,11 @@ public class ContactCursorAdapter extends CursorAdapter {
     public void bindView(View view, final Context context, final Cursor cursor) {
         // get incrementing id
         final int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+
         // set id for future reference
         view.setTag(id);
 
-        // set elements in contact_item.xml
+        // get elements of the view
         TextView tt1 = (TextView) view.findViewById(R.id.list_firstname);
         TextView tt2 = (TextView) view.findViewById(R.id.list_lastname);
         TextView tt3 = (TextView) view.findViewById(R.id.list_title);
@@ -80,12 +81,12 @@ public class ContactCursorAdapter extends CursorAdapter {
         }
 
         if (tt5 != null) {
-            // TODO this is supposed to be an icon anyways?
+            // TODO this is supposed to be an icon
             tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
         }
 
 
-        // TODO
+        // TODO add implementation
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +97,8 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         // get favorite value (0 or 1)
         final int favValue = cursor.getInt(cursor.getColumnIndexOrThrow("favorite"));
-        // set appropiate item
+
+        // set correct item based on favValue
         if (favValue == 1) {
             Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_marked_icon);
             favButton.setImageDrawable(d);
@@ -112,26 +114,26 @@ public class ContactCursorAdapter extends CursorAdapter {
             @Override
             public void onClick(View view) {
 
+                // toggle the icon
                 if (favValue == 1) {
-                    Log.i("updateFavorite", "true->false");
+                    Log.i("updateFavorite", Integer.toString(id) + " true->false");
                     Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_unmarked_icon);
                     favButton.setImageDrawable(d);
                 } else {
-                    Log.i("updateFavorite", "false->true");
+                    Log.i("updateFavorite", Integer.toString(id) + " false->true");
                     Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_marked_icon);
-                    Log.i("favorite icon", d.toString());
                     favButton.setImageDrawable(d);
                 }
 
+                // toggle field in database
                 contactManager.toggleFavorite(id, favValue);
-                Log.i("id", Integer.toString(id));
                 notifyDataSetChanged();
 
             }
         });
 
         // delete item
-        // temporary TODO remove this and the entire button
+        // TODO remove this and the entire button
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View viewC) {

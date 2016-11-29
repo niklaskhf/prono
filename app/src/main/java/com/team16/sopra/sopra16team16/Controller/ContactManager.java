@@ -137,6 +137,7 @@ public class ContactManager {
 
             // which row to update?
             res = database.replace(TABLE_NAME, null, values);
+            // TODO maybe use update, no real need to change fav/del
             //database.update(TABLE_NAME, values, strFilter, null);
             database.setTransactionSuccessful();
         } catch(Exception e) {
@@ -155,22 +156,25 @@ public class ContactManager {
      * @param id  unique id to identify the row
      * @param fav current value, result will be !fav
      */
-    public void toggleFavorite(int id, int fav) {
+    public int toggleFavorite(int id, int fav) {
+        int res = 0;
         database.beginTransaction();
         try {
             Log.i("updating favorite", Integer.toString(id) + " " + Integer.toString(fav));
             String strFilter = "_id=" + id;
+            // values to be changed
             ContentValues values = new ContentValues();
             values.put(COLUMN_FAVORITE, (fav + 1) % 2);
 
-            int res = database.update(TABLE_NAME, values, strFilter, null);
-            Log.i("favorited", Integer.toString(res));
+            // update row with new values
+            res = database.update(TABLE_NAME, values, strFilter, null);
             database.setTransactionSuccessful();
         } finally {
             database.endTransaction();
         }
 
         this.updateCursorAdapter();
+        return res;
     }
 
     /**
@@ -249,21 +253,18 @@ public class ContactManager {
         Cursor cursor = null;
 
 
+        // not sure why this didn't work
+        // only checked first expression
+        /*////////////////////////////////////////////////////////////////////
+
         // get individual search words
         String[] searchWords = search.split(" ");
+
         // add wildcards to match if substring
         for (int i = 0; i < searchWords.length; i++) {
             searchWords[i] = "%" + searchWords[i] + "%";
         }
-        for (String s : searchWords) {
-            Log.i("searchWords", s);
 
-        }
-
-
-        // not sure why this didn't work
-        // only checked first expression
-        /*////////////////////////////////////////////////////////////////////
         // create query
         // columns to add in cursor
         // no idea why this query isnt working
@@ -286,19 +287,18 @@ public class ContactManager {
 
         String query;
         if (queryBuilder != null) {
-            query = queryBuilder.buildSearchQuery(searchWords);
+            query = queryBuilder.buildSearchQuery(search);
 
         } else {
             throw new IllegalStateException("queryBuilder is null");
         }
-        Log.i("query", query);
+        Log.i("filterQuery", query);
 
+        // perform the query
         cursor = database.rawQuery(query, null);
-        Log.i("cursor count", Integer.toString(cursor.getCount()));
+        Log.i("filterCursor count", Integer.toString(cursor.getCount()));
 
-        if (cursor != null) {
-            cursor.moveToFirst();
-        }
+        cursor.moveToFirst();
         return cursor;
     }
 

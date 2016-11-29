@@ -56,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_home);
         contextOfApplication = MyApp.getContext();
         contactManager = ContactManager.getInstance(this);
+
         // initialize Toolbar
         initializeToolbar();
 
@@ -64,7 +65,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // add the ListFragment
         initializeFragments();
-        // open contact creator
 
 
     }
@@ -77,11 +77,14 @@ public class HomeActivity extends AppCompatActivity {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
+        // TODO discuss if this is the right approach
+        // hide the dropdown from the searchbar
         hideSearchDropDown(searchView);
-
+        // apply functionality to searchItem
         searchFilterActions(searchItem);
 
         // set searchView adapter
+        // TODO depending on dropdown searchAdapter is unnecessary
         contactManager.getSearchAdapter().setFilterQueryProvider(filterQuery);
         searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
         return super.onCreateOptionsMenu(menu);
@@ -108,6 +111,7 @@ public class HomeActivity extends AppCompatActivity {
      * @param searchItem MenuItem related to the searchView
      */
     public void searchFilterActions(MenuItem searchItem) {
+        // filterQuery object that will be applied to the CursorAdapter
         filterQuery = new FilterQueryProvider() {
             @Override
             public Cursor runQuery(CharSequence charSequence) {
@@ -119,6 +123,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         };
 
+        // actionlisteners for open/close
         MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
 
             @Override
@@ -136,18 +141,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // actionlisteners for typing/submit
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
                 fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+                // hide the keyboard
                 searchView.clearFocus();
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.i("listAdapter", "is now filterQuery");
+                //Log.i("listAdapter", "is now filterQuery");
+                // TODO discuss if this is intended, slows everything down
                 fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
                 return true;
             }
@@ -236,7 +244,8 @@ public class HomeActivity extends AppCompatActivity {
             last = bundle.getString(contactManager.COLUMN_LASTNAME);
             title = bundle.getString(contactManager.COLUMN_TITLE);
             country = bundle.getString(contactManager.COLUMN_COUNTRY);
-            contactManager.createContact(first, last, title, country, Gender.MALE );
+            // TODO this is not working, intent gets called on every app launch!
+            // contactManager.createContact(first, last, title, country, Gender.MALE );
         }
         // testing add button
         FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);

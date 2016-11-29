@@ -55,8 +55,9 @@ public class ContactListFragment extends ListFragment{
         intent.putExtra("country", country);
         intent.putExtra("gender", gender);
         intent.putExtra("id", v.getTag().toString());
+        Log.i("v.getTag()", v.getTag().toString());
 
-        startActivity(new Intent(getActivity(), ContactViewerActivity.class));
+        startActivity(intent);
     }
 }
 

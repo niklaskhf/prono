@@ -80,12 +80,5 @@ public class SearchCursorAdapter extends CursorAdapter {
             tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
         }
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // OPEN VIEWER OF CONTACT
-            }
-        });
-
     }
 }

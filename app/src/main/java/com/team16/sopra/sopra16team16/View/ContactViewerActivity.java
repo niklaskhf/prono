@@ -26,8 +26,8 @@ public class ContactViewerActivity extends AppCompatActivity {
     private String lastName;
     private String title;
     private String country;
-    private Gender gender;
-    int id;
+    private String gender;
+    private int id;
 
 
 
@@ -44,10 +44,10 @@ public class ContactViewerActivity extends AppCompatActivity {
             lastName = bundle.get("last").toString();
             title = bundle.get("title").toString();
             country = bundle.get("country").toString();
-            gender = (Gender) bundle.get("gender");
-            id = Integer.getInteger(bundle.get("id").toString());
+            gender = bundle.get("gender").toString();
+            id = Integer.parseInt(bundle.get("id").toString());
         }
-        setText();
+        setTextViews();
 
         Button editButton = (Button) findViewById(R.id.edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -93,10 +93,13 @@ public class ContactViewerActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 switch (i) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        Log.i("deletionDialog", "user confirmed deletion of " + idF);
                         contactManager.deleteContact(idF);
+                        // go back to the front page
+                        onBackPressed();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
-                        Log.i("deleted", "User dismissed the dialog");
+                        Log.i("deletionDialog", "User dismissed the dialog");
                         dialogInterface.dismiss();
                         break;
                     default:
@@ -111,7 +114,7 @@ public class ContactViewerActivity extends AppCompatActivity {
         alertBuilder.show();
     }
 
-    public void setText() {
+    public void setTextViews() {
         // populate textViews
     }
 
