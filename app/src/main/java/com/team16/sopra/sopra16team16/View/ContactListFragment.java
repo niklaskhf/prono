@@ -31,39 +31,34 @@ public class ContactListFragment extends ListFragment{
 
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
-       // registerForContextMenu(getListView());
-
-        ListView lv = this.getListView();
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), ContactViewerActivity.class);
-                View item = view;
-                TextView firstView = (TextView) view.findViewById(R.id.list_firstname);
-                TextView lastView = (TextView) view.findViewById(R.id.list_lastname);
-                TextView titleView = (TextView) view.findViewById(R.id.list_title);
-                TextView countryView = (TextView) view.findViewById(R.id.list_country);
-                TextView genderView = (TextView) view.findViewById(R.id.list_gender);
-
-                String first = firstView.getText().toString();
-                String last = lastView.getText().toString();
-                String title = titleView.getText().toString();
-                String country = titleView.getText().toString();
-                String gender = titleView.getText().toString();
-
-                intent.putExtra("first", first);
-                intent.putExtra("last", last);
-                intent.putExtra("title", title);
-                intent.putExtra("country", country);
-                intent.putExtra("gender", gender);
-                intent.putExtra("id", view.getTag().toString());
-
-                startActivity(new Intent(getActivity(), ContactViewerActivity.class));
-            }
-        });
     }
 
- }
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent = new Intent(getActivity(), ContactViewerActivity.class);
+        TextView firstView = (TextView) v.findViewById(R.id.list_firstname);
+        TextView lastView = (TextView) v.findViewById(R.id.list_lastname);
+        TextView titleView = (TextView) v.findViewById(R.id.list_title);
+        TextView countryView = (TextView) v.findViewById(R.id.list_country);
+        TextView genderView = (TextView) v.findViewById(R.id.list_gender);
+
+        String first = firstView.getText().toString();
+        String last = lastView.getText().toString();
+        String title = titleView.getText().toString();
+        String country = titleView.getText().toString();
+        String gender = titleView.getText().toString();
+
+        intent.putExtra("first", first);
+        intent.putExtra("last", last);
+        intent.putExtra("title", title);
+        intent.putExtra("country", country);
+        intent.putExtra("gender", gender);
+        intent.putExtra("id", v.getTag().toString());
+
+        startActivity(new Intent(getActivity(), ContactViewerActivity.class));
+    }
+}
 
 
 

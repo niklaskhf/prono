@@ -29,7 +29,6 @@ public class ContactViewerActivity extends AppCompatActivity {
     private Gender gender;
     int id;
 
-    TextView
 
 
     @Override
