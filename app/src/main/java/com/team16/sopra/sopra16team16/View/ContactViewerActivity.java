@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Model.Gender;
@@ -28,12 +29,26 @@ public class ContactViewerActivity extends AppCompatActivity {
     private Gender gender;
     int id;
 
+    TextView
+
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         this.setContentView(R.layout.contact_viewer);
         contactManager = ContactManager.getInstance(this);
+
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+            firstName = bundle.get("first").toString();
+            lastName = bundle.get("last").toString();
+            title = bundle.get("title").toString();
+            country = bundle.get("country").toString();
+            gender = (Gender) bundle.get("gender");
+            id = Integer.getInteger(bundle.get("id").toString());
+        }
+        setText();
 
         Button editButton = (Button) findViewById(R.id.edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +110,10 @@ public class ContactViewerActivity extends AppCompatActivity {
         alertBuilder.setPositiveButton("YES", dialogClickListener);
         alertBuilder.setNegativeButton("NO", dialogClickListener);
         alertBuilder.show();
+    }
+
+    public void setText() {
+        // populate textViews
     }
 
 }
