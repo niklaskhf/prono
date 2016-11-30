@@ -33,7 +33,7 @@ import java.util.Locale;
 public class NewContactActivity extends AppCompatActivity {
 
     private static ContactManager contactManager;
-    private static Recorder recorder = Recorder.getCurrentInstance();
+    private static Recorder recorder;
 
     private TextView firstNameText;
     private TextView lastNameText;
@@ -63,6 +63,13 @@ public class NewContactActivity extends AppCompatActivity {
     private Spinner countrySpinner;
     private ArrayAdapter<String> countryAdapter;
 
+    private String firstName = "";
+    private String lastName = "";
+    private String title = "";
+    private String country = "";
+    private String gender = "";
+    private int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,20 +89,47 @@ public class NewContactActivity extends AppCompatActivity {
 
         setEditLayout();
 
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle != null) {
+            firstName = (String) bundle.get("first");
+            lastName = (String)bundle.get("last");
+            title = (String)bundle.get("title");
+            country = (String)bundle.get("country");
+            gender = (String)bundle.get("gender");
+            id = (Integer) bundle.get("id");
+        }
+        Log.d("first", firstName);
+        firstNameEdit.setText(firstName);
+        lastNameEdit.setText(lastName);
+        titleEdit.setText(title);
+        // TODO ANDERE FELDER FÜLLEN
+
         // add Button to change layout to contact viewer
-        final ImageButton confirmEditButton = (ImageButton)findViewById(R.id.confirm_button);
+        final ImageButton confirmEditButton = (ImageButton) findViewById(R.id.confirm_button);
         confirmEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setViewLayout();
+                /*setViewLayout();
                 firstNameText.setText(firstNameEdit.getText().toString());
                 lastNameText.setText(lastNameEdit.getText().toString());
                 // TODO
                 //countryText.setText(countryEdit.getText().toString());
                 countryText.setText(countrySpinner.getSelectedItem().toString());
-                titleText.setText(titleEdit.getText().toString());
-                }
-            });
+                titleText.setText(titleEdit.getText().toString());*/
+
+                Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("first", firstNameEdit.getText().toString());
+                bundle.putString("last", lastNameEdit.getText().toString());
+                bundle.putString("title", titleEdit.getText().toString());
+                bundle.putString("country", countrySpinner.getSelectedItem().toString());
+                // TODO GENDER
+                // TODO DO THIS PROPERLY
+                startActivity(intent);
+
+            }
+        });
 
         @SuppressLint("WrongViewCast")
         final ImageButton editButton = (ImageButton) findViewById(R.id.edit_button);
@@ -130,7 +164,7 @@ public class NewContactActivity extends AppCompatActivity {
                 startActivity(new Intent(NewContactActivity.this, HomeActivity.class));
                 finish();
             }
-            });
+        });
 
         // add Button to record a name
         final ImageButton recordButton = (ImageButton) findViewById(R.id.record_button);
@@ -138,21 +172,15 @@ public class NewContactActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
-                if(recorder.isPressed()){
+                if (recorder.isPressed()) {
                     recordButton.setBackgroundResource(R.drawable.mic_icon);
                     recorder.stopRecording();
                 } else {
+                    //start recording
                     recordButton.setBackgroundResource(R.drawable.accept_icon);
                     //TODO ID (hier 0) aus der Datenbank entnehmen
-                    Bundle bundle = getIntent().getExtras();
-                    if (bundle != null) {
-                        int id = Integer.parseInt(bundle.get("id").toString());
-                        recorder.startRecording(id);
-                    }
-
+                    recorder.startRecording(id);
                 }
-
             }
         });
     }
@@ -168,6 +196,8 @@ public class NewContactActivity extends AppCompatActivity {
     }
 
     public void initialize() {
+        recorder = Recorder.getCurrentInstance(getApplicationContext());
+
         countrySpinner = (Spinner) findViewById(R.id.country_spinner);
         Locale[] locales = Locale.getAvailableLocales();
         ArrayList<String> countries = new ArrayList<String>();
@@ -180,7 +210,7 @@ public class NewContactActivity extends AppCompatActivity {
 
         Collections.sort(countries);
         for (String country : countries) {
-            Log.i("testingCountries" , country);
+            Log.i("testingCountries", country);
         }
 
         countryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, countries);
@@ -188,6 +218,7 @@ public class NewContactActivity extends AppCompatActivity {
         countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         countrySpinner.setAdapter(countryAdapter);
     }
+
     // save contact info in Intent to pass it to HomeActivity which creates the new contact
     public Intent setContact(Intent i) {
         EditText firstName = (EditText) findViewById(R.id.first_edit);
@@ -229,8 +260,8 @@ public class NewContactActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     private void findViewByIdImageButton() {
         confirmButton = (ImageButton) findViewById(R.id.confirm_button);
-        cancelButton= (ImageButton) findViewById(R.id.cancel_button);
-        recordButton= (ImageButton) findViewById(R.id.record_button);
+        cancelButton = (ImageButton) findViewById(R.id.cancel_button);
+        recordButton = (ImageButton) findViewById(R.id.record_button);
         editButton = (ImageButton) findViewById(R.id.edit_button);
         deleteButton = (ImageButton) findViewById(R.id.delete_button);
         confirmButton = (ImageButton) findViewById(R.id.confirm_button);
@@ -248,7 +279,7 @@ public class NewContactActivity extends AppCompatActivity {
         firstNameText = (TextView) findViewById(R.id.real_first_name);
         lastNameText = (TextView) findViewById(R.id.real_last_name);
         countryText = (TextView) findViewById(R.id.real_country);
-        titleText= (TextView) findViewById(R.id.real_title);
+        titleText = (TextView) findViewById(R.id.real_title);
     }
 
 
@@ -284,7 +315,7 @@ public class NewContactActivity extends AppCompatActivity {
         unkownSexRadioButton.setVisibility(View.VISIBLE);
     }
 
-    private void setViewLayout(){
+    private void setViewLayout() {
 
         firstNameEdit.setVisibility(View.INVISIBLE);
         lastNameEdit.setVisibility(View.INVISIBLE);

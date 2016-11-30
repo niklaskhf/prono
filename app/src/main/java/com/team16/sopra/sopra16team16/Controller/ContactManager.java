@@ -32,6 +32,7 @@ public class ContactManager {
     public static final String COLUMN_GENDER = "gender";
     public static final String COLUMN_FAVORITE = "favorite";
     public static final String COLUMN_DELETED = "deleted";
+    private int id;
 
     private String[] cols = new String[]{_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_DELETED};
 
@@ -58,8 +59,22 @@ public class ContactManager {
         open();
         this.queryBuilder = new QueryBuilder(cols);
         this.context = context;
+
+        Cursor lastIdCursor = database.rawQuery("SELECT MAX(_ID) FROM " + TABLE_NAME + ";", null);
+
+        lastIdCursor.moveToFirst();
+        if (lastIdCursor.getCount() != 0) {
+            id = lastIdCursor.getInt(0);
+        } else {
+            id = 0;
+        }
+        lastIdCursor.close();
+        Log.i("id", Integer.toString(id));
     }
 
+    public int getId() {
+        return id;
+    }
     /**
      * Adds a new row to the table 'contacts'
      *
@@ -75,7 +90,7 @@ public class ContactManager {
         database.beginTransaction();
         try{
             ContentValues values = new ContentValues();
-            // id auto increments
+            values.put(_ID, ++id);
             values.put(COLUMN_FIRSTNAME, first);
             values.put(COLUMN_LASTNAME, last);
             values.put(COLUMN_TITLE, title);

@@ -105,7 +105,7 @@
             android:background="@drawable/delete_icon"
             android:layout_gravity="bottom|left"/>
 
-        <Button
+        <ImageButton
             android:layout_width="54dp"
             android:layout_height="wrap_content"
             android:id="@+id/play_button"

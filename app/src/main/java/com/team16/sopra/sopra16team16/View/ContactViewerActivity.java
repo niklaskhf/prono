@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
@@ -37,16 +38,24 @@ public class ContactViewerActivity extends AppCompatActivity {
     // TODO GENDER VIEW
     // TODO PLAY BUTTON
 
-    Button playButton;
-    Player player = Player.getCurrentInstance();
+    ImageButton playButton;
+    Player player;
 
+
+
+    // TODO IMPLEMENT backPressed(), intent to homeActivity
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
+
+
+        player = Player.getCurrentInstance(getApplicationContext());
+
         this.setContentView(R.layout.contact_viewer);
         contactManager = ContactManager.getInstance(this);
 
+        // TODO FIX INTENT
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
@@ -63,7 +72,15 @@ public class ContactViewerActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ContactViewerActivity.this, NewContactActivity.class));
+                Intent intent = new Intent(ContactViewerActivity.this, NewContactActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("first", firstName);
+                intent.putExtra("last", lastName);
+                intent.putExtra("title", title);
+                intent.putExtra("country", country);
+                intent.putExtra("gender", gender);
+
+                startActivity(intent);
             }
         });
 
@@ -77,16 +94,14 @@ public class ContactViewerActivity extends AppCompatActivity {
             }
         });
 
-        playButton = (Button) findViewById(R.id.play_button);
+        playButton = (ImageButton) findViewById(R.id.play_button);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (player.isPlaying()) {
-                    playButton.setBackgroundResource(R.drawable.cancel_icon);
-                    player.stopPlaying();
+                    player.stopPlaying(playButton);
                 } else {
-                    playButton.setBackgroundResource(R.drawable.play_icon);
-                    player.startPlaying(id);
+                    player.startPlaying(id, playButton);
                 }
 
             }
@@ -153,6 +168,14 @@ public class ContactViewerActivity extends AppCompatActivity {
         lastView.setText(lastName);
         titleView.setText(title);
         countryView.setText(country);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(ContactViewerActivity.this, HomeActivity.class);
+        startActivity(i);
+        finish();
     }
 
 }

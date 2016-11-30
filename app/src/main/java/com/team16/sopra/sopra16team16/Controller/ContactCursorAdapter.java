@@ -24,10 +24,12 @@ import com.team16.sopra.sopra16team16.View.HomeActivity;
 public class ContactCursorAdapter extends CursorAdapter {
     private Context context;
     private ContactManager contactManager;
+    private Player player;
 
 
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
+        player = Player.getCurrentInstance(context);
         this.context = context;
         contactManager = ContactManager.getInstance(context);
     }
@@ -55,7 +57,7 @@ public class ContactCursorAdapter extends CursorAdapter {
         TextView tt4 = (TextView) view.findViewById(R.id.list_country);
         TextView tt5 = (TextView) view.findViewById(R.id.list_gender);
 
-        ImageButton playButton = (ImageButton) view.findViewById(R.id.contact_play);
+        final ImageButton playButton = (ImageButton) view.findViewById(R.id.contact_play);
         final ImageButton favButton = (ImageButton) view.findViewById(R.id.contact_fav);
         Button deleteButton = (Button) view.findViewById(R.id.contact_delete);
 
@@ -91,6 +93,12 @@ public class ContactCursorAdapter extends CursorAdapter {
             @Override
             public void onClick(View view) {
                 // play audio file associated to contact id
+                Log.e("RecordButton", "ID: " + id);
+                if (player.isPlaying()) {
+                    player.stopPlaying(playButton);
+                } else {
+                    player.startPlaying(id, playButton);
+                }
             }
         });
 

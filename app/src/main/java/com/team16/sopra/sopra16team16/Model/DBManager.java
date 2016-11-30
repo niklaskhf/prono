@@ -12,6 +12,7 @@ public class DBManager {
     DBHelper dbHelper;
 
     public DBManager(Context context) {
+        //context.deleteDatabase("DBcontact");
         dbHelper = DBHelper.getCurrentInstance(context);
     }
 

@@ -1,15 +1,19 @@
 package com.team16.sopra.sopra16team16.View;
 
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
@@ -29,6 +33,7 @@ import android.widget.ListView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Model.DBHelper;
 import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
@@ -49,6 +54,12 @@ public class HomeActivity extends AppCompatActivity {
     private FilterQueryProvider filterQuery;
     private SearchView searchView;
 
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -260,7 +271,20 @@ public class HomeActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, NewContactActivity.class));
+                verifyStoragePermissions(HomeActivity.this);
+                int id = contactManager.getId();
+                id++;
+                Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("first", "");
+                bundle.putString("last", "");
+                bundle.putString("title", "");
+                bundle.putString("country", "");
+                bundle.putString("gender", "");
+                bundle.putInt("id", id);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
@@ -280,5 +304,26 @@ public class HomeActivity extends AppCompatActivity {
         // and letting the kernel handle the cleanup after exiting
         // http://stackoverflow.com/questions/6608498/best-place-to-close-database-connection
         //contactManager.close();
+    }
+
+    /**
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
+     */
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
     }
 }
