@@ -10,23 +10,31 @@ import java.io.IOException;
  */
 
 public class Player {
-    private static String filename = null;
+
+    private static Player currentInstance = null;
+    private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
     private MediaPlayer player = null;
 
-    /*
-     * Konstruktur: Der Pfad zur Datei wird hier definiert
-     */
-    public Player() {
-        filename = Environment.getExternalStorageDirectory().getAbsolutePath();
+    private boolean is_playing = false;
 
-        //ToDo: Filename ist noch flasch. name sollte die id des Kontaktes aus der Datenbank sein
-        filename += "000001.3gp";
+
+    public static Player getCurrentInstance() {
+        if (currentInstance == null) {
+            currentInstance = new Player();
+            return currentInstance;
+        } else {
+            return currentInstance;
+        }
     }
 
     /*
      * Gibt die Aufnahme des Namens aus
      */
-    private void startPlaying() {
+    public void startPlaying(int id) {
+
+        changestatus(true);
+        String filename = path + id + ".3gp";
+
         player = new MediaPlayer();
         try {
             player.setDataSource(filename);
@@ -40,10 +48,18 @@ public class Player {
     /*
      * Stopt die Aufnahme des Namens
      */
-    private void stopPlaying() {
+    public void stopPlaying() {
+        changestatus(false);
         player.release();
         player = null;
     }
 
+    public boolean isPlaying() {
+        return is_playing;
+    }
+
+    public void changestatus(boolean status) {
+        is_playing = status;
+    }
 
 }

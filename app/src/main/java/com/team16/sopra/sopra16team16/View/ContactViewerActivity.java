@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
@@ -35,6 +36,9 @@ public class ContactViewerActivity extends AppCompatActivity {
     TextView countryView;
     // TODO GENDER VIEW
     // TODO PLAY BUTTON
+
+    Button playButton;
+    Player player = Player.getCurrentInstance();
 
 
     @Override
@@ -70,6 +74,21 @@ public class ContactViewerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deleteContactDialog(id, firstName, lastName);
+            }
+        });
+
+        playButton = (Button) findViewById(R.id.play_button);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (player.isPlaying()) {
+                    playButton.setBackgroundResource(R.drawable.cancel_icon);
+                    player.stopPlaying();
+                } else {
+                    playButton.setBackgroundResource(R.drawable.play_icon);
+                    player.startPlaying(id);
+                }
+
             }
         });
 

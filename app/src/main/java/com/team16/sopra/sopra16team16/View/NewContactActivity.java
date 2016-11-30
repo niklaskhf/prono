@@ -1,8 +1,11 @@
 package com.team16.sopra.sopra16team16.View;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Recorder;
 import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
@@ -29,6 +33,7 @@ import java.util.Locale;
 public class NewContactActivity extends AppCompatActivity {
 
     private static ContactManager contactManager;
+    private static Recorder recorder = Recorder.getCurrentInstance();
 
     private TextView firstNameText;
     private TextView lastNameText;
@@ -92,6 +97,7 @@ public class NewContactActivity extends AppCompatActivity {
                 }
             });
 
+        @SuppressLint("WrongViewCast")
         final ImageButton editButton = (ImageButton) findViewById(R.id.edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +131,30 @@ public class NewContactActivity extends AppCompatActivity {
                 finish();
             }
             });
+
+        // add Button to record a name
+        final ImageButton recordButton = (ImageButton) findViewById(R.id.record_button);
+        recordButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                if(recorder.isPressed()){
+                    recordButton.setBackgroundResource(R.drawable.mic_icon);
+                    recorder.stopRecording();
+                } else {
+                    recordButton.setBackgroundResource(R.drawable.accept_icon);
+                    //TODO ID (hier 0) aus der Datenbank entnehmen
+                    Bundle bundle = getIntent().getExtras();
+                    if (bundle != null) {
+                        int id = Integer.parseInt(bundle.get("id").toString());
+                        recorder.startRecording(id);
+                    }
+
+                }
+
+            }
+        });
     }
 
     @Override
@@ -196,6 +226,7 @@ public class NewContactActivity extends AppCompatActivity {
         unkownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);
     }
 
+    @SuppressLint("WrongViewCast")
     private void findViewByIdImageButton() {
         confirmButton = (ImageButton) findViewById(R.id.confirm_button);
         cancelButton= (ImageButton) findViewById(R.id.cancel_button);
