@@ -124,6 +124,7 @@ public class NewContactActivity extends AppCompatActivity {
                 bundle.putString("last", lastNameEdit.getText().toString());
                 bundle.putString("title", titleEdit.getText().toString());
                 bundle.putString("country", countrySpinner.getSelectedItem().toString());
+                intent.putExtras(bundle);
                 // TODO GENDER
                 // TODO DO THIS PROPERLY
                 startActivity(intent);
