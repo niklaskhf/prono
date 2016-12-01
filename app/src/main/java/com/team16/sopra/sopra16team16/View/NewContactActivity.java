@@ -124,9 +124,13 @@ public class NewContactActivity extends AppCompatActivity {
                 bundle.putString("last", lastNameEdit.getText().toString());
                 bundle.putString("title", titleEdit.getText().toString());
                 bundle.putString("country", countrySpinner.getSelectedItem().toString());
+                bundle.putInt("id", id);
+                bundle.putString("gender", gender);
                 intent.putExtras(bundle);
                 // TODO GENDER
                 // TODO DO THIS PROPERLY
+                setContact();
+
                 startActivity(intent);
 
             }
@@ -240,7 +244,12 @@ public class NewContactActivity extends AppCompatActivity {
         ContactManager contactManager = ContactManager.getInstance(this);
         // TODO update gender
         // TODO create string attributes for all of this, this is ridiculous lmao
-        contactManager.createContact(firstNameText.getText().toString(), lastNameText.getText().toString(), titleText.getText().toString(), countryText.getText().toString(), Gender.MALE);
+        Log.i("firstName", firstNameEdit.getText().toString());
+        Log.i("lastName", lastNameEdit.getText().toString());
+        Log.i("title", titleEdit.getText().toString());
+
+        contactManager.createContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countrySpinner.getSelectedItem().toString(), Gender.MALE);
+        Log.i("createContact", "created contact " + firstNameEdit.getText().toString());
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

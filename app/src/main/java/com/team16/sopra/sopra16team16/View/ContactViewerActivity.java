@@ -63,7 +63,7 @@ public class ContactViewerActivity extends AppCompatActivity {
             lastName = bundle.get("last").toString();
             title = bundle.get("title").toString();
             country = bundle.get("country").toString();
-            gender = bundle.get("gender").toString();
+            //gender = bundle.get("gender").toString();
             id = Integer.parseInt(bundle.get("id").toString());
         }
         setTextViews();

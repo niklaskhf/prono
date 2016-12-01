@@ -94,10 +94,6 @@ public class HomeActivity extends AppCompatActivity {
         // apply functionality to searchItem
         searchFilterActions(searchItem);
 
-        // set searchView adapter
-        // TODO depending on dropdown searchAdapter is unnecessary
-        contactManager.getSearchAdapter().setFilterQueryProvider(filterQuery);
-        searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -140,6 +136,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
                 Log.i("listAdapter", "is now filterQuery");
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
                 fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
                 return true;
             }
@@ -147,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
                 Log.i("listAdapter", "is now default");
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(null);
                 fragment.setListAdapter(contactManager.getCursorAdapterDefault());
                 return true;
             }
@@ -166,7 +164,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //Log.i("listAdapter", "is now filterQuery");
-                // TODO discuss if this is intended, slows everything down
                 fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
                 return true;
             }
@@ -256,7 +253,7 @@ public class HomeActivity extends AppCompatActivity {
             title = bundle.getString(contactManager.COLUMN_TITLE);
             country = bundle.getString(contactManager.COLUMN_COUNTRY);
             // TODO this is not working, intent gets called on every app launch!
-            // contactManager.createContact(first, last, title, country, Gender.MALE );
+            //contactManager.createContact(first, last, title, country, Gender.MALE );
         }
         // testing add button
         FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);

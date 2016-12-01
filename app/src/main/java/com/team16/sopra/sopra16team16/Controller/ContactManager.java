@@ -16,7 +16,6 @@ public class ContactManager {
     private static ContactManager currentInstance = null;
     private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
-    private SearchCursorAdapter searchAdapter = null;
     private Context context;
     private QueryBuilder queryBuilder = null;
 
@@ -236,25 +235,8 @@ public class ContactManager {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
         }
-        if (searchAdapter != null) {
-            searchAdapter.changeCursor(selectContacts());
-        }
     }
 
-    /**
-     * Returns a SearchCursorAdapter, populates search_item
-     *
-     * @return searchAdapter populating search_item
-     */
-    public SearchCursorAdapter getSearchAdapter() {
-        if (searchAdapter == null) {
-            searchAdapter = new SearchCursorAdapter(context, selectContacts());
-            return searchAdapter;
-        } else {
-            searchAdapter.changeCursor(selectContacts());
-            return searchAdapter;
-        }
-    }
 
     /**
      * Queries the table 'contacts' for the search String.
