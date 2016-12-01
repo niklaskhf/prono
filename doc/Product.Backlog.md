@@ -249,7 +249,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Editor öffnen 
     - Informationen eingeben
     - Eintrag speichern
-    - Aufnahme speichern, siehe Implementable Story 'Temporäre Aufnahme erstellen'
  
 
 ### Implementable Story 1 *Editor öffnen*
@@ -367,6 +366,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag öffnen
     - Eintrag schließen
     
+
 ### Implementable Story 1 *Einträge in Liste anzeigen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die existierenden Einträge in einer Liste sehen*, um *sie öffnen zu können*.
@@ -564,11 +564,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
-   - [ ] Audio-Aufnahmen können nach Namen dursucht werden
-   - [ ] Audio-Aufnahmen können erstellt werden, siehe Epic 1
-   - [ ] Audio-Aufnahmen können gelöscht werden
-   - [ ] Audio-Aufnahmen können bearbeitet werden (Name/Land/... und Aufnahme selbst)
-   - [ ] Audio-Aufnahmen können gefiltert werden
+   - [ ] Kontakte können nach Namen durchsucht werden
+   - [ ] Kontakte können erstellt werden, siehe Epic 1
+   - [ ] Kontakte können gelöscht werden
+   - [ ] Kontakte können bearbeitet werden (Name/Land/... und Aufnahme selbst)
+   - [ ] Kontakte können gefiltert werden
    - [ ] Oberflächensprache kann angepasst werden
    - [ ] Favoriten können verwalten werden
    - [ ] Editier/Lösch-Aktionen können rückgängig gemacht werden
@@ -590,7 +590,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Enthaltene Implementable Stories:
-    - Eintrag öffnen, siehe Feature 'Eintrag einsehen'
     - Editiermodus starten
     - Informationen ändern
     - Eintrag speichern
@@ -629,8 +628,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 15
 - Akzeptanztests:
-
-
     - [ ] Die Eingabefelder zeigen veränderte Informationen an
     - [ ] Die geänderten Informationen befinden sich im flüchtigen Speicher 
 
@@ -962,7 +959,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Einträge nach Kriterium filtern
 
 
-### Implementable Story 2 *Einträge nach Kriterium filtern*
+### Implementable Story 1 *Einträge nach Kriterium filtern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium filtern*, um *nur gewünschte Einträge angezeigt zu bekommen*.
 
@@ -975,7 +972,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Einträge nach Land filtern
     - Einträge nach Geschlecht filtern
-    - Einträge nach Favoriten filtern, siehe Feature 'Favoriten verwalten'
 
 
 
@@ -1142,7 +1138,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 20
 - Akzeptanztests: 
     - [ ] Der ausgewählte Eintrag ist als Favorit markiert
-    - [ ] Der Favorite-Button des Eintrags ist gelb
+    - [ ] Der Favorite-Button des Eintrags ist ausgefüllt
     
 - Enthaltene Tasks:
     - Favorite-Button klicken     
