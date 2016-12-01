@@ -35,6 +35,8 @@ public class ContactViewerActivity extends AppCompatActivity {
     TextView lastView;
     TextView titleView;
     TextView countryView;
+    TextView maleIcon;
+    TextView femaleIcon;
     // TODO GENDER VIEW
     // TODO PLAY BUTTON
 
@@ -63,7 +65,7 @@ public class ContactViewerActivity extends AppCompatActivity {
             lastName = bundle.get("last").toString();
             title = bundle.get("title").toString();
             country = bundle.get("country").toString();
-            //gender = bundle.get("gender").toString();
+            gender = bundle.getString("gender");
             id = Integer.parseInt(bundle.get("id").toString());
         }
         setTextViews();
@@ -78,8 +80,10 @@ public class ContactViewerActivity extends AppCompatActivity {
                 intent.putExtra("last", lastName);
                 intent.putExtra("title", title);
                 intent.putExtra("country", country);
+                Log.i("country", country);
                 intent.putExtra("gender", gender);
                 intent.putExtra("cause", "EDIT");
+
                 startActivity(intent);
             }
         });
@@ -163,11 +167,21 @@ public class ContactViewerActivity extends AppCompatActivity {
         lastView = (TextView) findViewById(R.id.real_last_name);
         titleView = (TextView) findViewById(R.id.real_title);
         countryView = (TextView) findViewById(R.id.real_country);
+        femaleIcon = (TextView) findViewById(R.id.female_sign);
+        maleIcon = (TextView) findViewById(R.id.male_sign);
 
+        maleIcon.setVisibility(View.INVISIBLE);
+        femaleIcon.setVisibility(View.INVISIBLE);
         firstView.setText(firstName);
         lastView.setText(lastName);
         titleView.setText(title);
         countryView.setText(country);
+        // TODO SET GENDER ICON
+        if (gender.equals("MALE")) {
+            maleIcon.setVisibility(View.VISIBLE);
+        } else if (gender.equals("FEMALE")) {
+            femaleIcon.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

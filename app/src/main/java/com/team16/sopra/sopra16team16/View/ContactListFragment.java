@@ -46,9 +46,10 @@ public class ContactListFragment extends ListFragment{
         String first = firstView.getText().toString();
         String last = lastView.getText().toString();
         String title = titleView.getText().toString();
-        String country = titleView.getText().toString();
-        String gender = titleView.getText().toString();
+        String country = countryView.getText().toString();
+        String gender = genderView.getText().toString();
 
+        Log.d("gender", gender);
         intent.putExtra("first", first);
         intent.putExtra("last", last);
         intent.putExtra("title", title);
@@ -56,6 +57,7 @@ public class ContactListFragment extends ListFragment{
         intent.putExtra("gender", gender);
         intent.putExtra("id", v.getTag().toString());
         Log.i("v.getTag()", v.getTag().toString());
+        Log.i("gender", genderView.getText().toString());
 
         startActivity(intent);
     }

@@ -77,19 +77,7 @@ public class NewContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
 
-        initialize();
-
-        findViewByIdTextView();
-
-        findViewByIdEditButton();
-
-        findViewByIdImageButton();
-
-        findViewByIdRadioButton();
-
-        findViewByIdImageView();
-
-        setEditLayout();
+        //initialize();
 
         Bundle bundle = getIntent().getExtras();
 
@@ -98,14 +86,17 @@ public class NewContactActivity extends AppCompatActivity {
             lastName = (String)bundle.get("last");
             title = (String)bundle.get("title");
             country = (String)bundle.get("country");
+            Log.i("country", country);
             gender = (String)bundle.get("gender");
             id = (Integer) bundle.get("id");
             cause = bundle.get("cause").toString();
         }
         Log.d("first", firstName);
-        firstNameEdit.setText(firstName);
-        lastNameEdit.setText(lastName);
-        titleEdit.setText(title);
+
+        initialize();
+
+
+        setEditLayout();
         // TODO ANDERE FELDER FÜLLEN
 
         // add Button to change layout to contact viewer
@@ -130,6 +121,13 @@ public class NewContactActivity extends AppCompatActivity {
                 bundle.putInt("id", id);
                 bundle.putString("gender", gender);
                 intent.putExtras(bundle);
+                if (femaleRadioButton.isChecked()) {
+                    gender = "FEMALE";
+                } else if (maleRadioButton.isChecked()) {
+                    gender = "MALE";
+                } else if (unkownSexRadioButton.isChecked()) {
+
+                }
                 // TODO GENDER
                 // TODO DO THIS PROPERLY
                 if (cause.equals("CREATE")) {
@@ -162,8 +160,7 @@ public class NewContactActivity extends AppCompatActivity {
                     // TODO set to system language maybe
                     curCountry = "Germany";
                 }
-                int position = countryAdapter.getPosition(curCountry);
-                countrySpinner.setSelection(position);
+
             }
         });
 
@@ -173,7 +170,7 @@ public class NewContactActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NewContactActivity.this, HomeActivity.class));
+                //startActivity(new Intent(NewContactActivity.this, HomeActivity.class));
                 finish();
             }
         });
@@ -202,13 +199,37 @@ public class NewContactActivity extends AppCompatActivity {
         super.onBackPressed();
         Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
         //setContact(i);
-        setContact();
-        startActivity(i);
+        //setContact();
+        //startActivity(i);
         finish();
     }
 
     public void initialize() {
+        findViewByIdTextView();
+
+        findViewByIdEditButton();
+
+        findViewByIdImageButton();
+
+        findViewByIdRadioButton();
+
+        findViewByIdImageView();
+
+        firstNameEdit.setText(firstName);
+        lastNameEdit.setText(lastName);
+        titleEdit.setText(title);
+
+
         recorder = Recorder.getCurrentInstance(getApplicationContext());
+
+        Log.d("gender", gender.toString());
+        if (gender.equals("FEMALE")) {
+            femaleRadioButton.setChecked(true);
+        } else if (gender.equals("MALE")) {
+            maleRadioButton.setChecked(true);
+        } else {
+            // maybe set unkonwn to true?
+        }
 
         countrySpinner = (Spinner) findViewById(R.id.country_spinner);
         Locale[] locales = Locale.getAvailableLocales();
@@ -229,6 +250,9 @@ public class NewContactActivity extends AppCompatActivity {
 
         countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         countrySpinner.setAdapter(countryAdapter);
+
+        int spinnerPosition = countryAdapter.getPosition(country);
+        countrySpinner.setSelection(spinnerPosition);
     }
 
     // save contact info in Intent to pass it to HomeActivity which creates the new contact
@@ -251,6 +275,7 @@ public class NewContactActivity extends AppCompatActivity {
         ContactManager contactManager = ContactManager.getInstance(this);
         // TODO update gender
         // TODO create string attributes for all of this, this is ridiculous lmao
+        Log.d("genderCreate", gender);
         contactManager.createContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countrySpinner.getSelectedItem().toString(), gender);
         Log.i("createContact", "created contact " + firstNameEdit.getText().toString());
     }
@@ -327,12 +352,13 @@ public class NewContactActivity extends AppCompatActivity {
         lastNameEdit.setVisibility(View.VISIBLE);
         // TODO
         //countryEdit.setVisibility(View.VISIBLE);
-        countrySpinner.setVisibility(View.VISIBLE);
+        //countrySpinner.setVisibility(View.VISIBLE);
         titleEdit.setVisibility(View.VISIBLE);
 
 
         femaleRadioButton.setVisibility(View.VISIBLE);
         maleRadioButton.setVisibility(View.VISIBLE);
+        unkownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);
         unkownSexRadioButton.setVisibility(View.VISIBLE);
     }
 
@@ -342,7 +368,7 @@ public class NewContactActivity extends AppCompatActivity {
         lastNameEdit.setVisibility(View.INVISIBLE);
         // TODO
         //countryEdit.setVisibility(View.INVISIBLE);
-        countrySpinner.setVisibility(View.INVISIBLE);
+        //countrySpinner.setVisibility(View.INVISIBLE);
         titleEdit.setVisibility(View.INVISIBLE);
 
         femaleRadioButton.setVisibility(View.INVISIBLE);
@@ -363,14 +389,11 @@ public class NewContactActivity extends AppCompatActivity {
         editButton.setVisibility(View.VISIBLE);
 
         if (femaleRadioButton.isChecked()) {
-            femaleImage.setVisibility(View.VISIBLE);
-            gender = "FEMALE";
+            femaleRadioButton.setVisibility(View.VISIBLE);
         } else if (maleRadioButton.isChecked()) {
-            maleImage.setVisibility(View.VISIBLE);
-            gender = "MALE";
+            maleRadioButton.setVisibility(View.VISIBLE);
         } else if (unkownSexRadioButton.isChecked()) {
-            unknownSexImage.setVisibility(View.VISIBLE);
-            gender = "UNKNOWN";
+            unkownSexRadioButton.setVisibility(View.VISIBLE);
         }
     }
 
