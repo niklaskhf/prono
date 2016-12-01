@@ -1,11 +1,19 @@
 package com.team16.sopra.sopra16team16.View;
 
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
@@ -16,14 +24,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Model.DBHelper;
 import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
 
@@ -38,19 +48,25 @@ public class HomeActivity extends AppCompatActivity {
     private ListView mDrawerList;
     private static ContactManager contactManager;
     public static Context contextOfApplication;
-
-
-
-
+    private FragmentManager fragmentManager;
     private ContactListFragment fragment;
+    private FloatingActionButton addButton;
+    private FilterQueryProvider filterQuery;
+    private SearchView searchView;
 
-
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
         contextOfApplication = MyApp.getContext();
+        contactManager = ContactManager.getInstance(this);
 
         // initialize Toolbar
         initializeToolbar();
@@ -61,31 +77,98 @@ public class HomeActivity extends AppCompatActivity {
         // add the ListFragment
         initializeFragments();
 
+
     }
 
+
     @Override
-    public boolean onCreateOptionsMenu (Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // add searchItem to toolbar
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-        FilterQueryProvider test = new FilterQueryProvider() {
+        // TODO discuss if this is the right approach
+        // hide the dropdown from the searchbar
+        hideSearchDropDown(searchView);
+        // apply functionality to searchItem
+        searchFilterActions(searchItem);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     * Hides the dropDown of the searchView
+     * @param searchView
+     */
+    public void hideSearchDropDown(SearchView searchView) {
+        // id of AutoCompleteTextView
+        int searchEditTextId = R.id.search_src_text; // for AppCompat
+
+        // get AutoCompleteTextView from SearchView
+        final AutoCompleteTextView searchEditText = (AutoCompleteTextView) searchView.findViewById(searchEditTextId);
+
+        // remove dropdown
+        searchEditText.setDropDownHeight(0);
+    }
+
+
+    /**
+     * Sets the appropriate adapters.
+     * @param searchItem MenuItem related to the searchView
+     */
+    public void searchFilterActions(MenuItem searchItem) {
+        // filterQuery object that will be applied to the CursorAdapter
+        filterQuery = new FilterQueryProvider() {
             @Override
             public Cursor runQuery(CharSequence charSequence) {
-                Cursor mCursor = contactManager.getSearchAdapter().getCursor();
-                // filter cursor results
-                // iterate through cursor and compare string
-
-
+                Cursor mCursor = null;
+                if (charSequence != null) {
+                    mCursor = contactManager.getSearchResults(charSequence.toString());
+                }
                 return mCursor;
             }
         };
 
-        searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
-        return super.onCreateOptionsMenu(menu);
-    }
+        // actionlisteners for open/close
+        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
 
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                Log.i("listAdapter", "is now filterQuery");
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
+                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                Log.i("listAdapter", "is now default");
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(null);
+                fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                return true;
+            }
+        });
+
+        // actionlisteners for typing/submit
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
+                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+                // hide the keyboard
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Log.i("listAdapter", "is now filterQuery");
+                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
+                return true;
+            }
+        });
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // configure menuItems in toolbar
@@ -152,55 +235,93 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void initializeFragments() {
         // add the ListFragment
-        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager = getFragmentManager();
         fragment = new ContactListFragment();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
-        // populate the ListView
-        contactManager = ContactManager.getInstance(contextOfApplication);
+        String first, last, title, country;
+        Bundle bundle = getIntent().getExtras();
 
+        // populate the ListView
         // set cursorAdapter
         fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
 
-
+        if(bundle != null) {
+            first = bundle.getString(contactManager.COLUMN_FIRSTNAME);
+            last = bundle.getString(contactManager.COLUMN_LASTNAME);
+            title = bundle.getString(contactManager.COLUMN_TITLE);
+            country = bundle.getString(contactManager.COLUMN_COUNTRY);
+            // TODO this is not working, intent gets called on every app launch!
+            //contactManager.createContact(first, last, title, country, Gender.MALE );
+        }
         // testing add button
         FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
-
-        // this is just for testing right now
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                contactManager.createContact("first", "last", "title", "germany", Gender.MALE);
-            }
-        });
-        // TESTING TESTING TESTING
+        addNewContact(addButton);
     }
 
     /**
      * Starts an activity UNKONWN_NAME to add a new contact.
      */
-    public void addNewContact() {
-        // open new activity etc etc
-        // intent ...
-    }
+    public void addNewContact(FloatingActionButton addButton) {
+        addButton = (FloatingActionButton) findViewById(R.id.addNew);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                verifyStoragePermissions(HomeActivity.this);
+                int id = contactManager.getId();
+                id++;
+                Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("first", "");
+                bundle.putString("last", "");
+                bundle.putString("title", "");
+                bundle.putString("country", "");
+                bundle.putString("gender", "");
+                bundle.putInt("id", id);
+                bundle.putString("cause", "CREATE");
 
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+    }
 
     @Override
     public void onResume() {
         super.onResume();
         contactManager.updateCursorAdapter();
+        //contactManager.open();
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
+        super.onDestroy();
+
+        // according to google theres nothing wrong with keeping the connection open
+        // and letting the kernel handle the cleanup after exiting
+        // http://stackoverflow.com/questions/6608498/best-place-to-close-database-connection
+        //contactManager.close();
     }
+
     /**
-     * Returns the application Context object
-     * @return Context object of the application
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
      */
-    public static Context getContextOfApplication() {
-        return contextOfApplication;
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
     }
 }

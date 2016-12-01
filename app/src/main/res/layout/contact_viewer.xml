@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    >
 
-    <Button
-        android:layout_width="78dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/back_button"
-        android:background="@drawable/arrow_back_icon"/>
+    <!--<Button-->
+        <!--android:layout_width="78dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/back_button"-->
+        <!--android:background="@drawable/arrow_back_icon"/>-->
 
 
     <TextView
@@ -14,8 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/first_text"
-        android:textSize="18sp"
-        android:layout_below="@+id/back_button"/>
+        android:textSize="18sp"/>
 
 
     <TextView
@@ -23,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/real_first_name"
-        android:layout_below="@+id/first_text"
         android:textSize="30sp"/>
 
     <TextView
@@ -31,15 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/last_text"
-        android:textSize="18dp"
-        android:layout_below="@+id/real_first_name"/>
+        android:textSize="18dp"/>
 
     <TextView
         android:text="blablabla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/real_last_name"
-        android:layout_below="@+id/last_text"
         android:textSize="30sp"/>
 
     <TextView
@@ -47,15 +46,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_text"
-        android:textSize="18dp"
-        android:layout_below="@id/real_last_name"/>
+        android:textSize="18dp"/>
 
     <TextView
         android:text="blablabla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/real_title"
-        android:layout_below="@+id/title_text"
         android:textSize="30sp"/>
 
     <TextView
@@ -63,15 +60,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/country_text"
-        android:textSize="18dp"
-        android:layout_below="@id/real_title"/>
+        android:textSize="18dp"/>
 
     <TextView
         android:text="blablabla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/real_country"
-        android:layout_below="@+id/country_text"
         android:textSize="30sp"/>
 
     <TextView
@@ -79,47 +74,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gender_text"
-        android:textSize="18dp"
-        android:layout_below="@id/real_country"/>
+        android:textSize="18dp"/>
 
-    <TextView
-        android:text="blablabla"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/real_gender"
-        android:layout_below="@+id/gender_text"
-        android:textSize="30sp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_button"
-        android:layout_weight="0.06"
-        android:layout_gravity="right"
-        android:layout_marginBottom="18dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/edit_icon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/female_sign"
+            android:background="@drawable/pregnant_woman"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/play_button"
-        android:layout_weight="0.06"
-        android:layout_gravity="center"
-        android:background="@drawable/play_icon"
-        android:layout_alignBaseline="@+id/edit_button"
-        android:layout_alignBottom="@+id/edit_button"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/male_sign"
+            android:background="@drawable/running_man"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/delete_button"
-        android:layout_weight="0.06"
-        android:background="@drawable/delete_icon"
-        android:layout_alignTop="@+id/play_button"
-        android:layout_alignEnd="@+id/real_gender"
-        android:layout_marginEnd="13dp" />
-</RelativeLayout>
+    </FrameLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/delete_button"
+            android:background="@drawable/delete_icon"
+            android:layout_gravity="bottom|left"/>
+
+        <ImageButton
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/play_button"
+            android:background="@drawable/play_icon"
+            android:layout_gravity="bottom|center"/>
+
+        <Button
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_button"
+            android:background="@drawable/edit_icon"
+            android:layout_gravity="bottom"/>
+
+    </GridLayout>
+</LinearLayout>

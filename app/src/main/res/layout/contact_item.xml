@@ -3,18 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:descendantFocusability="blocksDescendants">
 
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -22,6 +25,8 @@
                 android:layout_marginLeft="8dp"
                 android:textSize="20sp"
                 android:text="First"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 />
 
             <TextView
@@ -30,34 +35,43 @@
                 android:id="@+id/list_lastname"
                 android:layout_marginLeft="4dp"
                 android:textSize="20sp"
-                android:text="Last"/>
+                android:text="Last"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/list_title"
                 android:layout_marginLeft="8dp"
-                android:text="Title"/>
+                android:text="Title"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/list_country"
                 android:layout_marginLeft="8dp"
-                android:text="Country"/>
+                android:text="Country"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/list_gender"
                 android:layout_marginLeft="8dp"
-                android:text="Gender"/>
+                android:text="Gender"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
 
 
@@ -73,26 +87,34 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:orientation="horizontal"
+        android:descendantFocusability="blocksDescendants"
         >
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="delete"
-            android:id="@+id/contact_delete"/>
+            android:id="@+id/contact_delete"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
         <ImageButton
             android:id="@+id/contact_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="@drawable/play_icon"/>
+            android:background="@drawable/play_icon"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
 
         <ImageButton
             android:id="@+id/contact_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="@drawable/favorite_unmarked_icon"/>
+            android:background="@drawable/favorite_unmarked_icon"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
     </LinearLayout>
 </LinearLayout>

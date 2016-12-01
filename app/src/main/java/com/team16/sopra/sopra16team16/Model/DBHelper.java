@@ -25,8 +25,9 @@ public class DBHelper extends SQLiteOpenHelper {
                     ContactManager.COLUMN_TITLE + TEXT_TYPE + COMMA_SEP +
                     ContactManager.COLUMN_COUNTRY + TEXT_TYPE + COMMA_SEP +
                     ContactManager.COLUMN_GENDER + TEXT_TYPE + COMMA_SEP +
+                    // TODO CHANGE FLAGS TO INTEGER
                     ContactManager.COLUMN_FAVORITE + " INTEGER" + COMMA_SEP +
-                    ContactManager.COLUMN_DELETED + " INTEGER" + " )";
+                    ContactManager.COLUMN_DELETED + TEXT_TYPE + " )";
 
     public static DBHelper getCurrentInstance(Context context) {
         if (currentInstance == null) {
@@ -39,16 +40,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        //context.deleteDatabase(DATABASE_NAME);
     }
 
     // Method is called during creation of the database
     @Override
-    public void onCreate(SQLiteDatabase database) {
-        Log.i("db creation", SQL_CREATE_ENTRIES);
-
-        database.execSQL(SQL_CREATE_ENTRIES);
-    }
+    public void onCreate(SQLiteDatabase database) { database.execSQL(SQL_CREATE_ENTRIES); }
 
     // Method is called during an upgrade of the database,
     @Override

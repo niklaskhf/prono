@@ -1,148 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/confirm_edit_button"
-        android:layout_weight="0.06"
-        android:layout_gravity="right"
-        android:layout_marginBottom="18dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/accept_icon"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/record_button"
-        android:layout_weight="0.06"
-        android:layout_gravity="center"
-        android:layout_alignBaseline="@+id/confirm_edit_button"
-        android:layout_alignBottom="@+id/confirm_edit_button"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/mic_icon"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancel_edit_button"
-        android:layout_weight="0.06"
-        android:layout_marginStart="22dp"
-        android:layout_alignBaseline="@+id/record_button"
-        android:layout_alignBottom="@+id/record_button"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/cancel_icon"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/audio_seekBar"
-        android:layout_above="@+id/confirm_edit_button"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="36dp" />
-
-    <TextView
-        android:text="Gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/gender_text"
-        android:textSize="18dp"
-        android:layout_above="@+id/gender_edit"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/country_edit"
-        android:layout_above="@+id/gender_text"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Country"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/country_text"
-        android:textSize="18dp"
-        android:layout_above="@+id/country_edit"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/titel_edit"
-        android:layout_above="@+id/country_text"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_text"
-        android:textSize="18dp"
-        android:layout_above="@+id/titel_edit"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/last_edit"
-        android:layout_above="@+id/title_text"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="Last Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/last_text"
-        android:textSize="18dp"
-        android:layout_above="@+id/last_edit"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/gender_edit"
-        android:layout_marginBottom="17dp"
-        android:layout_above="@+id/audio_seekBar"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/first_edit"
-        android:layout_above="@+id/last_text"
-        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="First Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/first_text"
-        android:textSize="18sp"
-        android:layout_above="@+id/first_edit"
-        android:layout_alignParentStart="true" />
+        android:textSize="18sp"/>
 
-    <Button
-        android:layout_width="78dp"
+    <RelativeLayout
+        android:id="@+id/first_name_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/first_edit"/>
+
+        <TextView
+            android:text="blablabla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/real_first_name"
+            android:textSize="30sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:text="Last Name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/back_button"
-        android:background="@drawable/arrow_back_icon"
-        android:layout_above="@+id/first_text"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/last_text"
+        android:textSize="18dp"/>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/last_name_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/last_edit"/>
+
+        <TextView
+            android:text="blablabla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/real_last_name"
+            android:textSize="30sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:text="Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_text"
+        android:textSize="18dp"/>
+
+    <RelativeLayout
+        android:id="@+id/title_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/title_edit"/>
+
+        <TextView
+            android:text="blablabla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/real_title"
+            android:textSize="30sp"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:text="Country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/country_text"
+        android:textSize="18dp"/>
+
+    <RelativeLayout
+        android:id="@+id/country_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/country_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></Spinner>
+
+        <TextView
+            android:text="blablabla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/real_country"
+            android:textSize="30sp"/>
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:text="Gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gender_text"
+        android:textSize="18dp"/>
+
+    <RelativeLayout
+        android:id="@+id/gender_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/female_sign"
+            android:background="@drawable/pregnant_woman"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/male_sign"
+            android:background="@drawable/running_man"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/unkown_sex_sign"
+            android:background="@android:drawable/sym_def_app_icon"
+            android:layout_alignBottom="@+id/female_sign"
+            android:layout_alignEnd="@+id/female_sign" />
+
+        <RadioButton
+            android:id="@+id/female_radioButton"
+            android:text="female"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <RadioButton
+            android:layout_toEndOf="@+id/female_radioButton"
+            android:text="male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/male_radioButton"
+            android:layout_alignParentTop="true" />
+
+        <RadioButton
+            android:id="@+id/unkown_radioButton"
+            android:text="unkown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/male_radioButton"
+            android:layout_marginStart="17dp"/>
+
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/cancel_delete_relative_layout"
+            android:layout_gravity="bottom|left">
+
+            <ImageButton
+                android:id="@+id/cancel_button"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cancel_icon"/>
+
+            <ImageButton
+                android:id="@+id/delete_button"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/delete_icon"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/record_play_relative_layout"
+            android:layout_gravity="center|bottom">
+
+            <ImageButton
+                android:id="@+id/record_button"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mic_icon"/>
+
+            <ImageButton
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/play_button"
+                android:background="@drawable/play_icon"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/confirm_edit_relative_layout"
+            android:layout_gravity="bottom">
+
+            <ImageButton
+                android:id="@+id/confirm_button"
+                android:layout_height="wrap_content"
+                android:layout_width="54dp"
+                android:background="@drawable/accept_icon"/>
+            <ImageButton
+                android:id="@+id/edit_button"
+                android:layout_width="54dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_icon"/>
+
+        </RelativeLayout>
+
+    </GridLayout>
+
+
+</LinearLayout>
+
+
