@@ -112,6 +112,13 @@ public class NewContactActivity extends AppCompatActivity {
                 countryText.setText(countrySpinner.getSelectedItem().toString());
                 titleText.setText(titleEdit.getText().toString());*/
 
+                if (femaleRadioButton.isChecked()) {
+                    gender = "FEMALE";
+                } else if (maleRadioButton.isChecked()) {
+                    gender = "MALE";
+                } else if (unkownSexRadioButton.isChecked()) {
+
+                }
                 Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("first", firstNameEdit.getText().toString());
@@ -121,13 +128,6 @@ public class NewContactActivity extends AppCompatActivity {
                 bundle.putInt("id", id);
                 bundle.putString("gender", gender);
                 intent.putExtras(bundle);
-                if (femaleRadioButton.isChecked()) {
-                    gender = "FEMALE";
-                } else if (maleRadioButton.isChecked()) {
-                    gender = "MALE";
-                } else if (unkownSexRadioButton.isChecked()) {
-
-                }
                 // TODO GENDER
                 // TODO DO THIS PROPERLY
                 if (cause.equals("CREATE")) {
