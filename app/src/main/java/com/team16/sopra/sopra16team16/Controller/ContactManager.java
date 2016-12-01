@@ -84,7 +84,7 @@ public class ContactManager {
      * @param gender  gender - Gender
      * @return
      */
-    public long createContact(String first, String last, String title, String country, Gender gender) {
+    public long createContact(String first, String last, String title, String country, String gender) {
         long res = 0;
         database.beginTransaction();
         try{
@@ -94,7 +94,7 @@ public class ContactManager {
             values.put(COLUMN_LASTNAME, last);
             values.put(COLUMN_TITLE, title);
             values.put(COLUMN_COUNTRY, country);
-            values.put(COLUMN_GENDER, gender.toString());
+            values.put(COLUMN_GENDER, gender);
             values.put(COLUMN_FAVORITE, false);
             values.put(COLUMN_DELETED, false);
             res = database.insert(TABLE_NAME, null, values);
@@ -131,11 +131,8 @@ public class ContactManager {
      * @param title   title - String
      * @param country country - String
      * @param gender  gender - Gender
-     * @param fav     favorite - boolean
-     * @param del     delete - boolean
-     * @param id      used to find the correct row
      */
-    public long updateContact(String first, String last, String title, String country, Gender gender, boolean fav, boolean del, int id) {
+    public long updateContact(String first, String last, String title, String country, String gender) {
         long res = 0;
         database.beginTransaction();
         try {
@@ -145,12 +142,11 @@ public class ContactManager {
             values.put(COLUMN_LASTNAME, last);
             values.put(COLUMN_TITLE, title);
             values.put(COLUMN_COUNTRY, country);
-            values.put(COLUMN_GENDER, gender.toString());
-            values.put(COLUMN_FAVORITE, fav);
-            values.put(COLUMN_DELETED, del);
+            values.put(COLUMN_GENDER, gender);
 
             // which row to update?
-            res = database.replace(TABLE_NAME, null, values);
+            //res = database.replace(TABLE_NAME, null, values);
+            res = database.update(TABLE_NAME, values, strFilter, null);
             // TODO maybe use update, no real need to change fav/del
             //database.update(TABLE_NAME, values, strFilter, null);
             database.setTransactionSuccessful();

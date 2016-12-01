@@ -279,6 +279,7 @@ public class HomeActivity extends AppCompatActivity {
                 bundle.putString("country", "");
                 bundle.putString("gender", "");
                 bundle.putInt("id", id);
+                bundle.putString("cause", "CREATE");
 
                 intent.putExtras(bundle);
                 startActivity(intent);

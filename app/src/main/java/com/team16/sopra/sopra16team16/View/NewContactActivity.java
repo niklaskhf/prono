@@ -70,6 +70,8 @@ public class NewContactActivity extends AppCompatActivity {
     private String gender = "";
     private int id;
 
+    private String cause;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +100,7 @@ public class NewContactActivity extends AppCompatActivity {
             country = (String)bundle.get("country");
             gender = (String)bundle.get("gender");
             id = (Integer) bundle.get("id");
+            cause = bundle.get("cause").toString();
         }
         Log.d("first", firstName);
         firstNameEdit.setText(firstName);
@@ -129,7 +132,11 @@ public class NewContactActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
                 // TODO GENDER
                 // TODO DO THIS PROPERLY
-                setContact();
+                if (cause.equals("CREATE")) {
+                    setContact();
+                } else {
+                    updateContact();
+                };
 
                 startActivity(intent);
 
@@ -244,12 +251,16 @@ public class NewContactActivity extends AppCompatActivity {
         ContactManager contactManager = ContactManager.getInstance(this);
         // TODO update gender
         // TODO create string attributes for all of this, this is ridiculous lmao
-        Log.i("firstName", firstNameEdit.getText().toString());
-        Log.i("lastName", lastNameEdit.getText().toString());
-        Log.i("title", titleEdit.getText().toString());
-
-        contactManager.createContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countrySpinner.getSelectedItem().toString(), Gender.MALE);
+        contactManager.createContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countrySpinner.getSelectedItem().toString(), gender);
         Log.i("createContact", "created contact " + firstNameEdit.getText().toString());
+    }
+
+    public void updateContact() {
+        ContactManager contactManager = ContactManager.getInstance(this);
+
+
+        contactManager.updateContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countrySpinner.getSelectedItem().toString(), gender);
+
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -353,10 +364,13 @@ public class NewContactActivity extends AppCompatActivity {
 
         if (femaleRadioButton.isChecked()) {
             femaleImage.setVisibility(View.VISIBLE);
+            gender = "FEMALE";
         } else if (maleRadioButton.isChecked()) {
             maleImage.setVisibility(View.VISIBLE);
+            gender = "MALE";
         } else if (unkownSexRadioButton.isChecked()) {
             unknownSexImage.setVisibility(View.VISIBLE);
+            gender = "UNKNOWN";
         }
     }
 
