@@ -51,14 +51,14 @@ public class ContactManager {
     }
 
 
-    public long createContact(String first, String last, String title, String country, Gender gender){
+    public long createContact(String first, String last, String title, String country, String gender){
         ContentValues values = new ContentValues();
         // id auto increments
         values.put(COLUMN_FIRSTNAME, first);
         values.put(COLUMN_LASTNAME, last);
         values.put(COLUMN_TITLE, title);
         values.put(COLUMN_COUNTRY, country);
-        values.put(COLUMN_GENDER, gender.toString());
+        values.put(COLUMN_GENDER, gender);
         values.put(COLUMN_FAVORITE, false);
         values.put(COLUMN_DELETED, false);
         Long res =  database.insert(TABLE_NAME, null, values);
@@ -77,14 +77,14 @@ public class ContactManager {
         return mCursor; // iterate to get each value.
     }
 
-    public void updateContact(String first, String last, String title, String country, Gender gender, boolean fav, boolean del, int id) {
+    public void updateContact(String first, String last, String title, String country, String gender, boolean fav, boolean del, int id) {
         String strFilter = "_id=" + id;
         ContentValues values = new ContentValues();
         values.put(COLUMN_FIRSTNAME, first);
         values.put(COLUMN_LASTNAME, last);
         values.put(COLUMN_TITLE, title);
         values.put(COLUMN_COUNTRY, country);
-        values.put(COLUMN_GENDER, gender.toString());
+        values.put(COLUMN_GENDER, gender);
         values.put(COLUMN_FAVORITE, fav);
         values.put(COLUMN_DELETED, del);
 

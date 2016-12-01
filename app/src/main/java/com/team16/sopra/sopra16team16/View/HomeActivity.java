@@ -21,7 +21,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
@@ -152,11 +156,12 @@ public class HomeActivity extends AppCompatActivity {
         fragment = new ContactListFragment();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
-        String first, last, title, country;
+        String first, last, title, country, gender;
         Bundle bundle = getIntent().getExtras();
 
         // populate the ListView
         contactManager = ContactManager.getInstance(contextOfApplication);
+
 
         // set cursorAdapter
         fragment.setListAdapter(contactManager.getCursorAdapterDefault());
@@ -167,12 +172,14 @@ public class HomeActivity extends AppCompatActivity {
             last = bundle.getString(contactManager.COLUMN_LASTNAME);
             title = bundle.getString(contactManager.COLUMN_TITLE);
             country = bundle.getString(contactManager.COLUMN_COUNTRY);
+            gender = bundle.getString(contactManager.COLUMN_GENDER);
 
-            contactManager.createContact(first, last, title, country, Gender.MALE );
+
+            contactManager.createContact(first, last, title, country, gender);
         }
 
-        // testing add button
-        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
+        //adding new contact button
+        final FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
         addNewContact(addButton);
 
     }
@@ -201,4 +208,5 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
+
 }

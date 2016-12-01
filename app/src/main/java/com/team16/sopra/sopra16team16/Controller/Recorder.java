@@ -27,7 +27,7 @@ public class Recorder {
     /*
      * Startet die Aufnahme des Namens
      */
-    private void startRecording() {
+    public void startRecording() {
 
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_RECOGNITION); //AudioSource.MIC
@@ -46,7 +46,7 @@ public class Recorder {
     /*
      * Stoppt die Aufnahme des Namens
      */
-    private void stopRecording() {
+    public void stopRecording() {
         recorder.stop();
         recorder.release();
         recorder = null;

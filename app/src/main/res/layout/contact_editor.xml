@@ -134,45 +134,33 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/female_sign"
-            android:background="@drawable/pregnant_woman"/>
+            android:id="@+id/gender_sign"/>
 
-        <ImageView
+        <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/male_sign"
-            android:background="@drawable/running_man"/>
+            android:layout_alignParentStart="true">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/unkown_sex_sign"
-            android:background="@android:drawable/sym_def_app_icon"
-            android:layout_alignBottom="@+id/female_sign"
-            android:layout_alignEnd="@+id/female_sign" />
+            <RadioButton
+                android:id="@+id/female_radioButton"
+                android:text="female"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
 
-        <RadioButton
-            android:id="@+id/female_radioButton"
-            android:text="female"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            <RadioButton
+                android:layout_toEndOf="@+id/female_radioButton"
+                android:text="male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/male_radioButton"/>
 
-        <RadioButton
-            android:layout_toEndOf="@+id/female_radioButton"
-            android:text="male"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/male_radioButton"
-            android:layout_alignParentTop="true" />
+            <RadioButton
+                android:id="@+id/unkown_radioButton"
+                android:text="unkown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        <RadioButton
-            android:id="@+id/unkown_radioButton"
-            android:text="unkown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/male_radioButton"
-            android:layout_marginStart="17dp"/>
+        </RadioGroup>
 
     </RelativeLayout>
 

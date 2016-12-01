@@ -2,8 +2,10 @@ package com.team16.sopra.sopra16team16.Controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,13 +14,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.support.v4.widget.CursorAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.ContactViewerActivity;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
-
+import com.team16.sopra.sopra16team16.View.ContactViewerActivity;
 
 public class ContactCursorAdapter extends CursorAdapter {
     private Context context;
@@ -48,11 +53,11 @@ public class ContactCursorAdapter extends CursorAdapter {
         TextView tt3 = (TextView) view.findViewById(R.id.list_title);
         TextView tt4 = (TextView) view.findViewById(R.id.list_country);
         TextView tt5 = (TextView) view.findViewById(R.id.list_gender);
+        ImageView genderSign = (ImageView) view.findViewById(R.id.contact_gender);
 
         ImageButton playButton = (ImageButton) view.findViewById(R.id.contact_play);
         final ImageButton favButton = (ImageButton) view.findViewById(R.id.contact_fav);
         Button deleteButton = (Button) view.findViewById(R.id.contact_delete);
-
 
         // assign values to textviews
         if (Boolean.getBoolean(cursor.getString(cursor.getColumnIndexOrThrow("deleted")))) {
@@ -74,9 +79,19 @@ public class ContactCursorAdapter extends CursorAdapter {
             tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
         }
 
-        if (tt5 != null) {
+        if (genderSign != null) {
             // TODO this is supposed to be an icon anyways?
             tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
+            switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
+                case "MALE":
+                    genderSign.setImageResource(R.drawable.running_man);
+                    break;
+                case "FEMALE":
+                    genderSign.setImageResource(R.drawable.pregnant_woman);
+                    break;
+                case "UNKNOWN":
+                    genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+            }
         }
 
 
@@ -132,5 +147,8 @@ public class ContactCursorAdapter extends CursorAdapter {
                 contactManager.deleteContact(id);
             }
         });
+
+
     }
+
 }
