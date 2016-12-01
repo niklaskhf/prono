@@ -43,6 +43,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Temporäre Aufnahme erstellen
     - Temporäre Aufnahme speichern
     - Temporäre Aufnahme verwerfen
+    - Temporäre Aufnahme akzeptieren
     - Temporäre Aufnahme abspielen
 
 
@@ -214,7 +215,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Play-Button klicken*, um *überprüfen zu können, ob die Aufnahme den Erwartungen entspricht*.
 
 
-- Aufwandsschätzung:  Stunden 
+- Aufwandsschätzung: 2 Stunden 
 - Tatsächliche Zeit:
 
 
@@ -250,6 +251,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag speichern
     - Aufnahme speichern, siehe Implementable Story 'Temporäre Aufnahme erstellen'
  
+
 ### Implementable Story 1 *Editor öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *den Editor öffnen*, um *einen neuen Eintrag zu erstellen*.
