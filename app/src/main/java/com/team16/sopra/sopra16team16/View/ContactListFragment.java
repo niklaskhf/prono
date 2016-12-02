@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.R;
@@ -27,19 +29,39 @@ public class ContactListFragment extends ListFragment{
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
+    public void onActivityCreated(Bundle savedState) {
+        super.onActivityCreated(savedState);
+    }
+
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        startActivity(new Intent(getActivity(), ContactViewerActivity.class));
-    }
+        Intent intent = new Intent(getActivity(), ContactViewerActivity.class);
+        TextView firstView = (TextView) v.findViewById(R.id.list_firstname);
+        TextView lastView = (TextView) v.findViewById(R.id.list_lastname);
+        TextView titleView = (TextView) v.findViewById(R.id.list_title);
+        TextView countryView = (TextView) v.findViewById(R.id.list_country);
+        TextView genderView = (TextView) v.findViewById(R.id.list_gender);
 
-    public void onActivityCreated(Bundle savedState) {
-        super.onActivityCreated(savedState);
-       // registerForContextMenu(getListView());
-    }
+        String first = firstView.getText().toString();
+        String last = lastView.getText().toString();
+        String title = titleView.getText().toString();
+        String country = countryView.getText().toString();
+        String gender = genderView.getText().toString();
 
-        //setze view noch als clickable
- }
+        Log.d("gender", gender);
+        intent.putExtra("first", first);
+        intent.putExtra("last", last);
+        intent.putExtra("title", title);
+        intent.putExtra("country", country);
+        intent.putExtra("gender", gender);
+        intent.putExtra("id", v.getTag().toString());
+        Log.i("v.getTag()", v.getTag().toString());
+        Log.i("gender", genderView.getText().toString());
+
+        startActivity(intent);
+    }
+}
 
 
 

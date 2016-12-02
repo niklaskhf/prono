@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/expand_less_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/expand_less_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/mic_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/mic_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/favorite_unmarked_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/favorite_unmarked_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/arrow_back_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/arrow_back_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/expand_more_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/expand_more_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/play_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/play_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/add_new_contact_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/add_new_contact_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/accept_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/accept_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/pregnant_woman.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/pregnant_woman.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/cancel_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/cancel_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/delete_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/delete_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/favorite_marked_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/favorite_marked_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/running_man.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/running_man.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/menu_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/menu_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/edit_icon.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/edit_icon.png"
+    }
+]
