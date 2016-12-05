@@ -43,7 +43,7 @@ public class ContactManager {
      */
     public static ContactManager getInstance(Context context) {
         if (currentInstance == null) {
-            currentInstance = new ContactManager(context.getApplicationContext());
+            currentInstance = new ContactManager(context);
             return currentInstance;
         } else {
             return currentInstance;
@@ -54,7 +54,7 @@ public class ContactManager {
      * @param context Context object
      */
     private ContactManager(Context context) {
-        dbManager = new DBManager(context.getApplicationContext());
+        dbManager = new DBManager(context);
         open();
         this.queryBuilder = new QueryBuilder(cols);
         this.context = context;
@@ -132,7 +132,7 @@ public class ContactManager {
      * @param country country - String
      * @param gender  gender - Gender
      */
-    public long updateContact(String first, String last, String title, String country, String gender) {
+    public long updateContact(int id, String first, String last, String title, String country, String gender) {
         long res = 0;
         database.beginTransaction();
         try {

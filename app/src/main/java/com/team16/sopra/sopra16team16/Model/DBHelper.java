@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static DBHelper getCurrentInstance(Context context) {
         if (currentInstance == null) {
-            currentInstance = new DBHelper(context.getApplicationContext());
+            currentInstance = new DBHelper(context);
             return currentInstance;
         } else {
             return currentInstance;

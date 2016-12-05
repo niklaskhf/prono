@@ -202,7 +202,7 @@ public class NewContactActivity extends AppCompatActivity {
 
 
     public void setContact() {
-        ContactManager contactManager = ContactManager.getInstance(this);
+        ContactManager contactManager = ContactManager.getInstance(this.getApplicationContext());
         // TODO update gender
         // TODO create string attributes for all of this, this is ridiculous lmao
         Log.d("genderCreate", gender);
@@ -211,8 +211,8 @@ public class NewContactActivity extends AppCompatActivity {
     }
 
     public void updateContact() {
-        ContactManager contactManager = ContactManager.getInstance(this);
-        contactManager.updateContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);
+        ContactManager contactManager = ContactManager.getInstance(this.getApplicationContext());
+        contactManager.updateContact(id, firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);
 
     }
 

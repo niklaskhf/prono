@@ -55,7 +55,7 @@ public class ContactViewerActivity extends AppCompatActivity {
         player = Player.getCurrentInstance(getApplicationContext());
 
         this.setContentView(R.layout.contact_viewer);
-        contactManager = ContactManager.getInstance(this);
+        contactManager = ContactManager.getInstance(this.getApplicationContext());
 
         // TODO FIX INTENT
         Bundle bundle = getIntent().getExtras();

@@ -11,6 +11,7 @@ import com.team16.sopra.sopra16team16.Model.Gender;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class ContactManagerTest {
-/*
+
     private ContactManager contactManager;
     private ContactManager contactManager2;
 
@@ -33,13 +34,26 @@ public class ContactManagerTest {
 
 
     @Test
+    public void getIdTest() {
+        int id = contactManager.getId();
+
+        assertTrue("getId failed", id >= 0);
+    }
+
+    @Test
+    public void updateCursorAdapterTest() {
+        ContactCursorAdapter testCursor = contactManager.getCursorAdapterDefault();
+        assertNotNull(testCursor);
+    }
+
+    @Test
     public void createContactTest() {
         Long res = contactManager.createContact(
                 "first",
                 "last",
                 "dr",
                 "germany",
-                Gender.MALE);
+                "MALE");
 
         int resInt = res.intValue();
         Log.d("addedRes", Integer.toString(resInt));
@@ -48,22 +62,32 @@ public class ContactManagerTest {
     }
 
     @Test
-    public void deleteContactTest() {
+    public void updateContactTest() {
         Cursor cursor = contactManager.selectContacts();
-        cursor.move(cursor.getCount()-1);
+        cursor.moveToFirst();
+        int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
 
-        assertTrue("didnt delete one contact", 1 ==
-                contactManager.deleteContact(cursor.getInt(cursor.getColumnIndexOrThrow("_id"))));
+        Long res = contactManager.updateContact(id, "last", "first", "dr", "germany", "FEMALE");
+
+        assertTrue("didnt update contact", res == 1);
+    }
+    @Test
+    public void selectContactsTest() {
+        Cursor cursor = contactManager.selectContacts();
+        assertTrue("selectContacts failed", cursor.getCount() == 1);
     }
 
     @Test
     public void favoriteToggle() {
         Cursor cursor = contactManager.selectContacts();
-        cursor.move(cursor.getCount()-1);
+        Log.d("favoriteCursorSize", Integer.toString(cursor.getCount()));
+
+
+        cursor.moveToFirst();
         int favBefore = cursor.getInt(cursor.getColumnIndexOrThrow("favorite"));
         int res = contactManager.toggleFavorite(cursor.getInt(cursor.getColumnIndexOrThrow("_id")), favBefore);
         cursor = contactManager.selectContacts();
-        cursor.move(cursor.getCount()-1);
+        cursor.moveToFirst();
         int favAfter = cursor.getInt(cursor.getColumnIndexOrThrow("favorite"));
 
         Log.d("favBefore", Integer.toString(favBefore));
@@ -72,6 +96,19 @@ public class ContactManagerTest {
         Log.d("resToggle", Integer.toString(res));
         assertTrue("didnt toggle favorite", favAfter == (favBefore + 1) % 2);
     }
+
+    @Test
+    public void deleteContactTest() {
+        Cursor cursor = contactManager.selectContacts();
+        Log.d("deleteCursorSize", Integer.toString(cursor.getCount()));
+
+        cursor.moveToFirst();
+
+        Log.d("deleteCursorId", Integer.toString(cursor.getInt(cursor.getColumnIndexOrThrow("_id"))));
+        assertTrue("didnt delete one contact", 1 ==
+                contactManager.deleteContact(cursor.getInt(cursor.getColumnIndexOrThrow("_id"))));
+    }
+
 
     @Test
     public void contactCursorSingletonTest() {
@@ -148,5 +185,5 @@ public class ContactManagerTest {
         assertTrue("wrong search result with n oword", resNo);
         assertTrue("wrong search result with a single word", resOne);
         assertTrue("wrong search result with multiple words", resMultiple);
-    }*/
+    }
 }

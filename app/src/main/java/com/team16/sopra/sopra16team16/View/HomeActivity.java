@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
         contextOfApplication = MyApp.getContext();
-        contactManager = ContactManager.getInstance(this);
+        contactManager = ContactManager.getInstance(this.getApplicationContext());
 
         // initialize Toolbar
         initializeToolbar();
