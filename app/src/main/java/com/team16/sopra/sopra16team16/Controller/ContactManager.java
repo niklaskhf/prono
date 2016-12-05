@@ -5,9 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.CursorAdapter;
+
 import com.team16.sopra.sopra16team16.Model.DBManager;
-import com.team16.sopra.sopra16team16.Model.Gender;
 
 /**
  * Contains methods for manipulating or receiving contact related data.
@@ -309,4 +308,8 @@ public class ContactManager {
         database = dbManager.getDbContacts();
     }
 
+
+    public void wipe() {
+        database.delete(TABLE_NAME, null, null);
+    }
 }
