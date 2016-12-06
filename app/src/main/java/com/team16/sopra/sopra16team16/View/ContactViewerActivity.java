@@ -191,8 +191,8 @@ public class ContactViewerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(ContactViewerActivity.this, HomeActivity.class);
-        startActivity(i);
+        //Intent i = new Intent(ContactViewerActivity.this, HomeActivity.class);
+        //startActivity(i);
         finish();
     }
 
