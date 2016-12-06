@@ -14,6 +14,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -62,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
-        contextOfApplication = MyApp.getContext();
+        contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
         // initialize Toolbar
@@ -164,22 +165,6 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // configure menuItems in toolbar
-        // only search right now
-        // possibly also filter/sort?
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                // open search
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     /**
@@ -292,11 +277,24 @@ public class HomeActivity extends AppCompatActivity {
         //contactManager.close();
     }
 
+    @Override
+    public void onBackPressed() {
+        // either close the open drawer
+        // or close the app
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else {
+            finish();
+        }
+    }
+
+
     /**
      * Checks if the app has permission to write to device storage
      *
      * If the app does not has permission then the user will be prompted to grant permissions
      *
+     * Currently unused, might be used later on!
      * @param activity
      */
     public static void verifyStoragePermissions(Activity activity) {

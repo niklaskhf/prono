@@ -6,11 +6,21 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 public class DBManager {
-    SQLiteDatabase dbContacts;
-    DBHelper dbHelper;
+    private static DBManager currentInstance;
+    private SQLiteDatabase dbContacts;
+    private DBHelper dbHelper;
+    private Context context;
 
-    public DBManager(Context context) {
-        //context.deleteDatabase("DBcontact");
+
+    public static DBManager getCurrentInstance(Context context) {
+        if (currentInstance == null) {
+            currentInstance = new DBManager(context.getApplicationContext());
+            return currentInstance;
+        } else {
+            return currentInstance;
+        }
+    }
+    private DBManager(Context context) {
         dbHelper = DBHelper.getCurrentInstance(context);
     }
 
@@ -18,7 +28,13 @@ public class DBManager {
         return dbContacts=dbHelper.getWritableDatabase();
     }
 
+    /* dont actually need this, android handles closing
     public void close() {
-        dbContacts.close();
+        dbHelper.close();
     }
+
+    public void reopen() {
+        dbHelper = DBHelper.getCurrentInstance(context);
+        dbContacts = dbHelper.getWritableDatabase();
+    }*/
 }

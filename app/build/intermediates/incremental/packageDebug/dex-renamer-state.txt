@@ -1,4 +1,7 @@
-#Mon Dec 05 14:46:32 CET 2016
-base.0=/home/moo/repos/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
-renamed.0=classes.dex
-file.0=/home/moo/repos/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+#Tue Dec 06 14:36:18 CET 2016
+base.0=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_b8a8e1400acee49d8904e130e65d599a7ec2707b
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_0d1703e7342563bf765a085a70c6769755c92a94\\classes.dex
+base.1=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_0d1703e7342563bf765a085a70c6769755c92a94
+file.0=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_b8a8e1400acee49d8904e130e65d599a7ec2707b\\classes.dex

@@ -3,9 +3,7 @@ package com.team16.sopra.sopra16team16.View;
 import android.app.Application;
 import android.content.Context;
 
-/**
- * Created by moo on 11/20/16.
- */
+
 
 public class MyApp extends Application{
 

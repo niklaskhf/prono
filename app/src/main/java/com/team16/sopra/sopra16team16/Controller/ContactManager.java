@@ -8,6 +8,8 @@ import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
 
+import java.io.File;
+
 /**
  * Contains methods for manipulating or receiving contact related data.
  */
@@ -53,10 +55,10 @@ public class ContactManager {
      * @param context Context object
      */
     private ContactManager(Context context) {
-        dbManager = new DBManager(context);
+        dbManager = DBManager.getCurrentInstance(context);
         open();
         this.queryBuilder = new QueryBuilder(cols);
-        this.context = context;
+        this.context = context.getApplicationContext();
 
         Cursor lastIdCursor = database.rawQuery("SELECT MAX(_ID) FROM " + TABLE_NAME + ";", null);
 
@@ -80,7 +82,7 @@ public class ContactManager {
      * @param last    last name - String
      * @param title   title - String
      * @param country country - String
-     * @param gender  gender - Gender
+     * @param gender  gender
      * @return
      */
     public long createContact(String first, String last, String title, String country, String gender) {
@@ -129,7 +131,7 @@ public class ContactManager {
      * @param last    last name - String
      * @param title   title - String
      * @param country country - String
-     * @param gender  gender - Gender
+     * @param gender  gender
      */
     public long updateContact(int id, String first, String last, String title, String country, String gender) {
         long res = 0;
@@ -146,8 +148,6 @@ public class ContactManager {
             // which row to update?
             //res = database.replace(TABLE_NAME, null, values);
             res = database.update(TABLE_NAME, values, strFilter, null);
-            // TODO maybe use update, no real need to change fav/del
-            //database.update(TABLE_NAME, values, strFilter, null);
             database.setTransactionSuccessful();
         } catch(Exception e) {
             Log.i("updateContactDb", e.getMessage());
@@ -198,12 +198,13 @@ public class ContactManager {
             res = database.delete(TABLE_NAME, "_id = ?", new String[]{Integer.toString(id)});
             Log.i("deleted", Integer.toString(id));
             database.setTransactionSuccessful();
+            File file = new File(context.getFilesDir().getPath() + "" + id + ".3gp");
+            file.delete();
         } catch(Exception e) {
             Log.i("deleteContactDb", e.getMessage());
         } finally {
             database.endTransaction();
         }
-
         this.updateCursorAdapter();
         return res;
     }
@@ -243,40 +244,7 @@ public class ContactManager {
     public Cursor getSearchResults(String search) {
         // cursor to return
         Cursor cursor = null;
-
-
-        // not sure why this didn't work
-        // only checked first expression
-        /*////////////////////////////////////////////////////////////////////
-
-        // get individual search words
-        String[] searchWords = search.split(" ");
-
-        // add wildcards to match if substring
-        for (int i = 0; i < searchWords.length; i++) {
-            searchWords[i] = "%" + searchWords[i] + "%";
-        }
-
-        // create query
-        // columns to add in cursor
-        // no idea why this query isnt working
-        // arguments with wild cards
-        // wild cards replaced by any entry in searchWords
-        String query =
-                COLUMN_FIRSTNAME + " LIKE ? OR " +
-                COLUMN_LASTNAME + " LIKE ? OR " +
-                COLUMN_TITLE + " LIKE ? OR " +
-                COLUMN_COUNTRY + " LIKE ? OR " +
-                COLUMN_GENDER + " LIKE ?";
-        Log.i("query", query);
-
-        // query database
-        cursor = database.query(TABLE_NAME, cols, query,
-              searchWords, null, null, null, null);
-
-        ////////////////////////////////////////////////////////////////////*/
-
-
+        // query to use
         String query;
         if (queryBuilder != null) {
             query = queryBuilder.buildSearchQuery(search);
@@ -294,12 +262,15 @@ public class ContactManager {
         return cursor;
     }
 
+
     /**
      * Closes the database connection.
+     * Not really needed, handled by android kernel
      */
+    /*
     public void close() {
-        dbManager.close();
-    }
+        database.close();
+    }*/
 
     /**
      * Opens a new database connection.
@@ -309,6 +280,9 @@ public class ContactManager {
     }
 
 
+    /**
+     * wipes all rows from the database, used for testing
+     */
     public void wipe() {
         database.delete(TABLE_NAME, null, null);
     }

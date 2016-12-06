@@ -100,8 +100,7 @@ public class ContactCursorAdapter extends CursorAdapter {
             }
         }
 
-
-        // TODO add implementation
+        // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
