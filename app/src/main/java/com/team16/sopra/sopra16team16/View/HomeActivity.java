@@ -14,6 +14,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +41,7 @@ import com.team16.sopra.sopra16team16.R;
  */
 public class HomeActivity extends AppCompatActivity {
     private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
-    private  DrawerLayout mDrawerLayout;
+    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private static ContactManager contactManager;
     public static Context contextOfApplication;
@@ -62,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
-        contextOfApplication = MyApp.getContext();
+        contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
         // initialize Toolbar
@@ -95,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * Hides the dropDown of the searchView
+     *
      * @param searchView
      */
     public void hideSearchDropDown(SearchView searchView) {
@@ -111,6 +113,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * Sets the appropriate adapters.
+     *
      * @param searchItem MenuItem related to the searchView
      */
     public void searchFilterActions(MenuItem searchItem) {
@@ -119,9 +122,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public Cursor runQuery(CharSequence charSequence) {
                 Cursor mCursor = null;
-                if (charSequence != null) {
-                    mCursor = contactManager.getSearchResults(charSequence.toString());
-                }
+                mCursor = contactManager.getSearchResults(charSequence.toString());
                 return mCursor;
             }
         };
@@ -164,22 +165,6 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // configure menuItems in toolbar
-        // only search right now
-        // possibly also filter/sort?
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                // open search
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     /**
@@ -245,6 +230,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
+     * Returns the fragment object, for testing purposes
+     */
+    public ContactListFragment getFragment() {
+        return fragment;
+    }
+
+    /**
      * Starts an activity UNKONWN_NAME to add a new contact.
      */
     public void addNewContact(FloatingActionButton addButton) {
@@ -292,10 +284,33 @@ public class HomeActivity extends AppCompatActivity {
         //contactManager.close();
     }
 
+    @Override
+    public void onBackPressed() {
+        // either close the open drawer
+        // or close the app
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else if (searchVisible()) {
+            searchView.setIconified(true);
+        } else {
+            finish();
+        }
+    }
+
+    /**
+     * Checks if searchView is visible, used for testing
+     */
+    public boolean searchVisible() {
+        return !searchView.isIconified();
+    }
+
+
     /**
      * Checks if the app has permission to write to device storage
-     *
+     * <p>
      * If the app does not has permission then the user will be prompted to grant permissions
+     * <p>
+     * Currently unused, might be used later on!
      *
      * @param activity
      */

@@ -116,6 +116,7 @@ public class NewContactActivity extends AppCompatActivity {
                 };
 
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -167,7 +168,7 @@ public class NewContactActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
+        //Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
         finish();
     }
 

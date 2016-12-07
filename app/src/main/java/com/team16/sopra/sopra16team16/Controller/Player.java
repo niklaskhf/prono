@@ -2,10 +2,12 @@ package com.team16.sopra.sopra16team16.Controller;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import com.team16.sopra.sopra16team16.R;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -50,13 +52,15 @@ public class Player {
                 playButton.setBackgroundResource(R.drawable.play_icon);
             }
         });
+
         try {
             player.setDataSource(filename);
             player.prepare();
             player.start();
             playButton.setBackgroundResource(R.drawable.cancel_icon);
-        } catch (IOException e) {
 
+        } catch (IOException e) {
+            Log.d("PlayerIOException", e.getMessage());
         }
     }
 

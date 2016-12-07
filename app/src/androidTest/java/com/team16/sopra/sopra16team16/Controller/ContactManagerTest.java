@@ -10,6 +10,8 @@ import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -127,6 +129,7 @@ public class ContactManagerTest {
 
         assertTrue("didnt update contact", res == 1);
     }
+
     @Test
     public void selectContactsTest() {
         Cursor cursor = contactManager.selectContacts();
@@ -164,6 +167,11 @@ public class ContactManagerTest {
         Log.d("deleteCursorId", Integer.toString(cursor.getInt(cursor.getColumnIndexOrThrow("_id"))));
         assertTrue("didnt delete one contact", 1 ==
                 contactManager.deleteContact(cursor.getInt(cursor.getColumnIndexOrThrow("_id"))));
+
+        assertTrue("file didnt get deleted", !new File(
+                InstrumentationRegistry.getTargetContext().getApplicationContext().getFilesDir().getPath()
+                        + "" + cursor.getInt(cursor.getColumnIndexOrThrow("_id")) + ".3gp")
+                .exists());
     }
 
 
@@ -235,8 +243,6 @@ public class ContactManagerTest {
                 resMultiple = false;
             }
         }
-
-
 
 
         assertTrue("wrong search result with n oword", resNo);
