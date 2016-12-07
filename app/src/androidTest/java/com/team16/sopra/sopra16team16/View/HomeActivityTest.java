@@ -69,7 +69,7 @@ public class HomeActivityTest {
         // http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
         // next activity is opened and captured.
         assertNotNull(nextActivity);
-        nextActivity .finish();
+        nextActivity.finish();
     }
 
     @Test

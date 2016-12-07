@@ -10,11 +10,8 @@ import com.team16.sopra.sopra16team16.R;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by Martin on 22.11.2016.
- */
 
-public class Player {
+public class Player{
 
     private static Player currentInstance = null;
     //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();

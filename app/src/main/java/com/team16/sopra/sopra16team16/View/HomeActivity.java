@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private static ContactManager contactManager;
+    private ContactManager contactManager;
     public static Context contextOfApplication;
     private FragmentManager fragmentManager;
     private ContactListFragment fragment;

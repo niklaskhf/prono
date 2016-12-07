@@ -7,13 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
-
 import java.io.File;
 
 /**
  * Contains methods for manipulating or receiving contact related data.
  */
-public class ContactManager {
+public class ContactManager{
     private static ContactManager currentInstance = null;
     private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
