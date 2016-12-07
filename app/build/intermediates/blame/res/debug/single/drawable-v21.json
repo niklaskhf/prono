@@ -1,7 +1,19 @@
 [
     {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\abc_btn_colored_material.xml"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
@@ -14,6 +26,14 @@
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.0.1\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\notification_action_background.xml"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
