@@ -21,10 +21,10 @@ public class Recorder {
 
     //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
     //ToDo Pfad über Context finden
-    String path;
+    public String path;
     private MediaRecorder recorder = null;
     private boolean is_recording = false;
-    private Context context;
+    public Context context;
 
     //constructor - need context for path
     private Recorder(Context context) {

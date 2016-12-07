@@ -1,4 +1,4 @@
-#Mon Dec 05 14:46:32 CET 2016
-base.0=/home/moo/repos/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Wed Dec 07 12:02:11 CET 2016
+base.0=C\:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.0=/home/moo/repos/sopra-team-16/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=C\:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
