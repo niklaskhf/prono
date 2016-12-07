@@ -158,8 +158,8 @@ public class NewContactActivity extends AppCompatActivity {
                 } else {
                     //start recording
                     recordButton.setBackgroundResource(R.drawable.accept_icon);
-                    //TODO ID (hier 0) aus der Datenbank entnehmen
                     recorder.startRecording(id);
+                    // TODO autostop recording after x seconds
                 }
             }
         });
@@ -203,7 +203,7 @@ public class NewContactActivity extends AppCompatActivity {
 
 
     public void setContact() {
-        ContactManager contactManager = ContactManager.getInstance(this.getApplicationContext());
+        contactManager = ContactManager.getInstance(this.getApplicationContext());
         // TODO update gender
         // TODO create string attributes for all of this, this is ridiculous lmao
         Log.d("genderCreate", gender);
@@ -212,7 +212,7 @@ public class NewContactActivity extends AppCompatActivity {
     }
 
     public void updateContact() {
-        ContactManager contactManager = ContactManager.getInstance(this.getApplicationContext());
+        contactManager = ContactManager.getInstance(this.getApplicationContext());
         contactManager.updateContact(id, firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);
 
     }

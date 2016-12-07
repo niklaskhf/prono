@@ -16,7 +16,7 @@ import java.io.IOException;
  * Recorder
  *
  */
-public class Recorder {
+public class Recorder{
     private static Recorder currentInstance = null;
 
     //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();

@@ -7,7 +7,7 @@ import android.util.Log;
  */
 
 public class QueryBuilder {
-    String[] cols;
+    private String[] cols;
 
     public QueryBuilder(String[] cols) {
         this.cols = cols;
