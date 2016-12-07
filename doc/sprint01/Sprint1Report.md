@@ -1,4 +1,4 @@
-# Sprint Report ([1,2])
+# Sprint Report (1)
 
 In diesem Sprint wurden die bis zum [Meilenstein 4](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/milestones/1) erledigten User Stories abgearbeitet.
 
