@@ -12,7 +12,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
-    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Zweit-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
+    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
     - [ ] Die Audio-Aufnahme muss nach dem vollständigen Schließen der App gespeichert bleiben
     - [ ] Die gespeicherten Audio-Aufnahmen können in der App abgespielt werden
 
@@ -235,7 +235,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ### Feature 2 *Eintrag erstellen*
 
 
-> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Zweit-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
+> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
 
 
 - Aufwandsschätzung: L 
@@ -579,7 +579,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ### Feature 5 *Eintrag editieren*
 
 
-> Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
+> Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
 
 
 - Aufwandsschätzung: M
