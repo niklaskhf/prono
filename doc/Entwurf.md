@@ -8,45 +8,66 @@ Verwendete Entwurfsmuster: Model-View-Controller, Singleton
 
 # Komponentendiagramm
 
-![Gubaer at the German language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons](sketches/Komponentendiagramm.png)
-
-Gubaer at the German language Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons.
-
+![Komponentendiagramm](sketches/Komponentendiagramm.png)
 
 ## Komponente 1: Model
 
-Datenhaltung von Kontakten, Einstellungen und Sprachprofilen. Providet für View und Controller.
+Baustein der Datenhaltung. Stellt Datenbanken für andere Module bereit. Wird von Controller manipuliert.
+Datenhaltung beinhaltet: 
+- Datenbank für Kontakte
+- Sprachprofile
+- Einstellungen
 
 ## Komponente 2: Controller
 
-Verwendet von Model bereitgestellte Daten, um den View zu steuern. Kann Daten in Model manipulieren und View kontrollieren.
+Manipuliert Daten aus der Model-Komponente. 
+Wird von der View-Komponente aufgerufen, um Aktionen auszuführen. 
 
 ## Komponente 3: View
 
-Stellt Daten von Model in GUI dar. Schnittstelle zu Nutzer.
+Bildet die Schnittstelle zu dem Benutzer. Zeigt von dem Controller bereitgestellte Daten aus dem Model in GUI an.
+Interagiert mit dem Controller, um von dem User gestartete Aktionen auszuführen.
 
 ## Externe Komponente 1
 
 Material.io/icons
 
-Verwendung in View um Benutzerfreundlichkeit zu fördern.
+Verwendung in View um Benutzerfreundlichkeit zu fördern. (Material Design)
 
 
-# Klassendiagramm
+# Klassendiagramme
 
-![](sketches/cd_SopraGruppe16.png)
+## Klassendiagramm Controller
+
+![Klassendiagramm Controller](sketches/cd_Controller.png)
+
+## Klassendiagramm View
+![Klassendiagramm View](sketches/cd_View.png)
+
+## Klassendiagramm Model
+![Klassendiagramm Model](sketches/cd_Model.png)
+
 
 # Beschreibung der wichtigen Klassenhierarchie
 
-## Datenbank:
-Speichert sämliche Informationen aller Kontakte und sonstige Einstellungen auf dem Gerätespeicher.
-
-## Contact: 
-Enthält alle Informationen eines Kontaktes. Informationen werden in der Datenbank permanent gespeichert.
 
 ## ContactManager:
-Implementiert Critical Features. Verwaltet Daten bezüglich Kontakten über die Datenbank. 
+Manipuliert die Kontakt-Datenbank direkt, stellt Daten für den View bereit. 
+"Schnittstelle" zwischen Daten und Darstellung. 
+Erstellt Kontakte, editiert Kontakte, löscht Kontakte, provided Cursor.
 
+## NewContactActivity:
+Android-Activity.
+Erlaubt es dem Nutzer Kontakte zu editieren/erstellen. 
+Implementiert wichtige Critical Features "Kontakt erstellen", "Kontakt editieren".
+Kontakterstellungs / -editierungs-UI.
+
+## HomeActivity:
+Android-Activity.
+Kern der View-Komponente.
+Implementiert wichtige Critical Features "Kontakte dursuchen", "Kontakte einsehen".
+Bildet Ankerpunkt für andere Activities.
+UI für Suche, Kontaktliste, Settings, Info.
 
 # GUI-Skizze
 
