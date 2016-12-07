@@ -35,10 +35,16 @@ Material.io/icons
 Verwendung in View um Benutzerfreundlichkeit zu fördern. (Material Design)
 
 
-# Klassendiagramm
+# Klassendiagramme
+
+## Klassendiagramm Controller
 
 ![Klassendiagramm Controller](sketches/cd_Controller.png)
+
+## Klassendiagramm View
 ![Klassendiagramm View](sketches/cd_View.png)
+
+## Klassendiagramm Model
 ![Klassendiagramm Model](sketches/cd_Model.png)
 
 
