@@ -2,6 +2,7 @@ package com.team16.sopra.sopra16team16.View;
 
 import android.app.Instrumentation;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -22,7 +23,6 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Created by prime on 08.12.16.
  */
-@RunWith(AndroidJUnit4.class)
 public class NewContactActivityTest {
 
     private String firstName = "Max";
@@ -38,7 +38,7 @@ public class NewContactActivityTest {
 
     @Rule
     public ActivityTestRule<ContactViewerActivity> mActivityRule =
-            new ActivityTestRule<>(ContactViewerActivity.class, true, false);
+            new ActivityTestRule<>(ContactViewerActivity.class);
 
     @Test
     public void demonstrateIntentPrep() {
@@ -52,6 +52,7 @@ public class NewContactActivityTest {
         intent.putExtra("cause", cause);
 
         mActivityRule.launchActivity(intent);
+
 
         onView(withId(R.id.first_edit)).check(matches(withText(firstName)));
         onView(withId(R.id.last_edit)).check(matches(withText(lastName)));

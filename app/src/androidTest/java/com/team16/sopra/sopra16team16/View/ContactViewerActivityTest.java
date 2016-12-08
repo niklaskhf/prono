@@ -2,9 +2,11 @@ package com.team16.sopra.sopra16team16.View;
 
 import android.app.Instrumentation;
 import android.content.Intent;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
 import org.junit.Rule;
@@ -18,12 +20,13 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 /**
  * Created by prime on 08.12.16.
  */
 
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
 public class ContactViewerActivityTest {
 
     private String firstName = "Max";
@@ -37,7 +40,7 @@ public class ContactViewerActivityTest {
 
     @Rule
     public ActivityTestRule<ContactViewerActivity> mActivityRule =
-               new ActivityTestRule<>(ContactViewerActivity.class, true, false);
+               new ActivityTestRule<>(ContactViewerActivity.class);
 
     @Test
     public void demonstrateIntentPrep() {
@@ -67,5 +70,14 @@ public class ContactViewerActivityTest {
         assertNotNull(nextActivity);
         nextActivity.finish();
     }
+
+    @Test
+    public void playButtonTest() {
+        onView(withId(R.id.play_button)).perform(click());
+        assertTrue("Player doesn't play", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == true);
+        onView(withId(R.id.play_button)).perform(click());
+        assertTrue("Player still plays", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == false);
+    }
+    
 
 }
