@@ -18,6 +18,7 @@ public class ContactManager{
     private ContactCursorAdapter cursorAdapter = null;
     private Context context;
     private QueryBuilder queryBuilder = null;
+    private Recorder recorder;
 
     private static SQLiteDatabase database;
 
@@ -58,6 +59,7 @@ public class ContactManager{
         open();
         this.queryBuilder = new QueryBuilder(cols);
         this.context = context.getApplicationContext();
+        recorder = Recorder.getCurrentInstance(context);
 
         Cursor lastIdCursor = database.rawQuery("SELECT MAX(_ID) FROM " + TABLE_NAME + ";", null);
 
@@ -197,8 +199,7 @@ public class ContactManager{
             res = database.delete(TABLE_NAME, "_id = ?", new String[]{Integer.toString(id)});
             Log.i("deleted", Integer.toString(id));
             database.setTransactionSuccessful();
-            File file = new File(context.getFilesDir().getPath() + "" + id + ".3gp");
-            file.delete();
+            recorder.delete(id);
         } catch(Exception e) {
             Log.i("deleteContactDb", e.getMessage());
         } finally {

@@ -54,6 +54,35 @@ public class Player{
             player.setDataSource(filename);
             player.prepare();
             player.start();
+            Log.d("player", "playing " + filename);
+            playButton.setBackgroundResource(R.drawable.cancel_icon);
+
+        } catch (IOException e) {
+            Log.d("PlayerIOException", e.getMessage());
+        }
+    }
+
+    /**
+     * Start playing temp
+     */
+    public void startPlayingTemp(int id, final ImageButton playButton) {
+
+        changeStatus(true);
+        String filename = path + id + "temp.3gp";
+
+        player = new MediaPlayer();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                changeStatus(false);
+                playButton.setBackgroundResource(R.drawable.play_icon);
+            }
+        });
+
+        try {
+            player.setDataSource(filename);
+            player.prepare();
+            player.start();
+            Log.d("player", "playing " + filename);
             playButton.setBackgroundResource(R.drawable.cancel_icon);
 
         } catch (IOException e) {

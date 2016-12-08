@@ -61,14 +61,14 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         final ImageButton playButton = (ImageButton) view.findViewById(R.id.contact_play);
         final ImageButton favButton = (ImageButton) view.findViewById(R.id.contact_fav);
-        Button deleteButton = (Button) view.findViewById(R.id.contact_delete);
         ImageView genderSign = (ImageView) view.findViewById(R.id.contact_gender);
 
 
+        /*
         // assign values to textviews
         if (Boolean.getBoolean(cursor.getString(cursor.getColumnIndexOrThrow("deleted")))) {
             view = new Space(context);
-        }
+        }*/
         if (tt1 != null) {
             tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
         }
@@ -149,15 +149,6 @@ public class ContactCursorAdapter extends CursorAdapter {
                 contactManager.toggleFavorite(id, favValue);
                 notifyDataSetChanged();
 
-            }
-        });
-
-        // delete item
-        // TODO remove this and the entire button
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View viewC) {
-                contactManager.deleteContact(id);
             }
         });
     }

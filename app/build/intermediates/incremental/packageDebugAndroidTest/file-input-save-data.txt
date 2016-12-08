@@ -1,21 +1,21 @@
 #Internal package file, do not edit.
-#Thu Dec 08 01:21:21 CET 2016
-2.base=/home/prime/git/sopra-team-16/app/build/intermediates/res/resources-debug-androidTest.ap_
-5.file=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/mergeJavaRes/androidTest/debug/jars/2/1f/main.jar/junit/runner/smalllogo.gif
+#Thu Dec 08 13:44:54 CET 2016
+2.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\androidTest\\debug\\folders\\1000\\1f\\main
+5.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar\\LICENSE-junit.txt
 5.set=JAVA_RESOURCE
-3.base=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/mergeJavaRes/androidTest/debug/jars/2/1f/main.jar
-2.set=ANDROID_RESOURCE
-4.base=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/dex/androidTest/debug/folders/1000/1f/main
+3.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar
+2.set=DEX
+4.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug-androidTest.ap_
 count=6
-0.file=/home/prime/git/sopra-team-16/app/build/intermediates/res/resources-debug-androidTest.ap_/AndroidManifest.xml
-5.base=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/mergeJavaRes/androidTest/debug/jars/2/1f/main.jar
-4.set=DEX
-1.file=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/mergeJavaRes/androidTest/debug/jars/2/1f/main.jar/junit/runner/logo.gif
+0.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug-androidTest.ap_\\resources.arsc
+5.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar
+4.set=ANDROID_RESOURCE
+1.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar\\junit\\runner\\logo.gif
 1.set=JAVA_RESOURCE
-2.file=/home/prime/git/sopra-team-16/app/build/intermediates/res/resources-debug-androidTest.ap_/resources.arsc
-0.base=/home/prime/git/sopra-team-16/app/build/intermediates/res/resources-debug-androidTest.ap_
-3.file=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/mergeJavaRes/androidTest/debug/jars/2/1f/main.jar/LICENSE-junit.txt
+2.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\androidTest\\debug\\folders\\1000\\1f\\main\\classes.dex
+0.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug-androidTest.ap_
+3.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar\\junit\\runner\\smalllogo.gif
 3.set=JAVA_RESOURCE
-1.base=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/mergeJavaRes/androidTest/debug/jars/2/1f/main.jar
-4.file=/home/prime/git/sopra-team-16/app/build/intermediates/transforms/dex/androidTest/debug/folders/1000/1f/main/classes.dex
+1.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar
+4.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug-androidTest.ap_\\AndroidManifest.xml
 0.set=ANDROID_RESOURCE

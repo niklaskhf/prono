@@ -5,6 +5,7 @@ import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.Log;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -48,8 +49,8 @@ public class Recorder{
      *  * @param id id from the contact is the same as the id from the file
      */
     public void startRecording(int id) {
-        Log.e("Record", "ID: " + id);
-        String filename = path + id + ".3gp";
+        Log.e("Recorder", "ID: " + id);
+        String filename = path + id + "temp.3gp";
         Log.e("Recorder", "Filename: " + filename);
         changeStatus(true);
 
@@ -94,5 +95,40 @@ public class Recorder{
         is_recording = status;
     }
 
+
+    /**
+     * Deletes the audio files associated to an id.
+     * @param id id of the contact - int
+     */
+    public void delete(int id) {
+        File perm = new File(path + id + ".3gp");
+        File temp = new File(path + id + "temp.3gp");
+        if (perm.exists()) {
+            perm.delete();
+            Log.d("recorder", "deleted " + perm);
+        }
+        if (temp.exists()) {
+            temp.delete();
+            Log.d("recorder", "deleted " + temp);
+        }
+    }
+
+    /**
+     * Renames a temp audio file to the permanent version.
+     * @param id id of the contact - int
+     */
+    public void confirm(int id) {
+        File temp = new File(path + id + "temp.3gp");
+        File perm = new File(path + id + ".3gp");
+
+        if (perm.exists()) {
+            perm.delete();
+            Log.d("recorder", "deleted " + perm + " while copying temp");
+        }
+        if (temp.exists()) {
+            temp.renameTo(perm);
+            Log.d("recorder", "renamed " + temp + " to " + perm);
+        }
+    }
 
 }

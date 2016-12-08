@@ -74,12 +74,12 @@ public class RecorderTest {
 
     @Test
     public void nullCheck() {
-        assertTrue("Recorder is null", Recorder.getCurrentInstance(InstrumentationRegistry.getContext()) != null);
+        assertTrue("Recorder is null", Recorder.getCurrentInstance(InstrumentationRegistry.getTargetContext()) != null);
     }
 
     @Test
     public void pathCheck() {
-        assertTrue("Path is not null", Recorder.getCurrentInstance(InstrumentationRegistry.getContext()).path != null);
+        assertTrue("Path is not null", Recorder.getCurrentInstance(InstrumentationRegistry.getTargetContext()).path != null);
     }
 
     public void singletonCheck() {
