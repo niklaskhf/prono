@@ -23,4 +23,4 @@ In diesem Sprint wurden die bis zum [Meilenstein 4](https://sopra.informatik.uni
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-[Testprotokolle, Jacoco](/coverage/coverage/debug/index.html)
+[Testprotokolle, Jacoco](coverage/coverage/debug/index.html)
