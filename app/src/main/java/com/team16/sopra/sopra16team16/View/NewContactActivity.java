@@ -74,16 +74,15 @@ public class NewContactActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        if (bundle != null) {
-            firstName = (String) bundle.get("first");
-            lastName = (String) bundle.get("last");
-            title = (String) bundle.get("title");
-            country = (String) bundle.get("country");
-            Log.i("country", country);
-            gender = (String) bundle.get("gender");
-            id = (Integer) bundle.get("id");
-            cause = bundle.get("cause").toString();
-        }
+        firstName = (String) bundle.get("first");
+        lastName = (String) bundle.get("last");
+        title = (String) bundle.get("title");
+        country = (String) bundle.get("country");
+        Log.i("country", country);
+        gender = (String) bundle.get("gender");
+        id = (Integer) bundle.get("id");
+        cause = bundle.get("cause").toString();
+
         Log.d("first", firstName);
 
         initialize();
@@ -133,37 +132,13 @@ public class NewContactActivity extends AppCompatActivity {
             }
         });
 
-        final ImageButton editButton = (ImageButton) findViewById(R.id.edit_button);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setEditLayout();
-                firstNameEdit.setText(firstNameText.getText().toString());
-                lastNameEdit.setText(lastNameText.getText().toString());
-                countryEdit.setText(countryText.getText().toString());
-                titleEdit.setText(titleText.getText().toString());
-
-
-            }
-        });
-
         // add Button to cancel the current (adding of new contact)/(editing of existing button)
         final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                recorder.delete(id);
-                Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("first", firstNameEdit.getText().toString());
-                bundle.putString("last", lastNameEdit.getText().toString());
-                bundle.putString("title", titleEdit.getText().toString());
-                bundle.putString("country", countryEdit.getText().toString());
-                bundle.putInt("id", id);
-                bundle.putString("gender", gender);
-                intent.putExtras(bundle);
-                finish();
+                onBackPressed();
             }
         });
 
@@ -190,8 +165,22 @@ public class NewContactActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        recorder.delete(id);
+        recorder.deleteTemp(id);
         //Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
+        if (cause.equals("EDIT")) {
+            recorder.deleteTemp(id);
+            Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("first", firstNameEdit.getText().toString());
+            bundle.putString("last", lastNameEdit.getText().toString());
+            bundle.putString("title", titleEdit.getText().toString());
+            bundle.putString("country", countryEdit.getText().toString());
+            bundle.putInt("id", id);
+            bundle.putString("gender", gender);
+            intent.putExtras(bundle);
+            startActivity(intent);
+            finish();
+        }
         finish();
     }
 

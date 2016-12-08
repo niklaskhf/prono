@@ -3,6 +3,7 @@ package com.team16.sopra.sopra16team16.View;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
 import android.support.test.espresso.NoActivityResumedException;
 import android.support.test.rule.ActivityTestRule;
 import android.support.v4.view.GravityCompat;
@@ -128,7 +129,7 @@ public class HomeActivityTest {
 
         assertTrue("searchAdapter wrong count 'first letzte'", fragment.getListAdapter().getCount() == 0);
 
-        pressBack();
+        Espresso.pressBack();
         assertTrue("searchView didnt close", !mActivityTestRules.getActivity().searchVisible());
     }
 

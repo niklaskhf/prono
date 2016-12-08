@@ -25,7 +25,10 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -96,10 +99,14 @@ public class RecorderPlayerTest {
         // possibly the biggest mess ever, im so sorry
         onView(withId(R.id.addNew)).perform(click());
 
+
         NewContactActivity nextActivity = (NewContactActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         // http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
         // next activity is opened and captured.
         assertNotNull(nextActivity);
+
+        onView(withId(R.id.confirm_button)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click());
 
         onView(withId(R.id.record_button))
                 .perform(click());
@@ -131,7 +138,10 @@ public class RecorderPlayerTest {
         assertTrue("player didnt stop", !player.isPlaying());
         onView(withId(R.id.accept_dialog)).perform(click());
 
+        onView(withId(R.id.confirm_button)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.last_edit)).perform(typeText("test"));
+        onView(withId(R.id.female_radioButton)).perform(click());
 
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.confirm_button)).perform(click());
@@ -142,6 +152,50 @@ public class RecorderPlayerTest {
         nextActivity.finish();
 
         onView(withId(R.id.edit_button)).perform(click());
+        onView(withId(R.id.female_radioButton)).check(matches(isChecked()));
+        onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
+
+        onView(withId(R.id.male_radioButton)).perform(click());
+        onView(withId(R.id.female_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.male_radioButton)).check(matches(isChecked()));
+        onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
+
+        onView(withId(R.id.record_button))
+                .perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertTrue("recorder is not recording", recorder.isPressed());
+        onView(withId(R.id.record_button))
+                .perform(click());
+
+        Log.d("recorderTemp", temp.toString());
+
+        onView(withId(R.id.accept_dialog)).perform(click());
+
+        onView(withId(R.id.last_edit)).perform(typeText("test"));
+
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.cancel_button)).perform(click());
+
+        assertTrue("temp file still exists", !temp.exists());
+        assertTrue("perm file doesnt exist", perm.exists());
+        //nextActivity.finish();
+
+
+        onView(withId(R.id.edit_button)).perform(click());
+        onView(withId(R.id.female_radioButton)).check(matches(isChecked()));
+        onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
+
+        onView(withId(R.id.male_radioButton)).perform(click());
+        onView(withId(R.id.female_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.male_radioButton)).check(matches(isChecked()));
+        onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
 
         onView(withId(R.id.record_button))
                 .perform(click());
@@ -164,9 +218,60 @@ public class RecorderPlayerTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.confirm_button)).perform(click());
 
-        assertTrue("temp file still exists", !temp.exists());
-        assertTrue("perm file doesnt exist", perm.exists());
-        nextActivity.finish();
+
+        onView(withId(R.id.edit_button)).perform(click());
+        onView(withId(R.id.female_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.male_radioButton)).check(matches(isChecked()));
+        onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
+
+        onView(withId(R.id.unkown_radioButton)).perform(click());
+        onView(withId(R.id.female_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.unkown_radioButton)).check(matches(isChecked()));
+
+        onView(withId(R.id.record_button))
+                .perform(click());
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertTrue("recorder is not recording", recorder.isPressed());
+        onView(withId(R.id.record_button))
+                .perform(click());
+
+        Log.d("recorderTemp", temp.toString());
+
+        onView(withId(R.id.accept_dialog)).perform(click());
+
+        onView(withId(R.id.last_edit)).perform(typeText("test"));
+
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.confirm_button)).perform(click());
+
+
+
+
+        onView(withId(R.id.play_button)).perform(click());
+
+        assertTrue("player is not playing", player.isPlaying());
+        onView(withId(R.id.play_button)).perform(click());
+
+        assertTrue("player didnt stop playing", !player.isPlaying());
+
+        onView(withId(R.id.play_button)).perform(click());
+
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assertTrue("player didnt stop playing", !player.isPlaying());
+
+
+
+
         Espresso.pressBack();
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .onChildView(withId(R.id.contact_play))
@@ -191,6 +296,8 @@ public class RecorderPlayerTest {
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .perform(click());
         onView(withId(R.id.delete_button)).perform(click());
+        onView(withText("NO")).perform(click());
+        onView(withId(R.id.delete_button)).perform(click());
         onView(withText("YES")).perform(click());
 
         assertTrue("perm file doesnt exist", !perm.exists());
@@ -206,6 +313,7 @@ public class RecorderPlayerTest {
         assertTrue("Path is not null", recorder.path != null);
     }
 
+    @Test
     public void singletonCheck() {
         Recorder recorder2 = Recorder.getCurrentInstance(InstrumentationRegistry.getTargetContext());
 

@@ -56,11 +56,17 @@ public class HomeActivity extends AppCompatActivity {
 
 
     // Storage Permissions
+    private static final int REQUEST_ALL = 0;
     private static final int REQUEST_MICROPHONE = 2;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+    private static String[] PERMISSIONS_ALL = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO,
     };
 
     @Override
@@ -70,7 +76,9 @@ public class HomeActivity extends AppCompatActivity {
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
+        // do we have permissions?
         verifyStoragePermissions(this);
+        //verifyMicPermissions(this);
         // initialize Toolbar
         initializeToolbar();
 
@@ -270,17 +278,6 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Sets the visibility of the addButton
-     */
-    public void setAddButtonVis(boolean vis) {
-        if (vis) {
-            addButton.setVisibility(View.VISIBLE);
-        } else {
-            addButton.setVisibility(View.INVISIBLE);
-        }
-    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -289,11 +286,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
-
     public void onPause() {
         super.onPause();
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
         // according to google theres nothing wrong with keeping the connection open
@@ -308,8 +305,6 @@ public class HomeActivity extends AppCompatActivity {
         // or close the app
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(mDrawerList);
-        } else if (searchVisible()) {
-            searchView.setIconified(true);
         } else {
             finish();
         }
@@ -337,19 +332,63 @@ public class HomeActivity extends AppCompatActivity {
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
+
+        if (permission != PackageManager.PERMISSION_GRANTED || micPermission != PackageManager.PERMISSION_GRANTED) {
             // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_ALL,
+                    REQUEST_ALL
+            );
+        } /*else if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,
                     REQUEST_EXTERNAL_STORAGE
-            );
+            );} else if (micPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity,
+                    new String[]{Manifest.permission.RECORD_AUDIO},
+                    REQUEST_MICROPHONE);
+           }
+        }*/
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        final Activity activity = this;
+        switch (requestCode) {
+            case REQUEST_ALL:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                    // do nothing?
+                    addNewContact(addButton);
+                } else {
+                    addButton.setOnClickListener(new View.OnClickListener(){
+
+                        @Override
+                        public void onClick(View view) {
+                            verifyStoragePermissions(activity);
+                        }
+                    });
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+    /**
+     * Request mic permission if we dont already have it
+     * @param activity
+     */
+    /*public static void verifyMicPermissions(Activity activity) {
+        int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
+
 
         if (micPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(activity,
                     new String[]{Manifest.permission.RECORD_AUDIO},
                     REQUEST_MICROPHONE);
         }
-    }
+    }*/
 }

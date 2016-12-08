@@ -1,22 +1,22 @@
 [
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\menu\\navigation_menu_k.xml",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\menu\\navigation_menu_k.xml"
+        "merged": "/home/moo/repos/sopra-team-16/app/build/intermediates/res/merged/debug/menu/activity_home_drawer.xml",
+        "source": "/home/moo/repos/sopra-team-16/app/src/main/res/menu/activity_home_drawer.xml"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\menu\\home.xml",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\menu\\home.xml"
+        "merged": "/home/moo/repos/sopra-team-16/app/build/intermediates/res/merged/debug/menu/navigation_menu_k.xml",
+        "source": "/home/moo/repos/sopra-team-16/app/src/main/res/menu/navigation_menu_k.xml"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\menu\\context_menu.xml",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\menu\\context_menu.xml"
+        "merged": "/home/moo/repos/sopra-team-16/app/build/intermediates/res/merged/debug/menu/context_menu.xml",
+        "source": "/home/moo/repos/sopra-team-16/app/src/main/res/menu/context_menu.xml"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_home_drawer.xml",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\menu\\activity_home_drawer.xml"
+        "merged": "/home/moo/repos/sopra-team-16/app/build/intermediates/res/merged/debug/menu/home.xml",
+        "source": "/home/moo/repos/sopra-team-16/app/src/main/res/menu/home.xml"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\menu\\menu_main.xml"
+        "merged": "/home/moo/repos/sopra-team-16/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
+        "source": "/home/moo/repos/sopra-team-16/app/src/main/res/menu/menu_main.xml"
     }
 ]

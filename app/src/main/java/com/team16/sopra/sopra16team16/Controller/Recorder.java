@@ -102,11 +102,18 @@ public class Recorder{
      */
     public void delete(int id) {
         File perm = new File(path + id + ".3gp");
-        File temp = new File(path + id + "temp.3gp");
         if (perm.exists()) {
             perm.delete();
             Log.d("recorder", "deleted " + perm);
         }
+    }
+
+    /**
+     * Deletes the temp audio file associated to an id.
+     * @param id id of the contact - int
+     */
+    public void deleteTemp(int id) {
+        File temp = new File(path + id + "temp.3gp");
         if (temp.exists()) {
             temp.delete();
             Log.d("recorder", "deleted " + temp);
