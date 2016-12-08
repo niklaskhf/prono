@@ -70,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
+        verifyStoragePermissions(this);
         // initialize Toolbar
         initializeToolbar();
 
@@ -250,7 +251,7 @@ public class HomeActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verifyStoragePermissions(HomeActivity.this);
+                //verifyStoragePermissions(HomeActivity.this);
                 int id = contactManager.getId();
                 id++;
                 Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);

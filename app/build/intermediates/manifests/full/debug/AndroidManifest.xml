@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
-        android:name="com.team16.sopra.sopra16team16.View.MyApp"
+        android:name="com.team16.sopra.sopra16team16.View.Prono"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_web"
         android:label="@string/app_name"
