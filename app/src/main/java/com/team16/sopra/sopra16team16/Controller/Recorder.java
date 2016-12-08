@@ -29,7 +29,7 @@ public class Recorder{
 
     //constructor - need context for path
     private Recorder(Context context) {
-        path = context.getApplicationContext().getFilesDir().getPath();
+        path = context.getApplicationContext().getFilesDir().getPath() + "/";
         context = context;
     }
 

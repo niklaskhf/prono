@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.5.5\273c16dd04de665a8952bfdd8f65d416da0fd787\byte-buddy-agent-1.5.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="273c16dd04de665a8952bfdd8f65d416da0fd787">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\byte-buddy-agent-1.5.5_35679676fcca464e2501e286fe1eefd4669e9dae.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-v13\25.0.1\jars\libs\internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
@@ -27,6 +36,24 @@
         revision="24.0.3"
         sha1="5de0c73fef18917cd85d0ab70bb23818685e4dfd">
         <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-integration-1.3_8e811e170120106d284fb2411049e4da3807a574.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-library\1.3\4785a3c21320980282f9f33d0d1264a69040538f\hamcrest-library-1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4785a3c21320980282f9f33d0d1264a69040538f">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-library-1.3_24527b8e6989671bd1db2b2a733f2d61b56a24f6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test\runner\0.5\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="796f9229948e907471c5595fbe94655ccf03ff73">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support.test-runner-0.5_4be07903286090b0226cd27ed2c34424214a541d.jar" />
     </item>
     <item
         is-multidex="false"
@@ -57,150 +84,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.1_cb455a7956ec754faee2ec73332ff3e35d896371.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_17c26065dd43362be8ae86ac1898f94586f8c06e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-intents\2.2.2\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="efc9e293447db1929eb3853a3f83e8f46a957436">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\com.android.support.test.espresso-espresso-intents-2.2.2_47264d3a9705a55db969032f7edefba1ef6bce00.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_7f873623d0df8352d0fcef49ff61511b4d0c3dc6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.2\479c1e06db31c432330183f5cae684163f186146\javax.annotation-api-1.2.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="479c1e06db31c432330183f5cae684163f186146">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\javax.annotation-api-1.2_6efbe2d328f41134f1179155f84d459abcc1c8e9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\com.squareup\javawriter\2.1.1\67ff45d9ae02e583d0f9b3432a5ebbe05c30c966\javawriter-2.1.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\javawriter-2.1.1_afc7fb144ef9721f1647ffb1dc530696fcad8508.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\org.objenesis\objenesis\2.4\2916b6c96b50c5b3ec4452ed99401db745aabb27\objenesis-2.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="2916b6c96b50c5b3ec4452ed99401db745aabb27">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\objenesis-2.4_e731721ab1cef42d54bad3eb078023d9df734a2b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_eaa5e5d2fe49e2087f597bfa39536f317cd5d269.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_a1f6069ded03cc79878528d2a35fb72afe1b0cb1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\org.mockito\mockito-core\2.2.21\21ba936bf52bc1c9e68a3c253473269317112d92\mockito-core-2.2.21.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="21ba936bf52bc1c9e68a3c253473269317112d92">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\mockito-core-2.2.21_b1e7b8ab184f4acd37aaac1a1a949077f38a94ba.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\junit-4.12_387888df14651a60ac840f0de1a735af4df6add3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_90803d2ccdc7ef9a77d6e434160d9d9d9e4410a9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test\rules\0.5\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7e11799d8a26bfa5d48acafe012ee5545b9bf468">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\com.android.support.test-rules-0.5_61226514795f0364ef1dead254665ce49e94ad7f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.5.5\273c16dd04de665a8952bfdd8f65d416da0fd787\byte-buddy-agent-1.5.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="273c16dd04de665a8952bfdd8f65d416da0fd787">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\byte-buddy-agent-1.5.5_35679676fcca464e2501e286fe1eefd4669e9dae.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-library\1.3\4785a3c21320980282f9f33d0d1264a69040538f\hamcrest-library-1.3.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="4785a3c21320980282f9f33d0d1264a69040538f">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-library-1.3_24527b8e6989671bd1db2b2a733f2d61b56a24f6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test\runner\0.5\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="796f9229948e907471c5595fbe94655ccf03ff73">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support.test-runner-0.5_4be07903286090b0226cd27ed2c34424214a541d.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy\1.5.5\8557b6465cea17f3769678235e77d5cb076c1170\byte-buddy-1.5.5.jar"
         jumboMode="false"
         optimize="true"
@@ -216,6 +99,15 @@
         revision="24.0.3"
         sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
         <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.0.1_2762b2423e0d9856a220a07428759534605c17ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.0.1_cb455a7956ec754faee2ec73332ff3e35d896371.jar" />
     </item>
     <item
         is-multidex="false"
@@ -246,12 +138,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jar="C:\Users\moo\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.3"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_ea410aff2698a88635331ee22d7b7628a39336fa.jar" />
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\support-annotations-25.0.1_17c26065dd43362be8ae86ac1898f94586f8c06e.jar" />
     </item>
     <item
         is-multidex="false"
@@ -261,6 +153,15 @@
         revision="24.0.3"
         sha1="a890ee8445927649d9ed50f625a315d8758688be">
         <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\com.android.support.test.espresso-espresso-idling-resource-2.2.2_c216e414c14b8b4855f2126c235f504a74dc15ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.0.1_ea410aff2698a88635331ee22d7b7628a39336fa.jar" />
     </item>
     <item
         is-multidex="false"
@@ -291,12 +192,48 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-intents\2.2.2\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="efc9e293447db1929eb3853a3f83e8f46a957436">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\com.android.support.test.espresso-espresso-intents-2.2.2_47264d3a9705a55db969032f7edefba1ef6bce00.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.0.1_7f873623d0df8352d0fcef49ff61511b4d0c3dc6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.2\479c1e06db31c432330183f5cae684163f186146\javax.annotation-api-1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="479c1e06db31c432330183f5cae684163f186146">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\javax.annotation-api-1.2_6efbe2d328f41134f1179155f84d459abcc1c8e9.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test.espresso\espresso-core\2.2.2\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.3"
         sha1="d115b0e9e1501135fe91254ba884fcbd83d374c0">
         <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\com.android.support.test.espresso-espresso-core-2.2.2_843a17dc82d27e74e10d15f8d5eca1c28642877e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\com.squareup\javawriter\2.1.1\67ff45d9ae02e583d0f9b3432a5ebbe05c30c966\javawriter-2.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\javawriter-2.1.1_afc7fb144ef9721f1647ffb1dc530696fcad8508.jar" />
     </item>
     <item
         is-multidex="false"
@@ -315,6 +252,15 @@
         revision="24.0.3"
         sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
         <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\internal_impl-25.0.1_e653a4cb2d11b4d353c071159d8d28091a49a834.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\org.objenesis\objenesis\2.4\2916b6c96b50c5b3ec4452ed99401db745aabb27\objenesis-2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2916b6c96b50c5b3ec4452ed99401db745aabb27">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\objenesis-2.4_e731721ab1cef42d54bad3eb078023d9df734a2b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -345,12 +291,66 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.0.1_eaa5e5d2fe49e2087f597bfa39536f317cd5d269.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\jacoco\jacocoagent.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.3"
         sha1="fdca30f45b60c6ba724c26a9ce127975e26d4bcb">
         <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\jacocoagent_f88a15af105e2fb53d0435294c0dff1cfc554838.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.0.1_a1f6069ded03cc79878528d2a35fb72afe1b0cb1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\org.mockito\mockito-core\2.2.21\21ba936bf52bc1c9e68a3c253473269317112d92\mockito-core-2.2.21.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="21ba936bf52bc1c9e68a3c253473269317112d92">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\mockito-core-2.2.21_b1e7b8ab184f4acd37aaac1a1a949077f38a94ba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\moo\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\junit-4.12_387888df14651a60ac840f0de1a735af4df6add3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support.test\rules\0.5\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e11799d8a26bfa5d48acafe012ee5545b9bf468">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\androidTest\debug\com.android.support.test-rules-0.5_61226514795f0364ef1dead254665ce49e94ad7f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.0.1_90803d2ccdc7ef9a77d6e434160d9d9d9e4410a9.jar" />
     </item>
     <item
         is-multidex="false"

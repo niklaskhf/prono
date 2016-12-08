@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Dec 08 13:44:54 CET 2016
+#Thu Dec 08 14:59:37 CET 2016
 2.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\androidTest\\debug\\folders\\1000\\1f\\main
 5.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\androidTest\\debug\\jars\\2\\1f\\main.jar\\LICENSE-junit.txt
 5.set=JAVA_RESOURCE
