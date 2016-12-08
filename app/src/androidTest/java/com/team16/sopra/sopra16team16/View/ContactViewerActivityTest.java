@@ -2,21 +2,15 @@ package com.team16.sopra.sopra16team16.View;
 
 import android.app.Instrumentation;
 import android.content.Intent;
-<<<<<<< HEAD
 import android.support.test.espresso.Espresso;
-=======
 import android.support.test.InstrumentationRegistry;
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
-=======
 import com.team16.sopra.sopra16team16.Controller.Player;
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
 import com.team16.sopra.sopra16team16.R;
 
 import org.junit.Before;
@@ -25,10 +19,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
-<<<<<<< HEAD
 import static android.support.test.InstrumentationRegistry.getTargetContext;
-=======
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
+
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -39,10 +31,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
-<<<<<<< HEAD
-=======
-import static junit.framework.Assert.assertTrue;
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
 import static org.hamcrest.Matchers.anything;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -52,20 +40,10 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class ContactViewerActivityTest {
-<<<<<<< HEAD
     private ContactManager contactManager;
     Instrumentation.ActivityMonitor viewerMonitor = getInstrumentation().addMonitor(ContactViewerActivity.class.getName(), null, false);
     @Rule
     public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
-=======
-
-    private String firstName = "Max";
-    private String lastName = "Mustermann";
-    private String title = "Herr";
-    private String country = "Deutschland";
-    private String gender = "MALE";
-    private String id = "1";
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
 
     @Before
     public void setup() {
@@ -86,7 +64,6 @@ public class ContactViewerActivityTest {
         }
     }
 
-<<<<<<< HEAD
     @Test
     public void testOpenViewer() {
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
@@ -116,11 +93,7 @@ public class ContactViewerActivityTest {
 
         Espresso.pressBack();
     }
-=======
-    @Rule
-    public ActivityTestRule<ContactViewerActivity> mActivityRule =
-               new ActivityTestRule<>(ContactViewerActivity.class);
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
+
 
     @Test
     public void openContactTest2() {
@@ -224,15 +197,4 @@ public class ContactViewerActivityTest {
         Espresso.pressBack();
     }
 
-<<<<<<< HEAD
-=======
-//    @Test
-//    public void playButtonTest() {
-//        onView(withId(R.id.play_button)).perform(click());
-//        assertTrue("Player doesn't play", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == true);
-//        onView(withId(R.id.play_button)).perform(click());
-//        assertTrue("Player still plays", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == false);
-//    }
-
->>>>>>> 245c34b60a423f2627e6e6395fc7d6e720b25ed0
 }

@@ -264,50 +264,7 @@ public class NewContactActivity extends AppCompatActivity {
         countryEdit = (EditText) findViewById(R.id.country_edit);
         titleEdit = (EditText) findViewById(R.id.title_edit);
     }
-    /**
-     * Sets the text views
-     */
-    private void findViewByIdTextView() {
-        firstNameText = (TextView) findViewById(R.id.real_first_name);
-        lastNameText = (TextView) findViewById(R.id.real_last_name);
-        countryText = (TextView) findViewById(R.id.real_country);
-        titleText = (TextView) findViewById(R.id.real_title);
-    }
 
-
-    /**
-     * Remnant from a long time ago ...
-     * TODO clean this up
-     */
-    private void setEditLayout() {
-
-        firstNameText.setVisibility(View.INVISIBLE);
-        lastNameText.setVisibility(View.INVISIBLE);
-        countryText.setVisibility(View.INVISIBLE);
-        titleText.setVisibility(View.INVISIBLE);
-
-        deleteButton.setVisibility(View.INVISIBLE);
-        playButton.setVisibility(View.INVISIBLE);
-        editButton.setVisibility(View.INVISIBLE);
-
-        genderSign.setVisibility(View.INVISIBLE);
-
-        cancelButton.setVisibility(View.VISIBLE);
-        recordButton.setVisibility(View.VISIBLE);
-        confirmButton.setVisibility(View.VISIBLE);
-
-        firstNameEdit.setVisibility(View.VISIBLE);
-        lastNameEdit.setVisibility(View.VISIBLE);
-        //countryEdit.setVisibility(View.VISIBLE);
-        //countrySpinner.setVisibility(View.VISIBLE);
-        titleEdit.setVisibility(View.VISIBLE);
-
-
-        femaleRadioButton.setVisibility(View.VISIBLE);
-        maleRadioButton.setVisibility(View.VISIBLE);
-        unknownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);
-        unknownSexRadioButton.setVisibility(View.VISIBLE);
-    }
 
     /**
      * Shows an alert asking the user to input all the required fields.

@@ -60,20 +60,25 @@ public class RecorderPlayerTest {
         player = Player.getCurrentInstance(InstrumentationRegistry.getTargetContext());
     }
 
+    // im so sorry oh god
     @Test
     public void recordingTest() {
         // TODO PROBLEM
         // NEED TO MANUALLY ALLOW PERMISSION BEFORE STARTING TESTS
+
+        // HOMEACTIVITY
         onView(withId(R.id.addNew)).perform(click());
 
         NewContactActivity nextActivity = (NewContactActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
         // http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
         // next activity is opened and captured.
 
+        // NEWCONTACTACTIVITY
         assertNotNull(nextActivity);
         onView(withId(R.id.record_button))
                 .perform(click());
 
+        // TEST RECORDER
         assertTrue("recorder is not recording", recorder.isPressed());
         onView(withId(R.id.record_button))
                 .perform(click());
@@ -84,8 +89,10 @@ public class RecorderPlayerTest {
         Log.d("recorderTemp", temp.toString());
         assertTrue("temp file doesnt exist", temp.exists());
 
+        // TEST TEMP ACCEPT DIALOG
         onView(withId(R.id.accept_dialog)).perform(click());
 
+        // TEST CANCEL BUTTON
         onView(withId(R.id.cancel_button)).perform(click());
 
         assertTrue("temp file still exists", !temp.exists());
@@ -97,6 +104,8 @@ public class RecorderPlayerTest {
     @Test
     public void creatingRecordingTest() {
         // possibly the biggest mess ever, im so sorry
+
+        // IN HOMEACTIVITY
         onView(withId(R.id.addNew)).perform(click());
 
 
@@ -105,9 +114,12 @@ public class RecorderPlayerTest {
         // next activity is opened and captured.
         assertNotNull(nextActivity);
 
+        // IN NEWCONTACTACTIVITY
         onView(withId(R.id.confirm_button)).perform(click());
+        // TEST MINIMUM REQUIREMENTS FOR CREATION
         onView(withId(android.R.id.button1)).perform(click());
 
+        // TEST RECORDER
         onView(withId(R.id.record_button))
                 .perform(click());
 
@@ -124,6 +136,7 @@ public class RecorderPlayerTest {
         File perm = new File(recorder.path + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId()+1) + ".3gp");
         Log.d("recorderTemp", temp.toString());
 
+        // TEST TEMP DIALOG
         onView(withId(R.id.play_dialog)).perform(click());
         assertTrue("player isnt playing", player.isPlaying());
         onView(withId(R.id.play_dialog)).perform(click());
@@ -138,20 +151,31 @@ public class RecorderPlayerTest {
         assertTrue("player didnt stop", !player.isPlaying());
         onView(withId(R.id.accept_dialog)).perform(click());
 
+        // TEST SAVING
         onView(withId(R.id.confirm_button)).perform(click());
+        // OH NO REQUIREMENTS NOT SATISFIED
         onView(withId(android.R.id.button1)).perform(click());
+        // MEET REQUIREMENTS
         onView(withId(R.id.last_edit)).perform(typeText("test"));
         onView(withId(R.id.female_radioButton)).perform(click());
 
         Espresso.closeSoftKeyboard();
+
+        // SAVE
         onView(withId(R.id.confirm_button)).perform(click());
 
+        // IN CONTACTVIEWERACTIVITY
+        // CHECK IF TEMP GET DELETED
         assertTrue("temp file still exists", !temp.exists());
         assertTrue("perm file doesnt exist", perm.exists());
 
         nextActivity.finish();
 
+
         onView(withId(R.id.edit_button)).perform(click());
+
+        // IN NEWCONTACTACTIVITY - EDIT MODE
+        // CHECK RADIO BUTTON STATES
         onView(withId(R.id.female_radioButton)).check(matches(isChecked()));
         onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
         onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
@@ -161,6 +185,7 @@ public class RecorderPlayerTest {
         onView(withId(R.id.male_radioButton)).check(matches(isChecked()));
         onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
 
+        // TEST RECORDER - OVERWRITE
         onView(withId(R.id.record_button))
                 .perform(click());
 
@@ -175,11 +200,13 @@ public class RecorderPlayerTest {
 
         Log.d("recorderTemp", temp.toString());
 
+        // TEST TEMP DIALOG
         onView(withId(R.id.accept_dialog)).perform(click());
 
         onView(withId(R.id.last_edit)).perform(typeText("test"));
 
         Espresso.closeSoftKeyboard();
+        // TEST CANCEL WITH EXISTING TEMP FILE
         onView(withId(R.id.cancel_button)).perform(click());
 
         assertTrue("temp file still exists", !temp.exists());
@@ -187,7 +214,11 @@ public class RecorderPlayerTest {
         //nextActivity.finish();
 
 
+        // IN CONTACTVIEWERACTIVITY
         onView(withId(R.id.edit_button)).perform(click());
+
+        // IN NEWCONTACTACTIVITY
+        // CHECK RADIOBUTTONS
         onView(withId(R.id.female_radioButton)).check(matches(isChecked()));
         onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
         onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
@@ -197,6 +228,8 @@ public class RecorderPlayerTest {
         onView(withId(R.id.male_radioButton)).check(matches(isChecked()));
         onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
 
+
+        // TEST RECORDER
         onView(withId(R.id.record_button))
                 .perform(click());
 
@@ -211,15 +244,21 @@ public class RecorderPlayerTest {
 
         Log.d("recorderTemp", temp.toString());
 
+
+        // TEST TEMP DIALOG
         onView(withId(R.id.accept_dialog)).perform(click());
 
         onView(withId(R.id.last_edit)).perform(typeText("test"));
 
         Espresso.closeSoftKeyboard();
+        // TEST OVERWRITING
         onView(withId(R.id.confirm_button)).perform(click());
 
 
+        // IN CONTACTVIEWERACTIVITY
         onView(withId(R.id.edit_button)).perform(click());
+        // CHECK RADIO BUTTONS AGAIN
+        // THIS ENTIRE ITERATOION EXISTS TO GO THROUGH ALL CASES FOR GENDER
         onView(withId(R.id.female_radioButton)).check(matches(isNotChecked()));
         onView(withId(R.id.male_radioButton)).check(matches(isChecked()));
         onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
@@ -253,6 +292,8 @@ public class RecorderPlayerTest {
 
 
 
+        // IN CONTACTVIEWERACTIVITY
+        // TEST PLAYBUTTON
         onView(withId(R.id.play_button)).perform(click());
 
         assertTrue("player is not playing", player.isPlaying());
@@ -273,6 +314,10 @@ public class RecorderPlayerTest {
 
 
         Espresso.pressBack();
+
+        // IN HOMEACTIVITY
+
+        // TEST PLAYBUTTON
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .onChildView(withId(R.id.contact_play))
                 .perform(click());
@@ -295,6 +340,9 @@ public class RecorderPlayerTest {
 
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .perform(click());
+
+        // IN CONTACTVIEWERACTIVTY
+        // TEST DELETE DIALOG
         onView(withId(R.id.delete_button)).perform(click());
         onView(withText("NO")).perform(click());
         onView(withId(R.id.delete_button)).perform(click());
