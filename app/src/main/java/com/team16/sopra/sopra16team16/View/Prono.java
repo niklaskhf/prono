@@ -5,7 +5,7 @@ import android.content.Context;
 
 
 
-public class MyApp extends Application{
+public class Prono extends Application{
 
     private static Context mContext;
 

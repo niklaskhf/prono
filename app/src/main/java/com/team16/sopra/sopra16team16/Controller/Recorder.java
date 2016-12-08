@@ -30,7 +30,7 @@ public class Recorder{
     //constructor - need context for path
     private Recorder(Context context) {
         path = context.getApplicationContext().getFilesDir().getPath() + "/";
-        context = context;
+        this.context = context;
     }
 
     //Singelton
