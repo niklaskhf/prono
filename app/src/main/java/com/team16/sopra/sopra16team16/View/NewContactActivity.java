@@ -29,11 +29,6 @@ public class NewContactActivity extends AppCompatActivity {
     private static ContactManager contactManager;
     private static Recorder recorder;
 
-    private TextView firstNameText;
-    private TextView lastNameText;
-    private TextView countryText;
-    private TextView titleText;
-
     private EditText firstNameEdit;
     private EditText lastNameEdit;
     private EditText countryEdit;
@@ -46,9 +41,6 @@ public class NewContactActivity extends AppCompatActivity {
     private ImageButton confirmButton;
     private ImageButton cancelButton;
     private ImageButton recordButton;
-    private ImageButton editButton;
-    private ImageButton deleteButton;
-    private ImageButton playButton;
 
     private ImageView genderSign;
 
@@ -87,8 +79,6 @@ public class NewContactActivity extends AppCompatActivity {
 
         initialize();
 
-
-        setEditLayout();
         // TODO ANDERE FELDER FÜLLEN
 
         // add Button to change layout to contact viewer
@@ -188,7 +178,6 @@ public class NewContactActivity extends AppCompatActivity {
      * Initializes the views etc.
      */
     public void initialize() {
-        findViewByIdTextView();
 
         findViewByIdEditButton();
 
@@ -264,10 +253,6 @@ public class NewContactActivity extends AppCompatActivity {
         confirmButton = (ImageButton) findViewById(R.id.confirm_button);
         cancelButton = (ImageButton) findViewById(R.id.cancel_button);
         recordButton = (ImageButton) findViewById(R.id.record_button);
-        editButton = (ImageButton) findViewById(R.id.edit_button);
-        deleteButton = (ImageButton) findViewById(R.id.delete_button);
-        confirmButton = (ImageButton) findViewById(R.id.confirm_button);
-        playButton = (ImageButton) findViewById(R.id.play_button);
     }
 
     /**
@@ -279,7 +264,6 @@ public class NewContactActivity extends AppCompatActivity {
         countryEdit = (EditText) findViewById(R.id.country_edit);
         titleEdit = (EditText) findViewById(R.id.title_edit);
     }
-
     /**
      * Sets the text views
      */

@@ -13,25 +13,12 @@
         android:id="@+id/first_text"
         android:textSize="18sp"/>
 
-    <RelativeLayout
-        android:id="@+id/first_name_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/first_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_first_name"
-            android:textSize="30sp"/>
-    </RelativeLayout>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/first_edit"/>
 
     <TextView
         android:text="Last Name"
@@ -40,25 +27,12 @@
         android:id="@+id/last_text"
         android:textSize="18dp"/>
 
-    <RelativeLayout
-        android:id="@+id/last_name_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/last_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_last_name"
-            android:textSize="30sp"/>
-    </RelativeLayout>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/last_edit"/>
 
     <TextView
         android:text="Title"
@@ -67,57 +41,25 @@
         android:id="@+id/title_text"
         android:textSize="18dp"/>
 
-    <RelativeLayout
-        android:id="@+id/title_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/title_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_title"
-            android:textSize="30sp"/>
-
-    </RelativeLayout>
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/title_edit"/>
 
     <TextView
         android:text="Country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/country_text"
-        android:textSize="18dp"/>
+        android:id="@+id/country_text"/>
 
-    <RelativeLayout
-        android:id="@+id/country_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/country_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_country"
-            android:textSize="30sp"/>
-
-    </RelativeLayout>
-
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/country_edit"/>
 
     <TextView
         android:text="Gender"
@@ -178,12 +120,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/cancel_icon"/>
 
-            <ImageButton
-                android:id="@+id/delete_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/delete_icon"/>
-
         </RelativeLayout>
 
 
@@ -197,12 +133,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/mic_icon"/>
 
-            <ImageButton
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/play_button"
-                android:background="@drawable/play_icon"/>
-
         </RelativeLayout>
 
         <RelativeLayout
@@ -214,11 +144,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="54dp"
                 android:background="@drawable/accept_icon"/>
-            <ImageButton
-                android:id="@+id/edit_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_icon"/>
 
         </RelativeLayout>
 
