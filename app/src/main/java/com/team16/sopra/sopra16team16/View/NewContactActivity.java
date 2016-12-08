@@ -25,11 +25,6 @@ public class NewContactActivity extends AppCompatActivity {
     private static ContactManager contactManager;
     private static Recorder recorder;
 
-    private TextView firstNameText;
-    private TextView lastNameText;
-    private TextView countryText;
-    private TextView titleText;
-
     private EditText firstNameEdit;
     private EditText lastNameEdit;
     private EditText countryEdit;
@@ -42,9 +37,6 @@ public class NewContactActivity extends AppCompatActivity {
     private ImageButton confirmButton;
     private ImageButton cancelButton;
     private ImageButton recordButton;
-    private ImageButton editButton;
-    private ImageButton deleteButton;
-    private ImageButton playButton;
 
     private ImageView genderSign;
 
@@ -64,7 +56,6 @@ public class NewContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
 
-        //initialize();
 
         Bundle bundle = getIntent().getExtras();
 
@@ -82,8 +73,6 @@ public class NewContactActivity extends AppCompatActivity {
 
         initialize();
 
-
-        setEditLayout();
         // TODO ANDERE FELDER FÜLLEN
 
         // add Button to change layout to contact viewer
@@ -121,21 +110,6 @@ public class NewContactActivity extends AppCompatActivity {
             }
         });
 
-        @SuppressLint("WrongViewCast")
-        final ImageButton editButton = (ImageButton) findViewById(R.id.edit_button);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setEditLayout();
-                firstNameEdit.setText(firstNameText.getText().toString());
-                lastNameEdit.setText(lastNameText.getText().toString());
-                countryEdit.setText(countryText.getText().toString());
-                titleEdit.setText(titleText.getText().toString());
-
-
-            }
-        });
-
         // add Button to cancel the current (adding of new contact)/(editing of existing button)
         final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -168,12 +142,10 @@ public class NewContactActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
         finish();
     }
 
     public void initialize() {
-        findViewByIdTextView();
 
         findViewByIdEditButton();
 
@@ -235,10 +207,6 @@ public class NewContactActivity extends AppCompatActivity {
         confirmButton = (ImageButton) findViewById(R.id.confirm_button);
         cancelButton = (ImageButton) findViewById(R.id.cancel_button);
         recordButton = (ImageButton) findViewById(R.id.record_button);
-        editButton = (ImageButton) findViewById(R.id.edit_button);
-        deleteButton = (ImageButton) findViewById(R.id.delete_button);
-        confirmButton = (ImageButton) findViewById(R.id.confirm_button);
-        playButton = (ImageButton) findViewById(R.id.play_button);
     }
 
     private void findViewByIdEditButton() {
@@ -246,45 +214,6 @@ public class NewContactActivity extends AppCompatActivity {
         lastNameEdit = (EditText) findViewById(R.id.last_edit);
         countryEdit = (EditText) findViewById(R.id.country_edit);
         titleEdit = (EditText) findViewById(R.id.title_edit);
-    }
-
-    private void findViewByIdTextView() {
-        firstNameText = (TextView) findViewById(R.id.real_first_name);
-        lastNameText = (TextView) findViewById(R.id.real_last_name);
-        countryText = (TextView) findViewById(R.id.real_country);
-        titleText = (TextView) findViewById(R.id.real_title);
-    }
-
-
-    private void setEditLayout() {
-
-        firstNameText.setVisibility(View.INVISIBLE);
-        lastNameText.setVisibility(View.INVISIBLE);
-        countryText.setVisibility(View.INVISIBLE);
-        titleText.setVisibility(View.INVISIBLE);
-
-        deleteButton.setVisibility(View.INVISIBLE);
-        playButton.setVisibility(View.INVISIBLE);
-        editButton.setVisibility(View.INVISIBLE);
-
-        genderSign.setVisibility(View.INVISIBLE);
-
-        cancelButton.setVisibility(View.VISIBLE);
-        recordButton.setVisibility(View.VISIBLE);
-        confirmButton.setVisibility(View.VISIBLE);
-
-        firstNameEdit.setVisibility(View.VISIBLE);
-        lastNameEdit.setVisibility(View.VISIBLE);
-        // TODO
-        //countryEdit.setVisibility(View.VISIBLE);
-        //countrySpinner.setVisibility(View.VISIBLE);
-        titleEdit.setVisibility(View.VISIBLE);
-
-
-        femaleRadioButton.setVisibility(View.VISIBLE);
-        maleRadioButton.setVisibility(View.VISIBLE);
-        unknownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);
-        unknownSexRadioButton.setVisibility(View.VISIBLE);
     }
 
 }

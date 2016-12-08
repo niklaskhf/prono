@@ -44,12 +44,12 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/delete_icon.png"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/running_man.png",
-        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/running_man.png"
-    },
-    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/favorite_marked_icon.png",
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/favorite_marked_icon.png"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/running_man.png",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable-xxhdpi/running_man.png"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable-xxhdpi/menu_icon.png",

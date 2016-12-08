@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -21,6 +22,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 import static junit.framework.Assert.assertTrue;
+import static org.hamcrest.Matchers.anything;
 import static org.junit.Assert.assertNotNull;
 /**
  * Created by prime on 08.12.16.
@@ -71,13 +73,12 @@ public class ContactViewerActivityTest {
         nextActivity.finish();
     }
 
-    @Test
-    public void playButtonTest() {
-        onView(withId(R.id.play_button)).perform(click());
-        assertTrue("Player doesn't play", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == true);
-        onView(withId(R.id.play_button)).perform(click());
-        assertTrue("Player still plays", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == false);
-    }
-    
+//    @Test
+//    public void playButtonTest() {
+//        onView(withId(R.id.play_button)).perform(click());
+//        assertTrue("Player doesn't play", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == true);
+//        onView(withId(R.id.play_button)).perform(click());
+//        assertTrue("Player still plays", Player.getCurrentInstance(InstrumentationRegistry.getContext()).isPlaying() == false);
+//    }
 
 }
