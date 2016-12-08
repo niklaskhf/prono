@@ -78,7 +78,6 @@ public class ContactViewerActivity extends AppCompatActivity {
                 intent.putExtra("last", lastName);
                 intent.putExtra("title", title);
                 intent.putExtra("country", country);
-                Log.i("country", country);
                 intent.putExtra("gender", gender);
                 intent.putExtra("cause", "EDIT");
 

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 
-public class DBManager implements DBManagerInterface{
+public class DBManager {
     private static DBManager currentInstance;
     private SQLiteDatabase dbContacts;
     private DBHelper dbHelper;
