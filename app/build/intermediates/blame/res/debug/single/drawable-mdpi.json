@@ -1,19 +1,19 @@
 [
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\add_new_contact_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\add_new_contact_icon.png"
-    },
-    {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\delete_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\delete_icon.png"
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\cancel_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\cancel_icon.png"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\mic_icon.png",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\mic_icon.png"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\cancel_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\cancel_icon.png"
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\delete_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\delete_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\expand_less_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\expand_less_icon.png"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\expand_less_icon.png",
@@ -24,16 +24,32 @@
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\favorite_marked_icon.png"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\pregnant_woman.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\pregnant_woman.png"
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\accept_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\accept_icon.png"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\arrow_back_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\arrow_back_icon.png"
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\expand_more_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\expand_more_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\cancel_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\cancel_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\edit_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\edit_icon.png"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\play_icon.png",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\play_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\mic_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\mic_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\play_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\play_icon.png"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\running_man.png",
@@ -42,6 +58,50 @@
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\accept_icon.png",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\accept_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\favorite_unmarked_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\favorite_unmarked_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\favorite_marked_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\favorite_marked_icon.png"
+    },
+    {
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\menu_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\menu_icon.png"
+    },
+    {
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\add_new_contact_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\add_new_contact_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\running_man.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\running_man.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\pregnant_woman.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\pregnant_woman.png"
+    },
+    {
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\pregnant_woman.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\pregnant_woman.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\menu_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\menu_icon.png"
+    },
+    {
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\arrow_back_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\arrow_back_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\add_new_contact_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\add_new_contact_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\delete_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\delete_icon.png"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\expand_more_icon.png",
@@ -56,7 +116,7 @@
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\favorite_unmarked_icon.png"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\menu_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\menu_icon.png"
+        "merged": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\arrow_back_icon.png",
+        "source": "C:\\Users\\Martin\\Desktop\\SopraNew\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\arrow_back_icon.png"
     }
 ]
