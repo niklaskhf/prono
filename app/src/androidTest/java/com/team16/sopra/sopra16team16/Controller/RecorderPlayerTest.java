@@ -93,6 +93,7 @@ public class RecorderPlayerTest {
 
     @Test
     public void creatingRecordingTest() {
+        // possibly the biggest mess ever, im so sorry
         onView(withId(R.id.addNew)).perform(click());
 
         NewContactActivity nextActivity = (NewContactActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
@@ -194,9 +195,6 @@ public class RecorderPlayerTest {
 
         assertTrue("perm file doesnt exist", !perm.exists());
         assertTrue("temp file doesnt exist", !temp.exists());
-
-
-
     }
     @Test
     public void nullCheck() {
