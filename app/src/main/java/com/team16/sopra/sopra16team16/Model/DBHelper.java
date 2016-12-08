@@ -9,7 +9,6 @@ import com.team16.sopra.sopra16team16.Controller.ContactManager;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper currentInstance = null;
-    private static boolean closed = false;
     private static final String DATABASE_NAME = "DBcontact";
 
     private static final int DATABASE_VERSION = 2;
@@ -33,9 +32,6 @@ public class DBHelper extends SQLiteOpenHelper {
         if (currentInstance == null) {
             currentInstance = new DBHelper(context);
             return currentInstance;
-        } else if (closed) {
-            currentInstance = new DBHelper(context);
-            return currentInstance;
         } else {
             return currentInstance;
         }
@@ -43,7 +39,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private DBHelper(Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
-        closed = false;
     }
 
     // Method is called during creation of the database
@@ -58,11 +53,5 @@ public class DBHelper extends SQLiteOpenHelper {
                         + newVersion + ", which will destroy all old data");
         database.execSQL("DROP TABLE IF EXISTS contacts");
         onCreate(database);
-    }
-
-    @Override
-    public void close() {
-        super.close();
-        closed = true;
     }
 }

@@ -37,8 +37,6 @@ public class ContactCursorAdapter extends CursorAdapter {
     }
 
 
-
-
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         return LayoutInflater.from(context).inflate(R.layout.contact_item, viewGroup, false);
@@ -69,36 +67,31 @@ public class ContactCursorAdapter extends CursorAdapter {
         if (Boolean.getBoolean(cursor.getString(cursor.getColumnIndexOrThrow("deleted")))) {
             view = new Space(context);
         }*/
-        if (tt1 != null) {
-            tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
+        tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
+
+
+        tt2.setText(cursor.getString(cursor.getColumnIndexOrThrow("last")));
+
+
+        tt3.setText(cursor.getString(cursor.getColumnIndexOrThrow("title")));
+
+
+        tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
+
+
+        tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
+        switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
+            case "MALE":
+                genderSign.setImageResource(R.drawable.running_man);
+                break;
+            case "FEMALE":
+                genderSign.setImageResource(R.drawable.pregnant_woman);
+                break;
+            case "UNKNOWN":
+                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+                break;
         }
 
-        if (tt2 != null) {
-            tt2.setText(cursor.getString(cursor.getColumnIndexOrThrow("last")));
-        }
-
-        if (tt3 != null) {
-            tt3.setText(cursor.getString(cursor.getColumnIndexOrThrow("title")));
-        }
-
-        if (tt4 != null) {
-            tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
-        }
-
-        if (tt5 != null) {
-            tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
-            switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
-                case "MALE":
-                    genderSign.setImageResource(R.drawable.running_man);
-                    break;
-                case "FEMALE":
-                    genderSign.setImageResource(R.drawable.pregnant_woman);
-                    break;
-                case "UNKNOWN":
-                    genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
-                    break;
-            }
-        }
 
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {

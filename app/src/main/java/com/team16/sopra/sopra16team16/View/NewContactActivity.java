@@ -154,6 +154,15 @@ public class NewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 recorder.delete(id);
+                Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("first", firstNameEdit.getText().toString());
+                bundle.putString("last", lastNameEdit.getText().toString());
+                bundle.putString("title", titleEdit.getText().toString());
+                bundle.putString("country", countryEdit.getText().toString());
+                bundle.putInt("id", id);
+                bundle.putString("gender", gender);
+                intent.putExtras(bundle);
                 finish();
             }
         });

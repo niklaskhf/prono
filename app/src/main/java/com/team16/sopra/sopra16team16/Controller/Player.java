@@ -21,7 +21,7 @@ public class Player{
     private boolean is_playing = false;
 
     private Player(Context context) {
-        path = context.getApplicationContext().getFilesDir().getPath();
+        path = context.getApplicationContext().getFilesDir().getPath() + "/";
     }
 
     public static Player getCurrentInstance(Context context) {
