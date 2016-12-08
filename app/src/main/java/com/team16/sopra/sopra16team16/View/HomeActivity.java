@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.Space;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +25,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
@@ -52,7 +54,9 @@ public class HomeActivity extends AppCompatActivity {
     private SearchView searchView;
 
 
+
     // Storage Permissions
+    private static final int REQUEST_MICROPHONE = 2;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -66,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
+        verifyStoragePermissions(this);
         // initialize Toolbar
         initializeToolbar();
 
@@ -218,6 +223,8 @@ public class HomeActivity extends AppCompatActivity {
         // add the ListFragment
         fragmentManager = getFragmentManager();
         fragment = new ContactListFragment();
+
+        Bundle args = new Bundle();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
         // populate the ListView
@@ -225,7 +232,7 @@ public class HomeActivity extends AppCompatActivity {
         fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
         // testing add button
-        FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
+        addButton = (FloatingActionButton) findViewById(R.id.addNew);
         addNewContact(addButton);
     }
 
@@ -244,7 +251,7 @@ public class HomeActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verifyStoragePermissions(HomeActivity.this);
+                //verifyStoragePermissions(HomeActivity.this);
                 int id = contactManager.getId();
                 id++;
                 Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);
@@ -261,6 +268,17 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    /**
+     * Sets the visibility of the addButton
+     */
+    public void setAddButtonVis(boolean vis) {
+        if (vis) {
+            addButton.setVisibility(View.VISIBLE);
+        } else {
+            addButton.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -317,6 +335,7 @@ public class HomeActivity extends AppCompatActivity {
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
             // We don't have permission so prompt the user
@@ -325,6 +344,12 @@ public class HomeActivity extends AppCompatActivity {
                     PERMISSIONS_STORAGE,
                     REQUEST_EXTERNAL_STORAGE
             );
+        }
+
+        if (micPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity,
+                    new String[]{Manifest.permission.RECORD_AUDIO},
+                    REQUEST_MICROPHONE);
         }
     }
 }

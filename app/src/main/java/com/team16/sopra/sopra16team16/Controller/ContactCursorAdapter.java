@@ -37,8 +37,6 @@ public class ContactCursorAdapter extends CursorAdapter {
     }
 
 
-
-
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         return LayoutInflater.from(context).inflate(R.layout.contact_item, viewGroup, false);
@@ -61,44 +59,39 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         final ImageButton playButton = (ImageButton) view.findViewById(R.id.contact_play);
         final ImageButton favButton = (ImageButton) view.findViewById(R.id.contact_fav);
-        Button deleteButton = (Button) view.findViewById(R.id.contact_delete);
         ImageView genderSign = (ImageView) view.findViewById(R.id.contact_gender);
 
 
+        /*
         // assign values to textviews
         if (Boolean.getBoolean(cursor.getString(cursor.getColumnIndexOrThrow("deleted")))) {
             view = new Space(context);
-        }
-        if (tt1 != null) {
-            tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
+        }*/
+        tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
+
+
+        tt2.setText(cursor.getString(cursor.getColumnIndexOrThrow("last")));
+
+
+        tt3.setText(cursor.getString(cursor.getColumnIndexOrThrow("title")));
+
+
+        tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
+
+
+        tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
+        switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
+            case "MALE":
+                genderSign.setImageResource(R.drawable.running_man);
+                break;
+            case "FEMALE":
+                genderSign.setImageResource(R.drawable.pregnant_woman);
+                break;
+            case "UNKNOWN":
+                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+                break;
         }
 
-        if (tt2 != null) {
-            tt2.setText(cursor.getString(cursor.getColumnIndexOrThrow("last")));
-        }
-
-        if (tt3 != null) {
-            tt3.setText(cursor.getString(cursor.getColumnIndexOrThrow("title")));
-        }
-
-        if (tt4 != null) {
-            tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
-        }
-
-        if (tt5 != null) {
-            tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
-            switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
-                case "MALE":
-                    genderSign.setImageResource(R.drawable.running_man);
-                    break;
-                case "FEMALE":
-                    genderSign.setImageResource(R.drawable.pregnant_woman);
-                    break;
-                case "UNKNOWN":
-                    genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
-                    break;
-            }
-        }
 
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -149,15 +142,6 @@ public class ContactCursorAdapter extends CursorAdapter {
                 contactManager.toggleFavorite(id, favValue);
                 notifyDataSetChanged();
 
-            }
-        });
-
-        // delete item
-        // TODO remove this and the entire button
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View viewC) {
-                contactManager.deleteContact(id);
             }
         });
     }

@@ -82,6 +82,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                 intent.putExtra("cause", "EDIT");
 
                 startActivity(intent);
+                finish();
             }
         });
 
