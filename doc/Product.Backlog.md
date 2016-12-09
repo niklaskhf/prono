@@ -108,7 +108,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 20
 - Akzeptanztests:
     - [ ] Aufnahme ist nicht mehr vorhanden
-    - [ ] Aufforderung zu neuer Aufnahme
 
 
 - Enthaltene Tasks:
