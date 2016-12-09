@@ -54,181 +54,178 @@ import com.team16.sopra.sopra16team16.R;
 
     private String cause;
 
-<span class="fc" id="L57">    private boolean recorded = false;</span>
     private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-<span class="fc" id="L62">        super.onCreate(savedInstanceState);</span>
-<span class="fc" id="L63">        this.setContentView(R.layout.contact_editor);</span>
+<span class="fc" id="L61">        super.onCreate(savedInstanceState);</span>
+<span class="fc" id="L62">        this.setContentView(R.layout.contact_editor);</span>
 
         //initialize();
 
-<span class="fc" id="L67">        Bundle bundle = getIntent().getExtras();</span>
+<span class="fc" id="L66">        Bundle bundle = getIntent().getExtras();</span>
 
-<span class="fc" id="L69">        firstName = (String) bundle.get(&quot;first&quot;);</span>
-<span class="fc" id="L70">        lastName = (String) bundle.get(&quot;last&quot;);</span>
-<span class="fc" id="L71">        title = (String) bundle.get(&quot;title&quot;);</span>
-<span class="fc" id="L72">        country = (String) bundle.get(&quot;country&quot;);</span>
-<span class="fc" id="L73">        Log.i(&quot;country&quot;, country);</span>
-<span class="fc" id="L74">        gender = (String) bundle.get(&quot;gender&quot;);</span>
-<span class="fc" id="L75">        id = (Integer) bundle.get(&quot;id&quot;);</span>
-<span class="fc" id="L76">        cause = bundle.get(&quot;cause&quot;).toString();</span>
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        if (cause.equals(&quot;EDIT&quot;)) {</span>
-<span class="fc" id="L78">            recorded = true;</span>
-        }
+<span class="fc" id="L68">        firstName = (String) bundle.get(&quot;first&quot;);</span>
+<span class="fc" id="L69">        lastName = (String) bundle.get(&quot;last&quot;);</span>
+<span class="fc" id="L70">        title = (String) bundle.get(&quot;title&quot;);</span>
+<span class="fc" id="L71">        country = (String) bundle.get(&quot;country&quot;);</span>
+<span class="fc" id="L72">        Log.i(&quot;country&quot;, country);</span>
+<span class="fc" id="L73">        gender = (String) bundle.get(&quot;gender&quot;);</span>
+<span class="fc" id="L74">        id = (Integer) bundle.get(&quot;id&quot;);</span>
+<span class="fc" id="L75">        cause = bundle.get(&quot;cause&quot;).toString();</span>
 
-<span class="fc" id="L81">        Log.d(&quot;first&quot;, firstName);</span>
 
-<span class="fc" id="L83">        initialize();</span>
+<span class="fc" id="L78">        Log.d(&quot;first&quot;, firstName);</span>
+
+<span class="fc" id="L80">        initialize();</span>
 
         // TODO ANDERE FELDER FÜLLEN
 
         // add Button to change layout to contact viewer
-<span class="fc" id="L88">        final ImageButton confirmEditButton = (ImageButton) findViewById(R.id.confirm_button);</span>
-<span class="fc" id="L89">        confirmEditButton.setOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L85">        final ImageButton confirmEditButton = (ImageButton) findViewById(R.id.confirm_button);</span>
+<span class="fc" id="L86">        confirmEditButton.setOnClickListener(new View.OnClickListener() {</span>
             @Override
             public void onClick(View view) {
 
-<span class="fc bfc" id="L93" title="All 2 branches covered.">                if (femaleRadioButton.isChecked()) {</span>
-<span class="fc" id="L94">                    gender = &quot;FEMALE&quot;;</span>
-<span class="fc bfc" id="L95" title="All 2 branches covered.">                } else if (maleRadioButton.isChecked()) {</span>
-<span class="fc" id="L96">                    gender = &quot;MALE&quot;;</span>
-<span class="fc bfc" id="L97" title="All 2 branches covered.">                } else if (unknownSexRadioButton.isChecked()) {</span>
-<span class="fc" id="L98">                    gender = &quot;UNKNOWN&quot;;</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">                if (femaleRadioButton.isChecked()) {</span>
+<span class="fc" id="L91">                    gender = &quot;FEMALE&quot;;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">                } else if (maleRadioButton.isChecked()) {</span>
+<span class="fc" id="L93">                    gender = &quot;MALE&quot;;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">                } else if (unknownSexRadioButton.isChecked()) {</span>
+<span class="fc" id="L95">                    gender = &quot;UNKNOWN&quot;;</span>
                 }
 
-<span class="pc bpc" id="L101" title="1 of 4 branches missed.">                if (lastNameEdit.getText().toString().equals(&quot;&quot;) || !recorded) {</span>
-<span class="fc" id="L102">                    confirmRequirements();</span>
+<span class="pc bpc" id="L98" title="1 of 4 branches missed.">                if (lastNameEdit.getText().toString().equals(&quot;&quot;) || !recorder.exists(id)) {</span>
+<span class="fc" id="L99">                    confirmRequirements();</span>
                 } else {
-<span class="fc" id="L104">                    Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);</span>
-<span class="fc" id="L105">                    Bundle bundle = new Bundle();</span>
-<span class="fc" id="L106">                    bundle.putString(&quot;first&quot;, firstNameEdit.getText().toString());</span>
-<span class="fc" id="L107">                    bundle.putString(&quot;last&quot;, lastNameEdit.getText().toString());</span>
-<span class="fc" id="L108">                    bundle.putString(&quot;title&quot;, titleEdit.getText().toString());</span>
-<span class="fc" id="L109">                    bundle.putString(&quot;country&quot;, countryEdit.getText().toString());</span>
-<span class="fc" id="L110">                    bundle.putInt(&quot;id&quot;, id);</span>
-<span class="fc" id="L111">                    bundle.putString(&quot;gender&quot;, gender);</span>
-<span class="fc" id="L112">                    intent.putExtras(bundle);</span>
+<span class="fc" id="L101">                    Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);</span>
+<span class="fc" id="L102">                    Bundle bundle = new Bundle();</span>
+<span class="fc" id="L103">                    bundle.putString(&quot;first&quot;, firstNameEdit.getText().toString());</span>
+<span class="fc" id="L104">                    bundle.putString(&quot;last&quot;, lastNameEdit.getText().toString());</span>
+<span class="fc" id="L105">                    bundle.putString(&quot;title&quot;, titleEdit.getText().toString());</span>
+<span class="fc" id="L106">                    bundle.putString(&quot;country&quot;, countryEdit.getText().toString());</span>
+<span class="fc" id="L107">                    bundle.putInt(&quot;id&quot;, id);</span>
+<span class="fc" id="L108">                    bundle.putString(&quot;gender&quot;, gender);</span>
+<span class="fc" id="L109">                    intent.putExtras(bundle);</span>
 
-<span class="fc bfc" id="L114" title="All 2 branches covered.">                    if (cause.equals(&quot;CREATE&quot;)) {</span>
-<span class="fc" id="L115">                        setContact();</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">                    if (cause.equals(&quot;CREATE&quot;)) {</span>
+<span class="fc" id="L112">                        setContact();</span>
                     } else {
-<span class="fc" id="L117">                        updateContact();</span>
+<span class="fc" id="L114">                        updateContact();</span>
                     }
                     ;
-<span class="fc" id="L120">                    recorder.confirm(id);</span>
-<span class="fc" id="L121">                    startActivity(intent);</span>
-<span class="fc" id="L122">                    finish();</span>
+<span class="fc" id="L117">                    recorder.confirm(id);</span>
+<span class="fc" id="L118">                    startActivity(intent);</span>
+<span class="fc" id="L119">                    finish();</span>
                 }
 
-<span class="fc" id="L125">            }</span>
+<span class="fc" id="L122">            }</span>
         });
 
         // add Button to cancel the current (adding of new contact)/(editing of existing button)
-<span class="fc" id="L129">        final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);</span>
-<span class="fc" id="L130">        cancelButton.setOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L126">        final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);</span>
+<span class="fc" id="L127">        cancelButton.setOnClickListener(new View.OnClickListener() {</span>
 
             @Override
             public void onClick(View view) {
-<span class="fc" id="L134">                onBackPressed();</span>
-<span class="fc" id="L135">            }</span>
+<span class="fc" id="L131">                onBackPressed();</span>
+<span class="fc" id="L132">            }</span>
         });
 
         // add Button to record a name
-<span class="fc" id="L139">        final ImageButton recordButton = (ImageButton) findViewById(R.id.record_button);</span>
-<span class="fc" id="L140">        recordButton.setOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L136">        final ImageButton recordButton = (ImageButton) findViewById(R.id.record_button);</span>
+<span class="fc" id="L137">        recordButton.setOnClickListener(new View.OnClickListener() {</span>
 
             @Override
             public void onClick(View view) {
-<span class="fc bfc" id="L144" title="All 2 branches covered.">                if (recorder.isPressed()) {</span>
-<span class="fc" id="L145">                    recordButton.setBackgroundResource(R.drawable.mic_icon);</span>
-<span class="fc" id="L146">                    recorder.stopRecording();</span>
-<span class="fc" id="L147">                    confirmRecording();</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">                if (recorder.isPressed()) {</span>
+<span class="fc" id="L142">                    recordButton.setBackgroundResource(R.drawable.mic_icon);</span>
+<span class="fc" id="L143">                    recorder.stopRecording();</span>
+<span class="fc" id="L144">                    confirmRecording();</span>
                 } else {
                     //start recording
-<span class="fc" id="L150">                    recordButton.setBackgroundResource(R.drawable.accept_icon);</span>
-<span class="fc" id="L151">                    recorder.startRecording(id);</span>
+<span class="fc" id="L147">                    recordButton.setBackgroundResource(R.drawable.accept_icon);</span>
+<span class="fc" id="L148">                    recorder.startRecording(id);</span>
                     // TODO autostop recording after x seconds
                 }
-<span class="fc" id="L154">            }</span>
+<span class="fc" id="L151">            }</span>
         });
-<span class="fc" id="L156">    }</span>
+<span class="fc" id="L153">    }</span>
 
     @Override
     public void onBackPressed() {
-<span class="fc" id="L160">        super.onBackPressed();</span>
-<span class="fc" id="L161">        recorder.deleteTemp(id);</span>
+<span class="fc" id="L157">        super.onBackPressed();</span>
+<span class="fc" id="L158">        recorder.deleteTemp(id);</span>
         //Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
-<span class="fc bfc" id="L163" title="All 2 branches covered.">        if (cause.equals(&quot;EDIT&quot;)) {</span>
-<span class="fc" id="L164">            recorder.deleteTemp(id);</span>
-<span class="fc" id="L165">            Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);</span>
-<span class="fc" id="L166">            Bundle bundle = new Bundle();</span>
-<span class="fc" id="L167">            bundle.putString(&quot;first&quot;, firstNameEdit.getText().toString());</span>
-<span class="fc" id="L168">            bundle.putString(&quot;last&quot;, lastNameEdit.getText().toString());</span>
-<span class="fc" id="L169">            bundle.putString(&quot;title&quot;, titleEdit.getText().toString());</span>
-<span class="fc" id="L170">            bundle.putString(&quot;country&quot;, countryEdit.getText().toString());</span>
-<span class="fc" id="L171">            bundle.putInt(&quot;id&quot;, id);</span>
-<span class="fc" id="L172">            bundle.putString(&quot;gender&quot;, gender);</span>
-<span class="fc" id="L173">            intent.putExtras(bundle);</span>
-<span class="fc" id="L174">            startActivity(intent);</span>
-<span class="fc" id="L175">            finish();</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">        if (cause.equals(&quot;EDIT&quot;)) {</span>
+<span class="fc" id="L161">            recorder.deleteTemp(id);</span>
+<span class="fc" id="L162">            Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);</span>
+<span class="fc" id="L163">            Bundle bundle = new Bundle();</span>
+<span class="fc" id="L164">            bundle.putString(&quot;first&quot;, firstNameEdit.getText().toString());</span>
+<span class="fc" id="L165">            bundle.putString(&quot;last&quot;, lastNameEdit.getText().toString());</span>
+<span class="fc" id="L166">            bundle.putString(&quot;title&quot;, titleEdit.getText().toString());</span>
+<span class="fc" id="L167">            bundle.putString(&quot;country&quot;, countryEdit.getText().toString());</span>
+<span class="fc" id="L168">            bundle.putInt(&quot;id&quot;, id);</span>
+<span class="fc" id="L169">            bundle.putString(&quot;gender&quot;, gender);</span>
+<span class="fc" id="L170">            intent.putExtras(bundle);</span>
+<span class="fc" id="L171">            startActivity(intent);</span>
+<span class="fc" id="L172">            finish();</span>
         }
-<span class="fc" id="L177">        finish();</span>
-<span class="fc" id="L178">    }</span>
+<span class="fc" id="L174">        finish();</span>
+<span class="fc" id="L175">    }</span>
 
     /**
      * Initializes the views etc.
      */
     public void initialize() {
 
-<span class="fc" id="L185">        findViewByIdEditButton();</span>
+<span class="fc" id="L182">        findViewByIdEditButton();</span>
 
-<span class="fc" id="L187">        findViewByIdImageButton();</span>
+<span class="fc" id="L184">        findViewByIdImageButton();</span>
 
-<span class="fc" id="L189">        findViewByIdRadioButton();</span>
+<span class="fc" id="L186">        findViewByIdRadioButton();</span>
 
-<span class="fc" id="L191">        findViewByIdImageView();</span>
+<span class="fc" id="L188">        findViewByIdImageView();</span>
 
-<span class="fc" id="L193">        firstNameEdit.setText(firstName);</span>
-<span class="fc" id="L194">        lastNameEdit.setText(lastName);</span>
-<span class="fc" id="L195">        titleEdit.setText(title);</span>
-<span class="fc" id="L196">        countryEdit.setText(country);</span>
+<span class="fc" id="L190">        firstNameEdit.setText(firstName);</span>
+<span class="fc" id="L191">        lastNameEdit.setText(lastName);</span>
+<span class="fc" id="L192">        titleEdit.setText(title);</span>
+<span class="fc" id="L193">        countryEdit.setText(country);</span>
 
 
-<span class="fc" id="L199">        recorder = Recorder.getCurrentInstance(getApplicationContext());</span>
+<span class="fc" id="L196">        recorder = Recorder.getCurrentInstance(getApplicationContext());</span>
 
-<span class="fc" id="L201">        Log.d(&quot;gender&quot;, gender.toString());</span>
-<span class="fc bfc" id="L202" title="All 2 branches covered.">        if (gender.equals(&quot;FEMALE&quot;)) {</span>
-<span class="fc" id="L203">            femaleRadioButton.setChecked(true);</span>
-<span class="fc bfc" id="L204" title="All 2 branches covered.">        } else if (gender.equals(&quot;MALE&quot;)) {</span>
-<span class="fc" id="L205">            maleRadioButton.setChecked(true);</span>
-<span class="fc bfc" id="L206" title="All 2 branches covered.">        } else if (gender.equals(&quot;UNKNOWN&quot;)) {</span>
-<span class="fc" id="L207">            unknownSexRadioButton.setChecked(true);</span>
+<span class="fc" id="L198">        Log.d(&quot;gender&quot;, gender.toString());</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">        if (gender.equals(&quot;FEMALE&quot;)) {</span>
+<span class="fc" id="L200">            femaleRadioButton.setChecked(true);</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">        } else if (gender.equals(&quot;MALE&quot;)) {</span>
+<span class="fc" id="L202">            maleRadioButton.setChecked(true);</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        } else if (gender.equals(&quot;UNKNOWN&quot;)) {</span>
+<span class="fc" id="L204">            unknownSexRadioButton.setChecked(true);</span>
         }
-<span class="fc" id="L209">    }</span>
+<span class="fc" id="L206">    }</span>
 
 
     /**
      * Saves a contact
      */
     public void setContact() {
-<span class="fc" id="L216">        contactManager = ContactManager.getInstance(this.getApplicationContext());</span>
+<span class="fc" id="L213">        contactManager = ContactManager.getInstance(this.getApplicationContext());</span>
         // TODO update gender
         // TODO create string attributes for all of this, this is ridiculous lmao
-<span class="fc" id="L219">        Log.d(&quot;genderCreate&quot;, gender);</span>
-<span class="fc" id="L220">        contactManager.createContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);</span>
-<span class="fc" id="L221">        Log.i(&quot;createContact&quot;, &quot;created contact &quot; + firstNameEdit.getText().toString());</span>
-<span class="fc" id="L222">    }</span>
+<span class="fc" id="L216">        Log.d(&quot;genderCreate&quot;, gender);</span>
+<span class="fc" id="L217">        contactManager.createContact(firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);</span>
+<span class="fc" id="L218">        Log.i(&quot;createContact&quot;, &quot;created contact &quot; + firstNameEdit.getText().toString());</span>
+<span class="fc" id="L219">    }</span>
 
     /**
      * Updates an existing contact
      */
     public void updateContact() {
-<span class="fc" id="L228">        contactManager = ContactManager.getInstance(this.getApplicationContext());</span>
-<span class="fc" id="L229">        contactManager.updateContact(id, firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);</span>
+<span class="fc" id="L225">        contactManager = ContactManager.getInstance(this.getApplicationContext());</span>
+<span class="fc" id="L226">        contactManager.updateContact(id, firstNameEdit.getText().toString(), lastNameEdit.getText().toString(), titleEdit.getText().toString(), countryEdit.getText().toString(), gender);</span>
 
-<span class="fc" id="L231">    }</span>
+<span class="fc" id="L228">    }</span>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //From here on different declarations take place
@@ -237,36 +234,36 @@ import com.team16.sopra.sopra16team16.R;
      * TODO DELETE
      */
     private void findViewByIdImageView() {
-<span class="fc" id="L240">        genderSign = (ImageView) findViewById(R.id.gender_sign);</span>
-<span class="fc" id="L241">    }</span>
+<span class="fc" id="L237">        genderSign = (ImageView) findViewById(R.id.gender_sign);</span>
+<span class="fc" id="L238">    }</span>
 
     /**
      * Sets the radio buttons
      */
     private void findViewByIdRadioButton() {
-<span class="fc" id="L247">        femaleRadioButton = (RadioButton) findViewById(R.id.female_radioButton);</span>
-<span class="fc" id="L248">        maleRadioButton = (RadioButton) findViewById(R.id.male_radioButton);</span>
-<span class="fc" id="L249">        unknownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);</span>
-<span class="fc" id="L250">    }</span>
+<span class="fc" id="L244">        femaleRadioButton = (RadioButton) findViewById(R.id.female_radioButton);</span>
+<span class="fc" id="L245">        maleRadioButton = (RadioButton) findViewById(R.id.male_radioButton);</span>
+<span class="fc" id="L246">        unknownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);</span>
+<span class="fc" id="L247">    }</span>
 
     /**
      * Sets the ImageButtons
      */
     private void findViewByIdImageButton() {
-<span class="fc" id="L256">        confirmButton = (ImageButton) findViewById(R.id.confirm_button);</span>
-<span class="fc" id="L257">        cancelButton = (ImageButton) findViewById(R.id.cancel_button);</span>
-<span class="fc" id="L258">        recordButton = (ImageButton) findViewById(R.id.record_button);</span>
-<span class="fc" id="L259">    }</span>
+<span class="fc" id="L253">        confirmButton = (ImageButton) findViewById(R.id.confirm_button);</span>
+<span class="fc" id="L254">        cancelButton = (ImageButton) findViewById(R.id.cancel_button);</span>
+<span class="fc" id="L255">        recordButton = (ImageButton) findViewById(R.id.record_button);</span>
+<span class="fc" id="L256">    }</span>
 
     /**
      * Sets the EditTexts
      */
     private void findViewByIdEditButton() {
-<span class="fc" id="L265">        firstNameEdit = (EditText) findViewById(R.id.first_edit);</span>
-<span class="fc" id="L266">        lastNameEdit = (EditText) findViewById(R.id.last_edit);</span>
-<span class="fc" id="L267">        countryEdit = (EditText) findViewById(R.id.country_edit);</span>
-<span class="fc" id="L268">        titleEdit = (EditText) findViewById(R.id.title_edit);</span>
-<span class="fc" id="L269">    }</span>
+<span class="fc" id="L262">        firstNameEdit = (EditText) findViewById(R.id.first_edit);</span>
+<span class="fc" id="L263">        lastNameEdit = (EditText) findViewById(R.id.last_edit);</span>
+<span class="fc" id="L264">        countryEdit = (EditText) findViewById(R.id.country_edit);</span>
+<span class="fc" id="L265">        titleEdit = (EditText) findViewById(R.id.title_edit);</span>
+<span class="fc" id="L266">    }</span>
 
 
     /**
@@ -274,76 +271,75 @@ import com.team16.sopra.sopra16team16.R;
      * Required fields are: Last name, pronounciation
      */
     public void confirmRequirements() {
-<span class="fc" id="L277">        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);</span>
+<span class="fc" id="L274">        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);</span>
 
-<span class="fc" id="L279">        alertDialog.setMessage(&quot;Last name and recording both can't be empty! Please fill them out/record the pronunciation.&quot;);</span>
-<span class="fc" id="L280">        alertDialog.setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {</span>
+<span class="fc" id="L276">        alertDialog.setMessage(&quot;Last name and recording both can't be empty! Please fill them out/record the pronunciation.&quot;);</span>
+<span class="fc" id="L277">        alertDialog.setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {</span>
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // do nothing
-<span class="fc" id="L284">            }</span>
+<span class="fc" id="L281">            }</span>
         });
-<span class="fc" id="L286">        alertDialog.show();</span>
-<span class="fc" id="L287">    }</span>
+<span class="fc" id="L283">        alertDialog.show();</span>
+<span class="fc" id="L284">    }</span>
 
     /**
      * Shows an alert asking the user to confirm the recording.
      */
     public void confirmRecording() {
-<span class="fc" id="L293">        player = Player.getCurrentInstance(this);</span>
+<span class="fc" id="L290">        player = Player.getCurrentInstance(this);</span>
         // get the dialog
-<span class="fc" id="L295">        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();</span>
-<span class="fc" id="L296">        alertDialog.setCanceledOnTouchOutside(false);</span>
-<span class="fc" id="L297">        alertDialog.show();</span>
+<span class="fc" id="L292">        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();</span>
+<span class="fc" id="L293">        alertDialog.setCanceledOnTouchOutside(false);</span>
+<span class="fc" id="L294">        alertDialog.show();</span>
         // set the custom layout
-<span class="fc" id="L299">        Window win = alertDialog.getWindow();</span>
-<span class="pc bpc" id="L300" title="1 of 2 branches missed.">        if (win != null) {</span>
-<span class="fc" id="L301">            win.setContentView(R.layout.confirm_record_dialog);</span>
+<span class="fc" id="L296">        Window win = alertDialog.getWindow();</span>
+<span class="pc bpc" id="L297" title="1 of 2 branches missed.">        if (win != null) {</span>
+<span class="fc" id="L298">            win.setContentView(R.layout.confirm_record_dialog);</span>
 
             // text
-<span class="fc" id="L304">            TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);</span>
-<span class="fc" id="L305">            textDialog.setText(&quot;Do you want to keep this recording?&quot;);</span>
+<span class="fc" id="L301">            TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);</span>
+<span class="fc" id="L302">            textDialog.setText(&quot;Do you want to keep this recording?&quot;);</span>
 
             // cancel
-<span class="fc" id="L308">            ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);</span>
+<span class="fc" id="L305">            ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);</span>
 
-<span class="fc" id="L310">            cancelDialog.setOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L307">            cancelDialog.setOnClickListener(new View.OnClickListener() {</span>
                 @Override
                 public void onClick(View view) {
-<span class="nc" id="L313">                    alertDialog.dismiss();</span>
-<span class="nc" id="L314">                    recorder.deleteTemp(id);</span>
-<span class="nc" id="L315">                }</span>
+<span class="nc" id="L310">                    alertDialog.dismiss();</span>
+<span class="nc" id="L311">                    recorder.deleteTemp(id);</span>
+<span class="nc" id="L312">                }</span>
             });
 
 
             // play
-<span class="fc" id="L320">            final ImageButton playDialog = (ImageButton) win.findViewById(R.id.play_dialog);</span>
+<span class="fc" id="L317">            final ImageButton playDialog = (ImageButton) win.findViewById(R.id.play_dialog);</span>
 
-<span class="fc" id="L322">            playDialog.setOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L319">            playDialog.setOnClickListener(new View.OnClickListener() {</span>
                 @Override
                 public void onClick(View view) {
-<span class="fc bfc" id="L325" title="All 2 branches covered.">                    if (!player.isPlaying()) {</span>
-<span class="fc" id="L326">                        player.startPlayingTemp(id, playDialog);</span>
+<span class="fc bfc" id="L322" title="All 2 branches covered.">                    if (!player.isPlaying()) {</span>
+<span class="fc" id="L323">                        player.startPlayingTemp(id, playDialog);</span>
                     } else {
-<span class="fc" id="L328">                        player.stopPlaying(playDialog);</span>
+<span class="fc" id="L325">                        player.stopPlaying(playDialog);</span>
                     }
-<span class="fc" id="L330">                }</span>
+<span class="fc" id="L327">                }</span>
             });
 
 
             // confirm
-<span class="fc" id="L335">            ImageButton acceptDialog = (ImageButton) win.findViewById(R.id.accept_dialog);</span>
+<span class="fc" id="L332">            ImageButton acceptDialog = (ImageButton) win.findViewById(R.id.accept_dialog);</span>
 
-<span class="fc" id="L337">            acceptDialog.setOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L334">            acceptDialog.setOnClickListener(new View.OnClickListener() {</span>
                 @Override
                 public void onClick(View view) {
-<span class="fc" id="L340">                    alertDialog.dismiss();</span>
-<span class="fc" id="L341">                    recorded = true;</span>
-<span class="fc" id="L342">                }</span>
+<span class="fc" id="L337">                    alertDialog.dismiss();</span>
+<span class="fc" id="L338">                }</span>
             });
         }
 
-<span class="fc" id="L346">    }</span>
+<span class="fc" id="L342">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

@@ -54,7 +54,6 @@ public class NewContactActivity extends AppCompatActivity {
 
     private String cause;
 
-    private boolean recorded = false;
     private Player player;
 
     @Override
@@ -74,9 +73,7 @@ public class NewContactActivity extends AppCompatActivity {
         gender = (String) bundle.get("gender");
         id = (Integer) bundle.get("id");
         cause = bundle.get("cause").toString();
-        if (cause.equals("EDIT")) {
-            recorded = true;
-        }
+
 
         Log.d("first", firstName);
 
@@ -98,7 +95,7 @@ public class NewContactActivity extends AppCompatActivity {
                     gender = "UNKNOWN";
                 }
 
-                if (lastNameEdit.getText().toString().equals("") || !recorded) {
+                if (lastNameEdit.getText().toString().equals("") || !recorder.exists(id)) {
                     confirmRequirements();
                 } else {
                     Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
@@ -338,7 +335,6 @@ public class NewContactActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     alertDialog.dismiss();
-                    recorded = true;
                 }
             });
         }
