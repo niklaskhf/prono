@@ -139,4 +139,19 @@ public class Recorder{
         }
     }
 
+    /**
+     * Checks if any recording associated to the id exists.
+     * @param id id of the contact - int
+     */
+    public boolean exists(int id) {
+        File temp = new File(path + id + "temp.3gp");
+        File perm = new File(path + id + ".3gp");
+
+        if(!perm.exists() && !temp.exists()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
