@@ -72,7 +72,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 
 
 
 
@@ -113,8 +113,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Enthaltene Tasks:
     - Verwerfen-Button klicken
-    - Verwerfen bestätigen
-
 
 
 
@@ -124,20 +122,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
-
-
-
-### Task 2 *Verwerfen bestätigen*
-
-> Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-bestätigen Button klicken*, um *sicher zu gehen, dass man sich zuvor nicht aus versehen auf verwerfen geklickt hat*.
-
-
-- Aufwandsschätzung: 3 Stunden 
-- Tatsächliche Zeit:
 
 
 
@@ -250,6 +238,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag speichern
     - Aufnahme speichern, siehe Implementable Story 'Temporäre Aufnahme erstellen'
  
+
 ### Implementable Story 1 *Editor öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *den Editor öffnen*, um *einen neuen Eintrag zu erstellen*.
@@ -272,7 +261,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 
 
 
 
@@ -298,7 +287,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 
 
 
 
@@ -330,7 +319,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 12 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -416,7 +405,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -443,7 +432,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -501,7 +490,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag in der angezeigten Liste finden*, um *die dazugehörige Aussprache abspielen zu können*.
 
 - Aufwandsschätzung: 1 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -615,7 +604,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 
 
 
 
@@ -627,8 +616,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 15
 - Akzeptanztests:
-
-
     - [ ] Die Eingabefelder zeigen veränderte Informationen an
     - [ ] Die geänderten Informationen befinden sich im flüchtigen Speicher 
 
@@ -677,7 +664,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *den Save-Button klicken*, um *den aktualisierten Eintrag zu speichern*.
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -731,7 +718,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 # Task 2 *Löschen bestätigen*
@@ -741,7 +728,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -806,7 +793,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden 
 
 
 
@@ -817,7 +804,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 8 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -848,7 +835,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -1154,7 +1141,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -1182,7 +1169,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
