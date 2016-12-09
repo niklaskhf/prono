@@ -36,7 +36,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ### Changed
-- (doc/Product.Backlog.md)
+- [Product.Backlog](doc/Product.Backlog.md)
 - [Readme](Readme.md)
 - [Entwurf](doc/Entwurf.md)
 - [Zeitabrechnung](doc/Zeitabrechnung.ods)
