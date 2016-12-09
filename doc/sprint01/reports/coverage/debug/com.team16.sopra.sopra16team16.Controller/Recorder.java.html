@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Recorder.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Recorder.java</span></div><h1>Recorder.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.content.Context;
+import android.media.MediaRecorder;
+import android.os.Environment;
+import android.util.Log;
+
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * Created by Martin on 17.11.2016.
+ */
+
+/**
+ *
+ * Recorder
+ *
+ */
+public class Recorder{
+<span class="fc" id="L21">    private static Recorder currentInstance = null;</span>
+
+    //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+    //ToDo Pfad über Context finden
+    public String path;
+<span class="fc" id="L26">    private MediaRecorder recorder = null;</span>
+<span class="fc" id="L27">    private boolean is_recording = false;</span>
+    public Context context;
+
+    //constructor - need context for path
+<span class="fc" id="L31">    private Recorder(Context context) {</span>
+<span class="fc" id="L32">        path = context.getApplicationContext().getFilesDir().getPath() + &quot;/&quot;;</span>
+<span class="fc" id="L33">        this.context = context;</span>
+<span class="fc" id="L34">    }</span>
+
+    //Singelton
+    public static Recorder getCurrentInstance(Context context) {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (currentInstance == null) {</span>
+<span class="fc" id="L39">            currentInstance = new Recorder(context);</span>
+<span class="fc" id="L40">            return currentInstance;</span>
+        } else {
+<span class="fc" id="L42">            return currentInstance;</span>
+        }
+    }
+
+
+    /**
+     * Startet Recorder
+     *  * @param id id from the contact is the same as the id from the file
+     */
+    public void startRecording(int id) {
+<span class="fc" id="L52">        Log.e(&quot;Recorder&quot;, &quot;ID: &quot; + id);</span>
+<span class="fc" id="L53">        String filename = path + id + &quot;temp.3gp&quot;;</span>
+<span class="fc" id="L54">        Log.e(&quot;Recorder&quot;, &quot;Filename: &quot; + filename);</span>
+<span class="fc" id="L55">        changeStatus(true);</span>
+
+
+
+<span class="fc" id="L59">        recorder = new MediaRecorder();</span>
+<span class="fc" id="L60">        recorder.setAudioSource(MediaRecorder.AudioSource.MIC); //AudioSource.MIC //AudioSource.VOICE_RECOGNITION</span>
+<span class="fc" id="L61">        recorder.setOutputFile(filename);</span>
+<span class="fc" id="L62">        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);</span>
+<span class="fc" id="L63">        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);</span>
+
+
+
+        try {
+<span class="fc" id="L68">            recorder.prepare();</span>
+<span class="nc" id="L69">        } catch (IOException e) {</span>
+<span class="nc" id="L70">            Log.e(&quot;RECORDER_LOG&quot;, e.getMessage());</span>
+<span class="fc" id="L71">        }</span>
+<span class="fc" id="L72">        recorder.start();</span>
+<span class="fc" id="L73">    }</span>
+
+    /*
+     * Stoppt die Aufnahme des Namens
+     */
+    public void stopRecording() {
+<span class="fc" id="L79">        Log.e(&quot;Recorder&quot;, &quot;Aufnahme zu Ende&quot;);</span>
+<span class="fc" id="L80">        changeStatus(false);</span>
+<span class="fc" id="L81">        recorder.stop();</span>
+<span class="fc" id="L82">        recorder.release();</span>
+<span class="fc" id="L83">        recorder = null;</span>
+<span class="fc" id="L84">    }</span>
+
+    /*
+     * true  --&gt; is recording
+     * false --&gt; is not recording
+     */
+    public boolean isPressed() {
+<span class="fc" id="L91">        return is_recording;</span>
+    }
+
+    private void changeStatus(boolean status) {
+<span class="fc" id="L95">        is_recording = status;</span>
+<span class="fc" id="L96">    }</span>
+
+
+    /**
+     * Deletes the audio files associated to an id.
+     * @param id id of the contact - int
+     */
+    public void delete(int id) {
+<span class="fc" id="L104">        File perm = new File(path + id + &quot;.3gp&quot;);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if (perm.exists()) {</span>
+<span class="fc" id="L106">            perm.delete();</span>
+<span class="fc" id="L107">            Log.d(&quot;recorder&quot;, &quot;deleted &quot; + perm);</span>
+        }
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Deletes the temp audio file associated to an id.
+     * @param id id of the contact - int
+     */
+    public void deleteTemp(int id) {
+<span class="fc" id="L116">        File temp = new File(path + id + &quot;temp.3gp&quot;);</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (temp.exists()) {</span>
+<span class="fc" id="L118">            temp.delete();</span>
+<span class="fc" id="L119">            Log.d(&quot;recorder&quot;, &quot;deleted &quot; + temp);</span>
+        }
+<span class="fc" id="L121">    }</span>
+
+    /**
+     * Renames a temp audio file to the permanent version.
+     * @param id id of the contact - int
+     */
+    public void confirm(int id) {
+<span class="fc" id="L128">        File temp = new File(path + id + &quot;temp.3gp&quot;);</span>
+<span class="fc" id="L129">        File perm = new File(path + id + &quot;.3gp&quot;);</span>
+
+<span class="pc bpc" id="L131" title="1 of 4 branches missed.">        if (perm.exists() &amp;&amp; temp.exists()) {</span>
+<span class="fc" id="L132">            perm.delete();</span>
+        
+<span class="fc" id="L134">            Log.d(&quot;recorder&quot;, &quot;deleted &quot; + perm + &quot; while copying temp&quot;);</span>
+        }
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">        if (temp.exists()) {</span>
+<span class="fc" id="L137">            temp.renameTo(perm);</span>
+<span class="fc" id="L138">            Log.d(&quot;recorder&quot;, &quot;renamed &quot; + temp + &quot; to &quot; + perm);</span>
+        }
+<span class="fc" id="L140">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>
