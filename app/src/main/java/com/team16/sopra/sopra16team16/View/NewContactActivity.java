@@ -74,6 +74,9 @@ public class NewContactActivity extends AppCompatActivity {
         gender = (String) bundle.get("gender");
         id = (Integer) bundle.get("id");
         cause = bundle.get("cause").toString();
+        if (cause.equals("EDIT")) {
+            recorded = true;
+        }
 
         Log.d("first", firstName);
 
@@ -95,7 +98,7 @@ public class NewContactActivity extends AppCompatActivity {
                     gender = "UNKNOWN";
                 }
 
-                if (lastNameEdit.getText().toString().equals("")) {
+                if (lastNameEdit.getText().toString().equals("") || !recorded) {
                     confirmRequirements();
                 } else {
                     Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
@@ -109,11 +112,7 @@ public class NewContactActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
 
                     if (cause.equals("CREATE")) {
-                        if(!recorded) {
-                            confirmRequirements();
-                        } else {
-                            setContact();
-                        }
+                        setContact();
                     } else {
                         updateContact();
                     }

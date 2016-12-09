@@ -76,9 +76,6 @@ public class HomeActivity extends AppCompatActivity {
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
-        // do we have permissions?
-        verifyStoragePermissions(this);
-        //verifyMicPermissions(this);
         // initialize Toolbar
         initializeToolbar();
 
@@ -235,13 +232,14 @@ public class HomeActivity extends AppCompatActivity {
         Bundle args = new Bundle();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
+        // do we even have permissions?
+        verifyStoragePermissions(this);
+
         // populate the ListView
         // set cursorAdapter
-        fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+        // moved this to permission request
+        //fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
-        // testing add button
-        addButton = (FloatingActionButton) findViewById(R.id.addNew);
-        addNewContact(addButton);
     }
 
     /**
@@ -254,7 +252,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Starts an activity UNKONWN_NAME to add a new contact.
      */
-    public void addNewContact(FloatingActionButton addButton) {
+    public void addNewContact() {
         addButton = (FloatingActionButton) findViewById(R.id.addNew);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -327,7 +325,7 @@ public class HomeActivity extends AppCompatActivity {
      *
      * @param activity
      */
-    public static void verifyStoragePermissions(Activity activity) {
+    public void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
@@ -340,17 +338,10 @@ public class HomeActivity extends AppCompatActivity {
                     PERMISSIONS_ALL,
                     REQUEST_ALL
             );
-        } /*else if (permission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    activity,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );} else if (micPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity,
-                    new String[]{Manifest.permission.RECORD_AUDIO},
-                    REQUEST_MICROPHONE);
-           }
-        }*/
+        } else {
+            fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+            addNewContact();
+        }
 
     }
 
@@ -359,11 +350,14 @@ public class HomeActivity extends AppCompatActivity {
         final Activity activity = this;
         switch (requestCode) {
             case REQUEST_ALL:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
                     // do nothing?
-                    addNewContact(addButton);
+                    addNewContact();
+                    fragment.setListAdapter(contactManager.getCursorAdapterDefault());
                 } else {
+                    addButton = (FloatingActionButton) findViewById(R.id.addNew);
                     addButton.setOnClickListener(new View.OnClickListener(){
 
                         @Override
@@ -377,18 +371,5 @@ public class HomeActivity extends AppCompatActivity {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-    /**
-     * Request mic permission if we dont already have it
-     * @param activity
-     */
-    /*public static void verifyMicPermissions(Activity activity) {
-        int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
 
-
-        if (micPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity,
-                    new String[]{Manifest.permission.RECORD_AUDIO},
-                    REQUEST_MICROPHONE);
-        }
-    }*/
 }
