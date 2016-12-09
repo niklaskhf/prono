@@ -12,7 +12,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
-    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Zweit-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
+    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
     - [ ] Die Audio-Aufnahme muss nach dem vollständigen Schließen der App gespeichert bleiben
     - [ ] Die gespeicherten Audio-Aufnahmen können in der App abgespielt werden
 
@@ -73,7 +73,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 
 
 
 
@@ -109,13 +109,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 20
 - Akzeptanztests:
     - [ ] Aufnahme ist nicht mehr vorhanden
-    - [ ] Aufforderung zu neuer Aufnahme
 
 
 - Enthaltene Tasks:
     - Verwerfen-Button klicken
-    - Verwerfen bestätigen
-
 
 
 
@@ -125,20 +122,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
-
-
-
-### Task 2 *Verwerfen bestätigen*
-
-> Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-bestätigen Button klicken*, um *sicher zu gehen, dass man sich zuvor nicht aus versehen auf verwerfen geklickt hat*.
-
-
-- Aufwandsschätzung: 3 Stunden 
-- Tatsächliche Zeit:
 
 
 
@@ -236,7 +223,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ### Feature 2 *Eintrag erstellen*
 
 
-> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Zweit-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
+> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
 
 
 - Aufwandsschätzung: L 
@@ -273,7 +260,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -299,7 +286,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -331,7 +318,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 12 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -389,7 +376,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -418,7 +405,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -445,7 +432,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -503,7 +490,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag in der angezeigten Liste finden*, um *die dazugehörige Aussprache abspielen zu können*.
 
 - Aufwandsschätzung: 1 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -581,7 +568,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ### Feature 5 *Eintrag editieren*
 
 
-> Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
+> Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
 
 
 - Aufwandsschätzung: M
@@ -616,7 +603,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -643,7 +630,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 3 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 ### Task 2 *Aussprache ändern*
@@ -676,7 +663,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *den Save-Button klicken*, um *den aktualisierten Eintrag zu speichern*.
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -730,7 +717,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 ### Task 2 *Löschen bestätigen*
@@ -740,7 +727,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -805,7 +792,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden 
 
 
 
@@ -816,7 +803,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 8 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -847,7 +834,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -1152,7 +1139,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -1180,7 +1167,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
