@@ -73,7 +73,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -84,7 +84,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 ### Task 3 *Aufnahme stoppen*
@@ -93,7 +93,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -122,7 +122,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit: 1 Stunde
+- Tatsächliche Zeit: 2 Stunde
 
 
 
@@ -150,7 +150,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -177,7 +177,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -203,7 +203,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -501,7 +501,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -639,7 +639,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
