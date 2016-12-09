@@ -79,8 +79,6 @@ public class NewContactActivity extends AppCompatActivity {
 
         initialize();
 
-        // TODO ANDERE FELDER FÜLLEN
-
         // add Button to change layout to contact viewer
         final ImageButton confirmEditButton = (ImageButton) findViewById(R.id.confirm_button);
         confirmEditButton.setOnClickListener(new View.OnClickListener() {

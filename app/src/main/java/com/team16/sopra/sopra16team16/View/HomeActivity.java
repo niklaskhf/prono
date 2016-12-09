@@ -260,6 +260,7 @@ public class HomeActivity extends AppCompatActivity {
                 //verifyStoragePermissions(HomeActivity.this);
                 int id = contactManager.getId();
                 id++;
+                // opens a NewContactActivity with empty EditTexts
                 Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("first", "");
@@ -268,6 +269,7 @@ public class HomeActivity extends AppCompatActivity {
                 bundle.putString("country", "");
                 bundle.putString("gender", "");
                 bundle.putInt("id", id);
+                // CREATION mode
                 bundle.putString("cause", "CREATE");
 
                 intent.putExtras(bundle);

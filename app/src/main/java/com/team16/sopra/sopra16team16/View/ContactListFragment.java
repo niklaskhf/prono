@@ -26,13 +26,16 @@ import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.R;
 
 
-
+/**
+ * Presents the contacts in a ListView
+ */
 public class ContactListFragment extends ListFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
+    @Override
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
         /* might do this at some point, kinda pointless with padding tho, unlucky
@@ -61,6 +64,7 @@ public class ContactListFragment extends ListFragment{
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        // opens a ContactViewerActivity with the contact information
         super.onListItemClick(l, v, position, id);
         Intent intent = new Intent(getActivity(), ContactViewerActivity.class);
         TextView firstView = (TextView) v.findViewById(R.id.list_firstname);

@@ -74,6 +74,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                 intent.putExtra("title", title);
                 intent.putExtra("country", country);
                 intent.putExtra("gender", gender);
+                // EDIT mode
                 intent.putExtra("cause", "EDIT");
 
                 startActivity(intent);

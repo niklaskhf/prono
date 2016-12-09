@@ -7,6 +7,9 @@ import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 
+/**
+ * DBHelper, used to get the SQLiteDatabase object
+ */
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper currentInstance = null;
     private static final String DATABASE_NAME = "DBcontact";
@@ -28,6 +31,11 @@ public class DBHelper extends SQLiteOpenHelper {
                     ContactManager.COLUMN_FAVORITE + " INTEGER" + COMMA_SEP +
                     ContactManager.COLUMN_DELETED + " INTEGER" + " )";
 
+    /**
+     * Singleton to avoid open/closed connection chaos
+     * @param context
+     * @return current and only instance of the class
+     */
     public static DBHelper getCurrentInstance(Context context) {
         if (currentInstance == null) {
             currentInstance = new DBHelper(context);
@@ -37,6 +45,10 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Constructor
+     * @param context
+     */
     private DBHelper(Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
     }

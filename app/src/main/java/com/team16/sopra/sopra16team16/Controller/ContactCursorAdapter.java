@@ -23,12 +23,21 @@ import android.widget.TextView;
 import com.team16.sopra.sopra16team16.R;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 
+/**
+ * CursorAdapter presenting data from the database in listitems,
+ * used for the ContactListFragment
+ */
 public class ContactCursorAdapter extends CursorAdapter {
     private Context context;
     private ContactManager contactManager;
     private Player player;
 
 
+    /**
+     * Constructor
+     * @param context  context
+     * @param cursor cursor with contacts
+     */
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
         player = Player.getCurrentInstance(context);
