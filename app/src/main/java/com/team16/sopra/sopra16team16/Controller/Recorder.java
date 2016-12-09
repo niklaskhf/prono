@@ -128,8 +128,9 @@ public class Recorder{
         File temp = new File(path + id + "temp.3gp");
         File perm = new File(path + id + ".3gp");
 
-        if (perm.exists()) {
+        if (perm.exists() && temp.exists()) {
             perm.delete();
+        
             Log.d("recorder", "deleted " + perm + " while copying temp");
         }
         if (temp.exists()) {
