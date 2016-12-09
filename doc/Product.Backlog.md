@@ -260,7 +260,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -286,7 +286,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -375,7 +375,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -603,7 +603,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -630,7 +630,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 3 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 ### Task 2 *Aussprache ändern*
