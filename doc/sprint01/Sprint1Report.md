@@ -10,7 +10,8 @@ In diesem Sprint wurden die bis zum [Meilenstein 4](https://sopra.informatik.uni
     - Doppelte User Stories gelöscht (wenn Feature auf Implementable Story von anderem Feature verwiesen hat)
     - Rechtschreibfehler verbessert
     - Readme.md wurde aktualisiert (Hinweise gelöscht, Appbeschreibung hinzugefügt)
-    - Echter Aufwand in Tasks wurde aktualisiert.
+    - Echter Aufwand in Tasks wurde aktualisiert
+    - Task "Verwerfen bestätigen" gelöscht, da es für den Nutzer unnötig viele Klicks verursacht und die Nutzbarkeit verschlechtert
     
 ### [Entwurf.md](./doc/Entwurf.md)
     - Komponentendiagramm aktualisiert
@@ -23,4 +24,4 @@ In diesem Sprint wurden die bis zum [Meilenstein 4](https://sopra.informatik.uni
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-[Testprotokolle, Jacoco](coverage/coverage/debug/index.html)
+[Testprotokolle, Jacoco](reports/)
