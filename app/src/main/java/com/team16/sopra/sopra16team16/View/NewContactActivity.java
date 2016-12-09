@@ -95,7 +95,7 @@ public class NewContactActivity extends AppCompatActivity {
                     gender = "UNKNOWN";
                 }
 
-                if (lastNameEdit.getText().toString().equals("") || !recorded) {
+                if (lastNameEdit.getText().toString().equals("")) {
                     confirmRequirements();
                 } else {
                     Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
@@ -109,7 +109,11 @@ public class NewContactActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
 
                     if (cause.equals("CREATE")) {
-                        setContact();
+                        if(!recorded) {
+                            confirmRequirements();
+                        } else {
+                            setContact();
+                        }
                     } else {
                         updateContact();
                     }
@@ -308,7 +312,7 @@ public class NewContactActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     alertDialog.dismiss();
-                    recorder.delete(id);
+                    recorder.deleteTemp(id);
                 }
             });
 
