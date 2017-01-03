@@ -34,6 +34,13 @@ public class ContactViewerActivity extends AppCompatActivity {
     private String title = "";
     private String country = "";
     private String gender = "";
+
+    private String undoFirstName = "";
+    private String undoLastName = "";
+    private String undoTitle = "";
+    private String undoCountry = "";
+    private String undoGender = "";
+
     private int id;
 
     private TextView firstView;
@@ -103,7 +110,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
-                    player.startPlaying(id, playButton);
+                    player.startPlaying(id, firstName.toLowerCase(), lastName.toLowerCase(), country.toLowerCase(), playButton);
                 }
 
             }
@@ -228,11 +235,12 @@ public class ContactViewerActivity extends AppCompatActivity {
     public void showSnackbar(final Intent data) {
         Log.d("showSnackar", "called");
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.contact_viewer_coord);
-        firstName = data.getStringExtra("undoFirst");
-        lastName = data.getStringExtra("undoLast");
-        title = data.getStringExtra("undoTitle");
-        country = data.getStringExtra("undoCountry");
-        gender = data.getStringExtra("undoGender");
+
+        undoFirstName = data.getStringExtra("undoFirst");
+        undoLastName = data.getStringExtra("undoLast");
+        undoTitle = data.getStringExtra("undoTitle");
+        undoCountry = data.getStringExtra("undoCountry");
+        undoGender = data.getStringExtra("undoGender");
 
         Log.d("undoSnackbar", "showing snackbar for " + id);
         Snackbar snackbar = Snackbar
@@ -245,10 +253,27 @@ public class ContactViewerActivity extends AppCompatActivity {
                         // update database entry
                         contactManager.updateContact(id, firstName, lastName, title, country, gender);
 
-                        // replace the audio file
-                        String original = getFilesDir().getPath() + "/" + id + ".3gp";
-                        String replacement = getFilesDir().getPath() + "/" + id + "_undo.3gp";
+                        // replace the audio files
+                        String original = FileUtils.PATH + id + ".3gp";
+                        String replacement = FileUtils.PATH + id + "_undo.3gp";
                         FileUtils.replaceFile(original, replacement);
+
+
+                        // replace the audio files
+                        original = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + ".3gp";
+                        replacement = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
+                        FileUtils.replaceFile(original, replacement);
+
+                        // replace the audio files
+                        original = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + ".3gp";
+                        replacement = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
+                        FileUtils.replaceFile(original, replacement);
+
+                        firstName = data.getStringExtra("undoFirst");
+                        lastName = data.getStringExtra("undoLast");
+                        title = data.getStringExtra("undoTitle");
+                        country = data.getStringExtra("undoCountry");
+                        gender = data.getStringExtra("undoGender");
 
                         // update views
                         setText();
@@ -262,12 +287,15 @@ public class ContactViewerActivity extends AppCompatActivity {
                 // delete the temporary undo file
                 String action = data.getStringExtra("action");
                 if (action != null && action.equals("edit")) {
-                    FileUtils.deleteFile(getFilesDir().getPath() + "/" + id + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + id + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + undoFirstName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + undoLastName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
                 }
             }
         });
 
         snackbar.show();
     }
+
 
 }

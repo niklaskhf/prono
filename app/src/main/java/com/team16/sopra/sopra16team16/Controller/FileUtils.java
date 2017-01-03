@@ -5,6 +5,10 @@ import android.util.Log;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 /**
  * Contains methods for manipulating files, like copying/replacing.
@@ -107,6 +111,70 @@ public class FileUtils {
         if (temp.exists()) {
             temp.renameTo(perm);
             Log.d("recorder", "renamed " + temp + " to " + perm);
+        }
+
+        deleteTempFiles();
+    }
+
+    /**
+     * Renames a temp audio file to the permanent version.
+     * @param id id of the contact - int
+     */
+    public static void confirmAudio(String id) {
+        String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
+        File temp = new File(path + id + "temp.3gp");
+        File perm = new File(path + id + ".3gp");
+
+        if (perm.exists() && temp.exists()) {
+            FileUtils.renameFile(
+                    path + id + ".3gp",
+                    path + id + "_undo.3gp"
+            );
+            if (perm.exists()) {
+                perm.delete();
+                Log.d("recorder", "deleted " + perm + " while copying temp");
+            }
+
+        }
+        if (temp.exists()) {
+            temp.renameTo(perm);
+            Log.d("recorder", "renamed " + temp + " to " + perm);
+        }
+
+        deleteTempFiles();
+    }
+
+
+    /**
+     * Copies a file
+     */
+    public static void copy(File src, File dst) throws IOException {
+        if (src.exists()) {
+            FileInputStream inStream = new FileInputStream(src);
+            FileOutputStream outStream = new FileOutputStream(dst);
+            FileChannel inChannel = inStream.getChannel();
+            FileChannel outChannel = outStream.getChannel();
+            inChannel.transferTo(0, inChannel.size(), outChannel);
+            inStream.close();
+            outStream.close();
+        }
+    }
+
+    /**
+     * Deletes temp audio files.
+     */
+    public static void deleteTempFiles() {
+        File[] files = new File(PATH).listFiles();
+
+        for (File f : files) {
+            String fp = f.getPath();
+            if (fp.length() > 8) {
+                String fpsub = fp.substring(fp.length() - 8, fp.length());
+                Log.d("deletingFile", fp);
+                if (fpsub.equals("temp.3gp")) {
+                    new File(fp).delete();
+                }
+            }
         }
     }
 }
