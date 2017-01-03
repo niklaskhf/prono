@@ -40,6 +40,17 @@ public class Recorder {
     private int id;
     Player player = new Player();
 
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if (isPressed()) {
+                stopRecording();
+            }
+        }
+    };
+
+
     //constructor - need context for path
     public Recorder(Context context, FloatingActionButton fba) {
         path = context.getApplicationContext().getFilesDir().getPath() + "/";
@@ -91,20 +102,26 @@ public class Recorder {
      * Stoppt die Aufnahme des Namens
      */
     public void stopRecording() {
-        Log.e("Recorder", "Aufnahme zu Ende");
-        // toggle status to not recording
-        changeStatus(false);
-        // interrupt limiting thread
-        handler.removeCallbacks(runnable);
-        // stop recording
-        recorder.stop();
-        recorder.release();
-        recorder = null;
+        try {
+            Log.e("Recorder", "Aufnahme zu Ende");
+            // toggle status to not recording
+            changeStatus(false);
+            // interrupt limiting thread
+            handler.removeCallbacks(runnable);
+            // stop recording
+            recorder.stop();
+            recorder.release();
+            recorder = null;
 
-        // update image and background for the user
-        actionButton.setImageResource(R.drawable.ic_mic_black_24dp);
-        actionButton.setBackgroundTintList(actionButtonColor);
-        confirmRecording();
+            // update image and background for the user
+            actionButton.setImageResource(R.drawable.ic_mic_black_24dp);
+            actionButton.setBackgroundTintList(actionButtonColor);
+            confirmRecording();
+        } catch (RuntimeException e) {
+            // throw error
+            // delete file
+            // TODO
+        }
     }
 
     /**
@@ -178,21 +195,13 @@ public class Recorder {
     /**
      * Changes the status of the recorder.
      *
-     * @param status
+     * @param status - the new status of the recorder
      */
     private void changeStatus(boolean status) {
         is_recording = status;
     }
 
 
-    Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            if (isPressed()) {
-                stopRecording();
-            }
-        }
-    };
 
 
 }

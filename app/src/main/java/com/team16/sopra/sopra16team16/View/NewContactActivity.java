@@ -26,7 +26,7 @@ import com.team16.sopra.sopra16team16.R;
 
 public class NewContactActivity extends AppCompatActivity {
 
-    private static ContactManager contactManager;
+    private ContactManager contactManager;
     private Recorder recorder;
 
     private EditText firstNameEdit;
