@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,18 +18,16 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.FileUtils;
 import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.Controller.Recorder;
 import com.team16.sopra.sopra16team16.R;
 
-/**
- * Created by prime on 18.11.16.
- */
 
 public class NewContactActivity extends AppCompatActivity {
 
     private static ContactManager contactManager;
-    private static Recorder recorder;
+    private Recorder recorder;
 
     private EditText firstNameEdit;
     private EditText lastNameEdit;
@@ -38,9 +38,9 @@ public class NewContactActivity extends AppCompatActivity {
     private RadioButton maleRadioButton;
     private RadioButton unknownSexRadioButton;
 
-    private ImageButton confirmButton;
-    private ImageButton cancelButton;
-    private ImageButton recordButton;
+    private FloatingActionButton confirmEditButton;
+    private FloatingActionButton cancelButton;
+    private FloatingActionButton recordButton;
 
     private ImageView genderSign;
 
@@ -52,9 +52,16 @@ public class NewContactActivity extends AppCompatActivity {
     private String gender = "";
     private int id;
 
+    private String undoFirst = "";
+    private String undoLast = "";
+    private String undoTitle = "";
+    private String undoCountry = "";
+    private String undoGender = "";
+
+
     private String cause;
 
-    private Player player;
+    private Player player = new Player();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +73,15 @@ public class NewContactActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         firstName = (String) bundle.get("first");
+        undoFirst = bundle.getString("first");
         lastName = (String) bundle.get("last");
+        undoLast = bundle.getString("last");
         title = (String) bundle.get("title");
+        undoTitle = bundle.getString("title");
         country = (String) bundle.get("country");
-        Log.i("country", country);
+        undoCountry = bundle.getString("country");
         gender = (String) bundle.get("gender");
+        undoGender = bundle.getString("gender");
         id = (Integer) bundle.get("id");
         cause = bundle.get("cause").toString();
 
@@ -80,11 +91,12 @@ public class NewContactActivity extends AppCompatActivity {
         initialize();
 
         // add Button to change layout to contact viewer
-        final ImageButton confirmEditButton = (ImageButton) findViewById(R.id.confirm_button);
+        confirmEditButton = (FloatingActionButton) findViewById(R.id.confirm_button);
         confirmEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                // get the gender data
                 if (femaleRadioButton.isChecked()) {
                     gender = "FEMALE";
                 } else if (maleRadioButton.isChecked()) {
@@ -93,9 +105,12 @@ public class NewContactActivity extends AppCompatActivity {
                     gender = "UNKNOWN";
                 }
 
-                if (lastNameEdit.getText().toString().equals("") || !recorder.exists(id)) {
+                // check if necesarry requirements are met
+                // required: LAST and RECORDING
+                if (lastNameEdit.getText().toString().equals("") || !FileUtils.exists(id)) {
                     confirmRequirements();
                 } else {
+                    // pass data back to ContactViewerActivity
                     Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("first", firstNameEdit.getText().toString());
@@ -104,24 +119,36 @@ public class NewContactActivity extends AppCompatActivity {
                     bundle.putString("country", countryEdit.getText().toString());
                     bundle.putInt("id", id);
                     bundle.putString("gender", gender);
-                    intent.putExtras(bundle);
+
 
                     if (cause.equals("CREATE")) {
+                        intent.putExtras(bundle);
+                        // create the new contact
                         setContact();
+                        FileUtils.confirmAudio(id);
+                        startActivity(intent);
+                        finish();
                     } else {
+                        // add previous data to allow undo
+                        bundle.putString("action", "undo");
+                        bundle.putString("undoFirst", undoFirst);
+                        bundle.putString("undoLast", undoLast);
+                        bundle.putString("undoTitle", undoTitle);
+                        bundle.putString("undoCountry", undoCountry);
+                        bundle.putString("undoGender", undoGender);
+                        setResult(RESULT_OK, new Intent().putExtras(bundle));
+                        FileUtils.confirmAudio(id);
+                        // update contact in database
                         updateContact();
+                        finish();
                     }
-                    ;
-                    recorder.confirm(id);
-                    startActivity(intent);
-                    finish();
                 }
 
             }
         });
 
         // add Button to cancel the current (adding of new contact)/(editing of existing button)
-        final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);
+        cancelButton = (FloatingActionButton) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -131,44 +158,26 @@ public class NewContactActivity extends AppCompatActivity {
         });
 
         // add Button to record a name
-        final ImageButton recordButton = (ImageButton) findViewById(R.id.record_button);
+        recordButton = (FloatingActionButton) findViewById(R.id.record_button);
         recordButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 if (recorder.isPressed()) {
-                    recordButton.setBackgroundResource(R.drawable.mic_icon);
                     recorder.stopRecording();
-                    confirmRecording();
                 } else {
-                    //start recording
-                    recordButton.setBackgroundResource(R.drawable.accept_icon);
                     recorder.startRecording(id);
-                    // TODO autostop recording after x seconds
                 }
             }
         });
+
+        recorder = new Recorder(this, recordButton);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        recorder.deleteTemp(id);
-        //Intent i = new Intent(NewContactActivity.this, HomeActivity.class);
-        if (cause.equals("EDIT")) {
-            recorder.deleteTemp(id);
-            Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("first", firstNameEdit.getText().toString());
-            bundle.putString("last", lastNameEdit.getText().toString());
-            bundle.putString("title", titleEdit.getText().toString());
-            bundle.putString("country", countryEdit.getText().toString());
-            bundle.putInt("id", id);
-            bundle.putString("gender", gender);
-            intent.putExtras(bundle);
-            startActivity(intent);
-            finish();
-        }
+        FileUtils.deleteFile(FileUtils.PATH + id + "temp.3gp");
         finish();
     }
 
@@ -179,7 +188,6 @@ public class NewContactActivity extends AppCompatActivity {
 
         findViewByIdEditButton();
 
-        findViewByIdImageButton();
 
         findViewByIdRadioButton();
 
@@ -189,9 +197,6 @@ public class NewContactActivity extends AppCompatActivity {
         lastNameEdit.setText(lastName);
         titleEdit.setText(title);
         countryEdit.setText(country);
-
-
-        recorder = Recorder.getCurrentInstance(getApplicationContext());
 
         Log.d("gender", gender.toString());
         if (gender.equals("FEMALE")) {
@@ -225,8 +230,6 @@ public class NewContactActivity extends AppCompatActivity {
 
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//From here on different declarations take place
 
     /**
      * TODO DELETE
@@ -242,15 +245,6 @@ public class NewContactActivity extends AppCompatActivity {
         femaleRadioButton = (RadioButton) findViewById(R.id.female_radioButton);
         maleRadioButton = (RadioButton) findViewById(R.id.male_radioButton);
         unknownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);
-    }
-
-    /**
-     * Sets the ImageButtons
-     */
-    private void findViewByIdImageButton() {
-        confirmButton = (ImageButton) findViewById(R.id.confirm_button);
-        cancelButton = (ImageButton) findViewById(R.id.cancel_button);
-        recordButton = (ImageButton) findViewById(R.id.record_button);
     }
 
     /**
@@ -271,7 +265,7 @@ public class NewContactActivity extends AppCompatActivity {
     public void confirmRequirements() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
-        alertDialog.setMessage("Last name and recording both can't be empty! Please fill them out/record the pronunciation.");
+        alertDialog.setMessage("Last name and recording can't both be empty! Please fill them out/record the pronunciation.");
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -279,64 +273,6 @@ public class NewContactActivity extends AppCompatActivity {
             }
         });
         alertDialog.show();
-    }
-
-    /**
-     * Shows an alert asking the user to confirm the recording.
-     */
-    public void confirmRecording() {
-        player = Player.getCurrentInstance(this);
-        // get the dialog
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.show();
-        // set the custom layout
-        Window win = alertDialog.getWindow();
-        if (win != null) {
-            win.setContentView(R.layout.confirm_record_dialog);
-
-            // text
-            TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);
-            textDialog.setText("Do you want to keep this recording?");
-
-            // cancel
-            ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);
-
-            cancelDialog.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    alertDialog.dismiss();
-                    recorder.deleteTemp(id);
-                }
-            });
-
-
-            // play
-            final ImageButton playDialog = (ImageButton) win.findViewById(R.id.play_dialog);
-
-            playDialog.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!player.isPlaying()) {
-                        player.startPlayingTemp(id, playDialog);
-                    } else {
-                        player.stopPlaying(playDialog);
-                    }
-                }
-            });
-
-
-            // confirm
-            ImageButton acceptDialog = (ImageButton) win.findViewById(R.id.accept_dialog);
-
-            acceptDialog.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    alertDialog.dismiss();
-                }
-            });
-        }
-
     }
 
 }

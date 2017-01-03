@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contact_editor_coord"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+ <LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -106,50 +115,36 @@
 
     </RelativeLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/cancel_delete_relative_layout"
-            android:layout_gravity="bottom|left">
-
-            <ImageButton
-                android:id="@+id/cancel_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cancel_icon"/>
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/record_play_relative_layout"
-            android:layout_gravity="center|bottom">
-
-            <ImageButton
-                android:id="@+id/record_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/mic_icon"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/confirm_edit_relative_layout"
-            android:layout_gravity="bottom">
-
-            <ImageButton
-                android:id="@+id/confirm_button"
-                android:layout_height="wrap_content"
-                android:layout_width="54dp"
-                android:background="@drawable/accept_icon"/>
-
-        </RelativeLayout>
-
-    </GridLayout>
-
-
 </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_clear_black_24dp"
+        android:scaleType="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_mic_black_24dp"
+        android:scaleType="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_check_black_24dp"
+        android:scaleType="center"/>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
 
 

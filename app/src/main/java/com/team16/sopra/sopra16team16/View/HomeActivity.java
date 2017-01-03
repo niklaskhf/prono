@@ -12,7 +12,9 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -22,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -282,12 +285,14 @@ public class HomeActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         contactManager.updateCursorAdapter();
+
         //contactManager.open();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        contactManager.deleteMarked();
     }
 
     @Override
@@ -297,6 +302,36 @@ public class HomeActivity extends AppCompatActivity {
         // and letting the kernel handle the cleanup after exiting
         // http://stackoverflow.com/questions/6608498/best-place-to-close-database-connection
         //contactManager.close();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 1) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.content_frame);
+
+                String action = data.getStringExtra("action");
+                if (action != null && action.equals("undo")) {
+                    final int undoId = data.getIntExtra("undoId", -1);
+                    Log.d("undoSnackbar", "showing snackbar for " + undoId);
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Deleted a contact", Snackbar.LENGTH_LONG)
+                            .setAction("UNDO", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
+                                    snackbarSuccess.show();
+
+                                    contactManager.toggleDeleted(undoId, 1);
+                                }
+                            });
+
+                    snackbar.show();
+                }
+            }
+        }
     }
 
     @Override

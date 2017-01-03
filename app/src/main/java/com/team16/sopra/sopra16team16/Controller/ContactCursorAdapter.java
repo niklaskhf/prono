@@ -40,7 +40,7 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
-        player = Player.getCurrentInstance(context);
+        player = new Player();
         this.context = context;
         contactManager = ContactManager.getInstance(context);
     }
@@ -71,11 +71,7 @@ public class ContactCursorAdapter extends CursorAdapter {
         ImageView genderSign = (ImageView) view.findViewById(R.id.contact_gender);
 
 
-        /*
-        // assign values to textviews
-        if (Boolean.getBoolean(cursor.getString(cursor.getColumnIndexOrThrow("deleted")))) {
-            view = new Space(context);
-        }*/
+        // assign values to TextViews
         tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
 
 
@@ -102,6 +98,10 @@ public class ContactCursorAdapter extends CursorAdapter {
         }
 
 
+
+        Drawable p = ContextCompat.getDrawable(context, R.drawable.ic_play_circle_outline_black_48dp);
+        playButton.setImageDrawable(p);
+
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,16 +116,15 @@ public class ContactCursorAdapter extends CursorAdapter {
             }
         });
 
-
         // get favorite value (0 or 1)
         final int favValue = cursor.getInt(cursor.getColumnIndexOrThrow("favorite"));
 
         // set correct item based on favValue
         if (favValue == 1) {
-            Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_marked_icon);
+            Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_black_24dp);
             favButton.setImageDrawable(d);
         } else {
-            Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_unmarked_icon);
+            Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_border_black_48dp);
             favButton.setImageDrawable(d);
         }
 
@@ -139,11 +138,11 @@ public class ContactCursorAdapter extends CursorAdapter {
                 // toggle the icon
                 if (favValue == 1) {
                     Log.i("updateFavorite", Integer.toString(id) + " true->false");
-                    Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_unmarked_icon);
+                    Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_border_black_48dp);
                     favButton.setImageDrawable(d);
                 } else {
                     Log.i("updateFavorite", Integer.toString(id) + " false->true");
-                    Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_marked_icon);
+                    Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_black_24dp);
                     favButton.setImageDrawable(d);
                 }
 

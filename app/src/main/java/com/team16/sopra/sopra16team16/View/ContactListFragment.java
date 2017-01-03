@@ -38,28 +38,6 @@ public class ContactListFragment extends ListFragment{
     @Override
     public void onActivityCreated(Bundle savedState) {
         super.onActivityCreated(savedState);
-        /* might do this at some point, kinda pointless with padding tho, unlucky
-
-        getListView().setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-            }
-
-            @Override
-            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                Log.i("firstVisible", Integer.toString(firstVisibleItem));
-                Log.i("visibleCount", Integer.toString(visibleItemCount));
-                Log.i("totalCount", Integer.toString(totalItemCount));
-                int lastItem = firstVisibleItem + visibleItemCount;
-                Log.i("lastItem", Integer.toString(lastItem));
-                if (firstVisibleItem != 0 && visibleItemCount <= totalItemCount) {
-                    // this is awful but whatever it works
-                    ((HomeActivity)getActivity()).setAddButtonVis(false);
-                } else {
-                    ((HomeActivity)getActivity()).setAddButtonVis(true);
-                }
-            }
-        });*/
     }
 
     @Override
@@ -89,7 +67,7 @@ public class ContactListFragment extends ListFragment{
         Log.i("v.getTag()", v.getTag().toString());
         Log.i("gender", genderView.getText().toString());
 
-        startActivity(intent);
+        getActivity().startActivityForResult(intent, 1);
 
     }
 }

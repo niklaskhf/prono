@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
 import java.io.File;
 
 /**
@@ -59,7 +61,6 @@ public class ContactManager{
         open();
         this.queryBuilder = new QueryBuilder(cols);
         this.context = context.getApplicationContext();
-        recorder = Recorder.getCurrentInstance(context);
 
         Cursor lastIdCursor = database.rawQuery("SELECT MAX(_ID) FROM " + TABLE_NAME + ";", null);
 
@@ -116,9 +117,8 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectContacts() {
-        // TODO ADD FILTERS AND SORT
-        Cursor mCursor = database.query(true, TABLE_NAME, cols, null
-                , null, null, null, null, null);
+        Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0"
+                , null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -188,6 +188,36 @@ public class ContactManager{
     }
 
     /**
+     * Inverts the deleted value of a contact/row
+     *
+     * @param id  unique id to identify the row
+     * @param del current value, result will be !del
+     */
+    public int toggleDeleted(int id, int del) {
+        if (id == -1) {
+            throw new IllegalArgumentException("invalid id");
+        }
+        int res = 0;
+        database.beginTransaction();
+        try {
+            Log.i("toggling deleted", "on " + Integer.toString(id) + " from " + Integer.toString(del) + " to " + (del+1) % 2);
+            String strFilter = "_id=" + id;
+            // values to be changed
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_DELETED, (del + 1) % 2);
+
+            // update row with new values
+            res = database.update(TABLE_NAME, values, strFilter, null);
+            database.setTransactionSuccessful();
+        } finally {
+            database.endTransaction();
+        }
+
+        this.updateCursorAdapter();
+        return res;
+    }
+
+    /**
      * Removes a row from the database
      *
      * @param id unique id of row that will be removed
@@ -199,7 +229,7 @@ public class ContactManager{
             res = database.delete(TABLE_NAME, "_id = ?", new String[]{Integer.toString(id)});
             Log.i("deleted", Integer.toString(id));
             database.setTransactionSuccessful();
-            recorder.delete(id);
+            FileUtils.deleteFile(FileUtils.PATH + id + ".3gp");
         } catch(Exception e) {
             Log.i("deleteContactDb", e.getMessage());
         } finally {
@@ -208,6 +238,29 @@ public class ContactManager{
         this.updateCursorAdapter();
         return res;
     }
+
+    /**
+     * Deletes all rows marked for deletion.
+     *
+     */
+    public void deleteMarked() {
+        // get all marked rows
+        Cursor mCursor = database.rawQuery("SELECT " + _ID + ", " + COLUMN_DELETED + " FROM " + TABLE_NAME + " WHERE " + COLUMN_DELETED + " = 1;", null);
+
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+            for (int i = 0; i < mCursor.getCount(); i++) {
+                int row = mCursor.getInt(mCursor.getColumnIndexOrThrow(_ID));
+                this.deleteContact(row);
+                Log.d("deleteMarked", Integer.toString(row));
+                i++;
+                mCursor.moveToNext();
+            }
+        }
+        mCursor.close();
+    }
+
 
     /**
      * Returns a ContactCursorAdapter, populates menu_item

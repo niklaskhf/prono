@@ -4,15 +4,20 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.FileUtils;
 import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
@@ -37,7 +42,7 @@ public class ContactViewerActivity extends AppCompatActivity {
     private TextView countryView;
     private ImageView genderSign;
 
-    private ImageButton playButton;
+    private FloatingActionButton playButton;
     private Player player;
 
 
@@ -46,7 +51,7 @@ public class ContactViewerActivity extends AppCompatActivity {
         super.onCreate(saveInstanceState);
 
 
-        player = Player.getCurrentInstance(getApplicationContext());
+        player = new Player();
 
         this.setContentView(R.layout.contact_viewer);
         contactManager = ContactManager.getInstance(this.getApplicationContext());
@@ -63,7 +68,7 @@ public class ContactViewerActivity extends AppCompatActivity {
 
         setTextViews();
 
-        Button editButton = (Button) findViewById(R.id.edit_button);
+        FloatingActionButton editButton = (FloatingActionButton) findViewById(R.id.edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,13 +82,12 @@ public class ContactViewerActivity extends AppCompatActivity {
                 // EDIT mode
                 intent.putExtra("cause", "EDIT");
 
-                startActivity(intent);
-                finish();
+                startActivityForResult(intent, 2);
             }
         });
 
         // should probably put all this into a seperate method
-        Button deleteButton = (Button) findViewById(R.id.delete_button);
+        FloatingActionButton deleteButton = (FloatingActionButton) findViewById(R.id.delete_button);
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +96,7 @@ public class ContactViewerActivity extends AppCompatActivity {
             }
         });
 
-        playButton = (ImageButton) findViewById(R.id.play_button);
+        playButton = (FloatingActionButton) findViewById(R.id.play_button);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,8 +137,13 @@ public class ContactViewerActivity extends AppCompatActivity {
                 switch (i) {
                     case DialogInterface.BUTTON_POSITIVE:
                         Log.i("deletionDialog", "user confirmed deletion of " + idF);
-                        contactManager.deleteContact(idF);
+                        //contactManager.deleteContact(idF);
+                        contactManager.toggleDeleted(idF, 0);
                         // go back to the front page
+                        Intent intent = new Intent();
+                        intent.putExtra("action", "undo");
+                        intent.putExtra("undoId", idF);
+                        setResult(RESULT_OK, intent);
                         onBackPressed();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -193,9 +202,72 @@ public class ContactViewerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        //Intent i = new Intent(ContactViewerActivity.this, HomeActivity.class);
-        //startActivity(i);
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 2) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                firstName = data.getStringExtra("first");
+                lastName = data.getStringExtra("last");
+                title = data.getStringExtra("title");
+                country = data.getStringExtra("country");
+                gender = data.getStringExtra("gender");
+                setText();
+                showSnackbar(data);
+            }
+        }
+    }
+
+    /**
+     * Shows a snackbar allowing the user to undo editing the contact
+     */
+    public void showSnackbar(final Intent data) {
+        Log.d("showSnackar", "called");
+        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.contact_viewer_coord);
+        firstName = data.getStringExtra("undoFirst");
+        lastName = data.getStringExtra("undoLast");
+        title = data.getStringExtra("undoTitle");
+        country = data.getStringExtra("undoCountry");
+        gender = data.getStringExtra("undoGender");
+
+        Log.d("undoSnackbar", "showing snackbar for " + id);
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, "Edited a contact", Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
+                        snackbarSuccess.show();
+                        // update database entry
+                        contactManager.updateContact(id, firstName, lastName, title, country, gender);
+
+                        // replace the audio file
+                        String original = getFilesDir().getPath() + "/" + id + ".3gp";
+                        String replacement = getFilesDir().getPath() + "/" + id + "_undo.3gp";
+                        FileUtils.replaceFile(original, replacement);
+
+                        // update views
+                        setText();
+                    }
+                });
+
+
+        snackbar.setCallback(new Snackbar.Callback() {
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                // delete the temporary undo file
+                String action = data.getStringExtra("action");
+                if (action != null && action.equals("edit")) {
+                    FileUtils.deleteFile(getFilesDir().getPath() + "/" + id + "_undo.3gp");
+                }
+            }
+        });
+
+        snackbar.show();
     }
 
 }

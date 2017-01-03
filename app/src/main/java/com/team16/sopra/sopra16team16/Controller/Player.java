@@ -2,6 +2,7 @@ package com.team16.sopra.sopra16team16.Controller;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.widget.ImageButton;
 
@@ -15,26 +16,17 @@ public class Player{
 
     private static Player currentInstance = null;
     //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-    private String path;
+    private String path = FileUtils.PATH;
     private MediaPlayer player = null;
 
     private boolean is_playing = false;
 
-    private Player(Context context) {
-        path = context.getApplicationContext().getFilesDir().getPath() + "/";
-    }
-
-    public static Player getCurrentInstance(Context context) {
-        if (currentInstance == null) {
-            currentInstance = new Player(context);
-            return currentInstance;
-        } else {
-            return currentInstance;
-        }
+    public Player() {
     }
 
 
-    /*
+
+    /**
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(int id, final ImageButton playButton) {
@@ -46,7 +38,7 @@ public class Player{
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
                 changeStatus(false);
-                playButton.setBackgroundResource(R.drawable.play_icon);
+                playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
             }
         });
 
@@ -55,7 +47,34 @@ public class Player{
             player.prepare();
             player.start();
             Log.d("player", "playing " + filename);
-            playButton.setBackgroundResource(R.drawable.cancel_icon);
+            playButton.setImageResource(R.drawable.ic_stop_black_48dp);
+
+        } catch (IOException e) {
+            Log.d("PlayerIOException", e.getMessage());
+        }
+    }
+    /**
+     * Gibt die Aufnahme des Namens aus
+     */
+    public void startPlaying(int id, final FloatingActionButton playButton) {
+
+        changeStatus(true);
+        String filename = path + id + ".3gp";
+
+        player = new MediaPlayer();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
+                changeStatus(false);
+                playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
+            }
+        });
+
+        try {
+            player.setDataSource(filename);
+            player.prepare();
+            player.start();
+            Log.d("player", "playing " + filename);
+            playButton.setImageResource(R.drawable.ic_stop_black_24dp);
 
         } catch (IOException e) {
             Log.d("PlayerIOException", e.getMessage());
@@ -74,7 +93,7 @@ public class Player{
         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
                 changeStatus(false);
-                playButton.setBackgroundResource(R.drawable.play_icon);
+                playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
             }
         });
 
@@ -83,7 +102,7 @@ public class Player{
             player.prepare();
             player.start();
             Log.d("player", "playing " + filename);
-            playButton.setBackgroundResource(R.drawable.cancel_icon);
+            playButton.setImageResource(R.drawable.ic_stop_black_48dp);
 
         } catch (IOException e) {
             Log.d("PlayerIOException", e.getMessage());
@@ -91,10 +110,20 @@ public class Player{
     }
 
     /*
-     * Stopt die Aufnahme des Namens
+     * Stopt die Wiedergabe des Namens
+     */
+    public void stopPlaying(FloatingActionButton playButton) {
+        playButton.setImageResource(R.drawable.play_icon);
+        changeStatus(false);
+        player.release();
+        player = null;
+    }
+
+    /*
+     * Stopt die Wiedergabe des Namens
      */
     public void stopPlaying(ImageButton playButton) {
-        playButton.setBackgroundResource(R.drawable.play_icon);
+        playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
         changeStatus(false);
         player.release();
         player = null;
