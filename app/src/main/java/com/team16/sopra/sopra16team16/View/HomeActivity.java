@@ -4,6 +4,7 @@ package com.team16.sopra.sopra16team16.View;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,7 +20,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.Space;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -29,12 +29,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.team16.sopra.sopra16team16.Controller.Backup;
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.R;
@@ -51,10 +54,14 @@ public class HomeActivity extends AppCompatActivity {
     private ContactManager contactManager;
     public static Context contextOfApplication;
     private FragmentManager fragmentManager;
-    private ContactListFragment fragment;
+    private ContactListFragment listFragment;
     private FloatingActionButton addButton;
     private FilterQueryProvider filterQuery;
     private SearchView searchView;
+    private Toolbar myToolbar;
+    private int mode;
+    private MenuItem searchItem;
+    private ArrayAdapter<String> drawerAdapter;
 
 
 
@@ -95,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // add searchItem to toolbar
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        searchItem = menu.findItem(R.id.action_search);
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
         // TODO discuss if this is the right approach
@@ -147,7 +154,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
                 Log.i("listAdapter", "is now filterQuery");
                 //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
-                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
                 return true;
             }
 
@@ -155,7 +162,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
                 Log.i("listAdapter", "is now default");
                 //contactManager.getCursorAdapterDefault().setFilterQueryProvider(null);
-                fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
                 return true;
             }
         });
@@ -165,7 +172,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
-                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
                 // hide the keyboard
                 searchView.clearFocus();
                 return true;
@@ -174,7 +181,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 //Log.i("listAdapter", "is now filterQuery");
-                fragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
                 return true;
             }
         });
@@ -185,18 +192,16 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void initializeToolbar() {
         // get the toolbar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         // set it
         setSupportActionBar(myToolbar);
         // configure it
         myToolbar.setTitle("");
         myToolbar.setSubtitle("");
+        myToolbar.setNavigationIcon(R.drawable.ic_drawer);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // add the drawer action
-        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
-
-        drawer.setOnClickListener(new View.OnClickListener() {
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mDrawerLayout.openDrawer(mDrawerList);
@@ -211,15 +216,16 @@ public class HomeActivity extends AppCompatActivity {
         // populate the drawer ListView
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy));
+        drawerAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy);
+        mDrawerList.setAdapter(drawerAdapter);
 
-        // add the drawer action
-        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
-        drawer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                mDrawerLayout.openDrawer(mDrawerList);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                onNavigationDrawerItemSelected(i);
+                mDrawerLayout.closeDrawer(mDrawerList);
+                toggleSubMode();
             }
         });
     }
@@ -230,10 +236,10 @@ public class HomeActivity extends AppCompatActivity {
     public void initializeFragments() {
         // add the ListFragment
         fragmentManager = getFragmentManager();
-        fragment = new ContactListFragment();
+        listFragment = new ContactListFragment();
 
         Bundle args = new Bundle();
-        fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
+        fragmentManager.beginTransaction().add(R.id.content_frame, listFragment).commit();
 
         // do we even have permissions?
         verifyStoragePermissions(this);
@@ -249,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
      * Returns the fragment object, for testing purposes
      */
     public ContactListFragment getFragment() {
-        return fragment;
+        return listFragment;
     }
 
     /**
@@ -340,7 +346,10 @@ public class HomeActivity extends AppCompatActivity {
         // or close the app
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
+        } else if (mode == 1) {
+            toggleMainMode();
+        }
+        else {
             finish();
         }
     }
@@ -376,7 +385,7 @@ public class HomeActivity extends AppCompatActivity {
                     REQUEST_ALL
             );
         } else {
-            fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+            listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
             addNewContact();
         }
 
@@ -392,7 +401,7 @@ public class HomeActivity extends AppCompatActivity {
                     // Permission Granted
                     // do nothing?
                     addNewContact();
-                    fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                    listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
                 } else {
                     addButton = (FloatingActionButton) findViewById(R.id.addNew);
                     addButton.setOnClickListener(new View.OnClickListener(){
@@ -407,6 +416,76 @@ public class HomeActivity extends AppCompatActivity {
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+
+    /**
+     * Opens a fragment depending on the position, that was clicked on
+     * @param position
+     */
+    public void onNavigationDrawerItemSelected(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        FragmentManager fragmentManager = getFragmentManager(); // For AppCompat use getSupportFragmentManager
+        switch(position) {
+            default:
+            case 0:
+                fragment = listFragment;
+                listFragment.setListAdapter(contactManager.getCursorAdapterFavorite());
+                break;
+            case 1:
+                fragment = new SettingsFragment();
+                //fragment = new MyFragment2();
+                break;
+            case 2:
+                //fragment = new SettingsFragment();
+                break;
+        }
+        if (fragment != null) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment)
+                    .commit();
+        }
+    }
+
+
+    /**
+     * Changes the toolbar/addButton to subMode (settings/about/favorites)
+     */
+    public void toggleSubMode() {
+        mode = 1;
+        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleMainMode();
+            }
+        });
+        searchItem.setVisible(false);
+        addButton.setVisibility(View.INVISIBLE);
+        mDrawerList.clearChoices();
+        drawerAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Changes the toolbar/addButton to mainMode (default listView of contacts)
+     */
+    public void toggleMainMode() {
+        mode = 0;
+        myToolbar.setNavigationIcon(R.drawable.ic_drawer);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(mDrawerList);
+            }
+        });
+        searchItem.setVisible(true);
+        addButton.setVisibility(View.VISIBLE);
+        listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, listFragment)
+                .commit();
+        mDrawerList.clearChoices();
     }
 
 }
