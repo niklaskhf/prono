@@ -20,13 +20,6 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:layout_width="match_parent">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/action_menu"
-                android:background="@drawable/menu_icon"
-                app:showAsAction="ifRoom"/>
-
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.CoordinatorLayout

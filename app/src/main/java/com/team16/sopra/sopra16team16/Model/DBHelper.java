@@ -6,13 +6,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.FileUtils;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * DBHelper, used to get the SQLiteDatabase object
  */
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper currentInstance = null;
-    private static final String DATABASE_NAME = "DBcontact";
+    public static final String DATABASE_NAME = "DBcontact";
+    public static String DB_FILEPATH = "/data/data/"+ HomeActivity.contextOfApplication.getPackageName() +"/databases/"+DATABASE_NAME;
 
     private static final int DATABASE_VERSION = 2;
 
@@ -65,5 +73,29 @@ public class DBHelper extends SQLiteOpenHelper {
                         + newVersion + ", which will destroy all old data");
         database.execSQL("DROP TABLE IF EXISTS contacts");
         onCreate(database);
+    }
+
+
+    /**
+     * Copies the database file at the specified location over the current
+     * internal application database.
+     * */
+    public boolean importDatabase(String dbPath) throws IOException {
+
+        // Close the SQLiteOpenHelper so it will commit the created empty
+        // database to internal storage.
+        close();
+        File newDb = new File(dbPath);
+        File oldDb = new File(DB_FILEPATH);
+
+        if (newDb.exists()) {
+            FileUtils.copyFile(new FileInputStream(newDb), new FileOutputStream(oldDb));
+            // Access the copied database so SQLiteHelper will cache it and mark
+            // it as created.
+            getWritableDatabase().isOpen();
+            currentInstance = new DBHelper(HomeActivity.contextOfApplication);
+            return true;
+        }
+        return false;
     }
 }

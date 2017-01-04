@@ -43,3 +43,4 @@ Thumbs.db
 .gradle
 /*.properties
 /gradle.properties
+/.idea/workspace.xml

@@ -112,12 +112,27 @@ public class ContactManager{
     }
 
     /**
-     * Executes query on the 'contacts' table
+     * Executes query on the 'contacts' table, only selects rows with COLUMN_DELETED = 0
      *
      * @return Cursor with rows based on query results
      */
     public Cursor selectContacts() {
         Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0"
+                , null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor; // iterate to get each value.
+    }
+
+    /**
+     * Executes query on the 'contacts' table, only selects rows with COLUMN_DELETED = 0
+     * and COLUMN_FAVORITE = 1
+     *
+     * @return Cursor with rows based on query results
+     */
+    public Cursor selectFavorites() {
+        Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0 AND " + COLUMN_FAVORITE + " = 1"
                 , null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -276,6 +291,23 @@ public class ContactManager{
             return cursorAdapter;
         }
     }
+
+    /**
+     * Returns a ContactCursorAdapter, populates menu_item
+     *
+     * @return ContactCursorAdapter
+     */
+    public ContactCursorAdapter getCursorAdapterFavorite() {
+        if (cursorAdapter == null) {
+            cursorAdapter = new ContactCursorAdapter(context, selectFavorites());
+            return cursorAdapter;
+        } else {
+            cursorAdapter.changeCursor(selectFavorites());
+            return cursorAdapter;
+        }
+    }
+
+
 
     /**
      * Update cursorAdapter with new dataset

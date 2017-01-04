@@ -44,13 +44,15 @@ public class DBManager {
         return dbContacts=dbHelper.getWritableDatabase();
     }
 
-    /* dont actually need this, android handles closing
-    public void close() {
-        dbHelper.close();
+    // closes the database dbContacts
+    public void close(){
+        dbContacts.close();
     }
 
-    public void reopen() {
+    // reopens the database dbContacts
+    public void reopen(){
+        close();
         dbHelper = DBHelper.getCurrentInstance(context);
         dbContacts = dbHelper.getWritableDatabase();
-    }*/
+    }
 }
