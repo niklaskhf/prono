@@ -55,6 +55,10 @@ public class ContactCursorAdapter extends CursorAdapter {
     public void bindView(View view, final Context context, final Cursor cursor) {
         // get incrementing id
         final int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+        final String first = cursor.getString(cursor.getColumnIndexOrThrow("first"));
+        final String last = cursor.getString(cursor.getColumnIndexOrThrow("last"));
+        final String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
+        final String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
 
         // set id for future reference
         view.setTag(id);
@@ -72,16 +76,16 @@ public class ContactCursorAdapter extends CursorAdapter {
 
 
         // assign values to TextViews
-        tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
+        tt1.setText(first);
 
 
-        tt2.setText(cursor.getString(cursor.getColumnIndexOrThrow("last")));
+        tt2.setText(last);
 
 
-        tt3.setText(cursor.getString(cursor.getColumnIndexOrThrow("title")));
+        tt3.setText(title);
 
 
-        tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
+        tt4.setText(country);
 
 
         tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
@@ -111,7 +115,7 @@ public class ContactCursorAdapter extends CursorAdapter {
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
-                    player.startPlaying(id, playButton);
+                    player.startPlaying(id, first.toLowerCase(), last.toLowerCase(), country.toLowerCase(), playButton);
                 }
             }
         });
