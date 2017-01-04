@@ -18,6 +18,7 @@ public class Player {
     //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
     private String path = FileUtils.PATH;
     private MediaPlayer player = null;
+    private ImageButton imagePlayButton;
 
     private String filename;
 
@@ -31,7 +32,10 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(int id, final ImageButton playButton) {
-
+        if (isPlaying()) {
+            stopPlaying(this.imagePlayButton);
+        }
+        this.imagePlayButton = playButton;
         changeStatus(true);
         filename = path + id + ".3gp";
 
@@ -59,7 +63,10 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(String id, final ImageButton playButton) {
-
+        if (isPlaying()) {
+            stopPlaying(this.imagePlayButton);
+        }
+        this.imagePlayButton = playButton;
         changeStatus(true);
         filename = path + id + ".3gp";
 
@@ -133,6 +140,12 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(int id, String first, String last, String country, final ImageButton playButton) {
+        if (isPlaying()) {
+            stopPlaying(this.imagePlayButton);
+            this.imagePlayButton.setImageResource(R.drawable.ic_stop_black_48dp);
+        }
+        this.imagePlayButton = playButton;
+
         changeStatus(true);
         String idFilename = path + id + ".3gp";
         String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + ".3gp";
@@ -149,7 +162,7 @@ public class Player {
             };
 
             this.play(filename, listener);
-            playButton.setImageResource(R.drawable.ic_stop_black_24dp);
+            playButton.setImageResource(R.drawable.ic_stop_black_48dp);
         } else {
             filename = firstFilename;
             MediaPlayer.OnCompletionListener listener1 = new MediaPlayer.OnCompletionListener() {
@@ -230,7 +243,7 @@ public class Player {
      * Stopt die Wiedergabe des Namens
      */
     public void stopPlaying(ImageButton playButton) {
-        playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
+        playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
         changeStatus(false);
         player.release();
         player = null;

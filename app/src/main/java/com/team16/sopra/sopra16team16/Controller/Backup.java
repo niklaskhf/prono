@@ -40,7 +40,7 @@ public class Backup {
                 // import the files from the selected path
                 importPath = file.getPath();
                 // TODO verify file name is valid
-                if (importPath.substring(importPath.length() - 5, importPath.length() - 1).equals(".zip")) {
+                if (importPath.substring(importPath.length() - 4, importPath.length()).equals(".zip")) {
                     importDB(importPath);
                 }
             }
