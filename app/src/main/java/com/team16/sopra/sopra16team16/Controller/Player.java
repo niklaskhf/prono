@@ -144,7 +144,7 @@ public class Player {
             MediaPlayer.OnCompletionListener listener = new MediaPlayer.OnCompletionListener() {
                 public void onCompletion(MediaPlayer mp) {
                     changeStatus(false);
-                    playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
+                    playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
                 }
             };
 
@@ -161,7 +161,7 @@ public class Player {
                 MediaPlayer.OnCompletionListener listener2 = new MediaPlayer.OnCompletionListener() {
                     public void onCompletion(MediaPlayer mp) {
                         changeStatus(false);
-                        playButton.setImageResource(R.drawable.ic_play_arrow_black_48dp);
+                        playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
                     }
                 };
             };

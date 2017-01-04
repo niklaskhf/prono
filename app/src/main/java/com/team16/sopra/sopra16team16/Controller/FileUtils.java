@@ -113,7 +113,6 @@ public class FileUtils {
             Log.d("recorder", "renamed " + temp + " to " + perm);
         }
 
-        deleteTempFiles();
     }
 
     /**
@@ -141,7 +140,6 @@ public class FileUtils {
             Log.d("recorder", "renamed " + temp + " to " + perm);
         }
 
-        deleteTempFiles();
     }
 
 

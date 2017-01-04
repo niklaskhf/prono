@@ -194,6 +194,7 @@ public class NewContactActivity extends AppCompatActivity {
                         FileUtils.confirmAudio(id);
                         FileUtils.confirmAudio(getFirstString().toLowerCase() + getCountryString().toLowerCase());
                         FileUtils.confirmAudio(getLastString().toLowerCase() + getCountryString().toLowerCase());
+                        FileUtils.deleteTempFiles();
                         startActivity(intent);
                         finish();
                     } else {
@@ -210,6 +211,7 @@ public class NewContactActivity extends AppCompatActivity {
                         FileUtils.confirmAudio(id);
                         FileUtils.confirmAudio(getFirstString().toLowerCase() + getCountryString().toLowerCase());
                         FileUtils.confirmAudio(getLastString().toLowerCase() + getCountryString().toLowerCase());
+                        FileUtils.deleteTempFiles();
                         // update contact in database
                         updateContact();
                         finish();
@@ -256,7 +258,7 @@ public class NewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (getFirstString().equals("")) {
-                    // TODO SHOW ALERT DIALOG
+                    showEditAlertDialog();
                 } else {
                     if (recorder.isPressed()) {
                         recorder.stopRecording();
@@ -279,7 +281,7 @@ public class NewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (getLastString().equals("")) {
-                    // TODO SHOW ALERT DIALOG
+                    showEditAlertDialog();
                 } else {
                     if (recorder.isPressed()) {
                         recorder.stopRecording();
@@ -348,7 +350,6 @@ public class NewContactActivity extends AppCompatActivity {
         TextWatcher tw = new TextWatcher() {
             public void afterTextChanged(Editable s){
                 if (getLastString().length() == 0) {
-                    showEditAlertDialog();
                 } else {
                     lastNameEdit.getBackground().clearColorFilter();
                     lastNameTv.setTextColor(originalTextColor);
@@ -654,9 +655,14 @@ public class NewContactActivity extends AppCompatActivity {
                     // copy generic files
                     if (!firstRecordExists()) {
                         try {
-                            // copy
-                            FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
-                                    new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
+                            if (new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
+                                FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
+                                        new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
+                            } else {
+                                // copy
+                                FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
+                                        new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
+                            }
                         } catch (IOException e) {
                             // handle the exception
                             Log.d("CopyIOException", e.getMessage());
@@ -666,8 +672,14 @@ public class NewContactActivity extends AppCompatActivity {
                     if (!lastRecordExists()) {
                         try {
                             // copy
-                            FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
-                                    new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
+                            if (new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
+                                FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
+                                        new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
+                            } else {
+                                // copy
+                                FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
+                                        new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
+                            }
                         } catch (IOException e) {
                             // handle the exception
                             Log.d("CopyIOException", e.getMessage());
