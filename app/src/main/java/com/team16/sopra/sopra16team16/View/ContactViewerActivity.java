@@ -31,19 +31,15 @@ public class ContactViewerActivity extends AppCompatActivity {
     private String gender = "";
     private int id;
 
-    TextView firstView;
-    TextView lastView;
-    TextView titleView;
-    TextView countryView;
-    ImageView genderSign;
-    // TODO PLAY BUTTON
+    private TextView firstView;
+    private TextView lastView;
+    private TextView titleView;
+    private TextView countryView;
+    private ImageView genderSign;
 
-    ImageButton playButton;
-    Player player;
+    private ImageButton playButton;
+    private Player player;
 
-
-
-    // TODO IMPLEMENT backPressed(), intent to homeActivity
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -58,14 +54,13 @@ public class ContactViewerActivity extends AppCompatActivity {
         // TODO FIX INTENT
         Bundle bundle = getIntent().getExtras();
 
-        if (bundle != null) {
-            firstName = bundle.get("first").toString();
-            lastName = bundle.get("last").toString();
-            title = bundle.get("title").toString();
-            country = bundle.get("country").toString();
-            gender = bundle.getString("gender");
-            id = Integer.parseInt(bundle.get("id").toString());
-        }
+        firstName = bundle.get("first").toString();
+        lastName = bundle.get("last").toString();
+        title = bundle.get("title").toString();
+        country = bundle.get("country").toString();
+        gender = bundle.getString("gender");
+        id = Integer.parseInt(bundle.get("id").toString());
+
         setTextViews();
 
         Button editButton = (Button) findViewById(R.id.edit_button);
@@ -79,6 +74,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                 intent.putExtra("title", title);
                 intent.putExtra("country", country);
                 intent.putExtra("gender", gender);
+                // EDIT mode
                 intent.putExtra("cause", "EDIT");
 
                 startActivity(intent);
@@ -113,9 +109,10 @@ public class ContactViewerActivity extends AppCompatActivity {
 
     /**
      * Deletes a contact after asking the user for confirmation.
+     *
      * @param id - unique id of row in database - int
-     * @param f first name of contact - String
-     * @param l last name of contact - String
+     * @param f  first name of contact - String
+     * @param l  last name of contact - String
      */
     public void deleteContactDialog(int id, String f, String l) {
         // im sure this is god awful
@@ -186,8 +183,13 @@ public class ContactViewerActivity extends AppCompatActivity {
                 break;
             case "UNKNOWN":
                 genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+                break;
+            default:
+                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+                break;
         }
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

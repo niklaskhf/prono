@@ -4,7 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 
-
+/**
+ * Manages the databases/settings.
+ */
 public class DBManager {
     private static DBManager currentInstance;
     private SQLiteDatabase dbContacts;
@@ -12,6 +14,11 @@ public class DBManager {
     private Context context;
 
 
+    /**
+     * Singleton
+     * @param context
+     * @return returns the only instance of this class
+     */
     public static DBManager getCurrentInstance(Context context) {
         if (currentInstance == null) {
             currentInstance = new DBManager(context.getApplicationContext());
@@ -20,10 +27,19 @@ public class DBManager {
             return currentInstance;
         }
     }
+
+    /**
+     * Constructor
+     * @param context
+     */
     private DBManager(Context context) {
         dbHelper = DBHelper.getCurrentInstance(context);
     }
 
+    /**
+     *
+     * @return The SQLiteDatabase DBcontact
+     */
     public SQLiteDatabase getDbContacts() {
         return dbContacts=dbHelper.getWritableDatabase();
     }

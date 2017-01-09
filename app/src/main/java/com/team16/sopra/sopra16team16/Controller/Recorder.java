@@ -102,11 +102,18 @@ public class Recorder{
      */
     public void delete(int id) {
         File perm = new File(path + id + ".3gp");
-        File temp = new File(path + id + "temp.3gp");
         if (perm.exists()) {
             perm.delete();
             Log.d("recorder", "deleted " + perm);
         }
+    }
+
+    /**
+     * Deletes the temp audio file associated to an id.
+     * @param id id of the contact - int
+     */
+    public void deleteTemp(int id) {
+        File temp = new File(path + id + "temp.3gp");
         if (temp.exists()) {
             temp.delete();
             Log.d("recorder", "deleted " + temp);
@@ -121,13 +128,29 @@ public class Recorder{
         File temp = new File(path + id + "temp.3gp");
         File perm = new File(path + id + ".3gp");
 
-        if (perm.exists()) {
+        if (perm.exists() && temp.exists()) {
             perm.delete();
+        
             Log.d("recorder", "deleted " + perm + " while copying temp");
         }
         if (temp.exists()) {
             temp.renameTo(perm);
             Log.d("recorder", "renamed " + temp + " to " + perm);
+        }
+    }
+
+    /**
+     * Checks if any recording associated to the id exists.
+     * @param id id of the contact - int
+     */
+    public boolean exists(int id) {
+        File temp = new File(path + id + "temp.3gp");
+        File perm = new File(path + id + ".3gp");
+
+        if(!perm.exists() && !temp.exists()) {
+            return false;
+        } else {
+            return true;
         }
     }
 

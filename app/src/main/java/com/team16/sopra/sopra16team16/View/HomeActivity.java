@@ -56,11 +56,17 @@ public class HomeActivity extends AppCompatActivity {
 
 
     // Storage Permissions
+    private static final int REQUEST_ALL = 0;
     private static final int REQUEST_MICROPHONE = 2;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+    private static String[] PERMISSIONS_ALL = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO,
     };
 
     @Override
@@ -70,7 +76,6 @@ public class HomeActivity extends AppCompatActivity {
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
-        verifyStoragePermissions(this);
         // initialize Toolbar
         initializeToolbar();
 
@@ -227,13 +232,14 @@ public class HomeActivity extends AppCompatActivity {
         Bundle args = new Bundle();
         fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
+        // do we even have permissions?
+        verifyStoragePermissions(this);
+
         // populate the ListView
         // set cursorAdapter
-        fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+        // moved this to permission request
+        //fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
-        // testing add button
-        addButton = (FloatingActionButton) findViewById(R.id.addNew);
-        addNewContact(addButton);
     }
 
     /**
@@ -246,7 +252,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Starts an activity UNKONWN_NAME to add a new contact.
      */
-    public void addNewContact(FloatingActionButton addButton) {
+    public void addNewContact() {
         addButton = (FloatingActionButton) findViewById(R.id.addNew);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,6 +260,7 @@ public class HomeActivity extends AppCompatActivity {
                 //verifyStoragePermissions(HomeActivity.this);
                 int id = contactManager.getId();
                 id++;
+                // opens a NewContactActivity with empty EditTexts
                 Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("first", "");
@@ -262,23 +269,13 @@ public class HomeActivity extends AppCompatActivity {
                 bundle.putString("country", "");
                 bundle.putString("gender", "");
                 bundle.putInt("id", id);
+                // CREATION mode
                 bundle.putString("cause", "CREATE");
 
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
-    }
-
-    /**
-     * Sets the visibility of the addButton
-     */
-    public void setAddButtonVis(boolean vis) {
-        if (vis) {
-            addButton.setVisibility(View.VISIBLE);
-        } else {
-            addButton.setVisibility(View.INVISIBLE);
-        }
     }
 
     @Override
@@ -289,11 +286,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
-
     public void onPause() {
         super.onPause();
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
         // according to google theres nothing wrong with keeping the connection open
@@ -308,8 +305,6 @@ public class HomeActivity extends AppCompatActivity {
         // or close the app
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawer(mDrawerList);
-        } else if (searchVisible()) {
-            searchView.setIconified(true);
         } else {
             finish();
         }
@@ -332,24 +327,51 @@ public class HomeActivity extends AppCompatActivity {
      *
      * @param activity
      */
-    public static void verifyStoragePermissions(Activity activity) {
+    public void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
+
+        if (permission != PackageManager.PERMISSION_GRANTED || micPermission != PackageManager.PERMISSION_GRANTED) {
             // We don't have permission so prompt the user
             ActivityCompat.requestPermissions(
                     activity,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
+                    PERMISSIONS_ALL,
+                    REQUEST_ALL
             );
+        } else {
+            fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+            addNewContact();
         }
 
-        if (micPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(activity,
-                    new String[]{Manifest.permission.RECORD_AUDIO},
-                    REQUEST_MICROPHONE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        final Activity activity = this;
+        switch (requestCode) {
+            case REQUEST_ALL:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                    // do nothing?
+                    addNewContact();
+                    fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                } else {
+                    addButton = (FloatingActionButton) findViewById(R.id.addNew);
+                    addButton.setOnClickListener(new View.OnClickListener(){
+
+                        @Override
+                        public void onClick(View view) {
+                            verifyStoragePermissions(activity);
+                        }
+                    });
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
 }
