@@ -40,7 +40,7 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
-        player = Player.getCurrentInstance(context);
+        player = new Player();
         this.context = context;
         contactManager = ContactManager.getInstance(context);
     }
@@ -55,6 +55,10 @@ public class ContactCursorAdapter extends CursorAdapter {
     public void bindView(View view, final Context context, final Cursor cursor) {
         // get incrementing id
         final int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
+        final String first = cursor.getString(cursor.getColumnIndexOrThrow("first"));
+        final String last = cursor.getString(cursor.getColumnIndexOrThrow("last"));
+        final String country = cursor.getString(cursor.getColumnIndexOrThrow("country"));
+        final String title = cursor.getString(cursor.getColumnIndexOrThrow("title"));
 
         // set id for future reference
         view.setTag(id);
@@ -71,21 +75,17 @@ public class ContactCursorAdapter extends CursorAdapter {
         ImageView genderSign = (ImageView) view.findViewById(R.id.contact_gender);
 
 
-        /*
-        // assign values to textviews
-        if (Boolean.getBoolean(cursor.getString(cursor.getColumnIndexOrThrow("deleted")))) {
-            view = new Space(context);
-        }*/
-        tt1.setText(cursor.getString(cursor.getColumnIndexOrThrow("first")));
+        // assign values to TextViews
+        tt1.setText(first);
 
 
-        tt2.setText(cursor.getString(cursor.getColumnIndexOrThrow("last")));
+        tt2.setText(last);
 
 
-        tt3.setText(cursor.getString(cursor.getColumnIndexOrThrow("title")));
+        tt3.setText(title);
 
 
-        tt4.setText(cursor.getString(cursor.getColumnIndexOrThrow("country")));
+        tt4.setText(country);
 
 
         tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
@@ -102,30 +102,34 @@ public class ContactCursorAdapter extends CursorAdapter {
         }
 
 
+
+        Drawable p = ContextCompat.getDrawable(context, R.drawable.ic_play_circle_outline_black_48dp);
+        playButton.setImageDrawable(p);
+
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // play audio file associated to contact id
                 Log.e("RecordButton", "ID: " + id);
+                player = new Player();
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
-                    player.startPlaying(id, playButton);
+                    player.startPlaying(id, first.toLowerCase(), last.toLowerCase(), country.toLowerCase(), playButton);
                 }
             }
         });
-
 
         // get favorite value (0 or 1)
         final int favValue = cursor.getInt(cursor.getColumnIndexOrThrow("favorite"));
 
         // set correct item based on favValue
         if (favValue == 1) {
-            Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_marked_icon);
+            Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_black_24dp);
             favButton.setImageDrawable(d);
         } else {
-            Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_unmarked_icon);
+            Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_border_black_48dp);
             favButton.setImageDrawable(d);
         }
 
@@ -139,11 +143,11 @@ public class ContactCursorAdapter extends CursorAdapter {
                 // toggle the icon
                 if (favValue == 1) {
                     Log.i("updateFavorite", Integer.toString(id) + " true->false");
-                    Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_unmarked_icon);
+                    Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_border_black_48dp);
                     favButton.setImageDrawable(d);
                 } else {
                     Log.i("updateFavorite", Integer.toString(id) + " false->true");
-                    Drawable d = ContextCompat.getDrawable(context, R.drawable.favorite_marked_icon);
+                    Drawable d = ContextCompat.getDrawable(context, R.drawable.ic_star_black_24dp);
                     favButton.setImageDrawable(d);
                 }
 

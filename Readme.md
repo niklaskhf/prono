@@ -1,7 +1,7 @@
 # Prono 
 
 ![Screenshot of home screen](doc/images/SoPraAppHomeScreen.png)
-Screenshot of Say The Right Name home screen
+Screenshot of the home screen
 
 Kurze Beschreibung der App inklusive der Beschreibung des Problems, welches durch die App gelöst wird. Hier wäre auch ein Screenshot oder Logo zu platzieren.
 

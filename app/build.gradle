@@ -38,4 +38,5 @@ dependencies {
     compile 'com.android.support:support-v13:25.0.1'
     testCompile 'junit:junit:4.12'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:support-v13:25.1.0'
 }
