@@ -77,7 +77,8 @@ public class NewContactActivity extends AppCompatActivity {
     private Player player = new Player();
 
 
-    @Override
+    @Overridef
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
@@ -627,7 +628,7 @@ public class NewContactActivity extends AppCompatActivity {
             // text
             TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);
             textDialog.setText("Do you want to keep the generic name " +
-                    "pronounciation in relation to the country " + getCountryString());
+                    "pronunciation in relation to the country " + getCountryString());
 
             // cancel
             ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);

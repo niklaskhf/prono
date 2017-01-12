@@ -292,7 +292,7 @@ public class Recorder {
     private void confirmGenericDialog() {
         // TODO CREATE NEW DIALOG LAYOUT
         String nameCap = Character.toUpperCase(name.charAt(0)) + name.substring(1);
-        String countryCap = Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        String countryCap = Character.toUpperCase(name.charAt(0)) + country.substring(1);
         // get the dialog
         final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setCanceledOnTouchOutside(false);

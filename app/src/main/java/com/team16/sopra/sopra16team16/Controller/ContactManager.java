@@ -18,6 +18,7 @@ public class ContactManager{
     private static ContactManager currentInstance = null;
     private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
+    private ContactCursorAdapter favoriteAdapter = null;
     private Context context;
     private QueryBuilder queryBuilder = null;
     private Recorder recorder;
@@ -199,6 +200,7 @@ public class ContactManager{
         }
 
         this.updateCursorAdapter();
+        this.getCursorAdapterDefault();
         return res;
     }
 
@@ -298,11 +300,11 @@ public class ContactManager{
      * @return ContactCursorAdapter
      */
     public ContactCursorAdapter getCursorAdapterFavorite() {
-        if (cursorAdapter == null) {
-            cursorAdapter = new ContactCursorAdapter(context, selectFavorites());
+        if (favoriteAdapter == null) {
+            favoriteAdapter = new ContactCursorAdapter(context, selectFavorites());
             return cursorAdapter;
         } else {
-            cursorAdapter.changeCursor(selectFavorites());
+            favoriteAdapter.changeCursor(selectFavorites());
             return cursorAdapter;
         }
     }
