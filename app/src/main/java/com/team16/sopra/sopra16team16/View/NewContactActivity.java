@@ -7,6 +7,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -241,8 +242,8 @@ public class NewContactActivity extends AppCompatActivity {
                     recorder.stopRecording();
                     enableButtons();
                 } else {
-                    recorder.startRecording(id, RecordingMode.RECORDING_CUSTOM);
                     disableButtons(recordButton);
+                    recorder.startRecording(id, RecordingMode.RECORDING_CUSTOM);
                 }
             }
         });
@@ -387,7 +388,7 @@ public class NewContactActivity extends AppCompatActivity {
         }
         // check if there is a recording for the lastName, or if there is a custom recording
         if (!lastRecordExists() && !customRecordExists()) {
-            lastRecordButton.setBackgroundColor(Color.RED);
+            lastRecordButton.setImageTintList(ColorStateList.valueOf(Color.RED));
             recordButton.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             i++;
         }
@@ -396,7 +397,7 @@ public class NewContactActivity extends AppCompatActivity {
             // if there is a first name:
             // check for a recording of the firstName, or alternatively a custom recording
             if (!firstRecordExists() && !customRecordExists()) {
-                firstRecordButton.setBackgroundColor(Color.RED);
+                firstRecordButton.setImageTintList(ColorStateList.valueOf(Color.RED));
                 recordButton.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                 i++;
             }
@@ -472,8 +473,8 @@ public class NewContactActivity extends AppCompatActivity {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
         alertDialog.setMessage("The last name and either generic recordings of the first/last name, " +
-                "or a custom recording of the pronounciation are required.\n" +
-                "Please enter the name/record a pronounciation.");
+                "or a custom recording of the pronunciation are required.\n\n" +
+                "Please enter the name/record a pronunciation.");
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -573,14 +574,22 @@ public class NewContactActivity extends AppCompatActivity {
      * Diables all buttons, used when recording
      * @param active the active recording button, will remain active
      */
-    public void disableButtons(FloatingActionButton active) {
+    public void disableButtons(final FloatingActionButton active) {
         firstRecordButton.setEnabled(false);
         lastRecordButton.setEnabled(false);
         cancelButton.setEnabled(false);
         confirmEditButton.setEnabled(false);
         recordButton.setEnabled(false);
 
-        active.setEnabled(true);
+        Runnable activateActive = new Runnable() {
+            @Override
+            public void run() {
+                active.setEnabled(true);
+            }
+        };
+
+        Handler handler = new Handler();
+        handler.postDelayed(activateActive, 500);
     }
 
     /**
@@ -703,7 +712,7 @@ public class NewContactActivity extends AppCompatActivity {
      * resets the firstRecordButton
      */
     public void firstRecordColor() {
-        firstRecordButton.setBackground(null);
+        firstRecordButton.setImageTintList(ColorStateList.valueOf(Color.BLACK));
         if (lastRecordButton.getBackground() == null) {
             recordButton.setBackgroundTintList(fabBackground);
         }
@@ -713,7 +722,7 @@ public class NewContactActivity extends AppCompatActivity {
      * resets the lastRecordButton color
      */
     public void lastRecordColor() {
-        lastRecordButton.setBackground(null);
+        lastRecordButton.setImageTintList(ColorStateList.valueOf(Color.BLACK));
         if (firstRecordButton.getBackground() == null) {
             recordButton.setBackgroundTintList(fabBackground);
         }

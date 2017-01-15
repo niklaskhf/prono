@@ -10,15 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7b05008-89f3-4d34-8619-d9af3a5fe545" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/AboutFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/about_fragment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/HomeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/HomeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java" />
     </list>
     <ignored path="sopra-team-16.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,30 +64,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewContactActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NewContactActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+            <state relative-caret-position="445">
+              <caret line="588" column="10" selection-start-line="588" selection-start-column="10" selection-end-line="588" selection-end-column="10" />
               <folding>
-                <element signature="e#4497#7592#0" expanded="true" />
-                <element signature="e#7591#7592#0" expanded="true" />
-                <element signature="e#7813#7966#0" expanded="true" />
-                <element signature="e#7965#7966#0" expanded="true" />
-                <element signature="e#8129#8550#0" expanded="true" />
-                <element signature="e#8549#8550#0" expanded="true" />
-                <element signature="e#8788#9421#0" expanded="true" />
-                <element signature="e#9420#9421#0" expanded="true" />
-                <element signature="e#9592#10221#0" expanded="true" />
-                <element signature="e#10220#10221#0" expanded="true" />
-                <element signature="e#16693#16882#0" expanded="true" />
-                <element signature="e#16881#16882#0" expanded="true" />
-                <element signature="e#21312#21614#0" expanded="true" />
-                <element signature="e#21613#21614#0" expanded="true" />
-                <element signature="e#21798#24645#0" expanded="true" />
-                <element signature="e#24644#24645#0" expanded="true" />
-                <element signature="e#25737#25926#0" expanded="true" />
-                <element signature="e#25925#25926#0" expanded="true" />
+                <element signature="e#4524#7619#0" expanded="true" />
+                <element signature="e#7618#7619#0" expanded="true" />
+                <element signature="e#7840#7993#0" expanded="true" />
+                <element signature="e#7992#7993#0" expanded="true" />
+                <element signature="e#8156#8577#0" expanded="true" />
+                <element signature="e#8576#8577#0" expanded="true" />
+                <element signature="e#8815#9448#0" expanded="true" />
+                <element signature="e#9447#9448#0" expanded="true" />
+                <element signature="e#9619#10248#0" expanded="true" />
+                <element signature="e#10247#10248#0" expanded="true" />
+                <element signature="e#16764#16953#0" expanded="true" />
+                <element signature="e#16952#16953#0" expanded="true" />
+                <element signature="e#19631#19766#0" expanded="true" />
+                <element signature="e#19765#19766#0" expanded="true" />
+                <element signature="e#21619#21921#0" expanded="true" />
+                <element signature="e#21920#21921#0" expanded="true" />
+                <element signature="e#22105#24952#0" expanded="true" />
+                <element signature="e#24951#24952#0" expanded="true" />
+                <element signature="e#26112#26301#0" expanded="true" />
+                <element signature="e#26300#26301#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recorder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/Controller/Recorder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+              <folding>
+                <element signature="e#1373#1594#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -118,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AboutFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AboutFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/AboutFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
+            <state relative-caret-position="329">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,16 +150,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/Controller/FileUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
-              <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -2067,12 +2069,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/Controller/Player.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/settings_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/SettingsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/FileChooser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/Controller/ContactManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/about_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/AboutFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java" />
       </list>
     </option>
   </component>
@@ -2249,14 +2251,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="device.picker.selection" value="Nexus_6_API_25" />
+    <property name="device.picker.selection" value="ZX1G5224XH" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPropertiesWindowManager-NlEditorPanel.WIDTH" value="232" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="VectorAssetImportPath" value="D:\Dokumente\AndroidStudioProjects" />
+    <property name="VectorAssetImportPath" value="D:\Downloads" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -2868,7 +2870,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484492435349</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added the About page &#10;&#10;TODO &#10;edit text&#10;add logo&#10;&#10;">
+      <created>1484493953185</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1484493953185</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2997,7 +3006,8 @@
     <MESSAGE value="added BACKUP/IMPORT, DRAWER ITEM SUPPORT&#10;&#10;&#10;- BACKUP/IMPORT:&#10;       1. added the settings fragment&#10;       2. added main/sub mode for the ui components (toolbar etc)&#10;       3. added import/export methods&#10;&#10;- DRAWER ITEM SUPPORT:&#10;        1. added main/sub mode for the ui components (toolbar etc)&#10;        2. added onClickListener to drawer listview&#10;        3. added backPressed support for sub mode" />
     <MESSAGE value="Merge branch 'genericPronFeature' into develop, attempted to fix issue when playing multiple items in listView&#10;&#10;" />
     <MESSAGE value="Added a reset button to Settings&#10;Fixed the NullPointerException when trying to go to the parent directory, while already in the root directory&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a reset button to Settings&#10;Fixed the NullPointerException when trying to go to the parent directory, while already in the root directory&#10;&#10;" />
+    <MESSAGE value="Added the About page &#10;&#10;TODO &#10;edit text&#10;add logo&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the About page &#10;&#10;TODO &#10;edit text&#10;add logo&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3213,18 +3223,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/Controller/Recorder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/team16/sopra/sopra16team16/Controller/RecorderPlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3276,33 +3279,6 @@
         <state relative-caret-position="321">
           <caret line="87" column="10" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="10" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
-          <folding>
-            <element signature="e#4497#7592#0" expanded="true" />
-            <element signature="e#7591#7592#0" expanded="true" />
-            <element signature="e#7813#7966#0" expanded="true" />
-            <element signature="e#7965#7966#0" expanded="true" />
-            <element signature="e#8129#8550#0" expanded="true" />
-            <element signature="e#8549#8550#0" expanded="true" />
-            <element signature="e#8788#9421#0" expanded="true" />
-            <element signature="e#9420#9421#0" expanded="true" />
-            <element signature="e#9592#10221#0" expanded="true" />
-            <element signature="e#10220#10221#0" expanded="true" />
-            <element signature="e#16693#16882#0" expanded="true" />
-            <element signature="e#16881#16882#0" expanded="true" />
-            <element signature="e#21312#21614#0" expanded="true" />
-            <element signature="e#21613#21614#0" expanded="true" />
-            <element signature="e#21798#24645#0" expanded="true" />
-            <element signature="e#24644#24645#0" expanded="true" />
-            <element signature="e#25737#25926#0" expanded="true" />
-            <element signature="e#25925#25926#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3388,10 +3364,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/AboutFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
+        <state relative-caret-position="329">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/Controller/Recorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding>
+            <element signature="e#1373#1594#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/team16/sopra/sopra16team16/View/NewContactActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="588" column="10" selection-start-line="588" selection-start-column="10" selection-end-line="588" selection-end-column="10" />
+          <folding>
+            <element signature="e#4524#7619#0" expanded="true" />
+            <element signature="e#7618#7619#0" expanded="true" />
+            <element signature="e#7840#7993#0" expanded="true" />
+            <element signature="e#7992#7993#0" expanded="true" />
+            <element signature="e#8156#8577#0" expanded="true" />
+            <element signature="e#8576#8577#0" expanded="true" />
+            <element signature="e#8815#9448#0" expanded="true" />
+            <element signature="e#9447#9448#0" expanded="true" />
+            <element signature="e#9619#10248#0" expanded="true" />
+            <element signature="e#10247#10248#0" expanded="true" />
+            <element signature="e#16764#16953#0" expanded="true" />
+            <element signature="e#16952#16953#0" expanded="true" />
+            <element signature="e#19631#19766#0" expanded="true" />
+            <element signature="e#19765#19766#0" expanded="true" />
+            <element signature="e#21619#21921#0" expanded="true" />
+            <element signature="e#21920#21921#0" expanded="true" />
+            <element signature="e#22105#24952#0" expanded="true" />
+            <element signature="e#24951#24952#0" expanded="true" />
+            <element signature="e#26112#26301#0" expanded="true" />
+            <element signature="e#26300#26301#0" expanded="true" />
           </folding>
         </state>
       </provider>
