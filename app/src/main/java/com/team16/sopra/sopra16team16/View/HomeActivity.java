@@ -435,10 +435,9 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case 1:
                 fragment = new SettingsFragment();
-                //fragment = new MyFragment2();
                 break;
             case 2:
-                //fragment = new SettingsFragment();
+                fragment = new AboutFragment();
                 break;
         }
         if (fragment != null) {
