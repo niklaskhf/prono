@@ -77,8 +77,7 @@ public class NewContactActivity extends AppCompatActivity {
     private Player player = new Player();
 
 
-    @Overridef
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
@@ -656,14 +655,16 @@ public class NewContactActivity extends AppCompatActivity {
                     // copy generic files
                     if (!firstRecordExists()) {
                         try {
+                            // copy temp
                             if (new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
                                 FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
                                         new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
                             } else {
-                                // copy
+                                // copy perm
                                 FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
                                         new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
                             }
+                            firstRecordColor();
                         } catch (IOException e) {
                             // handle the exception
                             Log.d("CopyIOException", e.getMessage());
@@ -672,15 +673,16 @@ public class NewContactActivity extends AppCompatActivity {
 
                     if (!lastRecordExists()) {
                         try {
-                            // copy
+                            // copy temp
                             if (new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
                                 FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
                                         new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
                             } else {
-                                // copy
+                                // copy perm
                                 FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
                                         new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
                             }
+                            lastRecordColor();
                         } catch (IOException e) {
                             // handle the exception
                             Log.d("CopyIOException", e.getMessage());

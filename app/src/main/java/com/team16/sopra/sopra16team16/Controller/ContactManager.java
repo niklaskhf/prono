@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
@@ -371,6 +372,19 @@ public class ContactManager{
      * wipes all rows from the database, used for testing
      */
     public void wipe() {
+        // wipe the database
         database.delete(TABLE_NAME, null, null);
+
+        // wipe the files
+        File filesPath = new File("//data//data//" + HomeActivity.contextOfApplication.getPackageName()
+                + "//files//");
+
+        File[] files = filesPath.listFiles();
+
+        for (int i = 1; i < files.length; i++) {
+            FileUtils.deleteFile(files[i].getPath());
+        }
+        Toast.makeText(HomeActivity.contextOfApplication, "All data reset!", Toast.LENGTH_SHORT)
+                .show();
     }
 }

@@ -140,10 +140,6 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(int id, String first, String last, String country, final ImageButton playButton) {
-        if (isPlaying()) {
-            stopPlaying(this.imagePlayButton);
-            this.imagePlayButton.setImageResource(R.drawable.ic_stop_black_48dp);
-        }
         this.imagePlayButton = playButton;
 
         changeStatus(true);

@@ -112,7 +112,6 @@ public class ContactCursorAdapter extends CursorAdapter {
             public void onClick(View view) {
                 // play audio file associated to contact id
                 Log.e("RecordButton", "ID: " + id);
-                player = new Player();
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
