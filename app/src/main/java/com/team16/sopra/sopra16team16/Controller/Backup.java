@@ -33,15 +33,20 @@ public class Backup {
         // let the user select a file
         // THIS IS KIND OF BUGGED
         // OPEN THE FINAL ROOT MIGHT CRASH THE APP
-        FileChooser fileChooser = new FileChooser((HomeActivity) context).setFileListener(new FileChooser.FileSelectedListener() {
+        FileChooser fileChooser = new FileChooser((HomeActivity) context)
+                .setFileListener(new FileChooser.FileSelectedListener() {
 
             @Override
             public void fileSelected(File file) {
                 // import the files from the selected path
                 importPath = file.getPath();
                 // TODO verify file name is valid
-                if (importPath.substring(importPath.length() - 4, importPath.length()).equals(".zip")) {
+                if (importPath.substring(importPath.length() - 4, importPath.length()).equals(".zip")
+                        && importPath.contains("prono")) {
                     importDB(importPath);
+                } else {
+                    Toast.makeText(HomeActivity.contextOfApplication, "Import failed",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
