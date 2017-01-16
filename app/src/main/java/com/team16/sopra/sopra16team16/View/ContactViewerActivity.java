@@ -132,7 +132,7 @@ public class ContactViewerActivity extends AppCompatActivity {
 
         // build the AlertDialog to request confirmation
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-
+        
         String message = "About to delete " + f +
                 " " + l +
                 ". Continue?";
@@ -152,6 +152,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                         intent.putExtra("action", "undo");
                         intent.putExtra("undoId", idF);
                         setResult(RESULT_OK, intent);
+                        dialogInterface.dismiss();
                         onBackPressed();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -159,6 +160,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                         break;
                     default:
+                        dialogInterface.dismiss();
                         break;
                 }
             }

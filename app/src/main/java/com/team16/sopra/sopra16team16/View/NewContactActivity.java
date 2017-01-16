@@ -306,7 +306,12 @@ public class NewContactActivity extends AppCompatActivity {
     public void setContact() {
         contactManager = ContactManager.getInstance(this.getApplicationContext());
         Log.d("genderCreate", gender);
-        contactManager.createContact(getFirstString(), getLastString(), getTitleString(), getCountryString(), gender);
+        contactManager.createContact(
+                capitalize(getFirstString()),
+                capitalize(getLastString()),
+                capitalize(getTitleString()),
+                capitalize(getCountryString()),
+                gender);
         Log.i("createContact", "created contact " + firstNameEdit.getText().toString());
     }
 
@@ -315,7 +320,12 @@ public class NewContactActivity extends AppCompatActivity {
      */
     public void updateContact() {
         contactManager = ContactManager.getInstance(this.getApplicationContext());
-        contactManager.updateContact(id, getFirstString(), getLastString(), getTitleString(), getCountryString(), gender);
+        contactManager.updateContact(id,
+                capitalize(getFirstString()),
+                capitalize(getLastString()),
+                capitalize(getTitleString()),
+                capitalize(getCountryString()),
+                gender);
 
     }
 
@@ -570,6 +580,18 @@ public class NewContactActivity extends AppCompatActivity {
         }
 
         return value;
+    }
+
+    /**
+     * Capitalizes a String - First letter capitalized, everything else non capitalized
+     */
+    public String capitalize(String string) {
+        if (string.equals("")) {
+            return "";
+        }
+        string.toLowerCase();
+        string = string.substring(0,1).toUpperCase() + string.substring(1, string.length());
+        return string;
     }
 
 
