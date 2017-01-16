@@ -247,7 +247,15 @@ public class ContactManager{
         // query to use
         String query;
         if (queryBuilder != null) {
-            query = queryBuilder.buildSearchQuery(search);
+            Filter filter = Filter.getCurrentInstance();
+            Sorter sorter = Sorter.getCurrentInstance();
+
+
+            //Filter.setCountry("dt");
+            /*
+            filter get...
+             */
+            query = queryBuilder.buildSearchQuery(search, filter, sorter);
 
         } else {
             throw new IllegalStateException("queryBuilder is null");

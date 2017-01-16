@@ -50,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
     private FragmentManager fragmentManager;
     private ContactListFragment fragment;
     private FloatingActionButton addButton;
+    private FloatingActionButton filterButton;
     private FilterQueryProvider filterQuery;
     private SearchView searchView;
 
@@ -372,6 +373,12 @@ public class HomeActivity extends AppCompatActivity {
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    public void openFilter(View view) {
+        Intent intent = new Intent(this, FilterActivity.class);
+        startActivity(intent);
+        return;
     }
 
 }

@@ -30,6 +30,10 @@
             android:name=".View.ContactViewerActivity"
             android:label="ConctactViewer">
         </activity>
+        <activity
+            android:name=".View.FilterActivity"
+            android:label="Filter">
+        </activity>
     </application>
 
 </manifest>

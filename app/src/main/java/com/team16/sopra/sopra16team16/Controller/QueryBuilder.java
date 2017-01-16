@@ -18,7 +18,7 @@ public class QueryBuilder {
      * @param search search query from search bar - String
      * @return complete SELECT FROM WHEN query
      */
-    public String buildSearchQuery(String search) {
+    public String buildSearchQuery(String search, Filter filter, Sorter sorter) {
         // get individual search words
         String[] searchWords = search.split(" ");
 
@@ -30,6 +30,9 @@ public class QueryBuilder {
             Log.i("searchWords", s);
 
         }
+
+        //Expression for the filter, empty if there is no filter
+        String filterExpression = buildFilterExpression(filter);
 
         // construct query
 
@@ -47,21 +50,47 @@ public class QueryBuilder {
         // expressions INTERSECT SELECT ... FROM ... WHERE expression INTERSECT ...
         for (int i = 0; i < searchWords.length; i++) {
             query_EXPRESSION = query_EXPRESSION +
-                    query_COLUMNS + query_TABLE +
+                    query_COLUMNS + query_TABLE + "(" +
                     ContactManager.COLUMN_FIRSTNAME + " LIKE '" + searchWords[i] + "' OR " +
                     ContactManager.COLUMN_LASTNAME + " LIKE '" + searchWords[i] + "' OR " +
                     ContactManager.COLUMN_COUNTRY + " LIKE '" + searchWords[i] + "' OR " +
-                    ContactManager.COLUMN_TITLE + " LIKE '" + searchWords[i] + "' OR " +
-                    ContactManager.COLUMN_GENDER + " LIKE '" + searchWords[i] + "'" +
+                    ContactManager.COLUMN_TITLE + " LIKE '" + searchWords[i] + "')" +
+                    //ContactManager.COLUMN_GENDER + " LIKE '" + searchWords[i] + "')" +
+                    filterExpression +
                     " INTERSECT ";
         }
 
         // cut out the last INTERSECT
         // should probably be using a StringBuilder
         query_EXPRESSION = query_EXPRESSION.substring(0, query_EXPRESSION.length() - 11);
+
+        //expression for sorting
+        String sorterExpression = buildSorterExpression(sorter);
+        query_EXPRESSION = query_EXPRESSION + sorterExpression;
+
         // finish query
         query_EXPRESSION = query_EXPRESSION + ";";
 
         return query_EXPRESSION;
+    }
+
+    /*
+     * if there is a filter, it adds an expression for it
+     */
+    private String buildFilterExpression(Filter filter) {
+        String result = "";
+        if(filter.getCountry() != null) {
+            result += " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
+        }
+        if(filter.getGender() != null) {
+            result += " AND " + ContactManager.COLUMN_GENDER + " = '" + filter.getGender() + "'";
+        }
+        return result;
+    }
+
+    private String buildSorterExpression(Sorter sorter) {
+        String result;
+        result = " ORDER BY " + sorter.getsortedBy() + " " + sorter.getDirection();
+        return result;
     }
 }
