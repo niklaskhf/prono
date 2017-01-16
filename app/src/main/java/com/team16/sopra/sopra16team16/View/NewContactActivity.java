@@ -30,6 +30,8 @@ import com.team16.sopra.sopra16team16.Controller.RecordingMode;
 import com.team16.sopra.sopra16team16.R;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -666,12 +668,12 @@ public class NewContactActivity extends AppCompatActivity {
                         try {
                             // copy temp
                             if (new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
-                                FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
-                                        new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp")));
                             } else {
                                 // copy perm
-                                FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
-                                        new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp")));
                             }
                             firstRecordColor();
                         } catch (IOException e) {
@@ -684,12 +686,12 @@ public class NewContactActivity extends AppCompatActivity {
                         try {
                             // copy temp
                             if (new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
-                                FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
-                                        new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp")));
                             } else {
                                 // copy perm
-                                FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
-                                        new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp")));
                             }
                             lastRecordColor();
                         } catch (IOException e) {

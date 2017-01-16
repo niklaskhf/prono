@@ -142,24 +142,8 @@ public class FileUtils {
 
     }
 
-
     /**
-     * Copies a file
-     */
-    public static void copy(File src, File dst) throws IOException {
-        if (src.exists()) {
-            FileInputStream inStream = new FileInputStream(src);
-            FileOutputStream outStream = new FileOutputStream(dst);
-            FileChannel inChannel = inStream.getChannel();
-            FileChannel outChannel = outStream.getChannel();
-            inChannel.transferTo(0, inChannel.size(), outChannel);
-            inStream.close();
-            outStream.close();
-        }
-    }
-
-    /**
-     * Deletes temp audio files.
+     * Deletes *temp.3gp files in the files directory.
      */
     public static void deleteTempFiles() {
         File[] files = new File(PATH).listFiles();
@@ -177,6 +161,12 @@ public class FileUtils {
     }
 
 
+    /**
+     * Copies a file
+     *
+     * fromFile - FileInputStream - source
+     * toFile - FileOutputStream - target
+     */
     public static void copyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
         FileChannel fromChannel = null;
         FileChannel toChannel = null;

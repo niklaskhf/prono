@@ -45,7 +45,7 @@ public class Backup {
                         && importPath.contains("prono")) {
                     importDB(importPath);
                 } else {
-                    Toast.makeText(HomeActivity.contextOfApplication, "Import failed",
+                    Toast.makeText(HomeActivity.contextOfApplication, "Import failed, file not accepted",
                             Toast.LENGTH_SHORT).show();
                 }
             }
