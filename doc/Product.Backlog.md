@@ -366,6 +366,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Enthaltene Tasks:
     - Einträge anzeigen
+    - Letzten Eintrag vollständig anzeigen
 
 
 
@@ -377,8 +378,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 4 Stunden 
 - Tatsächliche Zeit: 1 Stunde
-
-
 
 
 
@@ -626,7 +625,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 ### Task 1 *Informationen ändern*
 
-> Als *Vertriebsmitarbeiter* möchte ich *die Informationen einen Eintrags ändern*, um *den Kontakt zu aktualisieren*.
+> Als *Vertriebsmitarbeiter* möchte ich *die Informationen eines Eintrags ändern*, um *den Kontakt zu aktualisieren*.
 
 
 - Aufwandsschätzung: 3 Stunden 
@@ -1276,8 +1275,125 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 
+### Feature 13 *Backup & Import*
+
+> Als *Vertriebsmitarbeiter* möchte ich *meine Daten exportieren können*, um *diese später importieren zu können*.
+
+- Aufwandsschätzung: L
+- Akzeptanztests:
+    - [ ] Es gibt eine Backup-Datei mit allen Datenbanken und Audiodateien
+    - [ ] Die Backup-Datei endet auf .zip und enthält 'prono'
+    - [ ] Nach einem Import, sind alle Kontakte zur Zeit des Backups vorhanden
+    - [ ] Alle Kontakte nach einem Import, waren zur Zeit der Erstellung des Backups vorhanden
+    
+- Enthaltene Implementable Stories:
+    - Backup erstellen
+    - Backup importieren
+    - Daten zurücksetzen
+
+
+### Implementable Story 1 *Backup erstellen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *meine Daten in eine .zip exportieren*, um *diese später importieren zu können*.
+
+- Aufwandsschätzung: 50
+- Akzeptanztests:
+    - [ ] Backup-Datei enthält alle Datenbanken und Audiodateien
+    - [ ] Backup-Datei endet auf .zip und enthält 'prono'
+    - [ ] Nach Backup wird Toast angezeigt
+
+
+- Enthaltene Tasks:
+    - Backup-Button klicken
+    - Dateien zippen
+
+
+### Task 1 *Backup-Button klicken*
+
+> Als *Vertriebsmitarbeiter* möchte ich *den Backup-Button klicken*, um *ein Backup der Daten zu erstellen*.
+
+- Aufwandsschätzung: 2 Stunden
+- Tatsächliche Zeit: 2 Stunden
+
+
+### Task 2 *Dateien zippen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *Datenbanken und Audiodateien in einer.zip-Datei haben*, um *diese später importieren zu können*.
+
+- Aufwandsschätzung: 6 Stunden
+- Tatsächliche Zeit: 4 Stunden
+
+
+
+
+### Implementable Story 2 *Backup importieren*
+
+> Als *Vertriebsmitarbeiter* möchte ich *eine vorher erstelle Backup-Datei importieren*, um *die Daten wiederherzustellen*.
+
+- Aufwandsschätzung: 60
+- Akzeptanztests:
+    - [ ] Alle Kontakte nach dem Importieren existierten zur Zeit des Backup
+    - [ ] Alle Kontakte zur Zeit des Backup existieren wieder nach dem Importieren
+    - [ ] Nach Import wird Toast angezeigt
+
+
+- Enthaltene Tasks:
+    - Import-Button klicken
+    - Datei auswählen
+    - Datei unzippen
+
+
+### Task 1 *Import-Button klicken*
+
+> Als *Vertriebsmitarbeiter* möchte ich *den Import-Button klicken*, um *ein Backup der Daten zu importieren*.
+
+- Aufwandsschätzung: 2 Stunden
+- Tatsächliche Zeit: 2 Stunden
+
+
+### Task 2 *Datei auswählen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *eine Datei auswählen können*, um *eine Backup-Datei auszuwählen*.
+
+- Aufwandsschätzung: 4 Stunden
+- Tatsächliche Zeit: 3 Stunden
+
+
+### Task 3 *Datei unzippen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *eine Backup-Datei unzippen*, um *die Daten in der App zu verwenden*.
+
+
+- Aufwandsschätzung: 5 Stunden
+- Tatsächliche Zeit: 5 Stunden
+
+
+
+### Implementable Story 3 *Daten zurücksetzen*
    
+> Als *Vertriebsmitarbeiter* möchte ich *alle Daten zurücksetzen*, um *alle Kontakte zu löschen*.
+
+- Aufwandsschätzung: 30
+- Akzeptanztests:
+    - [ ] Es existieren keine Kontakte mehr
 
 
+- Enthaltene Tasks:
+    - Reset-Button klicken
+    - Daten löschen
+
+### Task 1 *Reset-Button klicken*
+
+> Als *Vertriebsmitarbeiter* möchte ich *den Reset-Button klicken*, um *alle Kontakte zu löschen*.
+
+- Aufwandsschätzung: 2 Stunden
+- Tatsächliche Zeit: 2 Stunden
+
+### Task 2 *Daten löschen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *alle Daten löschen*, um *keine Kontakte mehr zu haben*.
+
+- Aufwandsschätzung: 2 Stunden
+- Tatsächliche Zeit: 3 Stunden
 
 
