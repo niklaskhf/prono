@@ -84,6 +84,7 @@ public class NewContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
+        setTitle("Editor");
 
         //initialize();
 

@@ -376,7 +376,7 @@ public class ContactManager{
         database.delete(TABLE_NAME, null, null);
 
         // wipe the files
-        File filesPath = new File("//data//data//" + HomeActivity.contextOfApplication.getPackageName()
+        File filesPath = new File("//data//data//" + context.getPackageName()
                 + "//files//");
 
         File[] files = filesPath.listFiles();
@@ -384,7 +384,5 @@ public class ContactManager{
         for (int i = 1; i < files.length; i++) {
             FileUtils.deleteFile(files[i].getPath());
         }
-        Toast.makeText(HomeActivity.contextOfApplication, "All data reset!", Toast.LENGTH_SHORT)
-                .show();
     }
 }

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -22,6 +23,8 @@ import com.team16.sopra.sopra16team16.View.NewContactActivity;
 
 import java.io.File;
 import java.io.IOException;
+
+import static android.os.Looper.getMainLooper;
 
 /**
  * Created by Martin on 17.11.2016.

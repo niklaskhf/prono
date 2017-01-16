@@ -20,7 +20,7 @@ import java.io.IOException;
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper currentInstance = null;
     public static final String DATABASE_NAME = "DBcontact";
-    public static String DB_FILEPATH = "/data/data/"+ HomeActivity.contextOfApplication.getPackageName() +"/databases/"+DATABASE_NAME;
+    public static String DB_FILEPATH;
 
     private static final int DATABASE_VERSION = 2;
 
@@ -59,6 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     private DBHelper(Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
+        DB_FILEPATH = "/data/data/"+ context.getPackageName() +"/databases/"+ DATABASE_NAME;
     }
 
     // Method is called during creation of the database

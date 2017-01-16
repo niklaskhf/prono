@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.Controller.Backup;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
@@ -92,6 +93,8 @@ public class SettingsFragment extends PreferenceFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 ContactManager.getInstance(getActivity()).wipe();
+                Toast.makeText(HomeActivity.contextOfApplication, "All data reset!", Toast.LENGTH_SHORT)
+                        .show();
             }
         });
         alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

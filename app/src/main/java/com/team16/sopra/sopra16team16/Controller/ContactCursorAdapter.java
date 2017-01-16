@@ -96,8 +96,7 @@ public class ContactCursorAdapter extends CursorAdapter {
             case "FEMALE":
                 genderSign.setImageResource(R.drawable.pregnant_woman);
                 break;
-            case "UNKNOWN":
-                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+            default:
                 break;
         }
 

@@ -5,6 +5,7 @@ import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.NoActivityResumedException;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -27,8 +28,13 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressKey;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -75,8 +81,11 @@ public class HomeActivityTest {
 
     @Test
     public void drawerTest() {
-        onView(withId(R.id.action_menu))
-                .perform(click());
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
+                        withParent(withId(R.id.my_toolbar)),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
         DrawerLayout mDrawerLayout = (DrawerLayout) mActivityTestRules.getActivity().findViewById(R.id.drawer_layout);
 
         assertTrue("drawer didnt open", mDrawerLayout.isDrawerOpen(GravityCompat.START));

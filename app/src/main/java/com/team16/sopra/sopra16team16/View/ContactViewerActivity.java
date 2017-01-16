@@ -57,7 +57,6 @@ public class ContactViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
 
-
         player = new Player();
 
         this.setContentView(R.layout.contact_viewer);
@@ -72,6 +71,8 @@ public class ContactViewerActivity extends AppCompatActivity {
         country = bundle.get("country").toString();
         gender = bundle.getString("gender");
         id = Integer.parseInt(bundle.get("id").toString());
+
+        setTitle(firstName + " " + lastName);
 
         setTextViews();
 
