@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ContactViewerActivity.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.View</a> &gt; <span class="el_source">ContactViewerActivity.java</span></div><h1>ContactViewerActivity.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.View;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.FileUtils;
+import com.team16.sopra.sopra16team16.Controller.Player;
+import com.team16.sopra.sopra16team16.R;
+
+/**
+ * Displays information of a contact.
+ * Allows editing and deleting the contacts information.
+ */
+
+<span class="fc" id="L29">public class ContactViewerActivity extends AppCompatActivity {</span>
+
+<span class="fc" id="L31">    private ContactManager contactManager = null;</span>
+<span class="fc" id="L32">    private String firstName = &quot;&quot;;</span>
+<span class="fc" id="L33">    private String lastName = &quot;&quot;;</span>
+<span class="fc" id="L34">    private String title = &quot;&quot;;</span>
+<span class="fc" id="L35">    private String country = &quot;&quot;;</span>
+<span class="fc" id="L36">    private String gender = &quot;&quot;;</span>
+
+<span class="fc" id="L38">    private String undoFirstName = &quot;&quot;;</span>
+<span class="fc" id="L39">    private String undoLastName = &quot;&quot;;</span>
+<span class="fc" id="L40">    private String undoTitle = &quot;&quot;;</span>
+<span class="fc" id="L41">    private String undoCountry = &quot;&quot;;</span>
+<span class="fc" id="L42">    private String undoGender = &quot;&quot;;</span>
+
+    private int id;
+
+    private TextView firstView;
+    private TextView lastView;
+    private TextView titleView;
+    private TextView countryView;
+    private ImageView genderSign;
+
+    private FloatingActionButton playButton;
+    private Player player;
+
+
+    @Override
+    protected void onCreate(Bundle saveInstanceState) {
+<span class="fc" id="L58">        super.onCreate(saveInstanceState);</span>
+
+<span class="fc" id="L60">        player = new Player();</span>
+
+<span class="fc" id="L62">        this.setContentView(R.layout.contact_viewer);</span>
+<span class="fc" id="L63">        contactManager = ContactManager.getInstance(this.getApplicationContext());</span>
+
+        // TODO FIX INTENT
+<span class="fc" id="L66">        Bundle bundle = getIntent().getExtras();</span>
+
+<span class="fc" id="L68">        firstName = bundle.get(&quot;first&quot;).toString();</span>
+<span class="fc" id="L69">        lastName = bundle.get(&quot;last&quot;).toString();</span>
+<span class="fc" id="L70">        title = bundle.get(&quot;title&quot;).toString();</span>
+<span class="fc" id="L71">        country = bundle.get(&quot;country&quot;).toString();</span>
+<span class="fc" id="L72">        gender = bundle.getString(&quot;gender&quot;);</span>
+<span class="fc" id="L73">        id = Integer.parseInt(bundle.get(&quot;id&quot;).toString());</span>
+
+<span class="fc" id="L75">        setTitle(firstName + &quot; &quot; + lastName);</span>
+
+<span class="fc" id="L77">        setTextViews();</span>
+
+<span class="fc" id="L79">        FloatingActionButton editButton = (FloatingActionButton) findViewById(R.id.edit_button);</span>
+<span class="fc" id="L80">        editButton.setOnClickListener(new View.OnClickListener() {</span>
+            @Override
+            public void onClick(View view) {
+<span class="fc" id="L83">                Intent intent = new Intent(ContactViewerActivity.this, NewContactActivity.class);</span>
+<span class="fc" id="L84">                intent.putExtra(&quot;id&quot;, id);</span>
+<span class="fc" id="L85">                intent.putExtra(&quot;first&quot;, firstName);</span>
+<span class="fc" id="L86">                intent.putExtra(&quot;last&quot;, lastName);</span>
+<span class="fc" id="L87">                intent.putExtra(&quot;title&quot;, title);</span>
+<span class="fc" id="L88">                intent.putExtra(&quot;country&quot;, country);</span>
+<span class="fc" id="L89">                intent.putExtra(&quot;gender&quot;, gender);</span>
+                // EDIT mode
+<span class="fc" id="L91">                intent.putExtra(&quot;cause&quot;, &quot;EDIT&quot;);</span>
+
+<span class="fc" id="L93">                startActivityForResult(intent, 2);</span>
+<span class="fc" id="L94">            }</span>
+        });
+
+        // should probably put all this into a seperate method
+<span class="fc" id="L98">        FloatingActionButton deleteButton = (FloatingActionButton) findViewById(R.id.delete_button);</span>
+
+<span class="fc" id="L100">        deleteButton.setOnClickListener(new View.OnClickListener() {</span>
+            @Override
+            public void onClick(View view) {
+<span class="fc" id="L103">                deleteContactDialog(id, firstName, lastName);</span>
+<span class="fc" id="L104">            }</span>
+        });
+
+<span class="fc" id="L107">        playButton = (FloatingActionButton) findViewById(R.id.play_button);</span>
+<span class="fc" id="L108">        playButton.setOnClickListener(new View.OnClickListener() {</span>
+            @Override
+            public void onClick(View view) {
+<span class="fc bfc" id="L111" title="All 2 branches covered.">                if (player.isPlaying()) {</span>
+<span class="fc" id="L112">                    player.stopPlaying(playButton);</span>
+                } else {
+<span class="fc" id="L114">                    player.startPlaying(id, firstName.toLowerCase(), lastName.toLowerCase(), country.toLowerCase(), playButton);</span>
+                }
+
+<span class="fc" id="L117">            }</span>
+        });
+
+<span class="fc" id="L120">    }</span>
+
+    /**
+     * Deletes a contact after asking the user for confirmation.
+     *
+     * @param id - unique id of row in database - int
+     * @param f  first name of contact - String
+     * @param l  last name of contact - String
+     */
+    public void deleteContactDialog(int id, String f, String l) {
+        // im sure this is god awful
+<span class="fc" id="L131">        final int idF = id;</span>
+
+        // build the AlertDialog to request confirmation
+<span class="fc" id="L134">        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);</span>
+        
+<span class="fc" id="L136">        String message = &quot;About to delete &quot; + f +</span>
+                &quot; &quot; + l +
+                &quot;. Continue?&quot;;
+
+        // delete if user confirms with 'YES&quot;
+<span class="fc" id="L141">        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {</span>
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+<span class="pc bpc" id="L145" title="1 of 3 branches missed.">                switch (i) {</span>
+                    case DialogInterface.BUTTON_POSITIVE:
+<span class="fc" id="L147">                        Log.i(&quot;deletionDialog&quot;, &quot;user confirmed deletion of &quot; + idF);</span>
+                        //contactManager.deleteContact(idF);
+<span class="fc" id="L149">                        contactManager.toggleDeleted(idF, 0);</span>
+                        // go back to the front page
+<span class="fc" id="L151">                        Intent intent = new Intent();</span>
+<span class="fc" id="L152">                        intent.putExtra(&quot;action&quot;, &quot;undo&quot;);</span>
+<span class="fc" id="L153">                        intent.putExtra(&quot;undoId&quot;, idF);</span>
+<span class="fc" id="L154">                        setResult(RESULT_OK, intent);</span>
+<span class="fc" id="L155">                        dialogInterface.dismiss();</span>
+<span class="fc" id="L156">                        onBackPressed();</span>
+<span class="fc" id="L157">                        break;</span>
+                    case DialogInterface.BUTTON_NEGATIVE:
+<span class="fc" id="L159">                        Log.i(&quot;deletionDialog&quot;, &quot;User dismissed the dialog&quot;);</span>
+<span class="fc" id="L160">                        dialogInterface.dismiss();</span>
+<span class="fc" id="L161">                        break;</span>
+                    default:
+<span class="nc" id="L163">                        dialogInterface.dismiss();</span>
+                        break;
+                }
+<span class="fc" id="L166">            }</span>
+        };
+
+<span class="fc" id="L169">        alertBuilder.setMessage(message);</span>
+<span class="fc" id="L170">        alertBuilder.setPositiveButton(&quot;YES&quot;, dialogClickListener);</span>
+<span class="fc" id="L171">        alertBuilder.setNegativeButton(&quot;NO&quot;, dialogClickListener);</span>
+<span class="fc" id="L172">        alertBuilder.show();</span>
+<span class="fc" id="L173">    }</span>
+
+    /**
+     * Populates the textViews in the contact_viewer layout
+     */
+    public void setTextViews() {
+        // populate textViews
+<span class="fc" id="L180">        firstView = (TextView) findViewById(R.id.real_first_name);</span>
+<span class="fc" id="L181">        lastView = (TextView) findViewById(R.id.real_last_name);</span>
+<span class="fc" id="L182">        titleView = (TextView) findViewById(R.id.real_title);</span>
+<span class="fc" id="L183">        countryView = (TextView) findViewById(R.id.real_country);</span>
+<span class="fc" id="L184">        genderSign = (ImageView) findViewById(R.id.gender_sign);</span>
+<span class="fc" id="L185">        setText();</span>
+<span class="fc" id="L186">    }</span>
+
+    /**
+     * set information after contact has been clicked
+     */
+    public void setText() {
+<span class="fc" id="L192">        firstView.setText(firstName);</span>
+<span class="fc" id="L193">        lastView.setText(lastName);</span>
+<span class="fc" id="L194">        titleView.setText(title);</span>
+<span class="fc" id="L195">        countryView.setText(country);</span>
+<span class="pc bpc" id="L196" title="3 of 14 branches missed.">        switch (gender) {</span>
+            case &quot;MALE&quot;:
+<span class="fc" id="L198">                genderSign.setImageResource(R.drawable.running_man);</span>
+<span class="fc" id="L199">                break;</span>
+            case &quot;FEMALE&quot;:
+<span class="fc" id="L201">                genderSign.setImageResource(R.drawable.pregnant_woman);</span>
+<span class="fc" id="L202">                break;</span>
+            case &quot;UNKNOWN&quot;:
+<span class="fc" id="L204">                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);</span>
+<span class="fc" id="L205">                break;</span>
+            default:
+<span class="fc" id="L207">                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);</span>
+                break;
+        }
+<span class="fc" id="L210">    }</span>
+
+    @Override
+    public void onBackPressed() {
+<span class="fc" id="L214">        super.onBackPressed();</span>
+<span class="fc" id="L215">        finish();</span>
+<span class="fc" id="L216">    }</span>
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">        if (requestCode == 2) {</span>
+            // Make sure the request was successful
+<span class="fc bfc" id="L223" title="All 2 branches covered.">            if (resultCode == RESULT_OK) {</span>
+<span class="fc" id="L224">                firstName = data.getStringExtra(&quot;first&quot;);</span>
+<span class="fc" id="L225">                lastName = data.getStringExtra(&quot;last&quot;);</span>
+<span class="fc" id="L226">                title = data.getStringExtra(&quot;title&quot;);</span>
+<span class="fc" id="L227">                country = data.getStringExtra(&quot;country&quot;);</span>
+<span class="fc" id="L228">                gender = data.getStringExtra(&quot;gender&quot;);</span>
+<span class="fc" id="L229">                setText();</span>
+<span class="fc" id="L230">                showSnackbar(data);</span>
+            }
+        }
+<span class="fc" id="L233">    }</span>
+
+    /**
+     * Shows a snackbar allowing the user to undo editing the contact
+     */
+    public void showSnackbar(final Intent data) {
+<span class="fc" id="L239">        Log.d(&quot;showSnackar&quot;, &quot;called&quot;);</span>
+<span class="fc" id="L240">        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.contact_viewer_coord);</span>
+
+<span class="fc" id="L242">        undoFirstName = data.getStringExtra(&quot;undoFirst&quot;);</span>
+<span class="fc" id="L243">        undoLastName = data.getStringExtra(&quot;undoLast&quot;);</span>
+<span class="fc" id="L244">        undoTitle = data.getStringExtra(&quot;undoTitle&quot;);</span>
+<span class="fc" id="L245">        undoCountry = data.getStringExtra(&quot;undoCountry&quot;);</span>
+<span class="fc" id="L246">        undoGender = data.getStringExtra(&quot;undoGender&quot;);</span>
+
+<span class="fc" id="L248">        Log.d(&quot;undoSnackbar&quot;, &quot;showing snackbar for &quot; + id);</span>
+<span class="fc" id="L249">        Snackbar snackbar = Snackbar</span>
+<span class="fc" id="L250">                .make(coordinatorLayout, &quot;Edited a contact&quot;, Snackbar.LENGTH_LONG)</span>
+<span class="fc" id="L251">                .setAction(&quot;UNDO&quot;, new View.OnClickListener() {</span>
+                    @Override
+                    public void onClick(View view) {
+<span class="fc" id="L254">                        Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, &quot;Restored a contact&quot;, Snackbar.LENGTH_SHORT);</span>
+<span class="fc" id="L255">                        snackbarSuccess.show();</span>
+                        // update database entry
+<span class="fc" id="L257">                        contactManager.updateContact(id, firstName, lastName, title, country, gender);</span>
+
+                        // replace the audio files
+<span class="fc" id="L260">                        String original = FileUtils.PATH + id + &quot;.3gp&quot;;</span>
+<span class="fc" id="L261">                        String replacement = FileUtils.PATH + id + &quot;_undo.3gp&quot;;</span>
+<span class="fc" id="L262">                        FileUtils.replaceFile(original, replacement);</span>
+
+
+                        // replace the audio files
+<span class="fc" id="L266">                        original = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + &quot;.3gp&quot;;</span>
+<span class="fc" id="L267">                        replacement = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + &quot;_undo.3gp&quot;;</span>
+<span class="fc" id="L268">                        FileUtils.replaceFile(original, replacement);</span>
+
+                        // replace the audio files
+<span class="fc" id="L271">                        original = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + &quot;.3gp&quot;;</span>
+<span class="fc" id="L272">                        replacement = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + &quot;_undo.3gp&quot;;</span>
+<span class="fc" id="L273">                        FileUtils.replaceFile(original, replacement);</span>
+
+<span class="fc" id="L275">                        firstName = data.getStringExtra(&quot;undoFirst&quot;);</span>
+<span class="fc" id="L276">                        lastName = data.getStringExtra(&quot;undoLast&quot;);</span>
+<span class="fc" id="L277">                        title = data.getStringExtra(&quot;undoTitle&quot;);</span>
+<span class="fc" id="L278">                        country = data.getStringExtra(&quot;undoCountry&quot;);</span>
+<span class="fc" id="L279">                        gender = data.getStringExtra(&quot;undoGender&quot;);</span>
+
+                        // update views
+<span class="fc" id="L282">                        setText();</span>
+<span class="fc" id="L283">                    }</span>
+                });
+
+
+<span class="fc" id="L287">        snackbar.setCallback(new Snackbar.Callback() {</span>
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                // delete the temporary undo file
+<span class="fc" id="L291">                String action = data.getStringExtra(&quot;action&quot;);</span>
+<span class="pc bpc" id="L292" title="2 of 4 branches missed.">                if (action != null &amp;&amp; action.equals(&quot;edit&quot;)) {</span>
+<span class="nc" id="L293">                    FileUtils.deleteFile(FileUtils.PATH + id + &quot;_undo.3gp&quot;);</span>
+<span class="nc" id="L294">                    FileUtils.deleteFile(FileUtils.PATH + undoFirstName.toLowerCase() + undoCountry.toLowerCase() + &quot;_undo.3gp&quot;);</span>
+<span class="nc" id="L295">                    FileUtils.deleteFile(FileUtils.PATH + undoLastName.toLowerCase() + undoCountry.toLowerCase() + &quot;_undo.3gp&quot;);</span>
+                }
+<span class="fc" id="L297">            }</span>
+        });
+
+<span class="fc" id="L300">        snackbar.show();</span>
+<span class="fc" id="L301">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

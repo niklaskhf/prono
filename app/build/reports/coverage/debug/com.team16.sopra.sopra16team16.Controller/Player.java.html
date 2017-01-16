@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
+import android.widget.ImageButton;
+
+import com.team16.sopra.sopra16team16.R;
+
+import java.io.File;
+import java.io.IOException;
+
+
+public class Player {
+
+<span class="fc" id="L17">    private static Player currentInstance = null;</span>
+    //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+<span class="fc" id="L19">    private String path = FileUtils.PATH;</span>
+<span class="fc" id="L20">    private MediaPlayer player = null;</span>
+    private ImageButton imagePlayButton;
+
+    private String filename;
+
+<span class="fc" id="L25">    private boolean is_playing = false;</span>
+
+<span class="fc" id="L27">    public Player() {</span>
+<span class="fc" id="L28">    }</span>
+
+
+    /**
+     * Gibt die Aufnahme des Namens aus
+     */
+    public void startPlaying(int id, final ImageButton playButton) {
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (isPlaying()) {</span>
+<span class="nc" id="L36">            stopPlaying(this.imagePlayButton);</span>
+        }
+<span class="nc" id="L38">        this.imagePlayButton = playButton;</span>
+<span class="nc" id="L39">        changeStatus(true);</span>
+<span class="nc" id="L40">        filename = path + id + &quot;.3gp&quot;;</span>
+
+<span class="nc" id="L42">        player = new MediaPlayer();</span>
+<span class="nc" id="L43">        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {</span>
+            public void onCompletion(MediaPlayer mp) {
+<span class="nc" id="L45">                changeStatus(false);</span>
+<span class="nc" id="L46">                playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="nc" id="L47">            }</span>
+        });
+
+        try {
+<span class="nc" id="L51">            player.setDataSource(filename);</span>
+<span class="nc" id="L52">            player.prepare();</span>
+<span class="nc" id="L53">            player.start();</span>
+<span class="nc" id="L54">            Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+<span class="nc" id="L55">            playButton.setImageResource(R.drawable.ic_stop_black_48dp);</span>
+
+<span class="nc" id="L57">        } catch (IOException e) {</span>
+<span class="nc" id="L58">            Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="nc" id="L59">        }</span>
+<span class="nc" id="L60">    }</span>
+
+    /**
+     * Gibt die Aufnahme des Namens aus
+     */
+    public void startPlaying(String id, final ImageButton playButton) {
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">        if (isPlaying()) {</span>
+<span class="nc" id="L67">            stopPlaying(this.imagePlayButton);</span>
+        }
+<span class="fc" id="L69">        this.imagePlayButton = playButton;</span>
+<span class="fc" id="L70">        changeStatus(true);</span>
+<span class="fc" id="L71">        filename = path + id + &quot;.3gp&quot;;</span>
+
+<span class="fc" id="L73">        Log.d(&quot;player&quot;, &quot;trying to play this file: &quot; + filename);</span>
+
+<span class="fc" id="L75">        player = new MediaPlayer();</span>
+<span class="fc" id="L76">        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {</span>
+            public void onCompletion(MediaPlayer mp) {
+<span class="fc" id="L78">                changeStatus(false);</span>
+<span class="fc" id="L79">                playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="fc" id="L80">            }</span>
+        });
+
+        try {
+<span class="fc" id="L84">            player.setDataSource(filename);</span>
+<span class="fc" id="L85">            player.prepare();</span>
+<span class="fc" id="L86">            player.start();</span>
+<span class="fc" id="L87">            Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+<span class="fc" id="L88">            playButton.setImageResource(R.drawable.ic_stop_black_48dp);</span>
+
+<span class="nc" id="L90">        } catch (IOException e) {</span>
+<span class="nc" id="L91">            Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="fc" id="L92">        }</span>
+<span class="fc" id="L93">    }</span>
+
+
+    /**
+     * Gibt die Aufnahme des Namens aus
+     */
+    public void startPlaying(int id, String first, String last, String country, final FloatingActionButton playButton) {
+<span class="fc" id="L100">        changeStatus(true);</span>
+<span class="fc" id="L101">        String idFilename = path + id + &quot;.3gp&quot;;</span>
+<span class="fc" id="L102">        String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + &quot;.3gp&quot;;</span>
+<span class="fc" id="L103">        final String lastFilename = FileUtils.PATH + last.toLowerCase() + country.toLowerCase() + &quot;.3gp&quot;;</span>
+
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        if (new File(idFilename).exists()) {</span>
+<span class="fc" id="L106">            filename = idFilename;</span>
+
+<span class="fc" id="L108">            MediaPlayer.OnCompletionListener listener = new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="fc" id="L110">                    changeStatus(false);</span>
+<span class="fc" id="L111">                    playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);</span>
+<span class="fc" id="L112">                }</span>
+            };
+
+<span class="fc" id="L115">            this.play(filename, listener);</span>
+<span class="fc" id="L116">            playButton.setImageResource(R.drawable.ic_stop_black_24dp);</span>
+<span class="fc" id="L117">        } else {</span>
+<span class="nc" id="L118">            filename = firstFilename;</span>
+<span class="nc" id="L119">            MediaPlayer.OnCompletionListener listener1 = new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="nc" id="L121">                    filename = lastFilename;</span>
+<span class="nc" id="L122">                    play(filename, listener2);</span>
+<span class="nc" id="L123">                }</span>
+
+<span class="nc" id="L125">                MediaPlayer.OnCompletionListener listener2 = new MediaPlayer.OnCompletionListener() {</span>
+                    public void onCompletion(MediaPlayer mp) {
+<span class="nc" id="L127">                        changeStatus(false);</span>
+<span class="nc" id="L128">                        playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);</span>
+<span class="nc" id="L129">                    }</span>
+                };
+            };
+
+<span class="nc" id="L133">            this.play(filename, listener1);</span>
+<span class="nc" id="L134">            playButton.setImageResource(R.drawable.ic_stop_black_24dp);</span>
+        }
+
+<span class="fc" id="L137">    }</span>
+
+    /**
+     * Gibt die Aufnahme des Namens aus
+     */
+    public void startPlaying(int id, String first, String last, String country, final ImageButton playButton) {
+<span class="fc" id="L143">        this.imagePlayButton = playButton;</span>
+
+<span class="fc" id="L145">        changeStatus(true);</span>
+<span class="fc" id="L146">        String idFilename = path + id + &quot;.3gp&quot;;</span>
+<span class="fc" id="L147">        String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + &quot;.3gp&quot;;</span>
+<span class="fc" id="L148">        final String lastFilename = FileUtils.PATH + last.toLowerCase() + country.toLowerCase() + &quot;.3gp&quot;;</span>
+
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        if (new File(idFilename).exists()) {</span>
+<span class="fc" id="L151">            filename = idFilename;</span>
+
+<span class="fc" id="L153">            MediaPlayer.OnCompletionListener listener = new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="fc" id="L155">                    changeStatus(false);</span>
+<span class="fc" id="L156">                    playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="fc" id="L157">                }</span>
+            };
+
+<span class="fc" id="L160">            this.play(filename, listener);</span>
+<span class="fc" id="L161">            playButton.setImageResource(R.drawable.ic_stop_black_48dp);</span>
+<span class="fc" id="L162">        } else {</span>
+<span class="fc" id="L163">            filename = firstFilename;</span>
+<span class="fc" id="L164">            MediaPlayer.OnCompletionListener listener1 = new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="nc" id="L166">                    filename = lastFilename;</span>
+<span class="nc" id="L167">                    play(filename, listener2);</span>
+<span class="nc" id="L168">                }</span>
+
+<span class="fc" id="L170">                MediaPlayer.OnCompletionListener listener2 = new MediaPlayer.OnCompletionListener() {</span>
+                    public void onCompletion(MediaPlayer mp) {
+<span class="nc" id="L172">                        changeStatus(false);</span>
+<span class="nc" id="L173">                        playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="nc" id="L174">                    }</span>
+                };
+            };
+
+<span class="fc" id="L178">            this.play(filename, listener1);</span>
+<span class="fc" id="L179">            playButton.setImageResource(R.drawable.ic_stop_black_48dp);</span>
+        }
+
+<span class="fc" id="L182">    }</span>
+
+    public void play(String filename, MediaPlayer.OnCompletionListener listener) {
+<span class="fc" id="L185">        player = new MediaPlayer();</span>
+<span class="fc" id="L186">        player.setOnCompletionListener(listener);</span>
+
+        try {
+<span class="fc" id="L189">            player.setDataSource(filename);</span>
+<span class="fc" id="L190">            player.prepare();</span>
+<span class="fc" id="L191">            player.start();</span>
+<span class="fc" id="L192">            Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+
+<span class="fc" id="L194">        } catch (IOException e) {</span>
+<span class="fc" id="L195">            Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="fc" id="L196">        }</span>
+<span class="fc" id="L197">    }</span>
+
+    /**
+     * Gibt die Aufnahme des Namens aus
+     */
+    public void startPlaying(int id, final FloatingActionButton playButton) {
+
+<span class="nc" id="L204">        changeStatus(true);</span>
+<span class="nc" id="L205">        String filename = path + id + &quot;.3gp&quot;;</span>
+<span class="nc" id="L206">        Log.d(&quot;player&quot;, &quot;trying to play this file: &quot; + filename);</span>
+<span class="nc" id="L207">        player = new MediaPlayer();</span>
+<span class="nc" id="L208">        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {</span>
+            public void onCompletion(MediaPlayer mp) {
+<span class="nc" id="L210">                changeStatus(false);</span>
+<span class="nc" id="L211">                playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);</span>
+<span class="nc" id="L212">            }</span>
+        });
+
+        try {
+<span class="nc" id="L216">            player.setDataSource(filename);</span>
+<span class="nc" id="L217">            player.prepare();</span>
+<span class="nc" id="L218">            player.start();</span>
+<span class="nc" id="L219">            Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+<span class="nc" id="L220">            playButton.setImageResource(R.drawable.ic_stop_black_24dp);</span>
+
+<span class="nc" id="L222">        } catch (IOException e) {</span>
+<span class="nc" id="L223">            Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="nc" id="L224">        }</span>
+<span class="nc" id="L225">    }</span>
+
+
+    /*
+     * Stopt die Wiedergabe des Namens
+     */
+    public void stopPlaying(FloatingActionButton playButton) {
+<span class="fc" id="L232">        playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);</span>
+<span class="fc" id="L233">        changeStatus(false);</span>
+<span class="fc" id="L234">        player.release();</span>
+<span class="fc" id="L235">        player = null;</span>
+<span class="fc" id="L236">    }</span>
+
+    /*
+     * Stopt die Wiedergabe des Namens
+     */
+    public void stopPlaying(ImageButton playButton) {
+<span class="fc" id="L242">        playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="fc" id="L243">        changeStatus(false);</span>
+<span class="fc" id="L244">        player.release();</span>
+<span class="fc" id="L245">        player = null;</span>
+<span class="fc" id="L246">    }</span>
+
+    public boolean isPlaying() {
+<span class="fc" id="L249">        return is_playing;</span>
+    }
+
+    public void changeStatus(boolean status) {
+<span class="fc" id="L253">        is_playing = status;</span>
+<span class="fc" id="L254">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

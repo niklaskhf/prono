@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SettingsFragment.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.View</a> &gt; <span class="el_source">SettingsFragment.java</span></div><h1>SettingsFragment.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.View;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.preference.PreferenceFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.team16.sopra.sopra16team16.Controller.Backup;
+import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.R;
+
+
+<span class="fc" id="L18">public class SettingsFragment extends PreferenceFragment {</span>
+<span class="fc" id="L19">    Backup backup  = new Backup();</span>
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+<span class="fc" id="L22">        super.onCreate(savedInstanceState);</span>
+        // Load the preferences from an XML resource
+<span class="fc" id="L24">        addPreferencesFromResource(R.xml.preferences);</span>
+
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+<span class="fc" id="L30">        View view = inflater.inflate(R.layout.settings_fragment, container, false);</span>
+<span class="fc" id="L31">        Button backupButton = (Button) view.findViewById(R.id.backup_button);</span>
+<span class="fc" id="L32">        Button importButton = (Button) view.findViewById(R.id.import_button);</span>
+<span class="fc" id="L33">        Button resetButton = (Button) view.findViewById(R.id.reset_button);</span>
+
+
+<span class="fc" id="L36">        backupButton.setOnClickListener(new View.OnClickListener() {</span>
+
+            @Override
+            public void onClick(View view) {
+<span class="fc" id="L40">                backup.exportDB();</span>
+<span class="fc" id="L41">            }</span>
+        });
+<span class="fc" id="L43">        importButton.setOnClickListener(new View.OnClickListener() {</span>
+
+            @Override
+            public void onClick(View view) {
+<span class="fc" id="L47">                confirmImportDialog();</span>
+<span class="fc" id="L48">            }</span>
+        });
+
+<span class="fc" id="L51">        resetButton.setOnClickListener(new View.OnClickListener() {</span>
+            @Override
+            public void onClick(View view) {
+<span class="fc" id="L54">                confirmResetDialog();</span>
+<span class="fc" id="L55">            }</span>
+        });
+<span class="fc" id="L57">        return view;</span>
+    }
+
+
+
+    /**
+     * Alert dialog informing the user about the loss of data.
+     */
+    public void confirmImportDialog() {
+<span class="fc" id="L66">        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());</span>
+
+<span class="fc" id="L68">        alertDialog.setMessage(&quot;This will overwrite all existing data. Continue?&quot;);</span>
+<span class="fc" id="L69">        alertDialog.setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {</span>
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+<span class="fc" id="L72">                backup.importDBDialog(getActivity());</span>
+<span class="fc" id="L73">            }</span>
+        });
+<span class="fc" id="L75">        alertDialog.setNegativeButton(&quot;CANCEL&quot;, new DialogInterface.OnClickListener() {</span>
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // dismiss
+<span class="fc" id="L80">            }</span>
+        });
+<span class="fc" id="L82">        alertDialog.show();</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Alert dialog informing the user about the loss of data.
+     */
+    public void confirmResetDialog() {
+<span class="fc" id="L89">        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());</span>
+
+<span class="fc" id="L91">        alertDialog.setMessage(&quot;This will wipe all existing data. Continue?&quot;);</span>
+<span class="fc" id="L92">        alertDialog.setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {</span>
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+<span class="fc" id="L95">                ContactManager.getInstance(getActivity()).wipe();</span>
+<span class="fc" id="L96">                Toast.makeText(HomeActivity.contextOfApplication, &quot;All data reset!&quot;, Toast.LENGTH_SHORT)</span>
+<span class="fc" id="L97">                        .show();</span>
+<span class="fc" id="L98">            }</span>
+        });
+<span class="fc" id="L100">        alertDialog.setNegativeButton(&quot;CANCEL&quot;, new DialogInterface.OnClickListener() {</span>
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // dismiss
+<span class="fc" id="L105">            }</span>
+        });
+<span class="fc" id="L107">        alertDialog.show();</span>
+<span class="fc" id="L108">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

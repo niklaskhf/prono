@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Backup.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Backup.java</span></div><h1>Backup.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.team16.sopra.sopra16team16.Model.DBHelper;
+import com.team16.sopra.sopra16team16.Model.DBManager;
+import com.team16.sopra.sopra16team16.View.FileChooser;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
+
+
+<span class="fc" id="L26">public class Backup {</span>
+
+    private String importPath;
+
+    public void importDBDialog(Context context) {
+<span class="fc" id="L31">        String data = Environment.getExternalStorageDirectory().toString();</span>
+
+        // let the user select a file
+        // THIS IS KIND OF BUGGED
+        // OPEN THE FINAL ROOT MIGHT CRASH THE APP
+<span class="fc" id="L36">        FileChooser fileChooser = new FileChooser((HomeActivity) context)</span>
+<span class="fc" id="L37">                .setFileListener(new FileChooser.FileSelectedListener() {</span>
+
+            @Override
+            public void fileSelected(File file) {
+                // import the files from the selected path
+<span class="fc" id="L42">                importPath = file.getPath();</span>
+                // TODO verify file name is valid
+<span class="fc bfc" id="L44" title="All 2 branches covered.">                if (importPath.substring(importPath.length() - 4, importPath.length()).equals(&quot;.zip&quot;)</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">                        &amp;&amp; importPath.contains(&quot;prono&quot;)) {</span>
+<span class="fc" id="L46">                    importDB(importPath);</span>
+                } else {
+<span class="fc" id="L48">                    Toast.makeText(HomeActivity.contextOfApplication, &quot;Import failed, file not accepted&quot;,</span>
+<span class="fc" id="L49">                            Toast.LENGTH_SHORT).show();</span>
+                }
+<span class="fc" id="L51">            }</span>
+        });
+<span class="fc" id="L53">        fileChooser.showDialog();</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Imports data from a zip file
+     * DOES NOT VERIFY ANYTHING YET
+     * MIGHT CORRUPT EVERYTHING
+     *
+     * @param importPath new database - path
+     */
+    public void importDB(String importPath) {
+
+        try {
+            // unzip the files to the /files/ directory
+<span class="fc" id="L67">            unzip(importPath, &quot;/data/data/&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;/files/&quot;);
+
+            // move and replace the database file
+<span class="fc" id="L71">            String backupDBPath = &quot;/data/data/&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;/files/&quot; + DBHelper.DATABASE_NAME;
+<span class="fc" id="L73">            boolean result = false;</span>
+<span class="fc" id="L74">            result = DBHelper.getCurrentInstance(HomeActivity.contextOfApplication).importDatabase(backupDBPath);</span>
+
+            // tell the user
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">            if (result) {</span>
+<span class="fc" id="L78">                Toast.makeText(HomeActivity.contextOfApplication, &quot;Import Successful&quot;,</span>
+<span class="fc" id="L79">                        Toast.LENGTH_SHORT).show();</span>
+            } else {
+<span class="nc" id="L81">                Toast.makeText(HomeActivity.contextOfApplication, &quot;Import failed&quot;,</span>
+<span class="nc" id="L82">                        Toast.LENGTH_SHORT).show();</span>
+            }
+
+            // open/close database
+<span class="fc" id="L86">            DBManager dbManager = DBManager.getCurrentInstance(HomeActivity.contextOfApplication);</span>
+<span class="fc" id="L87">            dbManager.close();</span>
+<span class="fc" id="L88">            dbManager.reopen();</span>
+<span class="fc" id="L89">            ContactManager contactManager = ContactManager.getInstance(HomeActivity.contextOfApplication);</span>
+<span class="fc" id="L90">            contactManager.open();</span>
+
+            // delete the now unnecessary database file in /files/
+<span class="fc" id="L93">            FileUtils.deleteFile(backupDBPath);</span>
+<span class="nc" id="L94">        } catch (Exception e) {</span>
+            // handle exceptio
+<span class="nc" id="L96">            Log.d(&quot;ImportIOEXception&quot;, e.getMessage());</span>
+<span class="fc" id="L97">        }</span>
+
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * Exports the database and all audio files into a zip file located on the sd card
+     */
+    public void exportDB() {
+        try {
+            // file path of audio files
+            // everything is located in /files/
+<span class="fc" id="L108">            File filesPath = new File(&quot;//data//data//&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;//files//&quot;);
+            // String[] of files that will be zipped
+            // size is /files/.length - 1 (instant-run folder) + 1 (database file)
+<span class="fc" id="L112">            String[] files = new String[filesPath.listFiles().length];</span>
+
+            // get the audio files
+            // 1 to skip the instant-run directory
+<span class="fc bfc" id="L116" title="All 2 branches covered.">            for (int i = 0; i &lt; files.length - 1; i++) {</span>
+<span class="fc" id="L117">                files[i] = filesPath.listFiles()[i+1].toString();</span>
+            }
+
+            // get the database file
+<span class="fc" id="L121">            String dbPath = &quot;//data//data//&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;//databases//&quot; + DBHelper.DATABASE_NAME;
+<span class="fc" id="L123">            files[files.length - 1] = dbPath;</span>
+
+            // name of the backup file is
+            // pronoBackupYYYYMMDD_HHMMSS.zip
+<span class="fc" id="L127">            SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyyMMdd_HHmmss&quot;);</span>
+<span class="fc" id="L128">            String currentDateandTime = sdf.format(new Date());</span>
+
+<span class="fc" id="L130">            String sd = Environment.getExternalStorageDirectory().toString();</span>
+<span class="fc" id="L131">            String fileName = sd + &quot;/pronoBackup&quot; + currentDateandTime + &quot;.zip&quot;;</span>
+
+<span class="fc bfc" id="L133" title="All 2 branches covered.">            for (int i = 0; i &lt; files.length; i++) {</span>
+<span class="fc" id="L134">                Log.d(&quot;file&quot;, &quot;files[&quot; + Integer.toString(i) + &quot;]:&quot; + files[i]);</span>
+            }
+
+            // create the zip file
+<span class="fc" id="L138">            zip(files, fileName);</span>
+
+            // tell the user
+<span class="fc" id="L141">            Toast.makeText(HomeActivity.contextOfApplication, &quot;Backup Successful!\nSaved to &quot; + fileName, Toast.LENGTH_SHORT)</span>
+<span class="fc" id="L142">                    .show();</span>
+<span class="nc" id="L143">        } catch (Exception e) {</span>
+<span class="nc" id="L144">            Toast.makeText(HomeActivity.contextOfApplication, &quot;Backup Failed!&quot;, Toast.LENGTH_SHORT)</span>
+<span class="nc" id="L145">                    .show();</span>
+<span class="nc" id="L146">            Log.d(&quot;EXPORT&quot;, e.getMessage());</span>
+<span class="fc" id="L147">        }</span>
+<span class="fc" id="L148">    }</span>
+
+
+    /**
+     * zips all files in files[] to the zip file zipFile
+     * @param files path - file array containing all files that are to be zipped
+     * @param zipFile path - zip file location
+     * @throws IOException
+     */
+    public static void zip(String[] files, String zipFile) throws IOException {
+<span class="fc" id="L158">        BufferedInputStream origin = null;</span>
+<span class="fc" id="L159">        ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));</span>
+<span class="fc" id="L160">        int BUFFER_SIZE = 8192;</span>
+
+        try {
+<span class="fc" id="L163">            byte data[] = new byte[BUFFER_SIZE];</span>
+
+<span class="fc bfc" id="L165" title="All 2 branches covered.">            for (int i = 0; i &lt; files.length; i++) {</span>
+<span class="fc" id="L166">                FileInputStream fi = new FileInputStream(files[i]);</span>
+<span class="fc" id="L167">                origin = new BufferedInputStream(fi, BUFFER_SIZE);</span>
+                try {
+<span class="fc" id="L169">                    ZipEntry entry = new ZipEntry(files[i].substring(files[i].lastIndexOf(&quot;/&quot;) + 1));</span>
+<span class="fc" id="L170">                    out.putNextEntry(entry);</span>
+                    int count;
+<span class="fc bfc" id="L172" title="All 2 branches covered.">                    while ((count = origin.read(data, 0, BUFFER_SIZE)) != -1) {</span>
+<span class="fc" id="L173">                        out.write(data, 0, count);</span>
+                    }
+                } finally {
+<span class="pc" id="L176">                    origin.close();</span>
+<span class="fc" id="L177">                }</span>
+            }
+        } finally {
+<span class="pc" id="L180">            out.close();</span>
+<span class="fc" id="L181">        }</span>
+<span class="fc" id="L182">    }</span>
+
+
+    /**
+     * Unzips a zip file to the given location
+     * @param zipFile path - location of the zip file
+     * @param location path - where to put the file
+     * @throws IOException
+     */
+    public static void unzip(String zipFile, String location) throws IOException {
+        try {
+<span class="fc" id="L193">            File f = new File(location);</span>
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">            if (!f.isDirectory()) {</span>
+<span class="nc" id="L195">                f.mkdirs();</span>
+            }
+<span class="fc" id="L197">            ZipInputStream zin = new ZipInputStream(new FileInputStream(zipFile));</span>
+            try {
+<span class="fc" id="L199">                ZipEntry ze = null;</span>
+<span class="fc bfc" id="L200" title="All 2 branches covered.">                while ((ze = zin.getNextEntry()) != null) {</span>
+<span class="fc" id="L201">                    String path = location + ze.getName();</span>
+
+<span class="pc bpc" id="L203" title="1 of 2 branches missed.">                    if (ze.isDirectory()) {</span>
+<span class="nc" id="L204">                        File unzipFile = new File(path);</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">                        if (!unzipFile.isDirectory()) {</span>
+<span class="nc" id="L206">                            unzipFile.mkdirs();</span>
+                        }
+<span class="nc" id="L208">                    } else {</span>
+<span class="fc" id="L209">                        FileOutputStream fout = new FileOutputStream(path, false);</span>
+                        try {
+<span class="fc bfc" id="L211" title="All 2 branches covered.">                            for (int c = zin.read(); c != -1; c = zin.read()) {</span>
+<span class="fc" id="L212">                                fout.write(c);</span>
+                            }
+<span class="fc" id="L214">                            zin.closeEntry();</span>
+                        } finally {
+<span class="pc" id="L216">                            fout.close();</span>
+<span class="fc" id="L217">                        }</span>
+                    }
+<span class="fc" id="L219">                }</span>
+            } finally {
+<span class="pc" id="L221">                zin.close();</span>
+<span class="fc" id="L222">            }</span>
+<span class="nc" id="L223">        } catch (Exception e) {</span>
+<span class="nc" id="L224">            Log.e(&quot;UNZIP&quot;, &quot;Unzip exception&quot;, e);</span>
+<span class="fc" id="L225">        }</span>
+<span class="fc" id="L226">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>
