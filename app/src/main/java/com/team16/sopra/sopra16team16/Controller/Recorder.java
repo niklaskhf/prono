@@ -239,9 +239,10 @@ public class Recorder {
         this.country = country;
 
         String filename = path + name + country + ".3gp";
+        String tempfile = path + name + country + "temp.3gp";
 
         // check if file exists, and might need to be overwritten
-        if (new File(filename).exists()) {
+        if (new File(filename).exists() || new File(tempfile).exists()) {
             confirmGenericDialog();
         } else {
             startRecordingGeneric();
@@ -294,8 +295,14 @@ public class Recorder {
      */
     private void confirmGenericDialog() {
         // TODO CREATE NEW DIALOG LAYOUT
-        String nameCap = Character.toUpperCase(name.charAt(0)) + name.substring(1);
-        String countryCap = Character.toUpperCase(name.charAt(0)) + country.substring(1);
+        String nameCap = "";
+        String countryCap = "";
+        if (name.length() > 0) {
+            nameCap = Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        }
+        if (country.length() > 1) {
+            countryCap = Character.toUpperCase(name.charAt(0)) + country.substring(1);
+        }
         // get the dialog
         final AlertDialog alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setCanceledOnTouchOutside(false);
@@ -308,7 +315,11 @@ public class Recorder {
 
             // text
             TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);
-            textDialog.setText("A generic audio file for the name " + nameCap + " from " + countryCap + " already exists. Overwrite?");
+            if (countryCap.equals("")) {
+                textDialog.setText("A generic audio file for the name " + nameCap + " already exists. Overwrite?");
+            } else {
+                textDialog.setText("A generic audio file for the name " + nameCap + " from " + countryCap + " already exists. Overwrite?");
+            }
 
             // cancel
             ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);

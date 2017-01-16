@@ -24,7 +24,9 @@ import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
@@ -78,10 +80,10 @@ public class ContactViewerActivityTest {
         ImageView gender = (ImageView) nextActivity.findViewById(R.id.gender_sign);
 
         String genderTag = (String) gender.getTag();
-        assertTrue("first name wrong", firstName.getText().toString().equals("First"));
-        assertTrue("last name wrong", lastName.getText().toString().equals("Last"));
-        assertTrue("title is wrong", title.getText().toString().equals("Title"));
-        assertTrue("country is wrong", country.getText().toString().equals("Country"));
+        assertTrue("first name wrong", firstName.getText().toString().equals("first"));
+        assertTrue("last name wrong", lastName.getText().toString().equals("last"));
+        assertTrue("title is wrong", title.getText().toString().equals("title"));
+        assertTrue("country is wrong", country.getText().toString().equals("country"));
         // lmao its too late for this
         assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.pregnant_woman).getConstantState());
 
@@ -109,10 +111,10 @@ public class ContactViewerActivityTest {
         ImageView gender = (ImageView) nextActivity.findViewById(R.id.gender_sign);
 
         String genderTag = (String) gender.getTag();
-        assertTrue("first name wrong", firstName.getText().toString().equals("Erste"));
-        assertTrue("last name wrong", lastName.getText().toString().equals("Letzte"));
-        assertTrue("title is wrong", title.getText().toString().equals("Titel"));
-        assertTrue("country is wrong", country.getText().toString().equals("Land"));
+        assertTrue("first name wrong", firstName.getText().toString().equals("erste"));
+        assertTrue("last name wrong", lastName.getText().toString().equals("letzte"));
+        assertTrue("title is wrong", title.getText().toString().equals("titel"));
+        assertTrue("country is wrong", country.getText().toString().equals("land"));
         // lmao its too late for this
         assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.running_man).getConstantState());
 
@@ -138,10 +140,10 @@ public class ContactViewerActivityTest {
         ImageView gender = (ImageView) nextActivity.findViewById(R.id.gender_sign);
 
         String genderTag = (String) gender.getTag();
-        assertTrue("first name wrong", firstName.getText().toString().equals("Oui"));
-        assertTrue("last name wrong", lastName.getText().toString().equals("OuiOui"));
-        assertTrue("title is wrong", title.getText().toString().equals("Titlé"));
-        assertTrue("country is wrong", country.getText().toString().equals("Francais"));
+        assertTrue("first name wrong", firstName.getText().toString().equals("oui"));
+        assertTrue("last name wrong", lastName.getText().toString().equals("ouioui"));
+        assertTrue("title is wrong", title.getText().toString().equals("titlé"));
+        assertTrue("country is wrong", country.getText().toString().equals("francais"));
         // lmao its too late for this
         assertTrue("gender is wrong", gender.
                 getDrawable().
@@ -173,10 +175,10 @@ public class ContactViewerActivityTest {
         ImageView gender = (ImageView) nextActivity.findViewById(R.id.gender_sign);
 
         String genderTag = (String) gender.getTag();
-        assertTrue("first name wrong", firstName.getText().toString().equals("Oui"));
-        assertTrue("last name wrong", lastName.getText().toString().equals("Ouioui"));
-        assertTrue("title is wrong", title.getText().toString().equals("Titlé"));
-        assertTrue("country is wrong", country.getText().toString().equals("Francais"));
+        assertTrue("first name wrong", firstName.getText().toString().equals("oui"));
+        assertTrue("last name wrong", lastName.getText().toString().equals("ouioui"));
+        assertTrue("title is wrong", title.getText().toString().equals("titlé"));
+        assertTrue("country is wrong", country.getText().toString().equals("francais"));
         // lmao its too late for this
         assertTrue("gender is wrong", gender.
                 getDrawable().

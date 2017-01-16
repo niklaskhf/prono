@@ -47,9 +47,7 @@ public class UndoTest {
     }
 
 
-    /**@Test
     public void undoDeleteTest() {
-        // TODO
         createContact();
         deleteContact();
 
@@ -69,15 +67,16 @@ public class UndoTest {
 
         assertTrue(!new File(FileUtils.PATH + ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + ".3gp").exists());
 
-    }**/
+    }
 
 
     public void createContact() {
         onView(withId(R.id.addNew)).perform(click());
 
-        onView(withId(R.id.first_edit)).perform(typeText("first"));
-        onView(withId(R.id.last_edit)).perform(typeText("last"));
-        onView(withId(R.id.country_edit)).perform(typeText("ger"));
+        onView(withId(R.id.first_edit)).perform(typeText(" first"));
+        onView(withId(R.id.last_edit)).perform(typeText(" last"));
+        onView(withId(R.id.country_edit)).perform(typeText(" ger "));
+        onView(withId(R.id.title_edit)).perform(typeText(" ger "));
 
         Espresso.closeSoftKeyboard();
         try {

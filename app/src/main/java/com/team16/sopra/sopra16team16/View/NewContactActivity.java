@@ -183,10 +183,10 @@ public class NewContactActivity extends AppCompatActivity {
                     // pass data back to ContactViewerActivity
                     Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("first", getFirstString());
-                    bundle.putString("last", getLastString());
-                    bundle.putString("title", getTitleString());
-                    bundle.putString("country", getCountryString());
+                    bundle.putString("first", capitalize(getFirstString()));
+                    bundle.putString("last", capitalize(getLastString()));
+                    bundle.putString("title", capitalize(getTitleString()));
+                    bundle.putString("country", capitalize(getCountryString()));
                     bundle.putInt("id", id);
                     bundle.putString("gender", gender);
 
@@ -363,8 +363,7 @@ public class NewContactActivity extends AppCompatActivity {
         // if EditText is not empty, reset color to default.
         TextWatcher tw = new TextWatcher() {
             public void afterTextChanged(Editable s){
-                if (getLastString().length() == 0) {
-                } else {
+                if (!(getLastString().equals(""))) {
                     lastNameEdit.getBackground().clearColorFilter();
                     lastNameTv.setTextColor(originalTextColor);
                 }
@@ -508,12 +507,18 @@ public class NewContactActivity extends AppCompatActivity {
         if (value.length() == 0) {
             return "";
         }
-        while (value.charAt(0) == ' ') {
+        while (value.length() != 0 && value.charAt(0) == ' ') {
             value = value.substring(1);
         }
 
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
+        while (value.length() != 0 && value.charAt(value.length() - 1) == ' ') {
+            value = value.substring(0, value.length() - 1);
+        }
+
+        for (int i = 0; i < value.length(); i++) {
+            if (!Character.isAlphabetic(value.charAt(i))) {
+                value = value.replace(String.valueOf(value.charAt(i)), "");
+            }
         }
 
         return value;
@@ -529,12 +534,19 @@ public class NewContactActivity extends AppCompatActivity {
         if (value.length() == 0) {
             return "";
         }
-        while (value.charAt(0) == ' ') {
+        while (value.length() != 0 && value.charAt(0) == ' ') {
             value = value.substring(1);
         }
 
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
+
+        while (value.length() != 0 && value.charAt(value.length()-1) == ' ') {
+            value = value.substring(0, value.length() - 1);
+        }
+
+        for (int i = 0; i < value.length(); i++) {
+            if (!Character.isAlphabetic(value.charAt(i))) {
+                value = value.replace(String.valueOf(value.charAt(i)), "");
+            }
         }
 
         return value;
@@ -550,12 +562,19 @@ public class NewContactActivity extends AppCompatActivity {
         if (value.length() == 0) {
             return "";
         }
-        while (value.charAt(0) == ' ') {
+        while (value.length() != 0 && value.charAt(0) == ' ') {
             value = value.substring(1);
         }
 
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
+
+        while (value.length() != 0 && value.charAt(value.length() - 1) == ' ') {
+            value = value.substring(0, value.length() - 1);
+        }
+
+        for (int i = 0; i < value.length(); i++) {
+            if (!Character.isAlphabetic(value.charAt(i))) {
+                value = value.replace(String.valueOf(value.charAt(i)), "");
+            }
         }
 
         return value;
@@ -568,15 +587,22 @@ public class NewContactActivity extends AppCompatActivity {
     public String getCountryString() {
         String value = countryEdit.getText().toString();
 
-        if (value.length() == 0) {
+        if ( value.length() == 0) {
             return "";
         }
-        while (value.charAt(0) == ' ') {
+        while (value.length() != 0 &&value.charAt(0) == ' ') {
             value = value.substring(1);
         }
 
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
+
+        while (value.length() != 0 && value.charAt(value.length() - 1) == ' ') {
+            value = value.substring(0, value.length() - 1);
+        }
+
+        for (int i = 0; i < value.length(); i++) {
+            if (!Character.isAlphabetic(value.charAt(i))) {
+                value = value.replace(String.valueOf(value.charAt(i)), "");
+            }
         }
 
         return value;
