@@ -54,7 +54,7 @@ public class HomeActivityTest {
     public void setup() {
         contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     contactManager.wipe();

@@ -45,7 +45,7 @@ public class ContactListTest {
     public void setup() {
         contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     contactManager.wipe();
@@ -64,7 +64,7 @@ public class ContactListTest {
                 .onChildView(withId(R.id.contact_fav))
                 .perform(click());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Cursor cursor;
@@ -84,7 +84,7 @@ public class ContactListTest {
                 .perform(click());
 
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Cursor cursor;

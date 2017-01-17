@@ -241,6 +241,23 @@ public class BackupTest {
         onData(hasToString(startsWith("foo")))
                 .perform(click());
 
+        onView(withId(R.id.import_button)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onData(hasToString(startsWith("..")))
+                .perform(click());
+
+        onView(withId(R.id.import_button)).perform(click());
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onData(hasToString(startsWith("Android")))
+                .perform(click());
+
+        onData(hasToString(startsWith("..")))
+                .perform(click());
+
+
+        // save length before to compare file change
         File filesDir = new File("/data/data/" + HomeActivity.contextOfApplication.getPackageName()
                 + "/files/");
         int lengthBefore = filesDir.listFiles().length;

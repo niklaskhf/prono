@@ -44,14 +44,16 @@ import static org.junit.Assert.assertTrue;
 public class ContactViewerActivityTest {
     private ContactManager contactManager;
     Instrumentation.ActivityMonitor viewerMonitor = getInstrumentation().addMonitor(ContactViewerActivity.class.getName(), null, false);
+
     @Rule
     public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
 
+
     @Before
     public void setup() {
-        contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
+        contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     contactManager.wipe();
