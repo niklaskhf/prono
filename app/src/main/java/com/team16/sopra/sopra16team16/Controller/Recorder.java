@@ -238,8 +238,8 @@ public class Recorder {
         this.name = name;
         this.country = country;
 
-        String filename = path + name + country + ".3gp";
-        String tempfile = path + name + country + "temp.3gp";
+        String filename = path + name + "-" + country + ".3gp";
+        String tempfile = path + name + "-" + country + "temp.3gp";
 
         // check if file exists, and might need to be overwritten
         if (new File(filename).exists() || new File(tempfile).exists()) {
@@ -255,7 +255,7 @@ public class Recorder {
      */
     public void startRecordingGeneric() {
         Log.e("Recorder", "Name: " + name + " Country: " + country);
-        String filename = path + name + country + "temp.3gp";
+        String filename = path + name + "-" + country + "temp.3gp";
         Log.e("Recorder", "Filename: " + filename);
 
         // toggle recording state

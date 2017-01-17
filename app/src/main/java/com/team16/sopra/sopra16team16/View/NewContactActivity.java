@@ -196,8 +196,8 @@ public class NewContactActivity extends AppCompatActivity {
                         // create the new contact
                         setContact();
                         FileUtils.confirmAudio(id);
-                        FileUtils.confirmAudio(getFirstString().toLowerCase() + getCountryString().toLowerCase());
-                        FileUtils.confirmAudio(getLastString().toLowerCase() + getCountryString().toLowerCase());
+                        FileUtils.confirmAudio(getFirstString().toLowerCase() + "-" + getCountryString().toLowerCase());
+                        FileUtils.confirmAudio(getLastString().toLowerCase() + "-" + getCountryString().toLowerCase());
                         FileUtils.deleteTempFiles();
                         startActivity(intent);
                         finish();
@@ -213,8 +213,8 @@ public class NewContactActivity extends AppCompatActivity {
 
                         // ALERT DIALOG
                         FileUtils.confirmAudio(id);
-                        FileUtils.confirmAudio(getFirstString().toLowerCase() + getCountryString().toLowerCase());
-                        FileUtils.confirmAudio(getLastString().toLowerCase() + getCountryString().toLowerCase());
+                        FileUtils.confirmAudio(getFirstString().toLowerCase() + "-" + getCountryString().toLowerCase());
+                        FileUtils.confirmAudio(getLastString().toLowerCase() + "-" + getCountryString().toLowerCase());
                         FileUtils.deleteTempFiles();
                         // update contact in database
                         updateContact();
@@ -442,7 +442,7 @@ public class NewContactActivity extends AppCompatActivity {
      *         false - no file exists
      */
     public boolean lastRecordExists() {
-        String lastRecordString = FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase();
+        String lastRecordString = FileUtils.PATH + getLastString().toLowerCase() + "-" + getCountryString().toLowerCase();
         if (new File(lastRecordString + ".3gp").exists() ||
                 new File(lastRecordString + "temp.3gp").exists()) {
             return true;
@@ -456,7 +456,7 @@ public class NewContactActivity extends AppCompatActivity {
      *         false - no file exists
      */
     public boolean firstRecordExists() {
-        String firstRecordString = FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase();
+        String firstRecordString = FileUtils.PATH + getFirstString().toLowerCase() + "-" + getCountryString().toLowerCase();
         if (new File(firstRecordString + ".3gp").exists() ||
                 new File(firstRecordString + "temp.3gp").exists()) {
             return true;
@@ -717,13 +717,13 @@ public class NewContactActivity extends AppCompatActivity {
                     if (!firstRecordExists()) {
                         try {
                             // copy temp
-                            if (new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
-                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp")),
-                                        new FileOutputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp")));
+                            if (new File(FileUtils.PATH + getFirstString().toLowerCase() + "-" + undoCountry.toLowerCase() + "temp.3gp").exists()) {
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + "-" + undoCountry.toLowerCase() + "temp.3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + "-" + getCountryString().toLowerCase() + "temp.3gp")));
                             } else {
                                 // copy perm
-                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp")),
-                                        new FileOutputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp")));
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + "-" + undoCountry.toLowerCase() + ".3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getFirstString().toLowerCase() + "-" + getCountryString().toLowerCase() + ".3gp")));
                             }
                             firstRecordColor();
                         } catch (IOException e) {
@@ -735,13 +735,13 @@ public class NewContactActivity extends AppCompatActivity {
                     if (!lastRecordExists()) {
                         try {
                             // copy temp
-                            if (new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
-                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp")),
-                                        new FileOutputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp")));
+                            if (new File(FileUtils.PATH + getLastString().toLowerCase() + "-" + undoCountry.toLowerCase() + "temp.3gp").exists()) {
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + "-" + undoCountry.toLowerCase() + "temp.3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + "-" + getCountryString().toLowerCase() + "temp.3gp")));
                             } else {
                                 // copy perm
-                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp")),
-                                        new FileOutputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp")));
+                                FileUtils.copyFile(new FileInputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + "-" + undoCountry.toLowerCase() + ".3gp")),
+                                        new FileOutputStream(new File(FileUtils.PATH + getLastString().toLowerCase() + "-" + getCountryString().toLowerCase() + ".3gp")));
                             }
                             lastRecordColor();
                         } catch (IOException e) {

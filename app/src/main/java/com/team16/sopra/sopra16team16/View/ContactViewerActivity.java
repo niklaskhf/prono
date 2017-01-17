@@ -263,13 +263,13 @@ public class ContactViewerActivity extends AppCompatActivity {
 
 
                         // replace the audio files
-                        original = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + ".3gp";
-                        replacement = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
+                        original = FileUtils.PATH + firstName.toLowerCase() + "-" + country.toLowerCase() + ".3gp";
+                        replacement = FileUtils.PATH + firstName.toLowerCase() + "-" + country.toLowerCase() + "_undo.3gp";
                         FileUtils.replaceFile(original, replacement);
 
                         // replace the audio files
-                        original = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + ".3gp";
-                        replacement = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
+                        original = FileUtils.PATH + lastName.toLowerCase() + "-" + country.toLowerCase() + ".3gp";
+                        replacement = FileUtils.PATH + lastName.toLowerCase() + "-" + country.toLowerCase() + "_undo.3gp";
                         FileUtils.replaceFile(original, replacement);
 
                         firstName = data.getStringExtra("undoFirst");
@@ -291,8 +291,8 @@ public class ContactViewerActivity extends AppCompatActivity {
                 String action = data.getStringExtra("action");
                 if (action != null && action.equals("edit")) {
                     FileUtils.deleteFile(FileUtils.PATH + id + "_undo.3gp");
-                    FileUtils.deleteFile(FileUtils.PATH + undoFirstName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
-                    FileUtils.deleteFile(FileUtils.PATH + undoLastName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + undoFirstName.toLowerCase() + "-" + undoCountry.toLowerCase() + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + undoLastName.toLowerCase() + "-" + undoCountry.toLowerCase() + "_undo.3gp");
                 }
             }
         });

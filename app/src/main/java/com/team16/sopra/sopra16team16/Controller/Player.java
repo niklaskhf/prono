@@ -99,8 +99,8 @@ public class Player {
     public void startPlaying(int id, String first, String last, String country, final FloatingActionButton playButton) {
         changeStatus(true);
         String idFilename = path + id + ".3gp";
-        String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + ".3gp";
-        final String lastFilename = FileUtils.PATH + last.toLowerCase() + country.toLowerCase() + ".3gp";
+        String firstFilename = FileUtils.PATH + first.toLowerCase() + "-" +  country.toLowerCase() + ".3gp";
+        final String lastFilename = FileUtils.PATH + last.toLowerCase() + "-" +  country.toLowerCase() + ".3gp";
 
         if (new File(idFilename).exists()) {
             filename = idFilename;
@@ -144,8 +144,8 @@ public class Player {
 
         changeStatus(true);
         String idFilename = path + id + ".3gp";
-        String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + ".3gp";
-        final String lastFilename = FileUtils.PATH + last.toLowerCase() + country.toLowerCase() + ".3gp";
+        String firstFilename = FileUtils.PATH + first.toLowerCase() + "-" + country.toLowerCase() + ".3gp";
+        final String lastFilename = FileUtils.PATH + last.toLowerCase() + "-" + country.toLowerCase() + ".3gp";
 
         if (new File(idFilename).exists()) {
             filename = idFilename;
