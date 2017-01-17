@@ -303,10 +303,10 @@ public class ContactManager{
     public ContactCursorAdapter getCursorAdapterFavorite() {
         if (favoriteAdapter == null) {
             favoriteAdapter = new ContactCursorAdapter(context, selectFavorites());
-            return cursorAdapter;
+            return favoriteAdapter;
         } else {
             favoriteAdapter.changeCursor(selectFavorites());
-            return cursorAdapter;
+            return favoriteAdapter;
         }
     }
 
