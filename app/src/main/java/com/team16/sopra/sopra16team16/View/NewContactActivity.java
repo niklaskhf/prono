@@ -168,7 +168,7 @@ public class NewContactActivity extends AppCompatActivity {
                     gender = "FEMALE";
                 } else if (maleRadioButton.isChecked()) {
                     gender = "MALE";
-                } else if (unknownSexRadioButton.isChecked()) {
+                } else {
                     gender = "UNKNOWN";
                 }
 
@@ -306,6 +306,7 @@ public class NewContactActivity extends AppCompatActivity {
     public void setContact() {
         contactManager = ContactManager.getInstance(this.getApplicationContext());
         Log.d("genderCreate", gender);
+
         contactManager.createContact(
                 capitalize(getFirstString()),
                 capitalize(getLastString()),
