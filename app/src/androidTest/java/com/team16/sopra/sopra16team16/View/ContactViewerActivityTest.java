@@ -87,7 +87,7 @@ public class ContactViewerActivityTest {
         assertTrue("title is wrong", title.getText().toString().equals("title"));
         assertTrue("country is wrong", country.getText().toString().equals("country"));
         // lmao its too late for this
-        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.pregnant_woman).getConstantState());
+        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.ic_female_gender).getConstantState());
 
         onView(withId(R.id.edit_button)).perform(click());
         onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
@@ -118,7 +118,7 @@ public class ContactViewerActivityTest {
         assertTrue("title is wrong", title.getText().toString().equals("titel"));
         assertTrue("country is wrong", country.getText().toString().equals("land"));
         // lmao its too late for this
-        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.running_man).getConstantState());
+        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.ic_male_gender).getConstantState());
 
         onView(withId(R.id.edit_button)).perform(click());
         onView(withId(R.id.male_radioButton)).check(matches(isChecked()));

@@ -195,10 +195,10 @@ public class ContactViewerActivity extends AppCompatActivity {
         countryView.setText(country);
         switch (gender) {
             case "MALE":
-                genderSign.setImageResource(R.drawable.running_man);
+                genderSign.setImageResource(R.drawable.ic_male_gender);
                 break;
             case "FEMALE":
-                genderSign.setImageResource(R.drawable.pregnant_woman);
+                genderSign.setImageResource(R.drawable.ic_female_gender);
                 break;
             case "UNKNOWN":
                 genderSign.setImageResource(android.R.drawable.sym_def_app_icon);

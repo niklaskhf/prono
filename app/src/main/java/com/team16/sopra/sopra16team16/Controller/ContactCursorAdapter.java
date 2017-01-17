@@ -89,14 +89,16 @@ public class ContactCursorAdapter extends CursorAdapter {
 
 
         tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
+        genderSign.setVisibility(View.VISIBLE);
         switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
             case "MALE":
-                genderSign.setImageResource(R.drawable.running_man);
+                genderSign.setImageResource(R.drawable.ic_male_gender);
                 break;
             case "FEMALE":
-                genderSign.setImageResource(R.drawable.pregnant_woman);
+                genderSign.setImageResource(R.drawable.ic_female_gender);
                 break;
             default:
+                genderSign.setVisibility(View.INVISIBLE);
                 break;
         }
 

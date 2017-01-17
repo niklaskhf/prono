@@ -381,8 +381,10 @@ public class ContactManager{
 
         File[] files = filesPath.listFiles();
 
-        for (int i = 1; i < files.length; i++) {
-            FileUtils.deleteFile(files[i].getPath());
+        if (files != null) {
+            for (int i = 1; i < files.length; i++) {
+                FileUtils.deleteFile(files[i].getPath());
+            }
         }
     }
 }
