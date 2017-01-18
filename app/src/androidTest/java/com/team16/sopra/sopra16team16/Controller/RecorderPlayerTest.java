@@ -111,7 +111,7 @@ public class RecorderPlayerTest {
 
 
         // CHECK FOR TEMP FILES
-        File temp = new File(FileUtils.PATH + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + 1) + "temp.3gp");
+        File temp = new File(FileUtils.PATH + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + 1) + "_temp.3gp");
         File perm = new File(FileUtils.PATH + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + 1) + ".3gp");
         assertTrue("temp file doesnt exist", temp.exists());
 
@@ -151,7 +151,7 @@ public class RecorderPlayerTest {
         assertTrue("recorder didnt stop", firstRec.getDrawable() != activeDraw);
 
         onView(withId(R.id.accept_dialog)).perform(click());
-        File tempFirst = new File(FileUtils.PATH+"firstgertemp.3gp");
+        File tempFirst = new File(FileUtils.PATH+"first-ger_temp.3gp");
         assertTrue("temp file first doesnt exist", tempFirst.exists());
 
         // LAST
@@ -172,7 +172,7 @@ public class RecorderPlayerTest {
 
         onView(withId(R.id.accept_dialog)).perform(click());
 
-        File tempLast = new File(FileUtils.PATH+"lastgertemp.3gp");
+        File tempLast = new File(FileUtils.PATH+"last-ger_temp.3gp");
         assertTrue("temp file first doesnt exist", tempLast.exists());
 
         Espresso.closeSoftKeyboard();
@@ -224,7 +224,7 @@ public class RecorderPlayerTest {
         onView(withId(R.id.record_button))
                 .perform(click());
 
-        File temp = new File(FileUtils.PATH + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + 1) + "temp.3gp");
+        File temp = new File(FileUtils.PATH + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + 1) + "_temp.3gp");
         File perm = new File(FileUtils.PATH + (ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + 1) + ".3gp");
         Log.d("recorderTemp", temp.toString());
 

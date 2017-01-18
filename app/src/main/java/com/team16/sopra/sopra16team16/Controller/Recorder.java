@@ -84,7 +84,7 @@ public class Recorder {
         this.id = id;
 
         Log.e("Recorder", "ID: " + id);
-        String filename = path + id + "temp.3gp";
+        String filename = path + id + "_temp.3gp";
         Log.e("Recorder", "Filename: " + filename);
 
         // toggle recording state
@@ -174,7 +174,7 @@ public class Recorder {
                 @Override
                 public void onClick(View view) {
                     alertDialog.dismiss();
-                    FileUtils.deleteFile(FileUtils.PATH + id + "temp.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + id + "_temp.3gp");
                     ((NewContactActivity) context).enableButtons();;
                 }
             });
@@ -188,11 +188,11 @@ public class Recorder {
                 public void onClick(View view) {
                     if (!player.isPlaying()) {
                         if (mode == RecordingMode.RECORDING_CUSTOM) {
-                            player.startPlaying(id + "temp", playDialog);
+                            player.startPlaying(id + "_temp", playDialog);
                         } else if (mode == RecordingMode.RECORDING_FIRST) {
-                            player.startPlaying(name + country + "temp", playDialog);
+                            player.startPlaying(name + country + "_temp", playDialog);
                         } else if (mode == RecordingMode.RECORDING_LAST) {
-                            player.startPlaying(name + country + "temp", playDialog);
+                            player.startPlaying(name + country + "_temp", playDialog);
                         }
                     } else {
                         player.stopPlaying(playDialog);
@@ -239,7 +239,7 @@ public class Recorder {
         this.country = country;
 
         String filename = path + name + "-" + country + ".3gp";
-        String tempfile = path + name + "-" + country + "temp.3gp";
+        String tempfile = path + name + "-" + country + "_temp.3gp";
 
         // check if file exists, and might need to be overwritten
         if (new File(filename).exists() || new File(tempfile).exists()) {
@@ -255,7 +255,7 @@ public class Recorder {
      */
     public void startRecordingGeneric() {
         Log.e("Recorder", "Name: " + name + " Country: " + country);
-        String filename = path + name + "-" + country + "temp.3gp";
+        String filename = path + name + "-" + country + "_temp.3gp";
         Log.e("Recorder", "Filename: " + filename);
 
         // toggle recording state

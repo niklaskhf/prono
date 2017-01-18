@@ -382,8 +382,10 @@ public class ContactManager{
         File[] files = filesPath.listFiles();
 
         if (files != null) {
-            for (int i = 1; i < files.length; i++) {
-                FileUtils.deleteFile(files[i].getPath());
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].getPath().endsWith(".3gp")) {
+                    FileUtils.deleteFile(files[i].getPath());
+                }
             }
         }
     }

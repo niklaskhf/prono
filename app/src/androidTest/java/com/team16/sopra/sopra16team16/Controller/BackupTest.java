@@ -1,4 +1,4 @@
-package com.team16.sopra.sopra16team16.View;
+package com.team16.sopra.sopra16team16.Controller;
 
 import android.os.Environment;
 import android.support.test.InstrumentationRegistry;
@@ -8,6 +8,7 @@ import android.support.test.rule.ActivityTestRule;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import org.junit.After;
 import org.junit.Before;
@@ -219,7 +220,7 @@ public class BackupTest {
                 + "/files/");
         int lengthAfter = filesDir.listFiles().length;
 
-        assertTrue(lengthAfter == 1);
+        assertTrue(lengthAfter == 0 || lengthAfter == 1);
         assertTrue(lengthAfter != lengthBefore);
         pressBack();
     }
@@ -247,13 +248,7 @@ public class BackupTest {
         onData(hasToString(startsWith("..")))
                 .perform(click());
 
-        onView(withId(R.id.import_button)).perform(click());
-        onView(withId(android.R.id.button1)).perform(click());
-
         onData(hasToString(startsWith("Android")))
-                .perform(click());
-
-        onData(hasToString(startsWith("..")))
                 .perform(click());
 
 
@@ -261,6 +256,7 @@ public class BackupTest {
         File filesDir = new File("/data/data/" + HomeActivity.contextOfApplication.getPackageName()
                 + "/files/");
         int lengthBefore = filesDir.listFiles().length;
+
         onView(withId(R.id.import_button)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
 

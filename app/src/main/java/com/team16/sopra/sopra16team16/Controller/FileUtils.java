@@ -94,7 +94,7 @@ public class FileUtils {
      */
     public static void confirmAudio(int id) {
         String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
-        File temp = new File(path + id + "temp.3gp");
+        File temp = new File(path + id + "_temp.3gp");
         File perm = new File(path + id + ".3gp");
 
         if (perm.exists() && temp.exists()) {
@@ -121,7 +121,7 @@ public class FileUtils {
      */
     public static void confirmAudio(String id) {
         String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
-        File temp = new File(path + id + "temp.3gp");
+        File temp = new File(path + id + "_temp.3gp");
         File perm = new File(path + id + ".3gp");
 
         if (perm.exists() && temp.exists()) {
@@ -151,9 +151,9 @@ public class FileUtils {
         for (File f : files) {
             String fp = f.getPath();
             if (fp.length() > 8) {
-                String fpsub = fp.substring(fp.length() - 8, fp.length());
+                String fpsub = fp.substring(fp.length() - 9, fp.length());
                 Log.d("deletingFile", fp);
-                if (fpsub.equals("temp.3gp")) {
+                if (fpsub.equals("_temp.3gp")) {
                     new File(fp).delete();
                 }
             }

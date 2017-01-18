@@ -113,8 +113,10 @@ public class Backup {
 
             // get the audio files
             // 1 to skip the instant-run directory
-            for (int i = 0; i < files.length - 1; i++) {
-                files[i] = filesPath.listFiles()[i+1].toString();
+            for (int i = 0; i < files.length; i++) {
+                if (filesPath.listFiles()[i].getPath().endsWith(".3gp")) {
+                    files[i] = filesPath.listFiles()[i].toString();
+                }
             }
 
             // get the database file

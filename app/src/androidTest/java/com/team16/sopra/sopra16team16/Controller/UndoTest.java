@@ -1,4 +1,4 @@
-package com.team16.sopra.sopra16team16.View;
+package com.team16.sopra.sopra16team16.Controller;
 
 
 import android.app.Instrumentation;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Controller.FileUtils;
 import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.ContactViewerActivity;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
