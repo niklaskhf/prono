@@ -253,8 +253,6 @@ public class ContactViewerActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
                         snackbarSuccess.show();
-                        // update database entry
-                        contactManager.updateContact(id, firstName, lastName, title, country, gender);
 
                         // replace the audio files
                         String original = FileUtils.PATH + id + ".3gp";
@@ -269,6 +267,7 @@ public class ContactViewerActivity extends AppCompatActivity {
 
                         // update views
                         setText();
+                        contactManager.updateContact(id, firstName, lastName, title, country, gender);
                     }
                 });
 

@@ -30,6 +30,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -49,17 +50,12 @@ public class UndoTest {
     }
 
 
+    @Test
     public void undoDeleteTest() {
         createContact();
         deleteContact();
 
-        assertTrue(contactManager.selectContacts().getCount() == 0);
-
-        // need to do this click manually ??
-        onView(allOf(withId(android.support.design.R.id.snackbar_action)))
-                .perform(click());
-
-        assertTrue(ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).selectContacts().getCount() == 1);
+        assertTrue(contactManager.selectContacts().getCount() == 1);
 
         deleteContact();
         createContact();
@@ -67,7 +63,8 @@ public class UndoTest {
 
         assertTrue(ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).selectContacts().getCount() == 0);
 
-        assertTrue(!new File(FileUtils.PATH + ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + ".3gp").exists());
+        onView(withId(R.id.addNew)).perform(click());
+        assertFalse(new File(FileUtils.PATH + contactManager.getId() + ".3gp").exists());
 
     }
 
@@ -75,10 +72,10 @@ public class UndoTest {
     public void createContact() {
         onView(withId(R.id.addNew)).perform(click());
 
-        onView(withId(R.id.first_edit)).perform(typeText(" first"));
-        onView(withId(R.id.last_edit)).perform(typeText(" last"));
-        onView(withId(R.id.country_edit)).perform(typeText(" ger "));
-        onView(withId(R.id.title_edit)).perform(typeText(" ger "));
+        onView(withId(R.id.first_edit)).perform(typeText(" GET"));
+        onView(withId(R.id.last_edit)).perform(typeText(" READY"));
+        onView(withId(R.id.country_edit)).perform(typeText(" TO "));
+        onView(withId(R.id.title_edit)).perform(typeText(" CLICK "));
 
         Espresso.closeSoftKeyboard();
         try {
@@ -135,9 +132,9 @@ public class UndoTest {
         TextView country = (TextView) nextActivity.findViewById(R.id.real_country);
         ImageView gender = (ImageView) nextActivity.findViewById(R.id.gender_sign);
 
-        assertTrue(firstName.getText().equals("First"));
-        assertTrue(lastName.getText().equals("Last"));
-        assertTrue(country.getText().equals("Ger"));
+        assertTrue(firstName.getText().equals("GET"));
+        assertTrue(lastName.getText().equals("READY"));
+        assertTrue(country.getText().equals("TO"));
         File prevRec = new File(FileUtils.PATH + ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + ".3gp");
 
         long prevRecSize = prevRec.length();
@@ -169,9 +166,9 @@ public class UndoTest {
 
 
         assertTrue(new File(FileUtils.PATH + ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + "_undo.3gp").exists());
-        assertTrue(firstName.getText().equals("Firstfirst"));
-        assertTrue(lastName.getText().equals("Lastlast"));
-        assertTrue(country.getText().equals("Gerget"));
+        assertTrue(firstName.getText().equals("GETfirst"));
+        assertTrue(lastName.getText().equals("READYlast"));
+        assertTrue(country.getText().equals("TOget"));
         // check gender ..
         File newRec = new File(FileUtils.PATH + ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + ".3gp");
 
@@ -184,9 +181,9 @@ public class UndoTest {
                 .perform(click());
 
         assertTrue(!new File(ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + "_undo.3gp").exists());
-        assertTrue(firstName.getText().equals("First"));
-        assertTrue(lastName.getText().equals("Last"));
-        assertTrue(country.getText().equals("Ger"));
+        assertTrue(firstName.getText().equals("GET"));
+        assertTrue(lastName.getText().equals("READY"));
+        assertTrue(country.getText().equals("TO"));
 
         newRec = new File(FileUtils.PATH + ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).getId() + ".3gp");
 

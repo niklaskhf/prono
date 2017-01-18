@@ -32,10 +32,6 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(int id, final ImageButton playButton) {
-        if (isPlaying()) {
-            stopPlaying(this.imagePlayButton);
-        }
-        this.imagePlayButton = playButton;
         changeStatus(true);
         filename = path + id + ".3gp";
 
@@ -63,10 +59,6 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(String id, final ImageButton playButton) {
-        if (isPlaying()) {
-            stopPlaying(this.imagePlayButton);
-        }
-        this.imagePlayButton = playButton;
         changeStatus(true);
         filename = path + id + ".3gp";
 
@@ -97,7 +89,6 @@ public class Player {
      * Gibt die Aufnahme des Namens aus
      */
     public void startPlaying(int id, final FloatingActionButton playButton) {
-
         changeStatus(true);
         String filename = path + id + ".3gp";
         Log.d("player", "trying to play this file: " + filename);

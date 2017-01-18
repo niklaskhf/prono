@@ -67,6 +67,18 @@ public class NewContactActivityTest {
         }
 
         onView(withId(R.id.record_button)).perform(click());
+        onView(withId(R.id.cancel_dialog)).perform(click());
+
+
+        onView(withId(R.id.record_button)).perform(click());
+
+        try {
+            Thread.sleep(100);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        onView(withId(R.id.record_button)).perform(click());
         onView(withId(R.id.accept_dialog)).perform(click());
 
         onView(withId(R.id.country_edit)).perform(typeText("ger"));

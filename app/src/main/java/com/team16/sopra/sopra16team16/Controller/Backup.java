@@ -51,6 +51,7 @@ public class Backup {
                 }
             }
         });
+        fileChooser.setExtension(".zip");
         fileChooser.showDialog();
     }
 

@@ -70,23 +70,6 @@ public class FileUtils {
 
 
 
-    /**
-     * Checks if any recording associated to the id exists.
-     * @param id id of the contact - int
-     */
-    public static boolean exists(int id) {
-        // TODO change parameter to be the path
-        String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
-        File temp = new File(path + id + "temp.3gp");
-        File perm = new File(path + id + ".3gp");
-
-        if(!perm.exists() && !temp.exists()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
 
     /**
      * Renames a temp audio file to the permanent version.
@@ -102,11 +85,6 @@ public class FileUtils {
                     path + id + ".3gp",
                     path + id + "_undo.3gp"
             );
-            if (perm.exists()) {
-                perm.delete();
-                Log.d("recorder", "deleted " + perm + " while copying temp");
-            }
-
         }
         if (temp.exists()) {
             temp.renameTo(perm);

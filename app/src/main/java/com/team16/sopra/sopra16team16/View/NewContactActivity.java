@@ -184,10 +184,10 @@ public class NewContactActivity extends AppCompatActivity {
                     // pass data back to ContactViewerActivity
                     Intent intent = new Intent(NewContactActivity.this, ContactViewerActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("first", capitalize(getFirstString()));
-                    bundle.putString("last", capitalize(getLastString()));
-                    bundle.putString("title", capitalize(getTitleString()));
-                    bundle.putString("country", capitalize(getCountryString()));
+                    bundle.putString("first", getFirstString());
+                    bundle.putString("last", getLastString());
+                    bundle.putString("title", getTitleString());
+                    bundle.putString("country", getCountryString());
                     bundle.putInt("id", id);
                     bundle.putString("gender", gender);
 
@@ -256,10 +256,10 @@ public class NewContactActivity extends AppCompatActivity {
         FileUtils.deleteTempFiles();
 
         contactManager.createContact(
-                capitalize(getFirstString()),
-                capitalize(getLastString()),
-                capitalize(getTitleString()),
-                capitalize(getCountryString()),
+                getFirstString(),
+                getLastString(),
+                getTitleString(),
+                getCountryString(),
                 gender);
         Log.i("createContact", "created contact " + firstNameEdit.getText().toString());
     }
@@ -273,10 +273,10 @@ public class NewContactActivity extends AppCompatActivity {
         FileUtils.deleteTempFiles();
 
         contactManager.updateContact(id,
-                capitalize(getFirstString()),
-                capitalize(getLastString()),
-                capitalize(getTitleString()),
-                capitalize(getCountryString()),
+                getFirstString(),
+                getLastString(),
+                getTitleString(),
+                getCountryString(),
                 gender);
 
     }
@@ -448,20 +448,6 @@ public class NewContactActivity extends AppCompatActivity {
         }
 
         return value;
-    }
-
-
-
-    /**
-     * Capitalizes a String - First letter capitalized, everything else non capitalized
-     */
-    public String capitalize(String string) {
-        if (string.equals("")) {
-            return "";
-        }
-        string = string.toLowerCase();
-        string = string.substring(0,1).toUpperCase() + string.substring(1, string.length());
-        return string;
     }
 
 

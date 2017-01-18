@@ -16,6 +16,8 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -28,6 +30,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.hasToString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.startsWith;
@@ -121,7 +124,7 @@ public class BackupTest {
 
         onView(withId(R.id.record_button)).perform(click());
         try {
-            Thread.sleep(2000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -145,7 +148,8 @@ public class BackupTest {
                         isDisplayed()));
         appCompatImageButton.perform(click());
 
-        onView(withText("Settings")).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.left_drawer)).atPosition(1)
+                .perform(click());
 
         int filesBefore = Environment.getExternalStorageDirectory().listFiles().length;
         onView(withId(R.id.backup_button)).perform(click());
@@ -164,7 +168,8 @@ public class BackupTest {
                         isDisplayed()));
         appCompatImageButton.perform(click());
 
-        onView(withText("Settings")).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.left_drawer)).atPosition(1)
+                .perform(click());
 
         File filesDir = new File("/data/data/" + HomeActivity.contextOfApplication.getPackageName()
                 + "/files/");
@@ -191,15 +196,26 @@ public class BackupTest {
                         isDisplayed()));
         appCompatImageButton.perform(click());
 
-        onView(withText("Settings")).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.left_drawer)).atPosition(1)
+                .perform(click());
         onView(withId(R.id.import_button)).perform(click());
         onView(withId(android.R.id.button2)).perform(click());
+
+
         onView(withId(R.id.import_button)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
 
-        new File(Environment.getExternalStorageDirectory().getPath() + "/foo");
-        onData(hasToString(startsWith("foo")))
+        File foo = new File(Environment.getExternalStorageDirectory().getPath() + "/foo.zip");
+        try {
+            foo.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        onData(hasToString(startsWith("foo.zip")))
                 .perform(click());
+
+        foo.delete();
+
 
         onView(withId(R.id.import_button)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
@@ -221,7 +237,7 @@ public class BackupTest {
 
         // TODO find something else for this
         // crashes when there is more than one file prono*
-        onData(hasToString(startsWith("prono")))
+        onData(hasToString(startsWith("pronoBackup2")))
                 .perform(click());
 
         filesDir = new File("/data/data/" + HomeActivity.contextOfApplication.getPackageName()
@@ -233,8 +249,6 @@ public class BackupTest {
         // do some more asserts ...
 
         pressBack();
-
-
     }
 
 
