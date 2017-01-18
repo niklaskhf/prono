@@ -41,7 +41,7 @@ public class BackupTest {
 
 
     @Test
-    public void setup() {
+    public void backupImportResetTest() {
         ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).wipe();
         createContacts();
         backupTest();
@@ -77,31 +77,7 @@ public class BackupTest {
 
 
 
-        onView(withId(R.id.addNew)).perform(click());
 
-        onView(withId(R.id.first_edit)).perform(typeText("first1"));
-        onView(withId(R.id.last_edit)).perform(typeText("last1"));
-        onView(withId(R.id.title_edit)).perform(typeText("dr"));
-        onView(withId(R.id.country_edit)).perform(typeText("country1"));
-        onView(withId(R.id.male_radioButton)).perform(click());
-
-        Espresso.closeSoftKeyboard();
-
-        onView(withId(R.id.record_button)).perform(click());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        onView(withId(R.id.record_button)).perform(click());
-        onView(withId(R.id.accept_dialog)).perform(click());
-
-
-        onView(withId(R.id.confirm_button)).perform(click());
-
-
-        pressBack();
 
 
         onView(withId(R.id.addNew)).perform(click());
@@ -114,23 +90,6 @@ public class BackupTest {
 
         Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.recordFirstButton)).perform(click());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        onView(withId(R.id.recordFirstButton)).perform(click());
-        onView(withId(R.id.accept_dialog)).perform(click());
-
-        onView(withId(R.id.recordLastButton)).perform(click());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        onView(withId(R.id.recordLastButton)).perform(click());
-        onView(withId(R.id.accept_dialog)).perform(click());
 
         onView(withId(R.id.record_button)).perform(click());
         try {

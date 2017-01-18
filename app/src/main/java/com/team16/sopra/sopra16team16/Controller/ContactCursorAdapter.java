@@ -40,7 +40,6 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
-        player = new Player();
         this.context = context;
         contactManager = ContactManager.getInstance(context);
     }
@@ -109,6 +108,7 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
+            Player player = new Player();
             @Override
             public void onClick(View view) {
                 // play audio file associated to contact id
@@ -116,7 +116,7 @@ public class ContactCursorAdapter extends CursorAdapter {
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
-                    player.startPlaying(id, first.toLowerCase(), last.toLowerCase(), country.toLowerCase(), playButton);
+                    player.startPlaying(id, playButton);
                 }
             }
         });

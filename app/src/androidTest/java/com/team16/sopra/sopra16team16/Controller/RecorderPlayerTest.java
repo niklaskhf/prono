@@ -55,6 +55,7 @@ import static org.junit.Assert.assertTrue;
 
 public class RecorderPlayerTest {
 
+    private Recorder recorder;
     private AudioManager manager;
     private Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NewContactActivity.class.getName(), null, false);
     private Instrumentation.ActivityMonitor activityMonitor2 = getInstrumentation().addMonitor(NewContactActivity.class.getName(), null, false);
@@ -66,6 +67,7 @@ public class RecorderPlayerTest {
 
     @Before
     public void setup() {
+        recorder = Recorder.getInstance();
         manager = (AudioManager) mRule.getActivity().getSystemService(Context.AUDIO_SERVICE);
         ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).wipe();
     }
@@ -86,17 +88,13 @@ public class RecorderPlayerTest {
         // NEWCONTACTACTIVITY
         assertNotNull(nextActivity);
 
-        FloatingActionButton fabRecord = (FloatingActionButton) nextActivity.findViewById(R.id.record_button);
-        // default color
-        ColorStateList fabDefColor = fabRecord.getBackgroundTintList();
-
 
         // TEST RECORDING
         onView(withId(R.id.record_button))
                 .perform(click());
 
-        assertTrue("recorder is not recording", fabRecord.getBackgroundTintList() != fabDefColor);
-        ColorStateList fabActiveColor = fabRecord.getBackgroundTintList();
+        assertTrue("recorder is not recording", recorder.isPressed());
+
 
         try {
             Thread.sleep(500);
@@ -107,7 +105,7 @@ public class RecorderPlayerTest {
         onView(withId(R.id.record_button))
                 .perform(click());
 
-        assertTrue("recorder didnt stop", fabRecord.getBackgroundTintList() == fabDefColor);
+        assertTrue("recorder didnt stop", !recorder.isPressed());
 
 
         // CHECK FOR TEMP FILES
@@ -125,55 +123,6 @@ public class RecorderPlayerTest {
 
         // TEST GENERIC RECORDING
         // FIRST
-        ImageButton firstRec = (ImageButton) nextActivity.findViewById(R.id.recordFirstButton);
-        ImageButton lastRec = (ImageButton) nextActivity.findViewById(R.id.recordLastButton);
-
-        Drawable defaultDraw = firstRec.getDrawable();
-        onView(withId(R.id.recordFirstButton)).perform(click());
-
-        try {
-            Thread.sleep(500);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        assertTrue("recorder is not recording", firstRec.getDrawable() != defaultDraw);
-
-        Drawable activeDraw = firstRec.getDrawable();
-        try {
-            Thread.sleep(500);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        onView(withId(R.id.recordFirstButton)).perform(click());
-
-        assertTrue("recorder didnt stop", firstRec.getDrawable() != activeDraw);
-
-        onView(withId(R.id.accept_dialog)).perform(click());
-        File tempFirst = new File(FileUtils.PATH+"first-ger_temp.3gp");
-        assertTrue("temp file first doesnt exist", tempFirst.exists());
-
-        // LAST
-        defaultDraw = firstRec.getDrawable();
-        onView(withId(R.id.recordLastButton)).perform(click());
-
-        assertTrue("recorder is not recording", lastRec.getDrawable() != defaultDraw);
-        activeDraw = firstRec.getDrawable();
-        try {
-            Thread.sleep(500);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        onView(withId(R.id.recordLastButton)).perform(click());
-
-        assertTrue("recorder didnt stop", lastRec.getDrawable() != activeDraw);
-
-        onView(withId(R.id.accept_dialog)).perform(click());
-
-        File tempLast = new File(FileUtils.PATH+"last-ger_temp.3gp");
-        assertTrue("temp file first doesnt exist", tempLast.exists());
 
         Espresso.closeSoftKeyboard();
         // TEST CANCEL BUTTON
@@ -181,8 +130,6 @@ public class RecorderPlayerTest {
 
         // TEMP SHOULD ALL BE DELETED
         assertTrue("temp file still exists", !temp.exists());
-        assertTrue("temp file still exists", !tempFirst.exists());
-        assertTrue("temp file still exists", !tempLast.exists());
 
         nextActivity.finish();
 
@@ -204,8 +151,6 @@ public class RecorderPlayerTest {
         assertNotNull(nextActivity);
 
         // IN NEWCONTACTACTIVITY
-        FloatingActionButton fabRec = (FloatingActionButton) nextActivity.findViewById(R.id.record_button);
-        ColorStateList fabRecDef = fabRec.getBackgroundTintList();
 
         onView(withId(R.id.confirm_button)).perform(click());
         // TEST MINIMUM REQUIREMENTS FOR CREATION
@@ -215,7 +160,7 @@ public class RecorderPlayerTest {
         onView(withId(R.id.record_button))
                 .perform(click());
 
-        assertTrue("recorder is not recording", fabRec.getBackgroundTintList() != fabRecDef);
+        assertTrue("recorder is not recording", recorder.isPressed());
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -298,8 +243,7 @@ public class RecorderPlayerTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertTrue("recorder is not recording", fabRecord.getDrawable() != defaultDraw);
-        Drawable activeDraw = fabRecord.getDrawable();
+        assertTrue("recorder is not recording", recorder.isPressed());
         onView(withId(R.id.record_button))
                 .perform(click());
 
@@ -346,8 +290,7 @@ public class RecorderPlayerTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertTrue("recorder is not recording", fabRecord.getDrawable() != defaultDraw);
-        activeDraw = fabRecord.getDrawable();
+        assertTrue("recorder is not recording", recorder.isPressed());
         onView(withId(R.id.record_button))
                 .perform(click());
 
@@ -369,7 +312,7 @@ public class RecorderPlayerTest {
 
 
         nextActivity = (NewContactActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor4, 5000);
-        fabRecord = (FloatingActionButton) nextActivity.findViewById(R.id.record_button);
+
         // IN NEWCONTACTACTIVITY
         // CHECK RADIO BUTTONS AGAIN
         // THIS ENTIRE ITERATOION EXISTS TO GO THROUGH ALL CASES FOR GENDER
@@ -383,7 +326,6 @@ public class RecorderPlayerTest {
         onView(withId(R.id.unkown_radioButton)).check(matches(isChecked()));
 
 
-        defaultDraw = fabRecord.getDrawable();
         onView(withId(R.id.record_button))
                 .perform(click());
 
@@ -392,7 +334,7 @@ public class RecorderPlayerTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        assertTrue("recorder is not recording", fabRecord.getDrawable() != defaultDraw);
+        assertTrue("recorder is not recording", recorder.isPressed());
         onView(withId(R.id.record_button))
                 .perform(click());
 

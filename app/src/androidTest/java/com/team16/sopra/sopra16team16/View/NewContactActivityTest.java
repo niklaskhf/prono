@@ -26,9 +26,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Created by prime on 08.12.16.
- */
+
 public class NewContactActivityTest {
 
     @Rule
@@ -43,12 +41,6 @@ public class NewContactActivityTest {
         // TODO add assertions
         onView(withId(R.id.addNew)).perform(click());
 
-        // trigger warning
-        onView(withId(R.id.recordFirstButton)).perform(click());
-        onView(withText("OK")).perform(click());
-
-        onView(withId(R.id.recordLastButton)).perform(click());
-        onView(withText("OK")).perform(click());
 
 
         onView(withId(R.id.first_edit)).perform(typeText("hello"));
@@ -59,47 +51,28 @@ public class NewContactActivityTest {
         onView(withId(R.id.confirm_button)).perform(click());
         onView(withText("OK")).perform(click());
 
-        onView(withId(R.id.recordFirstButton)).perform(click());
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        onView(withId(R.id.recordFirstButton)).perform(click());
-        onView(withId(R.id.accept_dialog)).perform(click());
 
 
         onView(withId(R.id.last_edit)).perform(clearText());
         onView(withId(R.id.last_edit)).perform(typeText("hello"));
 
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.recordLastButton)).perform(click());
 
-        // already exists
+        onView(withId(R.id.record_button)).perform(click());
 
-        onView(withId(R.id.accept_dialog)).perform(click());
         try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
+            Thread.sleep(100);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        onView(withId(R.id.recordLastButton)).perform(click());
+
+        onView(withId(R.id.record_button)).perform(click());
         onView(withId(R.id.accept_dialog)).perform(click());
-
-
 
         onView(withId(R.id.country_edit)).perform(typeText("ger"));
 
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.confirm_button)).perform(click());
-
-        onView(withId(R.id.cancel_dialog)).perform(click());
-        onView(withText("OK")).perform(click());
-        onView(withId(R.id.confirm_button)).perform(click());
-        onView(withId(R.id.accept_dialog)).perform(click());
-
-        onView(withId(R.id.confirm_button)).perform(click());
-
 
     }
 }
