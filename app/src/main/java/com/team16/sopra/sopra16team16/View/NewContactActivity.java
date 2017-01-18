@@ -111,6 +111,14 @@ public class NewContactActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (recorder.isPressed()) {
+            recorder.stopRecording(recordButton, this);
+        }
+    }
+
     /**
      * Initializes the views etc.
      */
