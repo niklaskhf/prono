@@ -102,6 +102,9 @@ public class Player {
         String firstFilename = FileUtils.PATH + first.toLowerCase() + "-" +  country.toLowerCase() + ".3gp";
         final String lastFilename = FileUtils.PATH + last.toLowerCase() + "-" +  country.toLowerCase() + ".3gp";
 
+        if (!new File(idFilename).exists() && !new File(firstFilename).exists() && !new File(lastFilename).exists()) {
+            return;
+        }
         if (new File(idFilename).exists()) {
             filename = idFilename;
 
@@ -146,6 +149,11 @@ public class Player {
         String idFilename = path + id + ".3gp";
         String firstFilename = FileUtils.PATH + first.toLowerCase() + "-" + country.toLowerCase() + ".3gp";
         final String lastFilename = FileUtils.PATH + last.toLowerCase() + "-" + country.toLowerCase() + ".3gp";
+
+        if (!new File(idFilename).exists() && !new File(firstFilename).exists() && !new File(lastFilename).exists()) {
+            return;
+        }
+
 
         if (new File(idFilename).exists()) {
             filename = idFilename;

@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -107,16 +108,23 @@ public class Backup {
             // everything is located in /files/
             File filesPath = new File("//data//data//" + HomeActivity.contextOfApplication.getPackageName()
                     + "//files//");
+            File[] fileDir = filesPath.listFiles();
             // String[] of files that will be zipped
             // size is /files/.length - 1 (instant-run folder) + 1 (database file)
-            String[] files = new String[filesPath.listFiles().length];
+            String[] files = new String[fileDir.length];
+
+            ArrayList<String> audios = new ArrayList<String>();
+
+            for (File e : fileDir) {
+                if (e.getPath().endsWith(".3gp")) {
+                    audios.add(e.toString());
+                }
+            }
 
             // get the audio files
             // 1 to skip the instant-run directory
-            for (int i = 0; i < files.length; i++) {
-                if (filesPath.listFiles()[i].getPath().endsWith(".3gp")) {
-                    files[i] = filesPath.listFiles()[i].toString();
-                }
+            for (int i = 0; i < audios.size(); i++) {
+                    files[i] = audios.get(i);
             }
 
             // get the database file
