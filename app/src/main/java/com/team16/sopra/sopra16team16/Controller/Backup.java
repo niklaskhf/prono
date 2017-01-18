@@ -109,9 +109,6 @@ public class Backup {
             File filesPath = new File("//data//data//" + HomeActivity.contextOfApplication.getPackageName()
                     + "//files//");
             File[] fileDir = filesPath.listFiles();
-            // String[] of files that will be zipped
-            // size is /files/.length - 1 (instant-run folder) + 1 (database file)
-            String[] files = new String[fileDir.length];
 
             ArrayList<String> audios = new ArrayList<String>();
 
@@ -120,6 +117,10 @@ public class Backup {
                     audios.add(e.toString());
                 }
             }
+
+            // String[] of files that will be zipped
+            // size is audio files + 1 (database file)
+            String[] files = new String[audios.size()];
 
             // get the audio files
             // 1 to skip the instant-run directory
