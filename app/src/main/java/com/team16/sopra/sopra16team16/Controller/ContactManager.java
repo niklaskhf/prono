@@ -201,7 +201,6 @@ public class ContactManager{
         }
 
         this.updateCursorAdapter();
-        this.getCursorAdapterDefault();
         return res;
     }
 
@@ -318,6 +317,9 @@ public class ContactManager{
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
+        }
+        if (favoriteAdapter != null) {
+            favoriteAdapter.changeCursor(selectFavorites());
         }
     }
 
