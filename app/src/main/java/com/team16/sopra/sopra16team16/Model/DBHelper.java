@@ -81,7 +81,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * Copies the database file at the specified location over the current
      * internal application database.
      * */
-    public boolean importDatabase(String dbPath) throws IOException {
+    public boolean replaceDatabase(String dbPath) throws IOException {
 
         // Close the SQLiteOpenHelper so it will commit the created empty
         // database to internal storage.
@@ -98,5 +98,11 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        this.close();
+        super.finalize();
     }
 }

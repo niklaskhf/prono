@@ -194,7 +194,7 @@ public class Recorder {
                 @Override
                 public void onClick(View view) {
                     alertDialog.dismiss();
-                    actionButton.setBackgroundTintList(actionButtonColor);
+                    ((NewContactActivity)context).customRecordColor();
                 }
             });
         }

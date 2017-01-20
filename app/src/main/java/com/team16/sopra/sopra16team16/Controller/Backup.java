@@ -65,20 +65,45 @@ public class Backup {
     public void importDB(String importPath) {
 
         try {
-            // unzip the files to the /files/ directory
+            // unzip the files to the /files/import/ directory
             unzip(importPath, "/data/data/" + HomeActivity.contextOfApplication.getPackageName()
-                    + "/files/");
+                    + "/files/import/");
 
             // move and replace the database file
             String backupDBPath = "/data/data/" + HomeActivity.contextOfApplication.getPackageName()
-                    + "/files/" + DBHelper.DATABASE_NAME;
-            boolean result = false;
-            result = DBHelper.getCurrentInstance(HomeActivity.contextOfApplication).importDatabase(backupDBPath);
+                    + "/files/import/" + DBHelper.DATABASE_NAME;
+
+            boolean result = DBHelper.getCurrentInstance(HomeActivity.contextOfApplication).replaceDatabase(backupDBPath);
 
             // tell the user
             if (result) {
-                Toast.makeText(HomeActivity.contextOfApplication, "Import Successful",
-                        Toast.LENGTH_SHORT).show();
+                try {
+                    // copy the audio files from ../files/import/ to /files/
+
+                    // wipe /files/ directory
+                    String filesPath = "/data/data/" + HomeActivity.contextOfApplication.getPackageName()
+                            + "/files/";
+                    String importFilesPath = "/data/data/" + HomeActivity.contextOfApplication.getPackageName()
+                            + "/files/import/";
+
+                    for (File f : new File(filesPath).listFiles()) {
+                        if (f.getPath().endsWith(".3gp")) {
+                            f.delete();
+                        }
+                    }
+
+                    // copy audio files from ../files/import/ to ../files/
+                    for (File f : new File(importFilesPath).listFiles()) {
+                        if (f.getPath().endsWith(".3gp")) {
+                            FileUtils.renameFile(importFilesPath + f.getName(), filesPath + f.getName());
+                        }
+                    }
+                    Toast.makeText(HomeActivity.contextOfApplication, "Import Successful",
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(HomeActivity.contextOfApplication, "Import failed",
+                            Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(HomeActivity.contextOfApplication, "Import failed",
                         Toast.LENGTH_SHORT).show();
@@ -93,6 +118,7 @@ public class Backup {
 
             // delete the now unnecessary database file in /files/
             FileUtils.deleteFile(backupDBPath);
+
         } catch (Exception e) {
             // handle exceptio
             Log.d("ImportIOEXception", e.getMessage());
@@ -111,17 +137,21 @@ public class Backup {
                     + "//files//");
             File[] fileDir = filesPath.listFiles();
 
+            for (int i = 0; i < fileDir.length; i++) {
+                Log.d("fileDir", "fileDir[" + Integer.toString(i) + "]:" + fileDir[i]);
+            }
+
             ArrayList<String> audios = new ArrayList<String>();
 
             for (File e : fileDir) {
-                if (e.getPath().endsWith(".3gp")) {
+                if (e.getName().endsWith(".3gp")) {
                     audios.add(e.toString());
                 }
             }
 
             // String[] of files that will be zipped
             // size is audio files + 1 (database file)
-            String[] files = new String[audios.size()];
+            String[] files = new String[audios.size() + 1];
 
             // get the audio files
             // 1 to skip the instant-run directory

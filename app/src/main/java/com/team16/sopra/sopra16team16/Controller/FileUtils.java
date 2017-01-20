@@ -69,8 +69,6 @@ public class FileUtils {
     }
 
 
-
-
     /**
      * Renames a temp audio file to the permanent version.
      * @param id id of the contact - int
@@ -103,8 +101,8 @@ public class FileUtils {
             String fp = f.getPath();
             if (fp.length() > 8) {
                 String fpsub = fp.substring(fp.length() - 9, fp.length());
-                Log.d("deletingFile", fp);
                 if (fpsub.equals("_temp.3gp")) {
+                    Log.d("deletingTempFile", fp);
                     new File(fp).delete();
                 }
             }
