@@ -1,36 +1,43 @@
 package com.team16.sopra.sopra16team16.View;
 
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.FilterQueryProvider;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.FilterQueryProvider;
+import android.widget.ListView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
-import com.team16.sopra.sopra16team16.Model.Gender;
 import com.team16.sopra.sopra16team16.R;
+
+import java.util.Locale;
 
 
 /**
@@ -38,20 +45,48 @@ import com.team16.sopra.sopra16team16.R;
  * Contains methods for initializing the various elements
  */
 public class HomeActivity extends AppCompatActivity {
-    private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
+    private String[] drawerOptions;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private static ContactManager contactManager;
+    private ContactManager contactManager;
     public static Context contextOfApplication;
+    private FragmentManager fragmentManager;
+    private ContactListFragment listFragment;
+    private FloatingActionButton addButton;
+    private FilterQueryProvider filterQuery;
+    private SearchView searchView;
+    private Toolbar myToolbar;
+    private int mode;
+    private MenuItem searchItem;
+    private ArrayAdapter<String> drawerAdapter;
+    private String updatedLanguage;
+    private SharedPreferences myLanguagePreference;
 
-    private ContactListFragment fragment;
+    // Storage Permissions
+    private static final int REQUEST_ALL = 0;
+    private static final int REQUEST_MICROPHONE = 2;
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+    private static String[] PERMISSIONS_ALL = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO,
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_home);
-        contextOfApplication = MyApp.getContext();
+
+        contextOfApplication = this.getApplicationContext();
+        contactManager = ContactManager.getInstance(this.getApplicationContext());
+
+        // if app language differs from default language
+        initializeNewChosenLanguage();
 
         // initialize Toolbar
         initializeToolbar();
@@ -61,8 +96,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // add the ListFragment
         initializeFragments();
-        // open contact creator
-
 
     }
 
@@ -71,36 +104,89 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         // add searchItem to toolbar
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchItem = menu.findItem(R.id.action_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-        FilterQueryProvider test = new FilterQueryProvider() {
-            @Override
-            public Cursor runQuery(CharSequence charSequence) {
-                contactManager.getSearchAdapter().getCursor();
-                return null;
-            }
-        };
+        // TODO discuss if this is the right approach
+        // hide the dropdown from the searchbar
+        hideSearchDropDown(searchView);
+        // apply functionality to searchItem
+        searchFilterActions(searchItem);
 
-        searchView.setSuggestionsAdapter(contactManager.getSearchAdapter());
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // configure menuItems in toolbar
-        // only search right now
-        // possibly also filter/sort?
-        switch (item.getItemId()) {
-            case R.id.action_search:
-                // open search
-                return true;
+    /**
+     * Hides the dropDown of the searchView
+     *
+     * @param searchView
+     */
+    public void hideSearchDropDown(SearchView searchView) {
+        // id of AutoCompleteTextView
+        int searchEditTextId = R.id.search_src_text; // for AppCompat
 
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-        }
+        // get AutoCompleteTextView from SearchView
+        final AutoCompleteTextView searchEditText = (AutoCompleteTextView) searchView.findViewById(searchEditTextId);
+
+        // remove dropdown
+        searchEditText.setDropDownHeight(0);
+    }
+
+
+    /**
+     * Sets the appropriate adapters.
+     *
+     * @param searchItem MenuItem related to the searchView
+     */
+    public void searchFilterActions(MenuItem searchItem) {
+        // filterQuery object that will be applied to the CursorAdapter
+        filterQuery = new FilterQueryProvider() {
+            @Override
+            public Cursor runQuery(CharSequence charSequence) {
+                Cursor mCursor = null;
+                mCursor = contactManager.getSearchResults(charSequence.toString());
+                return mCursor;
+            }
+        };
+
+        // actionlisteners for open/close
+        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                Log.i("listAdapter", "is now filterQuery");
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                Log.i("listAdapter", "is now default");
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(null);
+                listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                return true;
+            }
+        });
+
+        // actionlisteners for typing/submit
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+                // hide the keyboard
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Log.i("listAdapter", "is now filterQuery");
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
+                return true;
+            }
+        });
     }
 
     /**
@@ -108,18 +194,16 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void initializeToolbar() {
         // get the toolbar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         // set it
         setSupportActionBar(myToolbar);
         // configure it
         myToolbar.setTitle("");
         myToolbar.setSubtitle("");
+        myToolbar.setNavigationIcon(R.drawable.ic_drawer);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // add the drawer action
-        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
-
-        drawer.setOnClickListener(new View.OnClickListener() {
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mDrawerLayout.openDrawer(mDrawerList);
@@ -132,17 +216,19 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void initializeMenu() {
         // populate the drawer ListView
+        drawerOptions = getResources().getStringArray(R.array.drawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy));
+        drawerAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, drawerOptions);
+        mDrawerList.setAdapter(drawerAdapter);
 
-        // add the drawer action
-        ImageButton drawer = (ImageButton) findViewById(R.id.action_menu);
+        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
-        drawer.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                mDrawerLayout.openDrawer(mDrawerList);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                onNavigationDrawerItemSelected(i, view);
+                mDrawerLayout.closeDrawer(mDrawerList);
+                toggleSubMode();
             }
         });
     }
@@ -152,61 +238,282 @@ public class HomeActivity extends AppCompatActivity {
      */
     public void initializeFragments() {
         // add the ListFragment
-        FragmentManager fragmentManager = getFragmentManager();
-        fragment = new ContactListFragment();
-        fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
+        fragmentManager = getFragmentManager();
+        listFragment = new ContactListFragment();
 
-        String first, last, title, country, gender;
-        Bundle bundle = getIntent().getExtras();
+        fragmentManager.beginTransaction().add(R.id.content_frame, listFragment).commit();
+
+        // do we even have permissions?
+        verifyStoragePermissions(this);
 
         // populate the ListView
-        contactManager = ContactManager.getInstance(contextOfApplication);
-
-
         // set cursorAdapter
-        fragment.setListAdapter(contactManager.getCursorAdapterDefault());
+        // moved this to permission request
+        //fragment.setListAdapter(contactManager.getCursorAdapterDefault());
 
-        if(bundle != null) {
+    }
 
-            first = bundle.getString(contactManager.COLUMN_FIRSTNAME);
-            last = bundle.getString(contactManager.COLUMN_LASTNAME);
-            title = bundle.getString(contactManager.COLUMN_TITLE);
-            country = bundle.getString(contactManager.COLUMN_COUNTRY);
-            gender = bundle.getString(contactManager.COLUMN_GENDER);
+    public void initializeNewChosenLanguage() {
 
-
-            contactManager.createContact(first, last, title, country, gender);
+        SharedPreferences myLanguagePreference = getSharedPreferences("getLanguage", Context.MODE_PRIVATE);
+        if (myLanguagePreference.getString("updatedLanguage",null) != null) {
+            updatedLanguage = myLanguagePreference.getString("updatedLanguage",null);
         }
 
-        //adding new contact button
-        final FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.addNew);
-        addNewContact(addButton);
+        if ((updatedLanguage != null)) {
+            setLocale(updatedLanguage, HomeActivity.this.getResources());
+        }
+    }
 
+    /**
+     * Returns the fragment object, for testing purposes
+     */
+    public ContactListFragment getFragment() {
+        return listFragment;
     }
 
     /**
      * Starts an activity UNKONWN_NAME to add a new contact.
      */
-    public void addNewContact(FloatingActionButton addButton) {
+    public void addNewContact() {
         addButton = (FloatingActionButton) findViewById(R.id.addNew);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, NewContactActivity.class));
+                //verifyStoragePermissions(HomeActivity.this);
+                int id = contactManager.getId();
+                id++;
+                // opens a NewContactActivity with empty EditTexts
+                Intent intent = new Intent(HomeActivity.this, NewContactActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("first", "");
+                bundle.putString("last", "");
+                bundle.putString("title", "");
+                bundle.putString("country", "");
+                bundle.putString("gender", "");
+                bundle.putInt("id", id);
+                // CREATION mode
+                bundle.putString("cause", "CREATE");
+
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
-
 
     @Override
     public void onResume() {
         super.onResume();
         contactManager.updateCursorAdapter();
+
+        //contactManager.open();
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        contactManager.deleteMarked();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // according to google theres nothing wrong with keeping the connection open
+        // and letting the kernel handle the cleanup after exiting
+        // http://stackoverflow.com/questions/6608498/best-place-to-close-database-connection
+        //contactManager.close();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 1) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.content_frame);
+
+                String action = data.getStringExtra("action");
+                if (action != null && action.equals("undo")) {
+                    final int undoId = data.getIntExtra("undoId", -1);
+                    Log.d("undoSnackbar", "showing snackbar for " + undoId);
+                    Snackbar snackbar = Snackbar
+                            .make(coordinatorLayout, "Deleted a contact", Snackbar.LENGTH_LONG)
+                            .setAction("UNDO", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
+                                    snackbarSuccess.show();
+
+                                    contactManager.toggleDeleted(undoId, 1);
+                                }
+                            });
+
+                    snackbar.show();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // either close the open drawer
+        // or close the app
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(mDrawerList);
+        } else if (mode == 1) {
+            toggleMainMode();
+        }
+        else {
+            finish();
+        }
+    }
+
+    /**
+     * Checks if searchView is visible, used for testing
+     */
+    public boolean searchVisible() {
+        return !searchView.isIconified();
+    }
+
+
+    /**
+     * Checks if the app has permission to write to device storage
+     * <p>
+     * If the app does not has permission then the user will be prompted to grant permissions
+     * <p>
+     * Currently unused, might be used later on!
+     *
+     * @param activity
+     */
+    public void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);
+
+
+        if (permission != PackageManager.PERMISSION_GRANTED || micPermission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_ALL,
+                    REQUEST_ALL
+            );
+        } else {
+            listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
+            addNewContact();
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        final Activity activity = this;
+        switch (requestCode) {
+            case REQUEST_ALL:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                        grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission Granted
+                    // do nothing?
+                    addNewContact();
+                    listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
+                } else {
+                    addButton = (FloatingActionButton) findViewById(R.id.addNew);
+                    addButton.setOnClickListener(new View.OnClickListener(){
+
+                        @Override
+                        public void onClick(View view) {
+                            verifyStoragePermissions(activity);
+                        }
+                    });
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+
+    /**
+     * Opens a fragment depending on the position, that was clicked on
+     * @param position
+     */
+    public void onNavigationDrawerItemSelected(int position, View view) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        FragmentManager fragmentManager = getFragmentManager(); // For AppCompat use getSupportFragmentManager
+        switch(position) {
+            default:
+            case 0:
+                fragment = listFragment;
+                listFragment.setListAdapter(contactManager.getCursorAdapterFavorite());
+                break;
+            case 1:
+                fragment = new SettingsFragment();
+                //fragment = new MyFragment2();
+                break;
+            case 2:
+                //fragment = new SettingsFragment();
+                break;
+        }
+        if (fragment != null) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment)
+                    .commit();
+        }
+    }
+
+
+    /**
+     * Changes the toolbar/addButton to subMode (settings/about/favorites)
+     */
+    public void toggleSubMode() {
+        mode = 1;
+        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleMainMode();
+            }
+        });
+        searchItem.setVisible(false);
+        addButton.setVisibility(View.INVISIBLE);
+        mDrawerList.clearChoices();
+        drawerAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Changes the toolbar/addButton to mainMode (default listView of contacts)
+     */
+    public void toggleMainMode() {
+        mode = 0;
+        myToolbar.setNavigationIcon(R.drawable.ic_drawer);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(mDrawerList);
+            }
+        });
+        searchItem.setVisible(true);
+        addButton.setVisibility(View.VISIBLE);
+        listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, listFragment)
+                .commit();
+        mDrawerList.clearChoices();
+    }
+
+
+    /**
+     * changes app language
+     * @param lang
+     * @param res
+     */
+    public void setLocale(String lang, Resources res) {
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(lang);
+        res.updateConfiguration(conf, dm);
+    }
+
 
 }

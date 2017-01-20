@@ -1,126 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contact_editor_coord"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+ <LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
-
-    <TextView
-        android:text="First Name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/first_text"
-        android:textSize="18sp"/>
+        android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/first_name_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/first_edit"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:text="blablabla"
+            <TextView
+                android:text="@string/fistName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/first_text"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords|textCapSentences"
+                android:ems="10"
+                android:id="@+id/first_edit"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/recordFirstButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/real_first_name"
-            android:textSize="30sp"/>
-    </RelativeLayout>
+            android:text="REC"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_mic_black_24dp"/>
+    </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <TextView
+                 android:text="@string/lastName"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/last_text"
+                 android:textSize="18dp"/>
+
+             <EditText
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:inputType="textCapWords|textCapSentences"
+                 android:ems="10"
+                 android:id="@+id/last_edit" />
+         </LinearLayout>
+
+         <ImageButton
+             android:id="@+id/recordLastButton"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="REC"
+             android:background="@null"
+             android:layout_gravity="center"
+             android:src="@drawable/ic_mic_black_24dp"/>
+     </LinearLayout>
 
     <TextView
-        android:text="Last Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/last_text"
-        android:textSize="18dp"/>
-
-    <RelativeLayout
-        android:id="@+id/last_name_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/last_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_last_name"
-            android:textSize="30sp"/>
-    </RelativeLayout>
-
-    <TextView
-        android:text="Title"
+        android:text="@string/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_text"
         android:textSize="18dp"/>
 
-    <RelativeLayout
-        android:id="@+id/title_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/title_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_title"
-            android:textSize="30sp"/>
-
-    </RelativeLayout>
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords|textCapSentences"
+        android:ems="10"
+        android:id="@+id/title_edit"/>
 
     <TextView
-        android:text="Country"
+        android:text="@string/country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/country_text"
         android:textSize="18dp"/>
 
-    <RelativeLayout
-        android:id="@+id/country_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/country_edit"/>
-
-        <TextView
-            android:text="blablabla"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/real_country"
-            android:textSize="30sp"/>
-
-    </RelativeLayout>
-
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords|textCapSentences"
+        android:ems="10"
+        android:id="@+id/country_edit"/>
 
     <TextView
-        android:text="Gender"
+        android:text="@string/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gender_text"
@@ -143,20 +136,20 @@
 
             <RadioButton
                 android:id="@+id/female_radioButton"
-                android:text="female"
+                android:text="@string/female"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
 
             <RadioButton
                 android:layout_toEndOf="@+id/female_radioButton"
-                android:text="male"
+                android:text="@string/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/male_radioButton"/>
 
             <RadioButton
                 android:id="@+id/unkown_radioButton"
-                android:text="unkown"
+                android:text="@string/unknown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -164,67 +157,36 @@
 
     </RelativeLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/cancel_delete_relative_layout"
-            android:layout_gravity="bottom|left">
-
-            <ImageButton
-                android:id="@+id/cancel_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cancel_icon"/>
-
-            <ImageButton
-                android:id="@+id/delete_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/delete_icon"/>
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/record_play_relative_layout"
-            android:layout_gravity="center|bottom">
-
-            <ImageButton
-                android:id="@+id/record_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/mic_icon"/>
-
-            <ImageButton
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/play_button"
-                android:background="@drawable/play_icon"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/confirm_edit_relative_layout"
-            android:layout_gravity="bottom">
-
-            <ImageButton
-                android:id="@+id/confirm_button"
-                android:layout_height="wrap_content"
-                android:layout_width="54dp"
-                android:background="@drawable/accept_icon"/>
-            <ImageButton
-                android:id="@+id/edit_button"
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit_icon"/>
-
-        </RelativeLayout>
-
-    </GridLayout>
-
-
 </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_clear_black_24dp"
+        android:scaleType="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_mic_black_24dp"
+        android:scaleType="center"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_check_black_24dp"
+        android:scaleType="center"/>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
 
 

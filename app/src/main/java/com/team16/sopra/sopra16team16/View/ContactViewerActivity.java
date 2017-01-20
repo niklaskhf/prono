@@ -1,210 +1,195 @@
 package com.team16.sopra.sopra16team16.View;
 
-import android.content.Context;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
-import com.team16.sopra.sopra16team16.Controller.Recorder;
-import com.team16.sopra.sopra16team16.Model.Gender;
+import com.team16.sopra.sopra16team16.Controller.FileUtils;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
 /**
- * Created by prime on 22.11.16.
+ * Displays information of a contact.
+ * Allows editing and deleting the contacts information.
  */
 
 public class ContactViewerActivity extends AppCompatActivity {
 
-    private int recordButtonClicked = 2;
-    private static ContactManager contactManager;
-    public static Context contextOfApplication;
+    private ContactManager contactManager = null;
+    private String firstName = "";
+    private String lastName = "";
+    private String title = "";
+    private String country = "";
+    private String gender = "";
 
-    private String firstName;
-    private String lastName;
-    private String country;
-    private String title;
+    private String undoFirstName = "";
+    private String undoLastName = "";
+    private String undoTitle = "";
+    private String undoCountry = "";
+    private String undoGender = "";
+
     private int id;
-    private String gender;
 
-    private TextView firstNameText;
-    private TextView lastNameText;
-    private TextView countryText;
-    private TextView titleText;
-
-    private EditText firstNameEdit;
-    private EditText lastNameEdit;
-    private EditText countryEdit;
-    private EditText titleEdit;
-
-    private RadioButton femaleRadioButton;
-    private RadioButton maleRadioButton;
-    private RadioButton unknownSexRadioButton;
-
-    private ImageButton confirmButton;
-    private ImageButton cancelButton;
-    private ImageButton recordButton;
-    private ImageButton editButton;
-    private ImageButton deleteButton;
-    private ImageButton playButton;
-
+    private TextView firstView;
+    private TextView lastView;
+    private TextView titleView;
+    private TextView countryView;
     private ImageView genderSign;
 
-    private Intent intent;
-
+    private FloatingActionButton playButton;
+    private Player player;
 
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        this.setContentView(R.layout.contact_editor);
 
-        //initializing all GUI components with ids
-        findViewByIdTextView();
-        findViewByIdEditButton();
-        findViewByIdImageButton();
-        findViewByIdRadioButton();
-        findViewByIdImageView();
 
-        setViewLayout();
+        player = new Player();
 
+        this.setContentView(R.layout.contact_viewer);
+        contactManager = ContactManager.getInstance(this.getApplicationContext());
+
+        // TODO FIX INTENT
         Bundle bundle = getIntent().getExtras();
 
-        // initialize values with the information of the clicked contact
-        if (bundle != null) {
-            firstName = bundle.getString("first");
-            lastName = bundle.getString("last");
-            title = bundle.getString("title");
-            country = bundle.getString("country");
-            gender = bundle.getString("gender");
-            id = bundle.getInt("id");
-            Log.i("bundle.getInt", bundle.getString("id"));
-        }
+        firstName = bundle.get("first").toString();
+        lastName = bundle.get("last").toString();
+        title = bundle.get("title").toString();
+        country = bundle.get("country").toString();
+        gender = bundle.getString("gender");
+        id = Integer.parseInt(bundle.get("id").toString());
 
-        //set contact information
-        setText();
+        setTextViews();
 
-        //Initialize different OnClick methods
-        confirmTheEdit();
-        editContact();
-        cancelTheEdit();
-        recordName();
-        deleteContact();
+        FloatingActionButton editButton = (FloatingActionButton) findViewById(R.id.edit_button);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ContactViewerActivity.this, NewContactActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("first", firstName);
+                intent.putExtra("last", lastName);
+                intent.putExtra("title", title);
+                intent.putExtra("country", country);
+                intent.putExtra("gender", gender);
+                // EDIT mode
+                intent.putExtra("cause", "EDIT");
 
-    }
+                startActivityForResult(intent, 2);
+            }
+        });
 
-    /**
-     * deletes the displaying contact
-     */
-    public void deleteContact() {
-        final ImageButton deleteButton = (ImageButton) findViewById(R.id.delete_button);
+        // should probably put all this into a seperate method
+        FloatingActionButton deleteButton = (FloatingActionButton) findViewById(R.id.delete_button);
+
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteContactDialog(id, firstNameText.getText().toString(), lastNameText.getText().toString());
+                deleteContactDialog(id, firstName, lastName);
             }
         });
-    }
 
-    /**
-     * records an audio until the recordButton is clicked a second time
-     */
-    public void recordName() {
-        final ImageButton recordButton = (ImageButton) findViewById(R.id.record_button);
-        recordButton.setOnClickListener(new View.OnClickListener() {
+        playButton = (FloatingActionButton) findViewById(R.id.play_button);
+        playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Recorder record = new Recorder();
-                if(recordButtonClicked % 2 == 0) {
-                    record.startRecording();
-                    recordButtonClicked++;
-                }else {
-                    record.stopRecording();
-                    recordButtonClicked++;
+                if (player.isPlaying()) {
+                    player.stopPlaying(playButton);
+                } else {
+                    player.startPlaying(id, firstName.toLowerCase(), lastName.toLowerCase(), country.toLowerCase(), playButton);
                 }
 
             }
         });
+
     }
 
     /**
-     * cancels the the editing of the opened contact
+     * Deletes a contact after asking the user for confirmation.
+     *
+     * @param id - unique id of row in database - int
+     * @param f  first name of contact - String
+     * @param l  last name of contact - String
      */
-    public void cancelTheEdit() {
-        final ImageButton cancelButton = (ImageButton) findViewById(R.id.cancel_button);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+    public void deleteContactDialog(int id, String f, String l) {
+        // im sure this is god awful
+        final int idF = id;
+
+        // build the AlertDialog to request confirmation
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+
+        String message = "About to delete " + f +
+                " " + l +
+                ". Continue?";
+
+        // delete if user confirms with 'YES"
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 
             @Override
-            public void onClick(View view) {
-                setViewLayout();
+            public void onClick(DialogInterface dialogInterface, int i) {
+                switch (i) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Log.i("deletionDialog", "user confirmed deletion of " + idF);
+                        //contactManager.deleteContact(idF);
+                        contactManager.toggleDeleted(idF, 0);
+                        // go back to the front page
+                        Intent intent = new Intent();
+                        intent.putExtra("action", "undo");
+                        intent.putExtra("undoId", idF);
+                        setResult(RESULT_OK, intent);
+                        onBackPressed();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        Log.i("deletionDialog", "User dismissed the dialog");
+                        dialogInterface.dismiss();
+                        break;
+                    default:
+                        break;
+                }
             }
-        });
+        };
+
+        alertBuilder.setMessage(message);
+        alertBuilder.setPositiveButton("YES", dialogClickListener);
+        alertBuilder.setNegativeButton("NO", dialogClickListener);
+        alertBuilder.show();
     }
 
     /**
-     * switches to edit mode of opened contact
+     * Populates the textViews in the contact_viewer layout
      */
-    public void editContact() {
-        final ImageButton editButton = (ImageButton) findViewById(R.id.edit_button);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setEditLayout();
-                firstNameEdit.setText(firstNameText.getText().toString());
-                lastNameEdit.setText(lastNameText.getText().toString());
-                countryEdit.setText(countryText.getText().toString());
-                titleEdit.setText(titleText.getText().toString());
-            }
-        });
-    }
-
-    /**
-     * saves the new contact and switches to view mode
-     */
-    public void confirmTheEdit() {
-        final ImageButton confirmEditButton = (ImageButton)findViewById(R.id.confirm_button);
-        confirmEditButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setViewLayout();
-                firstNameText.setText(firstNameEdit.getText().toString());
-                lastNameText.setText(lastNameEdit.getText().toString());
-                countryText.setText(countryEdit.getText().toString());
-                titleText.setText(titleEdit.getText().toString());
-
-                intent = new Intent(ContactViewerActivity.this, HomeActivity.class);
-                contactManager.updateContact(firstNameText.getText().toString(), lastNameText.getText().toString(),
-                                            titleText.getText().toString(),countryText.getText().toString(),gender,
-                                            false, false, id);
-            }
-        });
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+    public void setTextViews() {
+        // populate textViews
+        firstView = (TextView) findViewById(R.id.real_first_name);
+        lastView = (TextView) findViewById(R.id.real_last_name);
+        titleView = (TextView) findViewById(R.id.real_title);
+        countryView = (TextView) findViewById(R.id.real_country);
+        genderSign = (ImageView) findViewById(R.id.gender_sign);
+        setText();
     }
 
     /**
      * set information after contact has been clicked
      */
     public void setText() {
-        firstNameText.setText(firstName);
-        lastNameText.setText(lastName);
-        titleText.setText(title);
-        countryText.setText(country);
-
+        firstView.setText(firstName);
+        lastView.setText(lastName);
+        titleView.setText(title);
+        countryView.setText(country);
         switch (gender) {
             case "MALE":
                 genderSign.setImageResource(R.drawable.running_man);
@@ -214,169 +199,103 @@ public class ContactViewerActivity extends AppCompatActivity {
                 break;
             case "UNKNOWN":
                 genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+                break;
+            default:
+                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == 2) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                firstName = data.getStringExtra("first");
+                lastName = data.getStringExtra("last");
+                title = data.getStringExtra("title");
+                country = data.getStringExtra("country");
+                gender = data.getStringExtra("gender");
+                setText();
+                showSnackbar(data);
+            }
         }
     }
 
     /**
-     * Deletes a contact after asking the user for confirmation.
-     * @param id
-     * @param f
-     * @param l
+     * Shows a snackbar allowing the user to undo editing the contact
      */
-    public void deleteContactDialog(int id, String f, String l) {
-        // im sure this is god awful
-        final int idF = id;
-        // build the AlertDialog to request confirmation
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        String message = "About to delete " + f +
-                " " + l +
-                ". Continue?";
-        // delete if user confirms with 'YES"
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+    public void showSnackbar(final Intent data) {
+        Log.d("showSnackar", "called");
+        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.contact_viewer_coord);
+
+        undoFirstName = data.getStringExtra("undoFirst");
+        undoLastName = data.getStringExtra("undoLast");
+        undoTitle = data.getStringExtra("undoTitle");
+        undoCountry = data.getStringExtra("undoCountry");
+        undoGender = data.getStringExtra("undoGender");
+
+        Log.d("undoSnackbar", "showing snackbar for " + id);
+        Snackbar snackbar = Snackbar
+                .make(coordinatorLayout, "Edited a contact", Snackbar.LENGTH_LONG)
+                .setAction("UNDO", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
+                        snackbarSuccess.show();
+                        // update database entry
+                        contactManager.updateContact(id, firstName, lastName, title, country, gender);
+
+                        // replace the audio files
+                        String original = FileUtils.PATH + id + ".3gp";
+                        String replacement = FileUtils.PATH + id + "_undo.3gp";
+                        FileUtils.replaceFile(original, replacement);
+
+
+                        // replace the audio files
+                        original = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + ".3gp";
+                        replacement = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
+                        FileUtils.replaceFile(original, replacement);
+
+                        // replace the audio files
+                        original = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + ".3gp";
+                        replacement = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
+                        FileUtils.replaceFile(original, replacement);
+
+                        firstName = data.getStringExtra("undoFirst");
+                        lastName = data.getStringExtra("undoLast");
+                        title = data.getStringExtra("undoTitle");
+                        country = data.getStringExtra("undoCountry");
+                        gender = data.getStringExtra("undoGender");
+
+                        // update views
+                        setText();
+                    }
+                });
+
+
+        snackbar.setCallback(new Snackbar.Callback() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                switch (i) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        Log.i("hit OK", "user hit delete");
-                        contactManager.deleteContact(idF);
-                        break;
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        Log.i("deleted", "User dismissed the dialog");
-                        dialogInterface.dismiss();
-                        break;
-                    default:
-                        break;
+            public void onDismissed(Snackbar snackbar, int event) {
+                // delete the temporary undo file
+                String action = data.getStringExtra("action");
+                if (action != null && action.equals("edit")) {
+                    FileUtils.deleteFile(FileUtils.PATH + id + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + undoFirstName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
+                    FileUtils.deleteFile(FileUtils.PATH + undoLastName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
                 }
             }
-        };
-        alertBuilder.setMessage(message);
-        alertBuilder.setPositiveButton("YES", dialogClickListener);
-        alertBuilder.setNegativeButton("NO", dialogClickListener);
-        alertBuilder.show();
+        });
+
+        snackbar.show();
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//From here on different declarations take place
 
-    /**
-     * connects the gender images to following ImageViews: genderSign, maleImage, unkownSexImage
-     */
-    private void findViewByIdImageView() {
-        genderSign = (ImageView) findViewById(R.id.gender_sign);
-    }
-
-    /**
-     * connects the gender images to the following RadioButtons: femaleRadioButton, maleRadioButton, unknownSexRadioButton
-     */
-    private void findViewByIdRadioButton() {
-        femaleRadioButton = (RadioButton) findViewById(R.id.female_radioButton);
-        maleRadioButton = (RadioButton) findViewById(R.id.male_radioButton);
-        unknownSexRadioButton = (RadioButton) findViewById(R.id.unkown_radioButton);
-    }
-
-    /**
-     * connects the ImageButtons on the bottom of the display to the following imageButtons
-     * confirmButton, cancelButton, recordButton, editButton, deleteButton, confirmButton, playButton
-     */
-    private void findViewByIdImageButton() {
-        confirmButton = (ImageButton) findViewById(R.id.confirm_button);
-        cancelButton= (ImageButton) findViewById(R.id.cancel_button);
-        recordButton= (ImageButton) findViewById(R.id.record_button);
-        editButton = (ImageButton) findViewById(R.id.edit_button);
-        deleteButton = (ImageButton) findViewById(R.id.delete_button);
-        confirmButton = (ImageButton) findViewById(R.id.confirm_button);
-        playButton = (ImageButton) findViewById(R.id.play_button);
-    }
-
-    /**
-     * connects all EditTexts from layout to the following EditTexts
-     * firstNameEdit, lastNameEdit, titleEditm countryEdit
-     */
-    private void findViewByIdEditButton() {
-        firstNameEdit = (EditText) findViewById(R.id.first_edit);
-        lastNameEdit = (EditText) findViewById(R.id.last_edit);
-        countryEdit = (EditText) findViewById(R.id.country_edit);
-        titleEdit = (EditText) findViewById(R.id.title_edit);
-    }
-
-    /**
-     * connects all TextView from layout to the following TextViews
-     * firstNameText, lastNameText, titleText, countryText
-     */
-    private void findViewByIdTextView() {
-        firstNameText = (TextView) findViewById(R.id.real_first_name);
-        lastNameText = (TextView) findViewById(R.id.real_last_name);
-        countryText = (TextView) findViewById(R.id.real_country);
-        titleText= (TextView) findViewById(R.id.real_title);
-    }
-
-    /**
-     * sets GUI components which are used for edit mode to visible and the rest (components for view mode) to invisible
-     */
-    private void setEditLayout() {
-
-        firstNameText.setVisibility(View.INVISIBLE);
-        lastNameText.setVisibility(View.INVISIBLE);
-        countryText.setVisibility(View.INVISIBLE);
-        titleText.setVisibility(View.INVISIBLE);
-
-        deleteButton.setVisibility(View.INVISIBLE);
-        playButton.setVisibility(View.INVISIBLE);
-        editButton.setVisibility(View.INVISIBLE);
-
-        genderSign.setVisibility(View.INVISIBLE);
-
-        cancelButton.setVisibility(View.VISIBLE);
-        recordButton.setVisibility(View.VISIBLE);
-        confirmButton.setVisibility(View.VISIBLE);
-
-        firstNameEdit.setVisibility(View.VISIBLE);
-        lastNameEdit.setVisibility(View.VISIBLE);
-        countryEdit.setVisibility(View.VISIBLE);
-        titleEdit.setVisibility(View.VISIBLE);
-
-
-        femaleRadioButton.setVisibility(View.VISIBLE);
-        maleRadioButton.setVisibility(View.VISIBLE);
-        unknownSexRadioButton.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * sets GUI components which are used for view mode to visible and the rest (components for edit mode) to invisible
-     */
-    private void setViewLayout(){
-
-        firstNameEdit.setVisibility(View.INVISIBLE);
-        lastNameEdit.setVisibility(View.INVISIBLE);
-        countryEdit.setVisibility(View.INVISIBLE);
-        titleEdit.setVisibility(View.INVISIBLE);
-
-        femaleRadioButton.setVisibility(View.INVISIBLE);
-        maleRadioButton.setVisibility(View.INVISIBLE);
-        unknownSexRadioButton.setVisibility(View.INVISIBLE);
-
-        cancelButton.setVisibility(View.INVISIBLE);
-        recordButton.setVisibility(View.INVISIBLE);
-        confirmButton.setVisibility(View.INVISIBLE);
-
-        firstNameText.setVisibility(View.VISIBLE);
-        lastNameText.setVisibility(View.VISIBLE);
-        countryText.setVisibility(View.VISIBLE);
-        titleText.setVisibility(View.VISIBLE);
-
-        deleteButton.setVisibility(View.VISIBLE);
-        playButton.setVisibility(View.VISIBLE);
-        editButton.setVisibility(View.VISIBLE);
-
-        genderSign.setVisibility(View.VISIBLE);
-
-        //checking which radio button is checked in order to update the gender symbol if needed
-        if (femaleRadioButton.isChecked()) {
-            genderSign.setImageResource(R.drawable.pregnant_woman);
-        } else if (maleRadioButton.isChecked()) {
-            genderSign.setImageResource(R.drawable.running_man);
-        } else if (unknownSexRadioButton.isChecked()) {
-            genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
-        }
-    }
 }

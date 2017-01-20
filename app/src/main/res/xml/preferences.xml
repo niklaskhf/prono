@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference android:key="edit_text_preference_server_address" android:title="test"/>
+    <SwitchPreference android:key="switch_preference_bat" android:title="change these to @string in preferences.xml"/>
+    <SwitchPreference android:key="switch_preference_comm" android:title="please dont forget this"/>
+    <SwitchPreference android:key="switch_preference_dev_mode" android:title="oh god this is awful" android:defaultValue="true"/>
+
+</PreferenceScreen>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--ContanctEditor strings-->
+    <string name="fistName">Vorname</string>
+    <string name="first">Vorname</string>
+    <string name="lastName">Nachname</string>
+    <string name="last">Nachname</string>
+    <string name="title">Titel</string>
+    <string name="country">Land</string>
+    <string name="gender">Geschlecht</string>
+    <string name="female">weiblich</string>
+    <string name="male">maenlich</string>
+    <string name="unknown">ungewiss</string>
+    <!--ContanctEditor strings-->
+
+</resources>

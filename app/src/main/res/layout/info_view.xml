@@ -4,19 +4,19 @@
     android:layout_height="match_parent">
 
     <Button
-        android:text="App Description"
+        android:text="@string/app_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/app_description_button" />
 
     <Button
-        android:text="Authors"
+        android:text="@string/authors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/authors_button" />
 
     <Button
-        android:text="Legales"
+        android:text="@string/legals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button3" />

@@ -12,7 +12,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
-    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Zweit-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
+    - [ ] Audio-Aufnahme der Aussprache kann mit der Angabe des Titel, Namen (Vor-/Nachname) und der Region (mind. Land), sowie Geschlecht gespeichert werden
     - [ ] Die Audio-Aufnahme muss nach dem vollständigen Schließen der App gespeichert bleiben
     - [ ] Die gespeicherten Audio-Aufnahmen können in der App abgespielt werden
 
@@ -43,6 +43,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Temporäre Aufnahme erstellen
     - Temporäre Aufnahme speichern
     - Temporäre Aufnahme verwerfen
+    - Temporäre Aufnahme akzeptieren
     - Temporäre Aufnahme abspielen
 
 
@@ -72,7 +73,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -83,7 +84,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 ### Task 3 *Aufnahme stoppen*
@@ -92,7 +93,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -108,13 +109,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 20
 - Akzeptanztests:
     - [ ] Aufnahme ist nicht mehr vorhanden
-    - [ ] Aufforderung zu neuer Aufnahme
 
 
 - Enthaltene Tasks:
     - Verwerfen-Button klicken
-    - Verwerfen bestätigen
-
 
 
 
@@ -124,20 +122,10 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunde
 
 
 
-
-
-
-### Task 2 *Verwerfen bestätigen*
-
-> Als *Vertriebsmitarbeiter* möchte ich *auf den Verwerfen-bestätigen Button klicken*, um *sicher zu gehen, dass man sich zuvor nicht aus versehen auf verwerfen geklickt hat*.
-
-
-- Aufwandsschätzung: 3 Stunden 
-- Tatsächliche Zeit:
 
 
 
@@ -162,7 +150,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -189,7 +177,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -214,8 +202,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *auf den Play-Button klicken*, um *überprüfen zu können, ob die Aufnahme den Erwartungen entspricht*.
 
 
-- Aufwandsschätzung:  Stunden 
-- Tatsächliche Zeit:
+- Aufwandsschätzung: 2 Stunden 
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -235,7 +223,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ### Feature 2 *Eintrag erstellen*
 
 
-> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Zweit-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
+> Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag mit Titel, Vor-/Nachnamen, Geschlecht, Aussprache und Land erstellen*, um *die Informationen später verfügbar zu haben*.
 
 
 - Aufwandsschätzung: L 
@@ -248,8 +236,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Editor öffnen 
     - Informationen eingeben
     - Eintrag speichern
-    - Aufnahme speichern, siehe Implementable Story 'Temporäre Aufnahme erstellen'
  
+
 ### Implementable Story 1 *Editor öffnen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *den Editor öffnen*, um *einen neuen Eintrag zu erstellen*.
@@ -272,7 +260,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -298,7 +286,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -330,7 +318,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 12 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -365,6 +353,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Eintrag öffnen
     - Eintrag schließen
     
+
 ### Implementable Story 1 *Einträge in Liste anzeigen*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die existierenden Einträge in einer Liste sehen*, um *sie öffnen zu können*.
@@ -387,7 +376,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -416,7 +405,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -443,7 +432,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -501,7 +490,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *einen Eintrag in der angezeigten Liste finden*, um *die dazugehörige Aussprache abspielen zu können*.
 
 - Aufwandsschätzung: 1 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -512,7 +501,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -562,11 +551,11 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: XL
 - Akzeptanztests: 
-   - [ ] Audio-Aufnahmen können nach Namen dursucht werden
-   - [ ] Audio-Aufnahmen können erstellt werden, siehe Epic 1
-   - [ ] Audio-Aufnahmen können gelöscht werden
-   - [ ] Audio-Aufnahmen können bearbeitet werden (Name/Land/... und Aufnahme selbst)
-   - [ ] Audio-Aufnahmen können gefiltert werden
+   - [ ] Kontakte können nach Namen durchsucht werden
+   - [ ] Kontakte können erstellt werden, siehe Epic 1
+   - [ ] Kontakte können gelöscht werden
+   - [ ] Kontakte können bearbeitet werden (Name/Land/... und Aufnahme selbst)
+   - [ ] Kontakte können gefiltert werden
    - [ ] Oberflächensprache kann angepasst werden
    - [ ] Favoriten können verwalten werden
    - [ ] Editier/Lösch-Aktionen können rückgängig gemacht werden
@@ -579,7 +568,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 ### Feature 5 *Eintrag editieren*
 
 
-> Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Zweit-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
+> Als *Vertriebsmitarbeiter* möchte ich *in einem existierenden Eintrag gespeicherte Informationen Titel, (Vor-/Nachname, Geschlecht, Land und Aussprache) edtieren*, um *die Informationen zu aktualisieren*.
 
 
 - Aufwandsschätzung: M
@@ -588,7 +577,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Enthaltene Implementable Stories:
-    - Eintrag öffnen, siehe Feature 'Eintrag einsehen'
     - Editiermodus starten
     - Informationen ändern
     - Eintrag speichern
@@ -615,7 +603,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -627,8 +615,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 15
 - Akzeptanztests:
-
-
     - [ ] Die Eingabefelder zeigen veränderte Informationen an
     - [ ] Die geänderten Informationen befinden sich im flüchtigen Speicher 
 
@@ -644,7 +630,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 3 Stunden 
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 ### Task 2 *Aussprache ändern*
@@ -653,7 +639,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -677,7 +663,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *den Save-Button klicken*, um *den aktualisierten Eintrag zu speichern*.
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -731,17 +717,17 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 6 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 4 Stunden
 
 
-# Task 2 *Löschen bestätigen*
+### Task 2 *Löschen bestätigen*
 
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Löschvorgang bestätigen müssen*, um *den Eintrag nicht aus Versehen gelöscht zu haben*.
 
 
 - Aufwandsschätzung: 2 Stunden 
-- Tatsächliche Zeit:
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -806,7 +792,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden 
 
 
 
@@ -817,7 +803,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 8 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -848,7 +834,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -960,7 +946,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
     - Einträge nach Kriterium filtern
 
 
-### Implementable Story 2 *Einträge nach Kriterium filtern*
+### Implementable Story 1 *Einträge nach Kriterium filtern*
  
 > Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach einem Kriterium filtern*, um *nur gewünschte Einträge angezeigt zu bekommen*.
 
@@ -973,7 +959,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Einträge nach Land filtern
     - Einträge nach Geschlecht filtern
-    - Einträge nach Favoriten filtern, siehe Feature 'Favoriten verwalten'
 
 
 
@@ -1140,7 +1125,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Aufwandsschätzung: 20
 - Akzeptanztests: 
     - [ ] Der ausgewählte Eintrag ist als Favorit markiert
-    - [ ] Der Favorite-Button des Eintrags ist gelb
+    - [ ] Der Favorite-Button des Eintrags ist ausgefüllt
     
 - Enthaltene Tasks:
     - Favorite-Button klicken     
@@ -1154,7 +1139,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -1182,7 +1167,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 

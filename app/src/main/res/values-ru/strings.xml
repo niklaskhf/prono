@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--ContanctEditor strings-->
+    <string name="fistName">Имя</string>
+    <string name="first">Имя</string>
+    <string name="lastName">Фамилия</string>
+    <string name="last">Фамилия</string>
+    <string name="title">Заглавие</string>
+    <string name="country">Страна</string>
+    <string name="gender">Пол</string>
+    <string name="female">женский</string>
+    <string name="male">мужской</string>
+    <string name="unknown">неизвестный</string>
+    <!--ContanctEditor strings-->
+
+    <!--Setting-->
+    <string name="language">Язык</string>
+    <string name="backup">Резервное копирование</string>
+    <string name="imports">Импорт</string>
+    <!--Setting-->
+
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>русский</item>
+        <item>Türk</item>
+    </string-array>
+    <!--Spinner-->
+
+    <!--Info-->
+    <string name="app_description">Описание приложения</string>
+    <string name="authors">Авторы</string>
+    <string name="legals">Юридическая</string>
+    <!--Info-->
+
+    <!--Navigation Drawer-->
+    <string-array name="drawer">
+        <item>Фавориты</item>
+        <item>Настройки</item>
+        <item>Про нас</item>
+    </string-array>
+    <!--Navigation Drawer-->
+
+    <!--Notifications-->
+    <string name="missingKeyEntries">Фамилия и либо общие запись ими/фамилии или пользовательские запись произношении необходимы.
+        Пожалуйста, введите имя или запишити произношение.</string>
+
+    <string name="keepNamePronunciation">Вы хотите оставить родовое имя произношение по отношению к стране?</string>
+    <string name="emptyNameRecordError">Вы не можете записать для пустого имени.</string>
+    <string name="contactDeleted">Контакт удален</string>
+    <string name="contactRestored">Контакт востановлен</string>
+    <string name="contactEdited">Контакт изменен</string>
+    <string name="UNDO">ОБРАТНО</string>
+    <!--Notifications-->
+
+</resources>
