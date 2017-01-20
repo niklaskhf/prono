@@ -375,9 +375,7 @@ public class NewContactActivity extends AppCompatActivity {
     public void confirmRequirementsDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
-        alertDialog.setMessage("The last name and either generic recordings of the first/last name, " +
-                "or a custom recording of the pronunciation are required.\n\n" +
-                "Please enter the name/record a pronunciation.");
+        alertDialog.setMessage(getText(R.string.missingKeyEntries));
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

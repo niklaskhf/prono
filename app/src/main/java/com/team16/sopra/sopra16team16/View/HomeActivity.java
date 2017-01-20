@@ -9,7 +9,9 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -42,13 +45,14 @@ import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.R;
 
+import java.util.Locale;
+
 
 /**
  * HomeActivity
  * Contains methods for initializing the various elements
  */
 public class HomeActivity extends AppCompatActivity {
-    private String[] mOptionsDummy = new String[]{"Favorites", "Settings", "About"};
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ContactManager contactManager;
@@ -62,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
     private int mode;
     private MenuItem searchItem;
     private ArrayAdapter<String> drawerAdapter;
+    private String updatedLanguage;
 
 
 
@@ -85,6 +90,9 @@ public class HomeActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_home);
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
+
+        // if app language differs from default language
+        initializeNewChosenLanguage();
 
         // initialize Toolbar
         initializeToolbar();
@@ -216,7 +224,7 @@ public class HomeActivity extends AppCompatActivity {
         // populate the drawer ListView
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        drawerAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mOptionsDummy);
+        drawerAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, getResources().getStringArray(R.array.drawer));
         mDrawerList.setAdapter(drawerAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -285,6 +293,28 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void initializeNewChosenLanguage() {
+        SharedPreferences myLanguagePreference = getSharedPreferences("getLanguage", Context.MODE_PRIVATE);
+        if (myLanguagePreference.getString("updatedLanguage",null) != null) {
+            updatedLanguage = myLanguagePreference.getString("updatedLanguage",null);
+        }
+        if ((updatedLanguage != null)) {
+            setLocale(updatedLanguage, HomeActivity.this.getResources());
+        }
+    }
+
+    /**
+     * changes app language
+     * @param lang
+     * @param res
+     */
+    public void setLocale(String lang, Resources res) {
+        DisplayMetrics dm = res.getDisplayMetrics();
+        android.content.res.Configuration conf = res.getConfiguration();
+        conf.locale = new Locale(lang);
+        res.updateConfiguration(conf, dm);
     }
 
     @Override

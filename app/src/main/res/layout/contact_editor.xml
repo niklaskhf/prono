@@ -23,7 +23,7 @@
 
 
             <TextView
-                android:text="First Name"
+                android:text="@string/firstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/first_text"
@@ -45,11 +45,11 @@
 
 
              <TextView
-                 android:text="Last Name"
+                 android:text="@string/lastName"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:id="@+id/last_text"
-                 android:textSize="18dp"/>
+                 android:textSize="18sp"/>
 
              <EditText
                  android:layout_width="wrap_content"
@@ -61,11 +61,11 @@
      </LinearLayout>
 
     <TextView
-        android:text="Title"
+        android:text="@string/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_text"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -75,11 +75,11 @@
         android:id="@+id/title_edit"/>
 
     <TextView
-        android:text="Country"
+        android:text="@string/country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/country_text"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -89,11 +89,11 @@
         android:id="@+id/country_edit"/>
 
     <TextView
-        android:text="Gender"
+        android:text="@string/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gender_text"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <RelativeLayout
         android:id="@+id/gender_relative_layout"
@@ -112,20 +112,20 @@
 
             <RadioButton
                 android:id="@+id/female_radioButton"
-                android:text="female"
+                android:text="@string/female"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
 
             <RadioButton
                 android:layout_toEndOf="@+id/female_radioButton"
-                android:text="male"
+                android:text="@string/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/male_radioButton"/>
 
             <RadioButton
                 android:id="@+id/unkown_radioButton"
-                android:text="unkown"
+                android:text="@string/unknown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
