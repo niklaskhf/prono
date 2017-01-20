@@ -60,5 +60,5 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
         android:paddingLeft="10dp"
-        android:background="@color/colorPrimary" />
+        android:background="#5f91e2" />
 </android.support.v4.widget.DrawerLayout>
