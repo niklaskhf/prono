@@ -18,11 +18,15 @@ public class Sorter {
         }
     }
 
+    private Sorter() {
+
+    }
+
     public static String getDirection() {
         return direction;
     }
 
-    public static String getsortedBy() {
+    public static String getSortedBy() {
         return sortedBy;
     }
 

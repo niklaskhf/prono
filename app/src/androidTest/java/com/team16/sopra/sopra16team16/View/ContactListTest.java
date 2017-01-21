@@ -31,6 +31,7 @@ import static org.junit.Assert.assertTrue;
 public class ContactListTest {
 
     private ContactManager contactManager;
+    //überprüfe, ob aktivität gestartet wurde
     Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(ContactViewerActivity.class.getName(), null, false);
     @Rule
     public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
@@ -62,7 +63,7 @@ public class ContactListTest {
                 .onChildView(withId(R.id.contact_fav))
                 .perform(click());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Cursor cursor;
@@ -82,7 +83,7 @@ public class ContactListTest {
                 .perform(click());
 
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Cursor cursor;

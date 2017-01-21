@@ -82,15 +82,23 @@ public class QueryBuilder {
         if(filter.getCountry() != null) {
             result += " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
         }
-        if(filter.getGender() != null) {
-            result += " AND " + ContactManager.COLUMN_GENDER + " = '" + filter.getGender() + "'";
+
+        if(filter.getGenderList().size() == 0) return result;
+
+        result += " AND (" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
+
+        for(int i = 1; i < filter.getGenderList().size(); ++i) {
+            result += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
         }
+
+        result += ")";
+
         return result;
     }
 
     private String buildSorterExpression(Sorter sorter) {
         String result;
-        result = " ORDER BY " + sorter.getsortedBy() + " " + sorter.getDirection();
+        result = " ORDER BY " + sorter.getSortedBy() + " " + sorter.getDirection();
         return result;
     }
 }

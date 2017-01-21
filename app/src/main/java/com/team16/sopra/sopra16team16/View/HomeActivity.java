@@ -34,6 +34,8 @@ import android.widget.ListView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Filter;
+import com.team16.sopra.sopra16team16.Controller.Sorter;
 import com.team16.sopra.sopra16team16.R;
 
 
@@ -76,6 +78,10 @@ public class HomeActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_home);
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
+
+        //initialize Sorter and Filter
+        Filter filter = Filter.getCurrentInstance();
+        Sorter sorter = Sorter.getCurrentInstance();
 
         // initialize Toolbar
         initializeToolbar();
