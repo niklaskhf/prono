@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Sorting options:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sort_text"
+        android:textSize="24sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+        <TextView
+            android:text="First Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_text"
+            android:textSize="18sp"/>
+
+
+
+        <RadioButton
+            android:id="@+id/first_ASC_radioButton"
+            android:text="A-Z"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <RadioButton
+            android:layout_toEndOf="@+id/first_ASC_radioButton"
+            android:text="Z-A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/first_DESC_radioButton"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+        <TextView
+            android:text="Last Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/last_text"
+            android:textSize="18sp"/>
+
+        <RadioButton
+            android:id="@+id/last_ASC_radioButton"
+            android:text="A-Z"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:checked="true"/>
+
+        <RadioButton
+            android:layout_toEndOf="@+id/last_ASC_radioButton"
+            android:text="Z-A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/last_DESC_radioButton"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/empty"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:text="Filter options:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/filter_text"
+        android:textSize="24sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Gender:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gender_text"
+            android:textSize="18sp"/>
+
+        <RadioButton
+            android:id="@+id/female_radioButton"
+            android:text="female"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+        <RadioButton
+            android:layout_toEndOf="@+id/female_radioButton"
+            android:id="@+id/male_radioButton"
+            android:text="male"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+
+            />
+
+        <RadioButton
+            android:id="@+id/unknown_radioButton"
+            android:text="unknown"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Country:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/country_text"
+            android:textSize="18sp"/>
+
+
+        <Spinner
+            android:id="@+id/country_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -513,4 +513,10 @@ public class HomeActivity extends AppCompatActivity {
         mDrawerList.clearChoices();
     }
 
+    public void openFilter(View view) {
+        Intent intent = new Intent(this, FilterActivity.class);
+        startActivity(intent);
+        return;
+    }
+
 }

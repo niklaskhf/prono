@@ -14,10 +14,12 @@ public class QueryBuilderTest {
     public void buildSearchQueryTest() {
         String[] cols = new String[]{"test"};
         QueryBuilder queryBuilder = new QueryBuilder(cols);
+        Filter filter = Filter.getCurrentInstance();
+        Sorter sorter = Sorter.getCurrentInstance();
 
-        String testQueryNo = queryBuilder.buildSearchQuery("");
-        String testQueryOne = queryBuilder.buildSearchQuery("hello");
-        String testQueryMultiple = queryBuilder.buildSearchQuery("how are you");
+        String testQueryNo = queryBuilder.buildSearchQuery("", filter, sorter);
+        String testQueryOne = queryBuilder.buildSearchQuery("hello", filter, sorter);
+        String testQueryMultiple = queryBuilder.buildSearchQuery("how are you", filter, sorter);
 
 
         String expectedQueryNo =

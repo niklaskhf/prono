@@ -33,6 +33,10 @@
             android:label="ConctactViewer"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".View.FilterActivity"
+            android:label="Filter">
+        </activity>
     </application>
 
 </manifest>
