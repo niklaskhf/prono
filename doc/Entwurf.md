@@ -38,11 +38,11 @@ Weiterhin wird von der Komponente MainView, durch Auswahl eines Kontaktes, der Z
 ## Komponente 2: ContactView
 Die ContactView ist zuständig für die Darstellung und Verwaltung eines ausgewählten Kontakts.
 Diese wird aufgeteilt in zwei GUI-Komponenten. 
- - Die ContactViewerActivity
+Die ContactViewerActivity:
  - Bessere Übersicht des ausgewählten Kontakts
  - Zugriff auf die Verwaltung des ausgewählten Kontakts
 
-Die NewContactActivity
+Die NewContactActivity:
  - Möglichkeit zur Verwaltung von
     1. Name/Nachname
     2. Titel
