@@ -60,7 +60,6 @@ public class HomeActivity extends AppCompatActivity {
     private MenuItem searchItem;
     private ArrayAdapter<String> drawerAdapter;
     private String updatedLanguage;
-    private SharedPreferences myLanguagePreference;
 
     // Storage Permissions
     private static final int REQUEST_ALL = 0;
@@ -85,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
-        // if app language differs from default language
+        // initialize app language if manually changed in settings
         initializeNewChosenLanguage();
 
         // initialize Toolbar
@@ -202,7 +201,6 @@ public class HomeActivity extends AppCompatActivity {
         myToolbar.setSubtitle("");
         myToolbar.setNavigationIcon(R.drawable.ic_drawer);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -253,8 +251,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *  initializes the custom app language
+     */
     public void initializeNewChosenLanguage() {
 
+        //gets the saved string from SharedPreferences for updating the Locale
         SharedPreferences myLanguagePreference = getSharedPreferences("getLanguage", Context.MODE_PRIVATE);
         if (myLanguagePreference.getString("updatedLanguage",null) != null) {
             updatedLanguage = myLanguagePreference.getString("updatedLanguage",null);

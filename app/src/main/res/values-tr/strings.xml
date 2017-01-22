@@ -1,18 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Prono</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="action_settings">Settings</string>
+    <string name="contactsFileKey">contactsList</string>
+
+    <!--Navigation Drawer-->
+    <string-array name="drawer">
+        <item>Favoriler</item>
+        <item>Ayarlar</item>
+        <item>hakkında</item>
+    </string-array>
+    <!--Navigation Drawer-->
+
+    <!--contact strings-->
+    <string name="fistName">İsim</string>
+    <string name="first">İsim</string>
+    <string name="lastName">Soyadi</string>
+    <string name="last">Soyadi</string>
+    <string name="title">Başlık</string>
+    <string name="country">Ülke</string>
+    <string name="gender">Cinsiyet</string>
+    <string name="female">kadın</string>
+    <string name="male">erkek</string>
+    <string name="unknown"> bilinmeyen</string>
     <!--ContanctEditor strings-->
-    <string name="fistName">Vorname</string>
-    <string name="first">Vorname</string>
-    <string name="lastName">Nachname</string>
-    <string name="last">Nachname</string>
-    <string name="title">Titel</string>
-    <string name="country">Land</string>
-    <string name="gender">Geschlecht</string>
-    <string name="female">weiblich</string>
-    <string name="male">maenlich</string>
-    <string name="unknown">ungewiss</string>
-    <!--ContanctEditor strings-->
+
+    <!--Setting-->
+    <string name="language">Dil</string>
+    <string name="backup">Yedek</string>
+    <string name="imports">Inthalat</string>
+    <!--Setting-->
+
+    <!--Spinner-->
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>русский</item>
+        <item>Türk</item>
+    </string-array>
+    <!--Spinner-->
+
+    <!--Info-->
+    <string name="app_description">Uygulama açıklaması</string>
+    <string name="authors">Yazarlar</string>
+    <string name="legals">Yasalardan</string>
+    <!--Info-->
+
+    <!--Notifications-->
+    <string name="missingKeyEntries">The last name and either generic recordings of the first/last name
+        or a custom recording of the pronunciation are required.
+        Please enter the name/record a pronunciation.</string>
+
+    <string name="keepNamePronunciation">Do you want to keep the generic name pronunciation in relation to the country?</string>
+    <string name="emptyNameRecordError">You can\'t record for an empty name.</string>
+    <string name="contactDeleted">Bir kişiyi sildi</string>
+    <string name="contactRestored">Bir kişiyi geri yükledi</string>
+    <string name="contactEdited">Bir kişiyi düzenledi</string>
+    <string name="UNDO">UNDO</string>
+    <!--Notifications-->
 
 </resources>
