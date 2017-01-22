@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Prono</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="contactsFileKey">contactsList</string>
+
+    <!--Navigation Drawer-->
+    <string-array name="drawer">
+        <item>Favorites</item>
+        <item>Settings</item>
+        <item>About</item>
+    </string-array>
+    <!--Navigation Drawer-->
+
+    <!--contact strings-->
+    <string name="firstName">First Name</string>
+    <string name="first">First</string>
+    <string name="lastName">Last Name</string>
+    <string name="last">Last</string>
+    <string name="title">Title</string>
+    <string name="country">Country</string>
+    <string name="gender">Gender</string>
+    <string name="female">female</string>
+    <string name="male">male</string>
+    <string name="unknown">unknown</string>
+    <!--ContanctEditor strings-->
+
+    <!--Setting-->
+    <string name="language">Language</string>
+    <string name="backup">Backup</string>
+    <string name="imports">Import</string>
+    <!--Setting-->
+
+    <!--Spinner-->
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>русский</item>
+        <item>Türk</item>
+    </string-array>
+    <!--Spinner-->
+
+    <!--Info-->
+    <string name="app_description">App Description</string>
+    <string name="authors">Authors</string>
+    <string name="legals">Legals</string>
+    <!--Info-->
+
+    <!--Notifications-->
+    <string name="missingKeyEntries">The last name and a recording of the pronunciation are required.
+        \n\nPlease enter the name/record a pronunciation.</string>
+
+    <string name="keepNamePronunciation">Do you want to keep the generic name pronunciation in relation to the country?</string>
+    <string name="emptyNameRecordError">You can\'t record for an empty name.</string>
+    <string name="contactDeleted">Deleted a contact</string>
+    <string name="contactRestored">Restored a contact</string>
+    <string name="contactEdited">Edited a contact</string>
+    <string name="UNDO">UNDO</string>
+
+    <!--Notifications-->
+
+</resources>

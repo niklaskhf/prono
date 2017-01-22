@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--ContanctEditor strings-->
+    <string name="firstName">Vorname</string>
+    <string name="first">Vorname</string>
+    <string name="lastName">Nachname</string>
+    <string name="last">Nachname</string>
+    <string name="title">Titel</string>
+    <string name="country">Land</string>
+    <string name="gender">Geschlecht</string>
+    <string name="female">weiblich</string>
+    <string name="male">männlich</string>
+    <string name="unknown">unbekannt</string>
+    <!--ContanctEditor strings-->
+
+    <!--Setting-->
+    <string name="language">Sprache</string>
+    <string name="backup">Backup</string>
+    <string name="imports">Import</string>
+    <!--Setting-->
+
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>русский</item>
+        <item>Türk</item>
+    </string-array>
+    <!--Spinner-->
+
+    <!--Info-->
+    <string name="app_description">App Beschreibung</string>
+    <string name="authors">Autoren</string>
+    <string name="legals">Legales</string>
+    <!--Info-->
+
+    <!--Navigation Drawer-->
+    <string-array name="drawer">
+        <item>Favoriten</item>
+        <item>Einstellungen</item>
+        <item>Über uns</item>
+    </string-array>
+    <!--Navigation Drawer-->
+
+    <!--Notifications-->
+    <string name="missingKeyEntries">Der Nachname undeine Aufzeichnung der Aussprache sind erforderlich
+        \n\nBitte geben Sie den Namen ein oder nehmen Sie eine Aussprache auf.</string>
+
+    <string name="keepNamePronunciation">Möchten Sie die geneische Namensaussprache in Relation zu den Ländern beibehalten?.</string>
+    <string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string>
+    <string name="contactDeleted">Kontakt gelöscht</string>
+    <string name="contactRestored">Kontakt wiederhergestellt</string>
+    <string name="contactEdited">Kontakt geändert</string>
+    <string name="UNDO">RÜCKGÄNGIG</string>
+
+
+    <!--Notifications-->
+
+
+</resources>
