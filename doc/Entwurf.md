@@ -43,12 +43,12 @@ Diese wird aufgeteilt in zwei GUI-Komponenten.
  - Zugriff auf die Verwaltung des ausgewählten Kontakts
 
 Die NewContactActivity
-Möglichkeit zur Verwaltung von
-Name/Nachname
-Titel
-Land
-Geschlecht
-Aussprache
+ - Möglichkeit zur Verwaltung von
+    1. Name/Nachname
+    2. Titel
+    3. Land
+    4. Geschlecht
+    5. Aussprache
 
 Die Komponente bietet selbst keine Interfaces an, verwendet jedoch drei externe Interfaces:
  - ContactManager aus DataController: Erstellung/Bearbeitung/Löschen von Kontaktdaten
