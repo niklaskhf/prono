@@ -11,6 +11,9 @@ import com.team16.sopra.sopra16team16.R;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Player contains methods for playing stored audio
+ */
 
 public class Player {
 
@@ -24,12 +27,18 @@ public class Player {
 
     private boolean is_playing = false;
 
+    /**
+     * there has to be a constructor
+     */
     public Player() {
+
     }
 
 
     /**
-     * Gibt die Aufnahme des Namens aus
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton
      */
     public void startPlaying(int id, final ImageButton playButton) {
         changeStatus(true);
@@ -56,7 +65,9 @@ public class Player {
     }
 
     /**
-     * Gibt die Aufnahme des Namens aus
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton
      */
     public void startPlaying(String id, final ImageButton playButton) {
         changeStatus(true);
@@ -86,7 +97,9 @@ public class Player {
 
 
     /**
-     * Gibt die Aufnahme des Namens aus
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton
      */
     public void startPlaying(int id, final FloatingActionButton playButton) {
         changeStatus(true);
@@ -113,8 +126,9 @@ public class Player {
     }
 
 
-    /*
-     * Stopt die Wiedergabe des Namens
+    /**
+     * stop playing an audio file
+     * @param playButton
      */
     public void stopPlaying(FloatingActionButton playButton) {
         playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
@@ -123,8 +137,9 @@ public class Player {
         player = null;
     }
 
-    /*
-     * Stopt die Wiedergabe des Namens
+    /**
+     * stop playing an audio file
+     * @param playButton
      */
     public void stopPlaying(ImageButton playButton) {
         playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
@@ -133,12 +148,19 @@ public class Player {
         player = null;
     }
 
+    /**
+     * returns, whether an audio file is played
+     * @return true if an audio file is played, false otherwise
+     */
     public boolean isPlaying() {
         return is_playing;
     }
 
+    /**
+     * Change the status of the Recorder
+     * @param status true if an audio file is played, false otherwise
+     */
     public void changeStatus(boolean status) {
         is_playing = status;
     }
-
 }

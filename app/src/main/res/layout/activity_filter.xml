@@ -94,19 +94,19 @@
             android:text="Gender:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/gender_text"
+            android:id="@+id/gender"
             android:textSize="18sp"/>
 
         <RadioButton
             android:id="@+id/female_radioButton"
-            android:text="female"
+            android:text="@string/female"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
 
         <RadioButton
             android:layout_toEndOf="@+id/female_radioButton"
             android:id="@+id/male_radioButton"
-            android:text="male"
+            android:text="@string/male"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
 
@@ -114,7 +114,7 @@
 
         <RadioButton
             android:id="@+id/unknown_radioButton"
-            android:text="unknown"
+            android:text="@string/unknown"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
 
@@ -133,6 +133,37 @@
             android:layout_height="wrap_content"
             android:id="@+id/country_text"
             android:textSize="18sp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/country_disabled_radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country_disabled_radioButton" />
+
+            <RadioButton
+                android:id="@+id/country_enabled_radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/country_enabled_radioButton"/>
+
+
+        </RadioGroup>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal">
 
 
         <Spinner

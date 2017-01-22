@@ -62,4 +62,11 @@
 
     <!--Notifications-->
 
+    <!--Filter-->
+
+    <string name="country_enabled_radioButton">on</string>
+    <string name="country_disabled_radioButton">off</string>
+
+    <!--Filter-->
+
 </resources>

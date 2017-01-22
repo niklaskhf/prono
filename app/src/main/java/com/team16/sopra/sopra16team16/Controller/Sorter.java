@@ -9,6 +9,10 @@ public class Sorter {
     private static String sortedBy = ContactManager.COLUMN_LASTNAME;
     private static Sorter currentInstance;
 
+    /**
+     * There is only one Instance of Sorter
+     * @return the only instance of Sorter
+     */
     public static Sorter getCurrentInstance() {
         if (currentInstance == null) {
             currentInstance = new Sorter();
@@ -18,10 +22,17 @@ public class Sorter {
         }
     }
 
+    /**
+     * There has to be a constructor
+     */
     private Sorter() {
 
     }
 
+    /**
+     * returns the direction, in which the contact should be sorted
+     * @return "ASC" for ascended, "DESC" for descended
+     */
     public static String getDirection() {
         return direction;
     }

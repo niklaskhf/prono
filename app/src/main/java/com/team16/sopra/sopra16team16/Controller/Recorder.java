@@ -27,11 +27,7 @@ import java.io.IOException;
 import static android.os.Looper.getMainLooper;
 
 /**
- * Created by Martin on 17.11.2016.
- */
-
-/**
- * Recorder
+ * Recorder contains method for recording audio
  */
 public class Recorder {
 
@@ -65,7 +61,7 @@ public class Recorder {
 
 
     /**
-     * Startet Recorder
+     * Starts recording
      * * @param id id from the contact is the same as the id from the file
      */
     public void startRecording(int id, final FloatingActionButton actionButton, final Context context) {
@@ -113,8 +109,8 @@ public class Recorder {
         actionButton.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
     }
 
-    /*
-     * Stoppt die Aufnahme des Namens
+    /**
+     * Stops die record of the name
      */
     public void stopRecording(FloatingActionButton actionButton, Context context) {
         try {
@@ -201,7 +197,7 @@ public class Recorder {
 
     }
 
-    /*
+    /**
      * true  --> is recording
      * false --> is not recording
      */

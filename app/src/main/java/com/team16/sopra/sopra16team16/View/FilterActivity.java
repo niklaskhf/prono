@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -36,6 +34,9 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
     RadioButton female;
     RadioButton male;
     RadioButton unknown;
+
+    RadioButton country_enabled;
+    RadioButton country_disabled;
     Spinner spinner;
 
     Filter filter = Filter.getCurrentInstance();
@@ -57,6 +58,9 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         female = (RadioButton) findViewById(R.id.female_radioButton);
         male = (RadioButton) findViewById(R.id.male_radioButton);
         unknown = (RadioButton) findViewById(R.id.unknown_radioButton);
+        country_enabled = (RadioButton) findViewById(R.id.country_enabled_radioButton);
+        country_disabled = (RadioButton) findViewById(R.id.country_disabled_radioButton);
+
         spinner = (Spinner) findViewById(R.id.country_spinner);
 
 
@@ -120,10 +124,26 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
                 }
             }
         });
-
-
+        country_enabled.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                spinner.setVisibility(View.VISIBLE);
+                //set the first item from the spinner as country filter
+                filter.setCountry(returnFirstItem());
+            }
+        });
+        country_disabled.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                spinner.setVisibility(View.INVISIBLE);
+                //disable country filter
+                filter.setCountry(null);
+            }
+        });
     }
 
+    /**
+     * setCheck for the sorter
+     * @param button which is checked true
+     */
     private void setCheck(RadioButton button) {
         first_ASC.setChecked(false);
         first_DESC.setChecked(false);
@@ -132,6 +152,9 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         button.setChecked(true);
     }
 
+    /**
+     * load the settings from the filter and sorter
+     */
     private void loadSettings() {
         //set the direction
         if(sorter.getSortedBy().equals(ContactManager.COLUMN_FIRSTNAME)) {
@@ -163,8 +186,19 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
                 unknown.setChecked(true);
             }
         }
+
+        //set the country filter
+        if(filter.getCountry() == null) {
+            country_disabled.setChecked(true);
+            spinner.setVisibility(View.INVISIBLE);
+        } else {
+            country_enabled.setChecked(true);
+        }
     }
 
+    /**
+     * fills the spinner with all countries of the contacts
+     */
     private void getCountryList() {
 
         database.beginTransaction();
@@ -182,14 +216,17 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        //ToDo
-        //selectItem();
+        //load country from the filter
+        selectItem();
     }
 
+    /**
+     * selects the country saved in the filter
+     */
     private void selectItem() {
         if(Filter.getCountry() == null || spinner.getCount() == 0) return;
 
-        Cursor cursorFilter = (Cursor)spinner.getItemAtPosition(0);
+        Cursor cursorFilter = (Cursor) spinner.getItemAtPosition(0);
 
         for(int i = 0; i < spinner.getCount(); ++i) {
             cursorFilter.moveToPosition(i);
@@ -198,6 +235,17 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
                 spinner.setSelection(i);
             }
         }
+    }
+
+    /**
+     *
+     * @return first item from the spinner
+     */
+    private String returnFirstItem() {
+        Cursor cursorFilter = (Cursor) spinner.getItemAtPosition(0);
+        cursorFilter.moveToPosition(0);
+        String item = cursorFilter.getString(cursorFilter.getColumnIndex(ContactManager.COLUMN_COUNTRY));
+        return item;
     }
 
     @Override
@@ -212,8 +260,9 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String item = (String) ((TextView) view).getText();
-        //filter.setCountry(item);
-        //ToDo
+        if(country_enabled.isChecked()) {
+            filter.setCountry(item);
+        }
     }
 
     @Override
