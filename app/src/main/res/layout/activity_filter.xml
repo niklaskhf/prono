@@ -94,18 +94,18 @@
             android:text="Gender:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/gender"
+            android:id="@+id/filter_gender"
             android:textSize="18sp"/>
 
         <RadioButton
-            android:id="@+id/female_radioButton"
+            android:id="@+id/filter_female_radioButton"
             android:text="@string/female"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
 
         <RadioButton
-            android:layout_toEndOf="@+id/female_radioButton"
-            android:id="@+id/male_radioButton"
+            android:layout_toEndOf="@+id/filter_female_radioButton"
+            android:id="@+id/filter_male_radioButton"
             android:text="@string/male"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
             />
 
         <RadioButton
-            android:id="@+id/unknown_radioButton"
+            android:id="@+id/filter_unknown_radioButton"
             android:text="@string/unknown"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content" />
@@ -131,7 +131,7 @@
             android:text="Country:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/country_text"
+            android:id="@+id/filter_country_text"
             android:textSize="18sp"/>
 
         <RadioGroup

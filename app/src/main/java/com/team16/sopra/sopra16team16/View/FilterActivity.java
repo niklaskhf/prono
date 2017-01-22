@@ -55,9 +55,9 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         first_DESC = (RadioButton) findViewById(R.id.first_DESC_radioButton);
         last_ASC = (RadioButton) findViewById(R.id.last_ASC_radioButton);
         last_DESC = (RadioButton) findViewById(R.id.last_DESC_radioButton);
-        female = (RadioButton) findViewById(R.id.female_radioButton);
-        male = (RadioButton) findViewById(R.id.male_radioButton);
-        unknown = (RadioButton) findViewById(R.id.unknown_radioButton);
+        female = (RadioButton) findViewById(R.id.filter_female_radioButton);
+        male = (RadioButton) findViewById(R.id.filter_male_radioButton);
+        unknown = (RadioButton) findViewById(R.id.filter_unknown_radioButton);
         country_enabled = (RadioButton) findViewById(R.id.country_enabled_radioButton);
         country_disabled = (RadioButton) findViewById(R.id.country_disabled_radioButton);
 
@@ -242,6 +242,9 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
      * @return first item from the spinner
      */
     private String returnFirstItem() {
+        //no country available
+        if(spinner.getCount() == 0) return null;
+
         Cursor cursorFilter = (Cursor) spinner.getItemAtPosition(0);
         cursorFilter.moveToPosition(0);
         String item = cursorFilter.getString(cursorFilter.getColumnIndex(ContactManager.COLUMN_COUNTRY));

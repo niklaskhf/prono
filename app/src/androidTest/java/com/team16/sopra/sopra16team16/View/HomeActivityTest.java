@@ -47,6 +47,7 @@ public class HomeActivityTest {
 
     private ContactManager contactManager;
     Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NewContactActivity.class.getName(), null, false);
+    Instrumentation.ActivityMonitor activityFilterMonitor = getInstrumentation().addMonitor(FilterActivity.class.getName(), null, false);
     @Rule
     public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
 
@@ -73,6 +74,17 @@ public class HomeActivityTest {
         onView(withId(R.id.addNew)).perform(click());
 
         NewContactActivity nextActivity = (NewContactActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5000);
+        // http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
+        // next activity is opened and captured.
+        assertNotNull(nextActivity);
+        nextActivity.finish();
+    }
+
+    @Test
+    public void openFilterTest() {
+        onView(withId(R.id.addFilter)).perform(click());
+
+        FilterActivity nextActivity = (FilterActivity) getInstrumentation().waitForMonitorWithTimeout(activityFilterMonitor, 5000);
         // http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
         // next activity is opened and captured.
         assertNotNull(nextActivity);
@@ -120,12 +132,14 @@ public class HomeActivityTest {
 
         assertTrue("searchAdapter wrong count 'first'", fragment.getListAdapter().getCount() == 1);
 
+
+        /* deleted Gender in search
         onView(isAssignableFrom(EditText.class)).perform(clearText());
         onView(isAssignableFrom(EditText.class)).perform(typeText("FEMALE"),
                 pressKey(KeyEvent.KEYCODE_ENTER));
 
         assertTrue("searchAdapter wrong count 'FEMALE'", fragment.getListAdapter().getCount() == 2);
-
+        */
         onView(isAssignableFrom(EditText.class)).perform(clearText());
         onView(isAssignableFrom(EditText.class)).perform(typeText("first last"),
                 pressKey(KeyEvent.KEYCODE_ENTER));
