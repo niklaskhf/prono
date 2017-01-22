@@ -36,6 +36,7 @@ public class ContactManagerTest {
             @Override
             public void run() {
                 contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
+                contactManager.wipe();
 
             }
         });

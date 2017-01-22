@@ -5,7 +5,6 @@ import android.util.Log;
 /**
  * Contains methods returning SQL queries
  */
-
 public class QueryBuilder {
     private String[] cols;
 
@@ -80,16 +79,17 @@ public class QueryBuilder {
     private String buildFilterExpression(Filter filter) {
         String result = "";
         if(filter.getCountry() != null) {
-            result += " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "' AND ";
+            result += " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
         }
 
         if(filter.getGenderList().size() != 0) {
 
-            result += "(" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
+            result += " AND (" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
 
             for(int i = 1; i < filter.getGenderList().size(); ++i) {
                 result += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
             }
+            result += ")";
         }
 
         return result;
