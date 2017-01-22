@@ -86,20 +86,20 @@ public class FilterActivityTest {
                 .perform(click());
 
         assertTrue("Size wasn't reduced to 2", filter.getGenderList().size() == 2);
-        assertTrue("FEMALE wasn't removed from filter (0)", filter.getGenderList().get(0) != "FEMALE");
-        assertTrue("FEMALE wasn't removed from filter (1)", filter.getGenderList().get(1) != "FEMALE");
+        assertTrue("FEMALE wasn't removed from filter (0)", !filter.getGenderList().get(0).equals("FEMALE"));
+        assertTrue("FEMALE wasn't removed from filter (1)", !filter.getGenderList().get(1).equals("FEMALE"));
 
         onView(withId(R.id.filter_male_radioButton))
                 .perform(click());
 
         assertTrue("Size wasn't reduced to 1", filter.getGenderList().size() == 1);
-        assertTrue("FEMALE wasn't removed from filter (0)", filter.getGenderList().get(0) != "MALE");
+        assertTrue("MALE wasn't removed from filter (0)", !filter.getGenderList().get(0).equals("MALE"));
 
         onView(withId(R.id.filter_female_radioButton))
                 .perform(click());
 
         assertTrue("Size wasn't increased to 2", filter.getGenderList().size() == 2);
-        assertTrue("FEMALE wasn't added to filter (0 or 1)", (filter.getGenderList().get(0) == "FEMALE" || filter.getGenderList().get(1) == "FEMALE"));
+        assertTrue("FEMALE wasn't added to filter (0 or 1)", (filter.getGenderList().get(0).equals("FEMALE") || filter.getGenderList().get(1).equals("FEMALE")));
 
 
         filter.resetFilter();

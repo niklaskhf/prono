@@ -24,7 +24,6 @@ import com.team16.sopra.sopra16team16.R;
 public class FilterActivity extends Activity implements AdapterView.OnItemSelectedListener{
 
     private static SQLiteDatabase database;
-    private DBManager dbManager;
 
     RadioButton first_ASC;
     RadioButton first_DESC;
@@ -47,7 +46,7 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         super.onCreate(saveInstanceState);
         this.setContentView(R.layout.activity_filter);
 
-        dbManager = DBManager.getCurrentInstance(this);
+        DBManager dbManager = DBManager.getCurrentInstance(this);
         database = dbManager.getDbContacts();
 
         //initialize gui elements
@@ -105,21 +104,21 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
 
         female.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if(filter.setGender("FEMALE") == false) {
+                if(!filter.setGender("FEMALE")) {
                     female.setChecked(false);
                 }
             }
         });
         male.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if(filter.setGender("MALE") == false) {
+                if(!filter.setGender("MALE")) {
                     male.setChecked(false);
                 }
             }
         });
         unknown.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if(filter.setGender("UNKNOWN") == false) {
+                if(!filter.setGender("UNKNOWN")) {
                     unknown.setChecked(false);
                 }
             }
@@ -215,6 +214,8 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        //cursorCountries.close();
 
         //load country from the filter
         selectItem();

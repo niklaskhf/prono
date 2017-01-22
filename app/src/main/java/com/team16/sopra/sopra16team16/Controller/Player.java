@@ -38,7 +38,7 @@ public class Player {
     /**
      * plays an audio file
      * @param id id of the contact which audio file should be played
-     * @param playButton
+     * @param playButton the button which was clicked
      */
     public void startPlaying(int id, final ImageButton playButton) {
         changeStatus(true);
@@ -67,7 +67,7 @@ public class Player {
     /**
      * plays an audio file
      * @param id id of the contact which audio file should be played
-     * @param playButton
+     * @param playButton the button which was clicked
      */
     public void startPlaying(String id, final ImageButton playButton) {
         changeStatus(true);
@@ -99,7 +99,7 @@ public class Player {
     /**
      * plays an audio file
      * @param id id of the contact which audio file should be played
-     * @param playButton
+     * @param playButton the button which was clicked
      */
     public void startPlaying(int id, final FloatingActionButton playButton) {
         changeStatus(true);
@@ -128,7 +128,7 @@ public class Player {
 
     /**
      * stop playing an audio file
-     * @param playButton
+     * @param playButton the button which was clicked
      */
     public void stopPlaying(FloatingActionButton playButton) {
         playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
@@ -139,7 +139,7 @@ public class Player {
 
     /**
      * stop playing an audio file
-     * @param playButton
+     * @param playButton the button which was clicked
      */
     public void stopPlaying(ImageButton playButton) {
         playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
