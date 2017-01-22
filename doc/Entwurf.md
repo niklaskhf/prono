@@ -17,29 +17,84 @@ Verwendete Entwurfsmuster: Model-View-Controller, Singleton
 
 ![Komponentendiagramm](sketches/Komponentendiagramm.png)
 
-## Komponente 1: Model
+## Komponente 1: MainView
+Die MainView-Komponente ist zuständig für die Darstellung des ‘Default’-GUIs.
+Dies beinhaltet: 
+ - Darstellung der Kontaktliste (inkl. filtern/sortieren/suchen)
+ - Darstellung des Filters/Sorters
+ - Darstellung der Einstellungen
+ - Darstellung des About-Teils
+ - Zugriff auf die Kontakterstellung
 
-Baustein der Datenhaltung. Stellt Datenbanken für andere Module bereit. Wird von Controller manipuliert.
-Datenhaltung beinhaltet: 
-- Datenbank für Kontakte
-- Sprachprofile
-- Einstellungen
+Als GUI-Klasse bietet die Komponente selbst keine Interfaces an, verwendet jedoch:
+ - ContactManager aus DataController, um die Kontaktliste mit Daten zu füllen
+ - ContactManager aus DataController, um Daten zu löschen (Reset)
+ - Import aus ExportImport, um einen Datenimport durchzuführen
+ - Export aus ExportImport, um einen Datenexport durchzuführen
+ - Filter aus DataController, um den Filter/Sortierer anzupassen
 
-## Komponente 2: Controller
+Weiterhin wird von der Komponente MainView, durch Auswahl eines Kontaktes, der Zuständigkeitsbereich von ContactView ausgelöst.  
 
-Manipuliert Daten aus der Model-Komponente. 
-Wird von der View-Komponente aufgerufen, um Aktionen auszuführen. 
+## Komponente 2: ContactView
+Die ContactView ist zuständig für die Darstellung und Verwaltung eines ausgewählten Kontakts.
+Diese wird aufgeteilt in zwei GUI-Komponenten. 
+ - Die ContactViewerActivity
+ - Bessere Übersicht des ausgewählten Kontakts
+ - Zugriff auf die Verwaltung des ausgewählten Kontakts
 
-## Komponente 3: View
+Die NewContactActivity
+Möglichkeit zur Verwaltung von
+Name/Nachname
+Titel
+Land
+Geschlecht
+Aussprache
 
-Bildet die Schnittstelle zu dem Benutzer. Zeigt von dem Controller bereitgestellte Daten aus dem Model in GUI an.
-Interagiert mit dem Controller, um von dem User gestartete Aktionen auszuführen.
+Die Komponente bietet selbst keine Interfaces an, verwendet jedoch drei externe Interfaces:
+ - ContactManager aus DataController: Erstellung/Bearbeitung/Löschen von Kontaktdaten
+ - Recorder aus Audio: Aufnehmen einer Aussprache
+ - Player aus Audio: Wiedergabe einer Aufnahme
 
-## Externe Komponente 1
 
-Material.io/icons
+## Komponente 3: DataController
+Die DataController-Komponente ist zuständig für die Manipulierung der Datenbank, sowie der Bereitstellung von Daten aus der Datenbank. Die Zuständigkeit beinhaltet:
+ - Erstellung eines Kontakteintrages
+ - Änderung eines Kontakteintrages
+ - Löschung eines Kontakteintrages
+ - Bereitstellung eines Cursor mit Daten aus der Datenbank
+ - Anwendung und Verwaltung der Filter/Sortier-Einstellungen
 
-Verwendung in View um Benutzerfreundlichkeit zu fördern. (Material Design)
+Die DataController-Komponente stellt zwei Interfaces verfügbar:
+ - ContactManager: Manipulation/Bereitstellung von Daten
+ - Filter: Zugriff auf die Filter/Sortier-Einstellungen
+
+Die DataController-Komponente verwendet ein Interface:
+ - DBManager aus Datenbank: Um Zugriff auf die SQL-Datenbank zu erhalten  
+
+
+## Komponente 4: Audio
+Mit der Audio-Komponente kann man Audio Dateien
+- erstellen
+- speichern
+- abspielen
+- und eine abspielende Datei stoppen.
+
+Sie bietet die Schnittstellen Player (Wiedergabe von Aufnahme) der HomeActivity und der NewContactActivity an, 
+sowie die Schnittstelle Recorder (Aufnahme von Aussprache) der NewContactActivity.
+
+## Komponente 5: ExportImport
+Die ExportImport-Komponente ist zuständig für das Zippen/Unzippen/Verschieben von Dateien, um diese zu Exportieren/Importieren. 
+Die ExportImport-Komponente bietet zwei Interfaces an:
+ - Import: Erlaubt es eine Import-Aktion zu starten
+ - Export: Erlaubt es eine Export-Aktion zu starten
+
+Die ExportImport-Komponente greift auf ein Interface zu:
+ - DBManager aus Datenbank: Um nach dem Importieren von Daten die SQL-Datenbank zu erneuern  
+
+## Komponente 6: Datenbank
+Die Komponente Datenbank ist die Datenbank der App. Kontakte sowie alle dazugehörigen Daten werden hier verwaltet.
+Die Datenbank stellt den DBManager als Schnittstelle zur Verfügung, welches von ExportImport und DataController verwendet wird. Die Schnittstelle stellt die SQL-Datenbank zur Verfügung.
+
 
 
 # Klassendiagramme
@@ -84,3 +139,4 @@ UI für Suche, Kontaktliste, Settings, Info.
 ![](sketches/Skizze-4.png)
 ![](sketches/Skizze-5.png)
 ![](sketches/Skizze-6.png)
+
