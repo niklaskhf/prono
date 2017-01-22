@@ -1,7 +1,9 @@
 package com.team16.sopra.sopra16team16.View;
 
 import android.app.Instrumentation;
+import android.content.Context;
 import android.database.Cursor;
+import android.media.AudioManager;
 import android.support.test.annotation.UiThreadTest;
 import android.support.test.rule.ActivityTestRule;
 
@@ -43,7 +45,7 @@ public class ContactListTest {
     public void setup() {
         contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     contactManager.wipe();
@@ -62,7 +64,7 @@ public class ContactListTest {
                 .onChildView(withId(R.id.contact_fav))
                 .perform(click());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Cursor cursor;
@@ -82,7 +84,7 @@ public class ContactListTest {
                 .perform(click());
 
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Cursor cursor;
@@ -99,7 +101,8 @@ public class ContactListTest {
 
     @Test
     public void playButtonTest() {
-        Player player = Player.getCurrentInstance(mActivityTestRules.getActivity());
+        AudioManager manager = (AudioManager)mActivityTestRules
+                .getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         //exception.expect(IOException.class);
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)

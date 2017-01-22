@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:textSize="26sp"
-                android:text="First"
+                android:text="@string/first"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:textSize="26sp"
-                android:text="Last"
+                android:text="@string/last"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"/>
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:textSize="20sp"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="Country"
+                android:text="@string/country"
                 android:textSize="20sp"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="Gender"
+                    android:text="@string/gender"
                     android:background="@color/colorAccent"
                     android:textColor="@android:color/background_dark"
                     android:focusable="false"
@@ -81,7 +81,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/contact_gender"/>
+                    android:id="@+id/contact_gender"
+                    android:paddingLeft = "5dp"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

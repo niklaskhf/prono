@@ -11,7 +11,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:paddingStart = "10dp"
+        android:paddingEnd = "10dp">
     <!--<Button-->
         <!--android:layout_width="78dp"-->
         <!--android:layout_height="wrap_content"-->
@@ -20,7 +22,7 @@
 
 
     <TextView
-        android:text="First Name"
+        android:text="@string/firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/first_text"
@@ -35,11 +37,11 @@
         android:textSize="30sp"/>
 
     <TextView
-        android:text="Last Name"
+        android:text="@string/lastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/last_text"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:text="blablabla"
@@ -49,11 +51,11 @@
         android:textSize="30sp"/>
 
     <TextView
-        android:text="Title"
+        android:text="@string/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_text"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:text="blablabla"
@@ -63,7 +65,7 @@
         android:textSize="30sp"/>
 
     <TextView
-        android:text="Country"
+        android:text="@string/country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/country_text"
@@ -77,16 +79,16 @@
         android:textSize="30sp"/>
 
     <TextView
-        android:text="Gender"
+        android:text="@string/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/gender_text"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gender_sign"/>
+        android:id="@+id/gender_sign" />
 
     </LinearLayout>
 

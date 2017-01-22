@@ -1,12 +1,14 @@
 package com.team16.sopra.sopra16team16.View;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,22 +16,16 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Controller.FileUtils;
-import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.Controller.Recorder;
-import com.team16.sopra.sopra16team16.Controller.RecordingMode;
 import com.team16.sopra.sopra16team16.R;
 
 import java.io.File;
-import java.io.IOException;
 
 
 public class NewContactActivity extends AppCompatActivity {
@@ -43,8 +39,6 @@ public class NewContactActivity extends AppCompatActivity {
     private EditText countryEdit;
     private EditText titleEdit;
 
-    private ImageButton firstRecordButton;
-    private ImageButton lastRecordButton;
 
     private RadioButton femaleRadioButton;
     private RadioButton maleRadioButton;
@@ -53,10 +47,8 @@ public class NewContactActivity extends AppCompatActivity {
     private FloatingActionButton confirmEditButton;
     private FloatingActionButton cancelButton;
     private FloatingActionButton recordButton;
+
     private ColorStateList fabBackground;
-
-    private ImageView genderSign;
-
 
     private String firstName = "";
     private String lastName = "";
@@ -74,13 +66,15 @@ public class NewContactActivity extends AppCompatActivity {
 
     private String cause;
 
-    private Player player = new Player();
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
+        setTitle("Editor");
+        context = this;
 
         //initialize();
 
@@ -104,14 +98,25 @@ public class NewContactActivity extends AppCompatActivity {
 
         initialize();
 
-        recorder = new Recorder(this, recordButton, firstRecordButton, lastRecordButton);
+        recorder = Recorder.getInstance();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if (recorder.isPressed()) {
+            recorder.stopRecording(recordButton, this);
+        }
         FileUtils.deleteTempFiles();
         finish();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (recorder.isPressed()) {
+            recorder.stopRecording(recordButton, this);
+        }
     }
 
     /**
@@ -124,8 +129,6 @@ public class NewContactActivity extends AppCompatActivity {
 
 
         findViewByIdRadioButton();
-
-        findViewByIdImageView();
 
         setText();
 
@@ -159,21 +162,23 @@ public class NewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (recorder.isPressed()) {
+                    recorder.stopRecording(recordButton, context);
+                }
+
                 // get the gender data
                 if (femaleRadioButton.isChecked()) {
                     gender = "FEMALE";
                 } else if (maleRadioButton.isChecked()) {
                     gender = "MALE";
-                } else if (unknownSexRadioButton.isChecked()) {
+                } else {
                     gender = "UNKNOWN";
                 }
 
                 // check if necesarry requirements are met
                 // required: LAST and RECORDING
 
-                if (requireGenericCountryDialog()) {
-                    genericCountryChangedDialog();
-                } else if(!confirmRequirements()) {
+                if(!confirmRequirements()) {
                     confirmRequirementsDialog();
                 } else {
                     // pass data back to ContactViewerActivity
@@ -191,10 +196,7 @@ public class NewContactActivity extends AppCompatActivity {
                         intent.putExtras(bundle);
                         // create the new contact
                         setContact();
-                        FileUtils.confirmAudio(id);
-                        FileUtils.confirmAudio(getFirstString().toLowerCase() + getCountryString().toLowerCase());
-                        FileUtils.confirmAudio(getLastString().toLowerCase() + getCountryString().toLowerCase());
-                        FileUtils.deleteTempFiles();
+                        // go to ContactViewerActivity
                         startActivity(intent);
                         finish();
                     } else {
@@ -207,11 +209,6 @@ public class NewContactActivity extends AppCompatActivity {
                         bundle.putString("undoGender", undoGender);
                         setResult(RESULT_OK, new Intent().putExtras(bundle));
 
-                        // ALERT DIALOG
-                        FileUtils.confirmAudio(id);
-                        FileUtils.confirmAudio(getFirstString().toLowerCase() + getCountryString().toLowerCase());
-                        FileUtils.confirmAudio(getLastString().toLowerCase() + getCountryString().toLowerCase());
-                        FileUtils.deleteTempFiles();
                         // update contact in database
                         updateContact();
                         finish();
@@ -238,61 +235,13 @@ public class NewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (recorder.isPressed()) {
-                    recorder.stopRecording();
-                    enableButtons();
+                    recorder.stopRecording(recordButton, context);
                 } else {
-                    recorder.startRecording(id, RecordingMode.RECORDING_CUSTOM);
-                    disableButtons(recordButton);
+                    recorder.startRecording(id, recordButton, context);
                 }
             }
         });
-
         fabBackground = recordButton.getBackgroundTintList();
-
-
-        // set the first name record button
-        firstRecordButton = (ImageButton) findViewById(R.id.recordFirstButton);
-
-        firstRecordButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                if (getFirstString().equals("")) {
-                    showEditAlertDialog();
-                } else {
-                    if (recorder.isPressed()) {
-                        recorder.stopRecording();
-                        enableButtons();
-                    } else {
-                        recorder.triggerRecordingGeneric(getFirstString(), getCountryString(), RecordingMode.RECORDING_FIRST);
-                        disableButtons(firstRecordButton);
-                    }
-                }
-            }
-        });
-
-
-
-        // set the lastName record button
-        lastRecordButton = (ImageButton) findViewById(R.id.recordLastButton);
-
-        lastRecordButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                if (getLastString().equals("")) {
-                    showEditAlertDialog();
-                } else {
-                    if (recorder.isPressed()) {
-                        recorder.stopRecording();
-                        enableButtons();
-                    } else {
-                        recorder.triggerRecordingGeneric(getLastString(), getCountryString(), RecordingMode.RECORDING_LAST);
-                        disableButtons(lastRecordButton);
-                    }
-                }
-            }
-        });
 
     }
 
@@ -302,7 +251,16 @@ public class NewContactActivity extends AppCompatActivity {
     public void setContact() {
         contactManager = ContactManager.getInstance(this.getApplicationContext());
         Log.d("genderCreate", gender);
-        contactManager.createContact(getFirstString(), getLastString(), getTitleString(), getCountryString(), gender);
+
+        FileUtils.confirmAudio(id);
+        FileUtils.deleteTempFiles();
+
+        contactManager.createContact(
+                getFirstString(),
+                getLastString(),
+                getTitleString(),
+                getCountryString(),
+                gender);
         Log.i("createContact", "created contact " + firstNameEdit.getText().toString());
     }
 
@@ -311,7 +269,15 @@ public class NewContactActivity extends AppCompatActivity {
      */
     public void updateContact() {
         contactManager = ContactManager.getInstance(this.getApplicationContext());
-        contactManager.updateContact(id, getFirstString(), getLastString(), getTitleString(), getCountryString(), gender);
+        FileUtils.confirmAudio(id);
+        FileUtils.deleteTempFiles();
+
+        contactManager.updateContact(id,
+                getFirstString(),
+                getLastString(),
+                getTitleString(),
+                getCountryString(),
+                gender);
 
     }
 
@@ -320,9 +286,6 @@ public class NewContactActivity extends AppCompatActivity {
      */
     private void findViewByTextView() {
         lastNameTv = (TextView) findViewById(R.id.last_text);
-    }
-    private void findViewByIdImageView() {
-        genderSign = (ImageView) findViewById(R.id.gender_sign);
     }
 
     /**
@@ -349,8 +312,7 @@ public class NewContactActivity extends AppCompatActivity {
         // if EditText is not empty, reset color to default.
         TextWatcher tw = new TextWatcher() {
             public void afterTextChanged(Editable s){
-                if (getLastString().length() == 0) {
-                } else {
+                if (!(getLastString().equals(""))) {
                     lastNameEdit.getBackground().clearColorFilter();
                     lastNameTv.setTextColor(originalTextColor);
                 }
@@ -377,7 +339,6 @@ public class NewContactActivity extends AppCompatActivity {
      *          false - requirements not met
      */
     public boolean confirmRequirements() {
-        // TODO bring arraylist back here
         int i = 0;
         // check if lastName is empty
         if (getLastString().equals("")) {
@@ -386,20 +347,9 @@ public class NewContactActivity extends AppCompatActivity {
             i++;
         }
         // check if there is a recording for the lastName, or if there is a custom recording
-        if (!lastRecordExists() && !customRecordExists()) {
-            lastRecordButton.setBackgroundColor(Color.RED);
+        if (!customRecordExists()) {
             recordButton.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             i++;
-        }
-        // check if there is a first name
-        if (!getFirstString().equals("")) {
-            // if there is a first name:
-            // check for a recording of the firstName, or alternatively a custom recording
-            if (!firstRecordExists() && !customRecordExists()) {
-                firstRecordButton.setBackgroundColor(Color.RED);
-                recordButton.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                i++;
-            }
         }
 
         // return any found issues
@@ -408,60 +358,14 @@ public class NewContactActivity extends AppCompatActivity {
 
 
     /**
-     * Check if the country has changed
-     * @return
-     */
-    public boolean requireGenericCountryDialog() {
-        if (!getCountryString().equals(undoCountry)) {
-            // check if new requirements are already met with existing recordings
-            if (!confirmRequirements()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if any temporary of permanent audio files associated to the last name exist
-     * @return true - a file exists
-     *         false - no file exists
-     */
-    public boolean lastRecordExists() {
-        String lastRecordString = FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase();
-        if (new File(lastRecordString + ".3gp").exists() ||
-                new File(lastRecordString + "temp.3gp").exists()) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Checks if any temporary of permanent audio files associated to the first name exist
-     * @return true - a file exists
-     *         false - no file exists
-     */
-    public boolean firstRecordExists() {
-        String firstRecordString = FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase();
-        if (new File(firstRecordString + ".3gp").exists() ||
-                new File(firstRecordString + "temp.3gp").exists()) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Checks if any temporary of permanent audio files associated to the id exist
      * @return true - a file exists
      *         false - no file exists
      */
     public boolean customRecordExists() {
 
-        if (new File(FileUtils.PATH + id + ".3gp").exists() ||
-                new File(FileUtils.PATH + id + "temp.3gp").exists()) {
-            return true;
-        }
-        return false;
+        return new File(FileUtils.PATH + id + ".3gp").exists() ||
+                new File(FileUtils.PATH + id + "_temp.3gp").exists();
     }
 
 
@@ -471,9 +375,7 @@ public class NewContactActivity extends AppCompatActivity {
     public void confirmRequirementsDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 
-        alertDialog.setMessage("The last name and either generic recordings of the first/last name, " +
-                "or a custom recording of the pronounciation are required.\n" +
-                "Please enter the name/record a pronounciation.");
+        alertDialog.setMessage(getText(R.string.missingKeyEntries));
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -491,18 +393,7 @@ public class NewContactActivity extends AppCompatActivity {
      */
     public String getFirstString() {
         String value = firstNameEdit.getText().toString();
-        if (value.length() == 0) {
-            return "";
-        }
-        while (value.charAt(0) == ' ') {
-            value = value.substring(1);
-        }
-
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
-        }
-
-        return value;
+        return trimSpaces(value);
     }
 
     /**
@@ -512,18 +403,7 @@ public class NewContactActivity extends AppCompatActivity {
     public String getLastString() {
         String value = lastNameEdit.getText().toString();
 
-        if (value.length() == 0) {
-            return "";
-        }
-        while (value.charAt(0) == ' ') {
-            value = value.substring(1);
-        }
-
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
-        }
-
-        return value;
+        return trimSpaces(value);
     }
 
     /**
@@ -533,18 +413,7 @@ public class NewContactActivity extends AppCompatActivity {
     public String getTitleString() {
         String value = titleEdit.getText().toString();
 
-        if (value.length() == 0) {
-            return "";
-        }
-        while (value.charAt(0) == ' ') {
-            value = value.substring(1);
-        }
-
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
-        }
-
-        return value;
+        return trimSpaces(value);
     }
 
     /**
@@ -554,15 +423,26 @@ public class NewContactActivity extends AppCompatActivity {
     public String getCountryString() {
         String value = countryEdit.getText().toString();
 
-        if (value.length() == 0) {
+        return trimSpaces(value);
+    }
+
+    /**
+     * Trims spaces at the beginning or the end of a String,
+     * until none are left
+     * @param value - String - to be trimmed
+     * @return returns the trimmed String
+     */
+    public String trimSpaces(String value) {
+        if ( value.length() == 0) {
             return "";
         }
-        while (value.charAt(0) == ' ') {
+        while (value.length() != 0 &&value.charAt(0) == ' ') {
             value = value.substring(1);
         }
 
-        while (value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 2);
+
+        while (value.length() != 0 && value.charAt(value.length() - 1) == ' ') {
+            value = value.substring(0, value.length() - 1);
         }
 
         return value;
@@ -570,175 +450,9 @@ public class NewContactActivity extends AppCompatActivity {
 
 
     /**
-     * Diables all buttons, used when recording
-     * @param active the active recording button, will remain active
-     */
-    public void disableButtons(FloatingActionButton active) {
-        firstRecordButton.setEnabled(false);
-        lastRecordButton.setEnabled(false);
-        cancelButton.setEnabled(false);
-        confirmEditButton.setEnabled(false);
-        recordButton.setEnabled(false);
-
-        active.setEnabled(true);
-    }
-
-    /**
-     * Diables all buttons, used when recording
-     * @param active the active recording button, will remain active
-     */
-    public void disableButtons(ImageButton active) {
-        firstRecordButton.setEnabled(false);
-        lastRecordButton.setEnabled(false);
-        cancelButton.setEnabled(false);
-        confirmEditButton.setEnabled(false);
-        recordButton.setEnabled(false);
-
-        active.setEnabled(true);
-    }
-
-    /**
-     * Enables all buttons
-     */
-    public void enableButtons() {
-        firstRecordButton.setEnabled(true);
-        lastRecordButton.setEnabled(true);
-        cancelButton.setEnabled(true);
-        confirmEditButton.setEnabled(true);
-        recordButton.setEnabled(true);
-    }
-
-
-    /**
-     * AlertDialog asking the user for confirmation to copy pronounciations to the new country.
-     * Only asks, if there are no existing files.
-     */
-    public void genericCountryChangedDialog() {
-        // get the dialog
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setCanceledOnTouchOutside(false);
-        alertDialog.show();
-
-        // set the custom layout
-        Window win = alertDialog.getWindow();
-        if (win != null) {
-            win.setContentView(R.layout.confirm_generic_country_dialog);
-
-            // text
-            TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);
-            textDialog.setText("Do you want to keep the generic name " +
-                    "pronounciation in relation to the country " + getCountryString());
-
-            // cancel
-            ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);
-
-            // NO
-            cancelDialog.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    alertDialog.dismiss();
-                    if(!confirmRequirements()) {
-                        confirmRequirementsDialog();
-                    }
-                }
-            });
-
-
-
-            // confirm
-            ImageButton acceptDialog = (ImageButton) win.findViewById(R.id.accept_dialog);
-
-            // YES
-            acceptDialog.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // copy generic files
-                    if (!firstRecordExists()) {
-                        try {
-                            if (new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
-                                FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
-                                        new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
-                            } else {
-                                // copy
-                                FileUtils.copy(new File(FileUtils.PATH + getFirstString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
-                                        new File(FileUtils.PATH + getFirstString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
-                            }
-                        } catch (IOException e) {
-                            // handle the exception
-                            Log.d("CopyIOException", e.getMessage());
-                        }
-                    }
-
-                    if (!lastRecordExists()) {
-                        try {
-                            // copy
-                            if (new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp").exists()) {
-                                FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + "temp.3gp"),
-                                        new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + "temp.3gp"));
-                            } else {
-                                // copy
-                                FileUtils.copy(new File(FileUtils.PATH + getLastString().toLowerCase() + undoCountry.toLowerCase() + ".3gp"),
-                                        new File(FileUtils.PATH + getLastString().toLowerCase() + getCountryString().toLowerCase() + ".3gp"));
-                            }
-                        } catch (IOException e) {
-                            // handle the exception
-                            Log.d("CopyIOException", e.getMessage());
-                        }
-                    }
-                    alertDialog.dismiss();
-                    // check if all requirements are met now
-                    if(!confirmRequirements()) {
-                        confirmRequirementsDialog();
-                    }
-                }
-            });
-        }
-    }
-
-
-    /**
-     * resets the firstRecordButton
-     */
-    public void firstRecordColor() {
-        firstRecordButton.setBackground(null);
-        if (lastRecordButton.getBackground() == null) {
-            recordButton.setBackgroundTintList(fabBackground);
-        }
-    }
-
-    /**
-     * resets the lastRecordButton color
-     */
-    public void lastRecordColor() {
-        lastRecordButton.setBackground(null);
-        if (firstRecordButton.getBackground() == null) {
-            recordButton.setBackgroundTintList(fabBackground);
-        }
-    }
-
-    /**
      * resets the recordButton color
      */
     public void customRecordColor() {
         recordButton.setBackgroundTintList(fabBackground);
-        firstRecordColor();
-        lastRecordColor();
-    }
-
-
-    /**
-     * Alert dialog informing the user about the empty editText.
-     */
-    public void showEditAlertDialog() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-
-        alertDialog.setMessage("You can't record for an empty name.");
-        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // do nothing
-            }
-        });
-        alertDialog.show();
     }
 }

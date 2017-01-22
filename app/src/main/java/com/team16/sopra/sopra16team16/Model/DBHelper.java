@@ -20,7 +20,7 @@ import java.io.IOException;
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper currentInstance = null;
     public static final String DATABASE_NAME = "DBcontact";
-    public static String DB_FILEPATH = "/data/data/"+ HomeActivity.contextOfApplication.getPackageName() +"/databases/"+DATABASE_NAME;
+    public static String DB_FILEPATH;
 
     private static final int DATABASE_VERSION = 2;
 
@@ -59,6 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     private DBHelper(Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
+        DB_FILEPATH = "/data/data/"+ context.getPackageName() +"/databases/"+ DATABASE_NAME;
     }
 
     // Method is called during creation of the database
@@ -80,7 +81,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * Copies the database file at the specified location over the current
      * internal application database.
      * */
-    public boolean importDatabase(String dbPath) throws IOException {
+    public boolean replaceDatabase(String dbPath) throws IOException {
 
         // Close the SQLiteOpenHelper so it will commit the created empty
         // database to internal storage.
@@ -97,5 +98,11 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        this.close();
+        super.finalize();
     }
 }

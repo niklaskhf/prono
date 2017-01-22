@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/fragment"
-        android:layout_weight="1"
+
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <ListView
-            android:id="@android:id/list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </FrameLayout>
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/language"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/language_text"
+            android:textSize="30sp" />
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/language_spinner"
+
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end">
+        android:layout_gravity="end"
+        android:paddingTop = "10dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
 
         <Button
             android:id="@+id/backup_button"
-            android:text="Backup"
+            android:text="@string/backup"
             android:gravity="center"
             android:layout_gravity="end"
             android:layout_width="wrap_content"
@@ -31,7 +45,15 @@
 
         <Button
             android:id="@+id/import_button"
-            android:text="Import"
+            android:text="@string/imports"
+            android:gravity="center"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/reset_button"
+            android:text="Reset"
             android:gravity="center"
             android:layout_gravity="end"
             android:layout_width="wrap_content"

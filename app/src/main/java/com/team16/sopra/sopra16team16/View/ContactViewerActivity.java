@@ -57,7 +57,6 @@ public class ContactViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
 
-
         player = new Player();
 
         this.setContentView(R.layout.contact_viewer);
@@ -72,6 +71,8 @@ public class ContactViewerActivity extends AppCompatActivity {
         country = bundle.get("country").toString();
         gender = bundle.getString("gender");
         id = Integer.parseInt(bundle.get("id").toString());
+
+        setTitle(firstName + " " + lastName);
 
         setTextViews();
 
@@ -110,7 +111,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
-                    player.startPlaying(id, firstName.toLowerCase(), lastName.toLowerCase(), country.toLowerCase(), playButton);
+                    player.startPlaying(id, playButton);
                 }
 
             }
@@ -131,7 +132,7 @@ public class ContactViewerActivity extends AppCompatActivity {
 
         // build the AlertDialog to request confirmation
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-
+        
         String message = "About to delete " + f +
                 " " + l +
                 ". Continue?";
@@ -151,6 +152,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                         intent.putExtra("action", "undo");
                         intent.putExtra("undoId", idF);
                         setResult(RESULT_OK, intent);
+                        dialogInterface.dismiss();
                         onBackPressed();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -158,6 +160,7 @@ public class ContactViewerActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                         break;
                     default:
+                        dialogInterface.dismiss();
                         break;
                 }
             }
@@ -192,10 +195,10 @@ public class ContactViewerActivity extends AppCompatActivity {
         countryView.setText(country);
         switch (gender) {
             case "MALE":
-                genderSign.setImageResource(R.drawable.running_man);
+                genderSign.setImageResource(R.drawable.ic_male_gender);
                 break;
             case "FEMALE":
-                genderSign.setImageResource(R.drawable.pregnant_woman);
+                genderSign.setImageResource(R.drawable.ic_female_gender);
                 break;
             case "UNKNOWN":
                 genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
@@ -250,23 +253,10 @@ public class ContactViewerActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
                         snackbarSuccess.show();
-                        // update database entry
-                        contactManager.updateContact(id, firstName, lastName, title, country, gender);
 
                         // replace the audio files
                         String original = FileUtils.PATH + id + ".3gp";
                         String replacement = FileUtils.PATH + id + "_undo.3gp";
-                        FileUtils.replaceFile(original, replacement);
-
-
-                        // replace the audio files
-                        original = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + ".3gp";
-                        replacement = FileUtils.PATH + firstName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
-                        FileUtils.replaceFile(original, replacement);
-
-                        // replace the audio files
-                        original = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + ".3gp";
-                        replacement = FileUtils.PATH + lastName.toLowerCase() + country.toLowerCase() + "_undo.3gp";
                         FileUtils.replaceFile(original, replacement);
 
                         firstName = data.getStringExtra("undoFirst");
@@ -277,6 +267,7 @@ public class ContactViewerActivity extends AppCompatActivity {
 
                         // update views
                         setText();
+                        contactManager.updateContact(id, firstName, lastName, title, country, gender);
                     }
                 });
 
@@ -288,8 +279,6 @@ public class ContactViewerActivity extends AppCompatActivity {
                 String action = data.getStringExtra("action");
                 if (action != null && action.equals("edit")) {
                     FileUtils.deleteFile(FileUtils.PATH + id + "_undo.3gp");
-                    FileUtils.deleteFile(FileUtils.PATH + undoFirstName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
-                    FileUtils.deleteFile(FileUtils.PATH + undoLastName.toLowerCase() + undoCountry.toLowerCase() + "_undo.3gp");
                 }
             }
         });

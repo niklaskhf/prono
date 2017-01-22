@@ -69,32 +69,13 @@ public class FileUtils {
     }
 
 
-
-    /**
-     * Checks if any recording associated to the id exists.
-     * @param id id of the contact - int
-     */
-    public static boolean exists(int id) {
-        // TODO change parameter to be the path
-        String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
-        File temp = new File(path + id + "temp.3gp");
-        File perm = new File(path + id + ".3gp");
-
-        if(!perm.exists() && !temp.exists()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
     /**
      * Renames a temp audio file to the permanent version.
      * @param id id of the contact - int
      */
     public static void confirmAudio(int id) {
         String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
-        File temp = new File(path + id + "temp.3gp");
+        File temp = new File(path + id + "_temp.3gp");
         File perm = new File(path + id + ".3gp");
 
         if (perm.exists() && temp.exists()) {
@@ -102,11 +83,6 @@ public class FileUtils {
                     path + id + ".3gp",
                     path + id + "_undo.3gp"
             );
-            if (perm.exists()) {
-                perm.delete();
-                Log.d("recorder", "deleted " + perm + " while copying temp");
-            }
-
         }
         if (temp.exists()) {
             temp.renameTo(perm);
@@ -116,50 +92,7 @@ public class FileUtils {
     }
 
     /**
-     * Renames a temp audio file to the permanent version.
-     * @param id id of the contact - int
-     */
-    public static void confirmAudio(String id) {
-        String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
-        File temp = new File(path + id + "temp.3gp");
-        File perm = new File(path + id + ".3gp");
-
-        if (perm.exists() && temp.exists()) {
-            FileUtils.renameFile(
-                    path + id + ".3gp",
-                    path + id + "_undo.3gp"
-            );
-            if (perm.exists()) {
-                perm.delete();
-                Log.d("recorder", "deleted " + perm + " while copying temp");
-            }
-
-        }
-        if (temp.exists()) {
-            temp.renameTo(perm);
-            Log.d("recorder", "renamed " + temp + " to " + perm);
-        }
-
-    }
-
-
-    /**
-     * Copies a file
-     */
-    public static void copy(File src, File dst) throws IOException {
-        if (src.exists()) {
-            FileInputStream inStream = new FileInputStream(src);
-            FileOutputStream outStream = new FileOutputStream(dst);
-            FileChannel inChannel = inStream.getChannel();
-            FileChannel outChannel = outStream.getChannel();
-            inChannel.transferTo(0, inChannel.size(), outChannel);
-            inStream.close();
-            outStream.close();
-        }
-    }
-
-    /**
-     * Deletes temp audio files.
+     * Deletes *temp.3gp files in the files directory.
      */
     public static void deleteTempFiles() {
         File[] files = new File(PATH).listFiles();
@@ -167,9 +100,9 @@ public class FileUtils {
         for (File f : files) {
             String fp = f.getPath();
             if (fp.length() > 8) {
-                String fpsub = fp.substring(fp.length() - 8, fp.length());
-                Log.d("deletingFile", fp);
-                if (fpsub.equals("temp.3gp")) {
+                String fpsub = fp.substring(fp.length() - 9, fp.length());
+                if (fpsub.equals("_temp.3gp")) {
+                    Log.d("deletingTempFile", fp);
                     new File(fp).delete();
                 }
             }
@@ -177,6 +110,12 @@ public class FileUtils {
     }
 
 
+    /**
+     * Copies a file
+     *
+     * fromFile - FileInputStream - source
+     * toFile - FileOutputStream - target
+     */
     public static void copyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
         FileChannel fromChannel = null;
         FileChannel toChannel = null;

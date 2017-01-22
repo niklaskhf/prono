@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Filter;
 import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
@@ -24,7 +25,9 @@ import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
@@ -42,14 +45,18 @@ import static org.junit.Assert.assertTrue;
 public class ContactViewerActivityTest {
     private ContactManager contactManager;
     Instrumentation.ActivityMonitor viewerMonitor = getInstrumentation().addMonitor(ContactViewerActivity.class.getName(), null, false);
+
     @Rule
     public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
 
+
     @Before
     public void setup() {
-        contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
+        Filter filter = Filter.getCurrentInstance();
+        filter.resetFilter();
+        contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     contactManager.wipe();
@@ -83,7 +90,7 @@ public class ContactViewerActivityTest {
         assertTrue("title is wrong", title.getText().toString().equals("title"));
         assertTrue("country is wrong", country.getText().toString().equals("country"));
         // lmao its too late for this
-        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.pregnant_woman).getConstantState());
+        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.ic_female_gender).getConstantState());
 
         onView(withId(R.id.edit_button)).perform(click());
         onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
@@ -114,7 +121,7 @@ public class ContactViewerActivityTest {
         assertTrue("title is wrong", title.getText().toString().equals("titel"));
         assertTrue("country is wrong", country.getText().toString().equals("land"));
         // lmao its too late for this
-        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.running_man).getConstantState());
+        assertTrue("gender is wrong", gender.getDrawable().getConstantState() == getTargetContext().getResources().getDrawable(R.drawable.ic_male_gender).getConstantState());
 
         onView(withId(R.id.edit_button)).perform(click());
         onView(withId(R.id.male_radioButton)).check(matches(isChecked()));

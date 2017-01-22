@@ -15,7 +15,8 @@
         <activity
             android:name=".View.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +25,17 @@
         </activity>
         <activity
             android:name=".View.NewContactActivity"
-            android:label="ContactEditor">
+            android:label="ContactEditor"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".View.ContactViewerActivity"
-            android:label="ConctactViewer">
+            android:label="ConctactViewer"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".View.FilterActivity"
+            android:label="Filter">
         </activity>
     </application>
 

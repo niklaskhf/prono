@@ -5,6 +5,7 @@ import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.NoActivityResumedException;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Filter;
 import com.team16.sopra.sopra16team16.R;
 
 import org.junit.Before;
@@ -27,8 +29,13 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.pressKey;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -41,14 +48,17 @@ public class HomeActivityTest {
 
     private ContactManager contactManager;
     Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NewContactActivity.class.getName(), null, false);
+    Instrumentation.ActivityMonitor activityFilterMonitor = getInstrumentation().addMonitor(FilterActivity.class.getName(), null, false);
     @Rule
     public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
 
     @Before
     public void setup() {
+        Filter filter = Filter.getCurrentInstance();
+        filter.resetFilter();
         contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
         try {
-            mActivityTestRules.runOnUiThread(new Runnable() {
+            mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     contactManager.wipe();
@@ -74,9 +84,23 @@ public class HomeActivityTest {
     }
 
     @Test
+    public void openFilterTest() {
+        onView(withId(R.id.addFilter)).perform(click());
+
+        FilterActivity nextActivity = (FilterActivity) getInstrumentation().waitForMonitorWithTimeout(activityFilterMonitor, 5000);
+        // http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
+        // next activity is opened and captured.
+        assertNotNull(nextActivity);
+        nextActivity.finish();
+    }
+
+    @Test
     public void drawerTest() {
-        onView(withId(R.id.action_menu))
-                .perform(click());
+        ViewInteraction appCompatImageButton = onView(
+                allOf(withClassName(is("android.support.v7.widget.AppCompatImageButton")),
+                        withParent(withId(R.id.my_toolbar)),
+                        isDisplayed()));
+        appCompatImageButton.perform(click());
         DrawerLayout mDrawerLayout = (DrawerLayout) mActivityTestRules.getActivity().findViewById(R.id.drawer_layout);
 
         assertTrue("drawer didnt open", mDrawerLayout.isDrawerOpen(GravityCompat.START));
@@ -111,12 +135,14 @@ public class HomeActivityTest {
 
         assertTrue("searchAdapter wrong count 'first'", fragment.getListAdapter().getCount() == 1);
 
+
+        /* deleted Gender in search
         onView(isAssignableFrom(EditText.class)).perform(clearText());
         onView(isAssignableFrom(EditText.class)).perform(typeText("FEMALE"),
                 pressKey(KeyEvent.KEYCODE_ENTER));
 
         assertTrue("searchAdapter wrong count 'FEMALE'", fragment.getListAdapter().getCount() == 2);
-
+        */
         onView(isAssignableFrom(EditText.class)).perform(clearText());
         onView(isAssignableFrom(EditText.class)).perform(typeText("first last"),
                 pressKey(KeyEvent.KEYCODE_ENTER));

@@ -40,7 +40,6 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
-        player = new Player();
         this.context = context;
         contactManager = ContactManager.getInstance(context);
     }
@@ -89,15 +88,16 @@ public class ContactCursorAdapter extends CursorAdapter {
 
 
         tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
+        genderSign.setVisibility(View.VISIBLE);
         switch (cursor.getString(cursor.getColumnIndexOrThrow("gender"))) {
             case "MALE":
-                genderSign.setImageResource(R.drawable.running_man);
+                genderSign.setImageResource(R.drawable.ic_male_gender);
                 break;
             case "FEMALE":
-                genderSign.setImageResource(R.drawable.pregnant_woman);
+                genderSign.setImageResource(R.drawable.ic_female_gender);
                 break;
-            case "UNKNOWN":
-                genderSign.setImageResource(android.R.drawable.sym_def_app_icon);
+            default:
+                genderSign.setVisibility(View.INVISIBLE);
                 break;
         }
 
@@ -108,15 +108,15 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
+            Player player = new Player();
             @Override
             public void onClick(View view) {
                 // play audio file associated to contact id
                 Log.e("RecordButton", "ID: " + id);
-                player = new Player();
                 if (player.isPlaying()) {
                     player.stopPlaying(playButton);
                 } else {
-                    player.startPlaying(id, first.toLowerCase(), last.toLowerCase(), country.toLowerCase(), playButton);
+                    player.startPlaying(id, playButton);
                 }
             }
         });

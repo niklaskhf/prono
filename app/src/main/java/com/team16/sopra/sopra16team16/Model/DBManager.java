@@ -41,7 +41,7 @@ public class DBManager {
      * @return The SQLiteDatabase DBcontact
      */
     public SQLiteDatabase getDbContacts() {
-        return dbContacts=dbHelper.getWritableDatabase();
+        return dbContacts=DBHelper.getCurrentInstance(context).getWritableDatabase();
     }
 
     // closes the database dbContacts

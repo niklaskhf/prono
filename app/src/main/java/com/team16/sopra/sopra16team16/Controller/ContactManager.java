@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
@@ -18,6 +19,7 @@ public class ContactManager{
     private static ContactManager currentInstance = null;
     private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
+    private ContactCursorAdapter favoriteAdapter = null;
     private Context context;
     private QueryBuilder queryBuilder = null;
     private Recorder recorder;
@@ -298,12 +300,12 @@ public class ContactManager{
      * @return ContactCursorAdapter
      */
     public ContactCursorAdapter getCursorAdapterFavorite() {
-        if (cursorAdapter == null) {
-            cursorAdapter = new ContactCursorAdapter(context, selectFavorites());
-            return cursorAdapter;
+        if (favoriteAdapter == null) {
+            favoriteAdapter = new ContactCursorAdapter(context, selectFavorites());
+            return favoriteAdapter;
         } else {
-            cursorAdapter.changeCursor(selectFavorites());
-            return cursorAdapter;
+            favoriteAdapter.changeCursor(selectFavorites());
+            return favoriteAdapter;
         }
     }
 
@@ -315,6 +317,9 @@ public class ContactManager{
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
+        }
+        if (favoriteAdapter != null) {
+            favoriteAdapter.changeCursor(selectFavorites());
         }
     }
 
@@ -332,7 +337,9 @@ public class ContactManager{
         // query to use
         String query;
         if (queryBuilder != null) {
-            query = queryBuilder.buildSearchQuery(search);
+            Filter filter = Filter.getCurrentInstance();
+            Sorter sorter = Sorter.getCurrentInstance();
+            query = queryBuilder.buildSearchQuery(search, filter, sorter);
 
         } else {
             throw new IllegalStateException("queryBuilder is null");
@@ -369,6 +376,24 @@ public class ContactManager{
      * wipes all rows from the database, used for testing
      */
     public void wipe() {
+        // wipe the database
         database.delete(TABLE_NAME, null, null);
+
+        // wipe the files
+        File filesPath = new File("//data//data//" + context.getPackageName()
+                + "//files//");
+
+        File[] files = filesPath.listFiles();
+
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].getPath().endsWith(".3gp")) {
+                    FileUtils.deleteFile(files[i].getPath());
+                }
+            }
+        }
     }
+
+
+
 }

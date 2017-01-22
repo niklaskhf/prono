@@ -11,6 +11,9 @@ import com.team16.sopra.sopra16team16.R;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Player contains methods for playing stored audio
+ */
 
 public class Player {
 
@@ -24,18 +27,20 @@ public class Player {
 
     private boolean is_playing = false;
 
+    /**
+     * there has to be a constructor
+     */
     public Player() {
+
     }
 
 
     /**
-     * Gibt die Aufnahme des Namens aus
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton the button which was clicked
      */
     public void startPlaying(int id, final ImageButton playButton) {
-        if (isPlaying()) {
-            stopPlaying(this.imagePlayButton);
-        }
-        this.imagePlayButton = playButton;
         changeStatus(true);
         filename = path + id + ".3gp";
 
@@ -60,13 +65,11 @@ public class Player {
     }
 
     /**
-     * Gibt die Aufnahme des Namens aus
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton the button which was clicked
      */
     public void startPlaying(String id, final ImageButton playButton) {
-        if (isPlaying()) {
-            stopPlaying(this.imagePlayButton);
-        }
-        this.imagePlayButton = playButton;
         changeStatus(true);
         filename = path + id + ".3gp";
 
@@ -94,117 +97,11 @@ public class Player {
 
 
     /**
-     * Gibt die Aufnahme des Namens aus
-     */
-    public void startPlaying(int id, String first, String last, String country, final FloatingActionButton playButton) {
-        changeStatus(true);
-        String idFilename = path + id + ".3gp";
-        String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + ".3gp";
-        final String lastFilename = FileUtils.PATH + last.toLowerCase() + country.toLowerCase() + ".3gp";
-
-        if (new File(idFilename).exists()) {
-            filename = idFilename;
-
-            MediaPlayer.OnCompletionListener listener = new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mp) {
-                    changeStatus(false);
-                    playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-                }
-            };
-
-            this.play(filename, listener);
-            playButton.setImageResource(R.drawable.ic_stop_black_24dp);
-        } else {
-            filename = firstFilename;
-            MediaPlayer.OnCompletionListener listener1 = new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mp) {
-                    filename = lastFilename;
-                    play(filename, listener2);
-                }
-
-                MediaPlayer.OnCompletionListener listener2 = new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mp) {
-                        changeStatus(false);
-                        playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
-                    }
-                };
-            };
-
-            this.play(filename, listener1);
-            playButton.setImageResource(R.drawable.ic_stop_black_24dp);
-        }
-
-    }
-
-    /**
-     * Gibt die Aufnahme des Namens aus
-     */
-    public void startPlaying(int id, String first, String last, String country, final ImageButton playButton) {
-        if (isPlaying()) {
-            stopPlaying(this.imagePlayButton);
-            this.imagePlayButton.setImageResource(R.drawable.ic_stop_black_48dp);
-        }
-        this.imagePlayButton = playButton;
-
-        changeStatus(true);
-        String idFilename = path + id + ".3gp";
-        String firstFilename = FileUtils.PATH + first.toLowerCase() + country.toLowerCase() + ".3gp";
-        final String lastFilename = FileUtils.PATH + last.toLowerCase() + country.toLowerCase() + ".3gp";
-
-        if (new File(idFilename).exists()) {
-            filename = idFilename;
-
-            MediaPlayer.OnCompletionListener listener = new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mp) {
-                    changeStatus(false);
-                    playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
-                }
-            };
-
-            this.play(filename, listener);
-            playButton.setImageResource(R.drawable.ic_stop_black_48dp);
-        } else {
-            filename = firstFilename;
-            MediaPlayer.OnCompletionListener listener1 = new MediaPlayer.OnCompletionListener() {
-                public void onCompletion(MediaPlayer mp) {
-                    filename = lastFilename;
-                    play(filename, listener2);
-                }
-
-                MediaPlayer.OnCompletionListener listener2 = new MediaPlayer.OnCompletionListener() {
-                    public void onCompletion(MediaPlayer mp) {
-                        changeStatus(false);
-                        playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
-                    }
-                };
-            };
-
-            this.play(filename, listener1);
-            playButton.setImageResource(R.drawable.ic_stop_black_48dp);
-        }
-
-    }
-
-    public void play(String filename, MediaPlayer.OnCompletionListener listener) {
-        player = new MediaPlayer();
-        player.setOnCompletionListener(listener);
-
-        try {
-            player.setDataSource(filename);
-            player.prepare();
-            player.start();
-            Log.d("player", "playing " + filename);
-
-        } catch (IOException e) {
-            Log.d("PlayerIOException", e.getMessage());
-        }
-    }
-
-    /**
-     * Gibt die Aufnahme des Namens aus
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton the button which was clicked
      */
     public void startPlaying(int id, final FloatingActionButton playButton) {
-
         changeStatus(true);
         String filename = path + id + ".3gp";
         Log.d("player", "trying to play this file: " + filename);
@@ -229,8 +126,9 @@ public class Player {
     }
 
 
-    /*
-     * Stopt die Wiedergabe des Namens
+    /**
+     * stop playing an audio file
+     * @param playButton the button which was clicked
      */
     public void stopPlaying(FloatingActionButton playButton) {
         playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);
@@ -239,8 +137,9 @@ public class Player {
         player = null;
     }
 
-    /*
-     * Stopt die Wiedergabe des Namens
+    /**
+     * stop playing an audio file
+     * @param playButton the button which was clicked
      */
     public void stopPlaying(ImageButton playButton) {
         playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
@@ -249,12 +148,19 @@ public class Player {
         player = null;
     }
 
+    /**
+     * returns, whether an audio file is played
+     * @return true if an audio file is played, false otherwise
+     */
     public boolean isPlaying() {
         return is_playing;
     }
 
+    /**
+     * Change the status of the Recorder
+     * @param status true if an audio file is played, false otherwise
+     */
     public void changeStatus(boolean status) {
         is_playing = status;
     }
-
 }

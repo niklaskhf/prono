@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+
+    <TextView
+        android:id="@+id/about_motivation_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Motivation"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        />
+    <TextView
+        android:id="@+id/about_motivation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:id="@+id/about_team_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+    <TextView
+        android:id="@+id/about_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:id="@+id/about_license_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="License"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="22sp"/>
+    <TextView
+        android:id="@+id/about_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        />
+
+
+</LinearLayout>
