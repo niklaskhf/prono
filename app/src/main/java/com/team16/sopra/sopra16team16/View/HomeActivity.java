@@ -322,6 +322,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
         contactManager.updateCursorAdapter();
 
+        //update the listAdapter if return from FilterActivity
+        if((listFragment != null) && (searchView != null) && (searchVisible())) {
+            CharSequence query = searchView.getQuery();
+            listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+        }
         //contactManager.open();
     }
 
@@ -513,6 +518,10 @@ public class HomeActivity extends AppCompatActivity {
         mDrawerList.clearChoices();
     }
 
+    /**
+     * starts the filter activity
+     * @param view
+     */
     public void openFilter(View view) {
         Intent intent = new Intent(this, FilterActivity.class);
         startActivity(intent);
