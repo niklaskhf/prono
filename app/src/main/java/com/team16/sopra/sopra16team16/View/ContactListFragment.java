@@ -68,7 +68,6 @@ public class ContactListFragment extends ListFragment{
         Log.i("gender", genderView.getText().toString());
 
         getActivity().startActivityForResult(intent, 1);
-
     }
 }
 

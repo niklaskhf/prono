@@ -4,11 +4,8 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Loader;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,22 +17,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.team16.sopra.sopra16team16.Controller.Backup;
+import com.team16.sopra.sopra16team16.Controller.Export;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Import;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.Locale;
 
 
 public class SettingsFragment extends Fragment {
-    Backup backup = new Backup();
+    Export export = new Export();
+    Import importObject = new Import();
 
     Locale myLocale;
     TextView languageText;
     Spinner languageSpinner;
     String language;
     ArrayAdapter<CharSequence> languageAdapter;
-    boolean isFirstSelection = true;
 
 
     @Override
@@ -55,7 +53,7 @@ public class SettingsFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                backup.exportDB();
+                export.exportDB();
             }
         });
         importButton.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +103,7 @@ public class SettingsFragment extends Fragment {
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                backup.importDBDialog(getActivity());
+                importObject.importDBDialog(getActivity());
             }
         });
         alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -188,7 +186,6 @@ public class SettingsFragment extends Fragment {
                 setLocale("tr");
                 break;
         }
-        isFirstSelection = false;
     }
 
     /**

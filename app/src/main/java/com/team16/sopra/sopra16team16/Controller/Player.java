@@ -16,8 +16,6 @@ import java.io.IOException;
  */
 
 public class Player {
-
-    private static Player currentInstance = null;
     //private final String path = Environment.getExternalStorageDirectory().getAbsolutePath();
     private String path = FileUtils.PATH;
     private MediaPlayer player = null;
@@ -26,13 +24,6 @@ public class Player {
     private String filename;
 
     private boolean is_playing = false;
-
-    /**
-     * there has to be a constructor
-     */
-    public Player() {
-
-    }
 
 
     /**

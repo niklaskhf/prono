@@ -76,9 +76,14 @@ public class ContactManager{
         Log.i("id", Integer.toString(id));
     }
 
+    /**
+     * Returns the last unique id in the database.
+     * @return
+     */
     public int getId() {
         return id;
     }
+
     /**
      * Adds a new row to the table 'contacts'
      *
@@ -119,8 +124,7 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectContacts() {
-        Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0"
-                , null, null, null, null);
+        Cursor mCursor = database.rawQuery(queryBuilder.defaultExpression(Filter.getCurrentInstance(), Sorter.getCurrentInstance()), null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -134,8 +138,7 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectFavorites() {
-        Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0 AND " + COLUMN_FAVORITE + " = 1"
-                , null, null, null, null);
+        Cursor mCursor = database.rawQuery(queryBuilder.favoriteExpression(Filter.getCurrentInstance(), Sorter.getCurrentInstance()), null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }

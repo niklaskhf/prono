@@ -66,7 +66,9 @@ public class Filter {
         return true;
     }
 
-    //reset Filter
+    /**
+     * Resets the filter.
+     */
     public static void resetFilter() {
         Filter filter = Filter.getCurrentInstance();
         Sorter sorter = Sorter.getCurrentInstance();
