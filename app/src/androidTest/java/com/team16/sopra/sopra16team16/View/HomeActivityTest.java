@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Filter;
 import com.team16.sopra.sopra16team16.R;
 
 import org.junit.Before;
@@ -53,6 +54,8 @@ public class HomeActivityTest {
 
     @Before
     public void setup() {
+        Filter filter = Filter.getCurrentInstance();
+        filter.resetFilter();
         contactManager = ContactManager.getInstance(mActivityTestRules.getActivity());
         try {
             mActivityTestRules.getActivity().runOnUiThread(new Runnable() {

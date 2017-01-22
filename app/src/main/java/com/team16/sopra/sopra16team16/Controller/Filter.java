@@ -65,4 +65,24 @@ public class Filter {
         gender.add(gender.size(), newGender);
         return true;
     }
+
+    //reset Filter
+    public static void resetFilter() {
+        Filter filter = Filter.getCurrentInstance();
+        Sorter sorter = Sorter.getCurrentInstance();
+        boolean male = false;
+        boolean female = false;
+        boolean unknown = false;
+        for(int i = 0; i < filter.getGenderList().size(); ++i) {
+            if(filter.getGenderList().get(i).equals("MALE")) male = true;
+            if(filter.getGenderList().get(i).equals("FEMALE")) female = true;
+            if(filter.getGenderList().get(i).equals("UNKNOWN")) unknown = true;
+        }
+        if(!male) filter.setGender("MALE");
+        if(!female) filter.setGender("FEMALE");
+        if(!unknown) filter.setGender("UNKNOWN");
+
+        sorter.setSortedBy("last");
+        sorter.setDirection("ASC");
+    }
 }

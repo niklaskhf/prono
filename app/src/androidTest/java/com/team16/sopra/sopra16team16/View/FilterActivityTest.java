@@ -102,13 +102,8 @@ public class FilterActivityTest {
         assertTrue("FEMALE wasn't added to filter (0 or 1)", (filter.getGenderList().get(0) == "FEMALE" || filter.getGenderList().get(1) == "FEMALE"));
 
 
-        /* deleted Gender in search
-        onView(isAssignableFrom(EditText.class)).perform(clearText());
-        onView(isAssignableFrom(EditText.class)).perform(typeText("FEMALE"),
-                pressKey(KeyEvent.KEYCODE_ENTER));
+        filter.resetFilter();
 
-        assertTrue("searchAdapter wrong count 'FEMALE'", fragment.getListAdapter().getCount() == 2);
-        */
     }
 
     @Test
@@ -138,6 +133,8 @@ public class FilterActivityTest {
 
         assertTrue("Sorter direction wrong: DESC", sorter.getDirection().equals("DESC"));
         assertTrue("Sorter sortedBy wrong: first", sorter.getSortedBy().equals(ContactManager.COLUMN_FIRSTNAME));
+
+        filter.resetFilter();
 
     }
 }

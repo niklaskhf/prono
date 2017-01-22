@@ -107,7 +107,7 @@ public class QueryBuilderTest {
         assertTrue("Filter is false", expectedQueryFilter.equals(testQueryFilter));
         assertTrue("No filter is false", expectedQueryNoFilter.equals(testQueryNoFilter));
 
-        resetFilter();
+        filter.resetFilter();
 
         filter.setCountry("ger");
         String testQueryCountry = queryBuilder.buildSearchQuery("country", filter, sorter);
@@ -126,25 +126,5 @@ public class QueryBuilderTest {
 
         assertTrue("country query is false", expectedQueryCountry.equals(testQueryCountry));
         //assertTrue(testQueryCountry + " --- " + expectedQueryCountry, expectedQueryCountry.equals(testQueryCountry));
-    }
-
-    //reset Filter
-    private void resetFilter() {
-        Filter filter = Filter.getCurrentInstance();
-        Sorter sorter = Sorter.getCurrentInstance();
-        boolean male = false;
-        boolean female = false;
-        boolean unknown = false;
-        for(int i = 0; i < filter.getGenderList().size(); ++i) {
-            if(filter.getGenderList().get(i).equals("MALE")) male = true;
-            if(filter.getGenderList().get(i).equals("FEMALE")) female = true;
-            if(filter.getGenderList().get(i).equals("UNKNOWN")) unknown = true;
-        }
-        if(!male) filter.setGender("MALE");
-        if(!female) filter.setGender("FEMALE");
-        if(!unknown) filter.setGender("UNKNOWN");
-
-        sorter.setSortedBy("last");
-        sorter.setDirection("ASC");
     }
 }

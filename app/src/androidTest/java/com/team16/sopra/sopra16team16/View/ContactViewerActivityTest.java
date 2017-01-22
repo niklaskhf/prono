@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Filter;
 import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
@@ -51,6 +52,8 @@ public class ContactViewerActivityTest {
 
     @Before
     public void setup() {
+        Filter filter = Filter.getCurrentInstance();
+        filter.resetFilter();
         contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
         try {
             mActivityTestRules.getActivity().runOnUiThread(new Runnable() {
