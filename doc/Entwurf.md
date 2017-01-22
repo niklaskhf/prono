@@ -2,7 +2,14 @@
 
 *Dieser Entwurf legt die prinzipielle Lösungsstruktur fest und enthält alles, was man benötigt, um einem Außenstehenden den prinzipiellen Aufbau der App erklären zu können.* (**keep it simple**)
 
-Die Datenbank (Model) liefert den Controller und dem View Informationen. Der Kontroller steuert den Ablauf des Programms. Der View dient zur Darstellung der Daten.
+
+Die ursprüngliche Idee des Entwurfs ware eine Adaptierung des Model-View-Controller Entwurfmusters. 
+Weitere Komponenten wurden anschließend hinzugefügt, um einzelne Zuständigkeitsbereiche abzudecken (z.B. Audio).
+
+Die ursprüngliche GUI-Komponente ist in die einzelnen Komponenten MainView (zuständig für die Darstellung der Kontaktliste/Settings/About/..) und ContactView (zuständig für die Erstellung/Bearbeitung/Einsicht von einzelnen Kontakten).
+Die ursprüngliche Controller-Komponente wurde in einen allgemeinen DataController ('Schnittstelle' zur SQL-Datenbank), Audio (zuständig für alles hörbare) und ExportImport (zuständig für das Exportieren/Importieren von Daten) aufgeteilt.
+Die Model-Komponente besteht aus einer simplen Verwaltungsklasse der SQL-Datenbank.
+
 
 Verwendete Entwurfsmuster: Model-View-Controller, Singleton
 
