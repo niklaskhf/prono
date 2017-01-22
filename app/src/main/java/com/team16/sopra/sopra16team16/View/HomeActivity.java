@@ -525,7 +525,6 @@ public class HomeActivity extends AppCompatActivity {
     public void openFilter(View view) {
         Intent intent = new Intent(this, FilterActivity.class);
         startActivity(intent);
-        return;
     }
 
 }
