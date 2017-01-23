@@ -20,38 +20,38 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
  	 Ein neuer Kontakt kann leicht über den 'Add'-Button hinzugefügt werden
  	 <img src="doc/images/createGif.gif" width="350"> 
  	 
-
+<br>
  - ### Bearbeiten eines Kontaktes:
 
  	 Die Informationen, sowie die Aussprache, eines Kontaktes können bearbeitet werden 
  	 
-
+<br>
  - ### Löschen eines Kontaktes:
 
  	 Ein Kontakt kann gelöscht (und kurzzeitig notfalls wieder hergestellt) werden
-
+<br>
  - ### Durchsuchen der Kontakte:
 
  	 Die Kontakte können über die Such-Funktion durchsucht werden
 	 <img src="doc/images/searchGif.gif" width="350"> 
 	 
-
+<br>
  - ### Filtern/Sortieren der Kontakte über den 'Filter'-Button:
 
  	 Die angezeigten Kontakte können gefiltert (Land/Geschlecht) und sortiert (Vor-/Nachname) werden 
-
+<br>
  - ### Favoriten für eine schnelle Übersicht verwalten:
 
  	 Um häufig verwendete Kontakte schnell verfügbar zu haben, können diese als Favoriten markiert werden und leicht über die 'Favoriten' aufgerufen werden
  	 <img src="doc/images/favoriteGif.gif" width="350"> 
  	 
-
+<br>
  - ### 'Undo' einer Aktion (Löschen/Editieren):
 
  	 Ausversehen einen Kontakt gelöscht/überschrieben? Für eine kurze Zeit lässt er sich wieder herstellen!
  	 <img src="doc/images/undoDeleteGif.gif" width="350"> <img src="doc/images/undoEditGif.gif" width="350"> 
  	 
-
+<br>
  - ### Dateien exportieren, um sie später wieder importieren zu können (ebenfalls: Daten zurücksetzen):
 
  	 Gerät zurücksetzen? Daten auf ein anderes Gerät verschieben? Alle Daten zurücksetzen? Klar.
@@ -61,7 +61,7 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
 
 
 
-
+<br><br>
 ## Installation
 Wenn das Android Gerät bereits Erlaubnis zur Installation von Unbekannten Quellen hat, wird die App mit der [pronoApp.apk-Datei](pronoApp.apk) automatisch installiert.
 Sollte die Berechtigung noch nötig sein:
