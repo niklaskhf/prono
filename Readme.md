@@ -28,7 +28,8 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
 <br>
  - ### Löschen eines Kontaktes:
 
- 	 Ein Kontakt kann gelöscht (und kurzzeitig notfalls wieder hergestellt) werden
+ 	 Ein Kontakt kann gelöscht (und kurzzeitig notfalls wieder hergestellt) werden 
+ 	 
 <br>
  - ### Durchsuchen der Kontakte:
 
