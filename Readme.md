@@ -103,21 +103,13 @@ Um einen Kontakt zu finden gibt es mehrere Möglichkeiten:
 
 Um einen Kontakt zu Bearbeiten folgt man diesen Schritten:
 
- 1. Kontakt öffnen
+ 1. Kontakt öffnen: In der Liste den Kontakt suchen und ihn durch einen Klick öffnen
 
-  In der Liste den Kontakt suchen und ihn durch einen Klick öffnen
+ 2. Editor öffnen: Auf den 'Editier'-Button rechts unten klicken
 
- 2. Editor öffnen
+ 3. Informationen eingeben: Gewünschte Informationen eingeben, evtl. Aufnahme aufnehmen
 
-  Auf den 'Editier'-Button rechts unten klicken
-
- 3. Informationen eingeben
-
-  Gewünschte Informationen eingeben, evtl. Aufnahme aufnehmen
-
- 4. Bestätigen
-
-  In dem Editor über den 'Bestätigen'-Button rechts unten bestätigen und den Kontakt speichern
+ 4. Bestätigen:  In dem Editor über den 'Bestätigen'-Button rechts unten bestätigen und den Kontakt speichern
 
 
 
