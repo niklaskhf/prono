@@ -33,6 +33,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static org.hamcrest.Matchers.allOf;
@@ -51,7 +52,7 @@ public class FilterActivityTest {
 
     //Instrumentation.ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NewContactActivity.class.getName(), null, false);
     @Rule
-    public ActivityTestRule<FilterActivity> mActivityTestRules = new ActivityTestRule<FilterActivity>(FilterActivity.class);
+    public ActivityTestRule<HomeActivity> mActivityTestRules = new ActivityTestRule<HomeActivity>(HomeActivity.class);
 
     @Before
     public void setup() {
@@ -67,11 +68,15 @@ public class FilterActivityTest {
                     contactManager.createContact("erste", "letzte", "titel", "land", "MALE");
                     contactManager.createContact("zweiter", "letzte", "titel", "land", "MALE");
                     contactManager.createContact("oui", "ouioui", "titlé", "francais", "FEMALE");
+
                 }
+
             });
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+
+        onView(withId(R.id.addFilter)).perform(click());
     }
 
 
@@ -100,6 +105,8 @@ public class FilterActivityTest {
 
 
         filter.resetFilter();
+
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
 
     }
 
@@ -132,6 +139,8 @@ public class FilterActivityTest {
         assertTrue("Sorter sortedBy wrong: first", sorter.getSortedBy().equals(ContactManager.COLUMN_FIRSTNAME));
 
         filter.resetFilter();
+
+        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
 
     }
 }

@@ -390,6 +390,20 @@ public class ContactManager{
         }
     }
 
+    /**
+     * Returns a Cursor populated with the COLUMN_COUNTRY column values
+     * @return
+     */
+    public Cursor getCountryList() {
+        database.beginTransaction();
+        String query = "select " + ContactManager._ID + ", " + ContactManager.COLUMN_COUNTRY + " from "
+                + ContactManager.TABLE_NAME + " group by " + ContactManager.COLUMN_COUNTRY;
+        Cursor cursorCountries = database.rawQuery(query, null);
+        cursorCountries.moveToFirst();
+        database.endTransaction();
+
+        return cursorCountries;
+    }
 
 
 }
