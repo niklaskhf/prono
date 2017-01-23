@@ -72,6 +72,7 @@ public class Filter {
     public static void resetFilter() {
         Filter filter = Filter.getCurrentInstance();
         Sorter sorter = Sorter.getCurrentInstance();
+        country  = null;
         boolean male = false;
         boolean female = false;
         boolean unknown = false;

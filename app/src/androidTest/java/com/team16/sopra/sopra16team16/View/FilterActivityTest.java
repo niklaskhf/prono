@@ -42,9 +42,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by Martin on 22.01.2017.
- */
 
 public class FilterActivityTest {
 

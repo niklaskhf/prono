@@ -75,6 +75,13 @@ public class SettingsFragmentTest {
         onData(allOf(is(instanceOf(String.class)), is("Türk"))).perform(click());
         onView(withId(R.id.drawer_layout)).perform(swipeRight());
         onData(anything()).inAdapterView(withId(R.id.left_drawer)).atPosition(1).check(matches(withText("Ayarlar")));
+
+        // reset to englando
+        onView(withId(R.id.drawer_layout)).perform(swipeRight());
+        onData(anything()).inAdapterView(withId(R.id.left_drawer)).atPosition(1).perform(click());
+        onView(withId(R.id.language_spinner)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("English"))).perform(click());
+        onView(withId(R.id.drawer_layout)).perform(swipeRight());
     }
     public static ViewAction swipeRight() {
         return new GeneralSwipeAction(Swipe.FAST, GeneralLocation.CENTER_LEFT,

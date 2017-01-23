@@ -2,18 +2,10 @@ package com.team16.sopra.sopra16team16.Controller;
 
 import android.database.Cursor;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.rule.ActivityTestRule;
 import android.util.Log;
 
-import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
-import com.team16.sopra.sopra16team16.Controller.ContactManager;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
-
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-
-import java.io.File;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;

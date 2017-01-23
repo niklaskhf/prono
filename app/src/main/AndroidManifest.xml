@@ -35,7 +35,8 @@
         </activity>
         <activity
             android:name=".View.FilterActivity"
-            android:label="Filter">
+            android:label="Filter"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

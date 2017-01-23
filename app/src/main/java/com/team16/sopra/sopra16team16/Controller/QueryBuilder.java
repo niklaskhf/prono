@@ -64,8 +64,8 @@ public class QueryBuilder {
         query_EXPRESSION = query_EXPRESSION.substring(0, query_EXPRESSION.length() - 11);
 
         //expression for sorting
-        String sorterExpression = buildSorterExpression(sorter);
-        query_EXPRESSION = query_EXPRESSION + sorterExpression;
+        String sorterExpression = buildSorterExpression();
+        query_EXPRESSION = query_EXPRESSION + " ORDER BY " + sorterExpression;
 
         // finish query
         query_EXPRESSION = query_EXPRESSION + ";";
@@ -77,7 +77,7 @@ public class QueryBuilder {
      * if there is a filter, it adds an expression for it
      */
     private String buildFilterExpression(Filter filter) {
-        String result = "";
+        String result = " AND " + ContactManager.COLUMN_DELETED + " = 0";
         if(filter.getCountry() != null) {
             result += " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
         }
@@ -95,109 +95,75 @@ public class QueryBuilder {
         return result;
     }
 
+
     /**
-     *
-     * @param filter
-     * @return
+     * Builds the WHERE segment of a default query, asking for everything that is not marked for deletion
      */
-    private String buildDefaultFilter(Filter filter) {
-        String result = "";
-        if(filter.getCountry() != null) {
-            result += ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "' AND ";
+    public String defaultWhere() {
+        Filter filter = Filter.getCurrentInstance();
+
+        String deleted = ContactManager.COLUMN_DELETED + " = 0";
+
+        String country = "";
+        if (filter.getCountry() != null) {
+            country = " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
         }
+
+        String gender = "";
 
         if(filter.getGenderList().size() != 0) {
 
-            result += "(" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
+            gender += " AND (" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
 
             for(int i = 1; i < filter.getGenderList().size(); ++i) {
-                result += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
+                gender += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
             }
-            result += ") AND ";
+            gender += ")";
         }
-        else {
-            result = result.substring(result.length() - 4);
-        }
-        result += ContactManager.COLUMN_DELETED + " = 0";
 
-        return result;
+        Log.d("whereDefault", deleted + country + gender);
+        return deleted + country + gender;
     }
 
-    /*
-     * if there is a filter, it adds an expression for it
+    /**
+     * Builds the WHERE segment of a favorite query, asking for everything that is not marked for deletion and marked as favorite
      */
-    private String buildFavoriteFilter(Filter filter) {
-        String result = "";
-        if(filter.getCountry() != null) {
-            result += ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "' AND ";
+    public String favoriteWhere() {
+        Filter filter = Filter.getCurrentInstance();
+
+        String deleted = ContactManager.COLUMN_DELETED + " = 0 AND " + ContactManager.COLUMN_FAVORITE + " = 1";
+
+        String country = "";
+        if (filter.getCountry() != null) {
+            country = " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
         }
+
+        String gender = "";
 
         if(filter.getGenderList().size() != 0) {
 
-            result += "(" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
+            gender += " AND (" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
 
             for(int i = 1; i < filter.getGenderList().size(); ++i) {
-                result += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
+                gender += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
             }
-            result += ") AND ";
+            gender += ")";
         }
-        else {
-            result = result.substring(result.length() - 4);
-        }
-        result += ContactManager.COLUMN_DELETED + " = 0 AND " + ContactManager.COLUMN_FAVORITE + " = 1";
 
-        return result;
+        Log.d("whereFavorite", deleted + country + gender);
+        return deleted + country + gender;
     }
 
 
-    /**
-     * Builds a default SQL query using the filter/sorter and returning all rows not marked as deleted.
-     * @return
-     */
-    public String defaultExpression(Filter filter, Sorter sorter) {
-        String query_COLUMNS =
-                "SELECT ";
-        // construct column String SELECT column column ...
-        for (String s : cols) {
-            query_COLUMNS = query_COLUMNS + s + ", ";
-        }
-        // cut out the last comma
-        query_COLUMNS = query_COLUMNS.substring(0, query_COLUMNS.length() - 2);
-        // FROM TABLE_NAME WHERE
-        String query_TABLE = query_COLUMNS + " FROM " + ContactManager.TABLE_NAME + " WHERE ";
 
-        query_TABLE = query_TABLE + buildDefaultFilter(filter);
-        query_TABLE = query_TABLE + buildSorterExpression(sorter);
 
-        return query_TABLE + ";";
-    }
 
-    /**
-     * Builds a SQL query using the filter/sorter and returning all rows
-     * not marked as deleted and marked as favorite.
-     * @return
-     */
-    public String favoriteExpression(Filter filter, Sorter sorter) {
-        String query_COLUMNS =
-                "SELECT ";
-        // construct column String SELECT column column ...
-        for (String s : cols) {
-            query_COLUMNS = query_COLUMNS + s + ", ";
-        }
-        // cut out the last comma
-        query_COLUMNS = query_COLUMNS.substring(0, query_COLUMNS.length() - 2);
-        // FROM TABLE_NAME WHERE
-        String query_TABLE = query_COLUMNS + " FROM " + ContactManager.TABLE_NAME + " WHERE ";
 
-        query_TABLE = query_TABLE + buildFavoriteFilter(filter);
-        query_TABLE = query_TABLE + buildSorterExpression(sorter);
 
-        return query_TABLE + ";";
-    }
-
-    private String buildSorterExpression(Sorter sorter) {
+    public String buildSorterExpression() {
+        Sorter sorter = Sorter.getCurrentInstance();
         String result;
-        result = " ORDER BY " + sorter.getSortedBy() + " " + sorter.getDirection();
+        result = sorter.getSortedBy() + " " + sorter.getDirection();
         return result;
     }
 }

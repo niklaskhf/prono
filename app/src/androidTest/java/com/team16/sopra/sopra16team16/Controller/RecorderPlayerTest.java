@@ -20,6 +20,7 @@ import com.team16.sopra.sopra16team16.R;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 import com.team16.sopra.sopra16team16.View.NewContactActivity;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -69,7 +70,13 @@ public class RecorderPlayerTest {
     public void setup() {
         recorder = Recorder.getInstance();
         manager = (AudioManager) mRule.getActivity().getSystemService(Context.AUDIO_SERVICE);
-        ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).wipe();
+        mRule.getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).wipe();
+            }
+        });
+
     }
 
     // im so sorry oh god
@@ -372,6 +379,11 @@ public class RecorderPlayerTest {
         // IN HOMEACTIVITY
 
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // TEST PLAYBUTTON
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .onChildView(withId(R.id.contact_play))
@@ -383,6 +395,11 @@ public class RecorderPlayerTest {
                 .perform(click());
         assertTrue("player didnt stop playing", !manager.isMusicActive());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .onChildView(withId(R.id.contact_play))
                 .perform(click());
@@ -393,6 +410,11 @@ public class RecorderPlayerTest {
         }
         assertTrue("player didnt stop playing", !manager.isMusicActive());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(0)
                 .perform(click());
 
@@ -409,5 +431,6 @@ public class RecorderPlayerTest {
         assertTrue("temp file doesnt exist", !temp.exists());
 
     }
+
 
 }

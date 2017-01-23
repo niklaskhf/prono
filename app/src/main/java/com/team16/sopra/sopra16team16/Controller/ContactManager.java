@@ -5,10 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import java.io.File;
 
@@ -124,7 +122,8 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectContacts() {
-        Cursor mCursor = database.rawQuery(queryBuilder.defaultExpression(Filter.getCurrentInstance(), Sorter.getCurrentInstance()), null);
+        Cursor mCursor = database.query(TABLE_NAME, cols, queryBuilder.defaultWhere()
+                , null, null, null, queryBuilder.buildSorterExpression());
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -138,7 +137,8 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectFavorites() {
-        Cursor mCursor = database.rawQuery(queryBuilder.favoriteExpression(Filter.getCurrentInstance(), Sorter.getCurrentInstance()), null);
+        Cursor mCursor = database.query(TABLE_NAME, cols, queryBuilder.favoriteWhere()
+                , null, null, null, queryBuilder.buildSorterExpression());
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -320,10 +320,12 @@ public class ContactManager{
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
+            Log.d("cursorCount", Integer.toString(cursorAdapter.getCount()));
         }
         if (favoriteAdapter != null) {
             favoriteAdapter.changeCursor(selectFavorites());
         }
+
     }
 
 

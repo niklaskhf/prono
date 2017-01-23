@@ -43,13 +43,18 @@ public class ExportTest {
     public ActivityTestRule<HomeActivity> mRule = new ActivityTestRule<>(HomeActivity.class);
 
 
+    @Before
+    public void setup() {
+                ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).wipe();
+    }
+
     @Test
     public void backupImportResetTest() {
-        ContactManager.getInstance(InstrumentationRegistry.getTargetContext()).wipe();
         createContacts();
         backupTest();
         resetTest();
         importTest();
+
     }
 
     public void createContacts() {
@@ -77,10 +82,6 @@ public class ExportTest {
 
 
         pressBack();
-
-
-
-
 
 
         onView(withId(R.id.addNew)).perform(click());
@@ -156,7 +157,7 @@ public class ExportTest {
 
         int filesAfter = Environment.getExternalStorageDirectory().listFiles().length;
 
-        assertTrue(filesBefore == filesAfter-1);
+        assertTrue(filesBefore == filesAfter - 1);
         pressBack();
     }
 
@@ -208,13 +209,13 @@ public class ExportTest {
         File foo = new File(Environment.getExternalStorageDirectory().getPath() + "/foo.zip");
         try {
             foo.createNewFile();
+            onData(hasToString(startsWith("foo.zip")))
+                    .perform(click());
+
+            foo.delete();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        onData(hasToString(startsWith("foo.zip")))
-                .perform(click());
-
-        foo.delete();
 
 
         onView(withId(R.id.import_button)).perform(click());
@@ -250,7 +251,6 @@ public class ExportTest {
 
         pressBack();
     }
-
 
 
     @After

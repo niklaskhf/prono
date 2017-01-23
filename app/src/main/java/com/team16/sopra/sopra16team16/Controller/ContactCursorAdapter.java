@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
 
+import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 

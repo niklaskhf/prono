@@ -46,6 +46,8 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         super.onCreate(saveInstanceState);
         this.setContentView(R.layout.activity_filter);
 
+        setTitle("Filter");
+
         DBManager dbManager = DBManager.getCurrentInstance(this);
         database = dbManager.getDbContacts();
 

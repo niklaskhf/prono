@@ -1,4 +1,4 @@
-package com.team16.sopra.sopra16team16.Controller;
+package com.team16.sopra.sopra16team16.View;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.R;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ContactCursorAdapterTest {
     private ContactManager contactManager;
-    private com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter contactCursorAdapter;
+    private ContactCursorAdapter contactCursorAdapter;
 
     @Rule
     public ActivityTestRule<HomeActivity> mRule = new ActivityTestRule<>(HomeActivity.class);
