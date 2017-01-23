@@ -85,16 +85,14 @@ Ohne diese wird der Kontakt nicht erstellt.
 
 Um einen Kontakt zu finden gibt es mehrere Möglichkeiten:
 
-	1. Suche
-
+1. Suche
 	 Mit der Suchfunktion (Lupe rechts oben) lassen sich die Kontakte schnell durchsuchen.
 
-	2. Filtern
-
+2. Filtern
 	 Mit der Filterfunktion (Button links unten) lassen sich die angezeigten Kontakte eingrezen, um eventuell nur Kontakte aus einem Land angezeigt zu bekommen.
 	 Weiterhin lässt sich hier die Reihenfolge anpassen (Vor-/Nachname auf- bzw. absteigend).
 
-	3. Favoriten
+3. Favoriten
 	 Mit dem 'Stern' lassen sich Kontakte als Favoriten markieren. Favoriten lassen sich dann später schnell über das Menü (rechts-swipe bzw. Menü-Icon links oben) 'Favoriten' aufrufen.
 
 
