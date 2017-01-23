@@ -15,39 +15,39 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
 
 ## Features
 
- - Hinzufügen eines neuen Kontaktes:
+ - ### Hinzufügen eines neuen Kontaktes:
 
  	 Ein neuer Kontakt kann leicht über den 'Add'-Button hinzugefügt werden
  	 <img src="doc/images/createGif.gif" width="350">
 
- - Bearbeiten eines Kontaktes:
+ - ### Bearbeiten eines Kontaktes:
 
  	 Die Informationen, sowie die Aussprache, eines Kontaktes können bearbeitet werden
 
- - Löschen eines Kontaktes:
+ - ### Löschen eines Kontaktes:
 
  	 Ein Kontakt kann gelöscht (und kurzzeitig notfalls wieder hergestellt) werden
 
- - Durchsuchen der Kontakte:
+ - ### Durchsuchen der Kontakte:
 
  	 Die Kontakte können über die Such-Funktion durchsucht werden
 	 <img src="doc/images/searchGif.gif" width="350">
 
- - Filtern/Sortieren der Kontakte über den 'Filter'-Button:
+ - ### Filtern/Sortieren der Kontakte über den 'Filter'-Button:
 
  	 Die angezeigten Kontakte können gefiltert (Land/Geschlecht) und sortiert (Vor-/Nachname) werden 
 
- - Favoriten für eine schnelle Übersicht verwalten:
+ - ### Favoriten für eine schnelle Übersicht verwalten:
 
  	 Um häufig verwendete Kontakte schnell verfügbar zu haben, können diese als Favoriten markiert werden und leicht über die 'Favoriten' aufgerufen werden
  	 <img src="doc/images/favoriteGif.gif" width="350">
 
- - 'Undo' einer Aktion (Löschen/Editieren):
+ - ### 'Undo' einer Aktion (Löschen/Editieren):
 
  	 Ausversehen einen Kontakt gelöscht/überschrieben? Für eine kurze Zeit lässt er sich wieder herstellen!
  	 <img src="doc/images/undoDeleteGif.gif" width="350"> <img src="doc/images/undoEditGif.gif" width="350">
 
- - Dateien exportieren, um sie später wieder importieren zu können (ebenfalls: Daten zurücksetzen):
+ - ### Dateien exportieren, um sie später wieder importieren zu können (ebenfalls: Daten zurücksetzen):
 
  	 Gerät zurücksetzen? Daten auf ein anderes Gerät verschieben? Alle Daten zurücksetzen? Klar.
  	 <img src="doc/images/backupResetImportGif.gif" width="350">
