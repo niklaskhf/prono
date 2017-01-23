@@ -1,6 +1,6 @@
 # Prono 
 
-<img src="doc/images/SoPraAppHomeScreen.png" width="200">
+<img src="doc/images/SoPraAppHomeScreen.png" width="350">
 ![contactList](doc/images/SoPraAppHomeScreen.png)
 
 Die Appliatkon 'Prono' ermöglicht das Verwalten von Kontakten, jedoch gibt es einen Bonus, um folgendes Problem möglichst zu vermeiden:
