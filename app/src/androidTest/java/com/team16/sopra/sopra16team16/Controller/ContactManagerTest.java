@@ -27,25 +27,16 @@ public class ContactManagerTest {
     private static ContactManager contactManager;
     private ContactManager contactManager2;
 
-    @Rule
-    public ActivityTestRule<HomeActivity> mRule = new ActivityTestRule<>(HomeActivity.class);
 
     @Before
     public void setup() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
                 contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
                 contactManager.wipe();
-
-            }
-        });
+                singletonTest();
     }
-    @Test
+
+
     public void singletonTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
                 // initial setup test
                 contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
                 contactManager.open();
@@ -83,42 +74,27 @@ public class ContactManagerTest {
                         "dr",
                         "germany",
                         "MALE");
-            }
-        });
     }
 
 
     @Test
     public void getIdTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
                 int id = contactManager.getId();
 
                 assertTrue("getId failed", id >= 0);
-            }
-        });
     }
 
 
     @Test
     public void updateCursorAdapterTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
                 ContactCursorAdapter testCursor = contactManager.getCursorAdapterDefault();
 
                 assertNotNull(testCursor);
-            }
-        });
     }
 
     @Test
     public void createContactTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
                 Long res = contactManager.createContact(
                         "first",
@@ -157,15 +133,12 @@ public class ContactManagerTest {
                         "dr",
                         "germany",
                         "MALE");
-            }
-        });
+
     }
 
     @Test
     public void updateContactTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+
 
                 Cursor cursor = contactManager.selectContacts();
                 cursor.moveToFirst();
@@ -174,15 +147,11 @@ public class ContactManagerTest {
                 Long res = contactManager.updateContact(id, "last", "first", "dr", "germany", "FEMALE");
 
                 assertTrue("didnt update contact", res == 1);
-            }
-        });
+
     }
 
     @Test
     public void selectContactsTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
                 Cursor cursor = contactManager.selectContacts();
                 Log.d("selectCursorSize", Integer.toString(cursor.getCount()));
@@ -191,15 +160,11 @@ public class ContactManagerTest {
 
                         >= 1);
 
-            }
-        });
     }
 
     @Test
     public void favoriteToggle() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+
 
                 Cursor cursor = contactManager.selectContacts();
                 Log.d("favoriteCursorSize", Integer.toString(cursor.getCount()));
@@ -221,15 +186,11 @@ public class ContactManagerTest {
 
                         % 2);
 
-            }
-        });
     }
 
     @Test
-    public void deleteContactTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+    public void deleteContactToggleTest() {
+
 
                 Cursor cursor = contactManager.selectContacts();
                 Log.d("deleteCursorSize", Integer.toString(cursor.getCount()));
@@ -239,42 +200,20 @@ public class ContactManagerTest {
                 Log.d("deleteCursorId", Integer.toString(cursor.getInt(cursor.getColumnIndexOrThrow("_id"))));
 
                 assertTrue("didnt delete one contact", 1 ==
-                        contactManager.deleteContact(cursor.getInt(cursor.getColumnIndexOrThrow("_id")
+                        contactManager.toggleDeleted(cursor.getInt(cursor.getColumnIndexOrThrow("_id")
+                        ), 1));
 
-                        )));
+        assertTrue("didnt delete one contact", 1 ==
+                contactManager.toggleDeleted(cursor.getInt(cursor.getColumnIndexOrThrow("_id")
+                ), 0));
 
-                assertTrue("file didnt get deleted", !new File(
-                        InstrumentationRegistry.getTargetContext()
 
-                                .
-
-                                        getApplicationContext()
-
-                                .
-
-                                        getFilesDir()
-
-                                .
-
-                                        getPath()
-
-                                + "" + cursor.getInt(cursor.getColumnIndexOrThrow("_id")) + ".3gp")
-                        .
-
-                                exists()
-
-                );
-
-            }
-        });
     }
 
 
     @Test
     public void contactCursorSingletonTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+
 
                 ContactCursorAdapter cursor1 = contactManager.getCursorAdapterDefault();
 
@@ -283,15 +222,12 @@ public class ContactManagerTest {
                 ContactCursorAdapter cursor2 = contactManager.getCursorAdapterDefault();
 
                 assertTrue("singleton failed?", cursor1 == cursor2);
-            }
-        });
+
     }
 
     @Test
     public void searchResultsTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+
 
                 Cursor cursorNo = contactManager.getSearchResults("");
                 Cursor cursorOne = contactManager.getSearchResults("test");
@@ -363,21 +299,17 @@ public class ContactManagerTest {
 
                 assertTrue("wrong search result with multiple words", resMultiple);
 
-            }
-        });
+
     }
 
 
     @Test
     public void wipeTest() {
-        mRule.getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+
                 contactManager.wipe();
 
                 assertTrue("didnt wipe", contactManager.selectContacts().getCount() == 0);
-            }
-        });
+
     }
 
 }
