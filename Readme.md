@@ -40,6 +40,7 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
  - ### Filtern/Sortieren der Kontakte über den 'Filter'-Button:
 
  	 Die angezeigten Kontakte können gefiltert (Land/Geschlecht) und sortiert (Vor-/Nachname) werden 
+ 	 
 <br>
  - ### Favoriten für eine schnelle Übersicht verwalten:
 
