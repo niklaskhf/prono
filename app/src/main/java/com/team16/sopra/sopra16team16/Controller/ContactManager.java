@@ -76,7 +76,7 @@ public class ContactManager{
 
     /**
      * Returns the last unique id in the database.
-     * @return
+     * @return the current incrementing unique id of the SQL table 'contacts'
      */
     public int getId() {
         return id;
@@ -359,15 +359,6 @@ public class ContactManager{
         return cursor;
     }
 
-
-    /**
-     * Closes the database connection.
-     * Not really needed, handled by android kernel
-     */
-    /*
-    public void close() {
-        database.close();
-    }*/
 
     /**
      * Opens a new database connection.

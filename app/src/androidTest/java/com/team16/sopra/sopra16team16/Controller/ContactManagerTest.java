@@ -2,22 +2,23 @@ package com.team16.sopra.sopra16team16.Controller;
 
 import android.database.Cursor;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
 import android.util.Log;
 
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by moo on 11/29/2016.
- */
-
 public class ContactManagerTest {
 
-    private static ContactManager contactManager;
+    private ContactManager contactManager;
     private ContactManager contactManager2;
+
 
 
     @Before
@@ -25,6 +26,8 @@ public class ContactManagerTest {
                 contactManager = ContactManager.getInstance(InstrumentationRegistry.getTargetContext());
                 contactManager.wipe();
                 singletonTest();
+
+
     }
 
 
@@ -144,7 +147,6 @@ public class ContactManagerTest {
 
     @Test
     public void selectContactsTest() {
-
                 Cursor cursor = contactManager.selectContacts();
                 Log.d("selectCursorSize", Integer.toString(cursor.getCount()));
 

@@ -3,18 +3,25 @@ package com.team16.sopra.sopra16team16.Controller;
 import android.util.Log;
 
 /**
- * Contains methods returning SQL queries
+ * Contains methods for building SQL queries
  */
 public class QueryBuilder {
     private String[] cols;
 
+    /**
+     * Initialize with the table columns
+     * @param cols - columns of interest
+     */
     public QueryBuilder(String[] cols) {
         this.cols = cols;
     }
+
     /**
      * Constructs a search query that finds all rows containing every word in searchWords as substring
      *
      * @param search search query from search bar - String
+     * @param filter Filter object
+     * @param sorter Sorter object
      * @return complete SELECT FROM WHEN query
      */
     public String buildSearchQuery(String search, Filter filter, Sorter sorter) {
@@ -73,8 +80,11 @@ public class QueryBuilder {
         return query_EXPRESSION;
     }
 
-    /*
+    /**
      * if there is a filter, it adds an expression for it
+     *
+     * @param filter Filter object
+     * @return returns the filter WHERE part of the SQL query
      */
     private String buildFilterExpression(Filter filter) {
         String result = " AND " + ContactManager.COLUMN_DELETED + " = 0";
@@ -98,6 +108,8 @@ public class QueryBuilder {
 
     /**
      * Builds the WHERE segment of a default query, asking for everything that is not marked for deletion
+     *
+     * @return Returns the WHERE part of a default SQL query (adds filter arguments)
      */
     public String defaultWhere() {
         Filter filter = Filter.getCurrentInstance();
@@ -127,6 +139,8 @@ public class QueryBuilder {
 
     /**
      * Builds the WHERE segment of a favorite query, asking for everything that is not marked for deletion and marked as favorite
+     *
+     * @return returns the WHERE part of a favorite SQL query (considers filter and favorite arguments)
      */
     public String favoriteWhere() {
         Filter filter = Filter.getCurrentInstance();
@@ -155,11 +169,11 @@ public class QueryBuilder {
     }
 
 
-
-
-
-
-
+    /**
+     * Builds the sorting part for SQL queries
+     *
+     * @return sorting part of SQL query (based on Sorter object status)
+     */
     public String buildSorterExpression() {
         Sorter sorter = Sorter.getCurrentInstance();
         String result;

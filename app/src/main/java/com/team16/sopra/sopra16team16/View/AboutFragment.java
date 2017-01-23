@@ -12,9 +12,8 @@ import com.team16.sopra.sopra16team16.R;
 
 /**
  * About fragment - used to display project information
- * Does literally nothing interactive
+ * Does literally nothing
  */
-
 public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

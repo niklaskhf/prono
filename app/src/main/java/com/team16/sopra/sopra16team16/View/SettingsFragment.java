@@ -24,7 +24,14 @@ import com.team16.sopra.sopra16team16.R;
 
 import java.util.Locale;
 
-
+/**
+ * Fragment allowing the user to see settings.
+ * These include:
+ *  - language selection
+ *  - export
+ *  - import
+ *  - reset
+ */
 public class SettingsFragment extends Fragment {
     Export export = new Export();
     Import importObject = new Import();

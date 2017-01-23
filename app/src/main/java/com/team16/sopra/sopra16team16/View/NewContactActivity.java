@@ -22,12 +22,15 @@ import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Controller.FileUtils;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.Controller.Recorder;
 import com.team16.sopra.sopra16team16.R;
 
 import java.io.File;
 
-
+/**
+ * Activity allowing the user to create/edit a contact.
+ */
 public class NewContactActivity extends AppCompatActivity {
 
     private ContactManager contactManager;
@@ -117,6 +120,7 @@ public class NewContactActivity extends AppCompatActivity {
         if (recorder.isPressed()) {
             recorder.stopRecording(recordButton, this);
         }
+        Player.getCurrentInstance().release();
     }
 
     /**

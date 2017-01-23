@@ -44,6 +44,7 @@ public class ContactCursorAdapter extends CursorAdapter {
         super(context, cursor, 0);
         this.context = context;
         contactManager = ContactManager.getInstance(context);
+        player = Player.getCurrentInstance();
     }
 
 
@@ -110,13 +111,13 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         // assign playButton action
         playButton.setOnClickListener(new View.OnClickListener() {
-            Player player = new Player();
+            //Player player = new Player();
             @Override
             public void onClick(View view) {
                 // play audio file associated to contact id
                 Log.e("RecordButton", "ID: " + id);
                 if (player.isPlaying()) {
-                    player.stopPlaying(playButton);
+                    player.stopPlaying(playButton, id);
                 } else {
                     player.startPlaying(id, playButton);
                 }

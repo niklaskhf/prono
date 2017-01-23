@@ -25,7 +25,6 @@ import com.team16.sopra.sopra16team16.R;
  * Displays information of a contact.
  * Allows editing and deleting the contacts information.
  */
-
 public class ContactViewerActivity extends AppCompatActivity {
 
     private ContactManager contactManager = null;
@@ -57,12 +56,12 @@ public class ContactViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
 
-        player = new Player();
+        //player = new Player();
+        player = Player.getCurrentInstance();
 
         this.setContentView(R.layout.contact_viewer);
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
-        // TODO FIX INTENT
         Bundle bundle = getIntent().getExtras();
 
         firstName = bundle.get("first").toString();
@@ -108,7 +107,7 @@ public class ContactViewerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (player.isPlaying()) {
-                    player.stopPlaying(playButton);
+                    player.stopPlaying(playButton, id);
                 } else {
                     player.startPlaying(id, playButton);
                 }
@@ -285,5 +284,11 @@ public class ContactViewerActivity extends AppCompatActivity {
         snackbar.show();
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        player.release();
+    }
 
 }

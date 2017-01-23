@@ -39,7 +39,7 @@ public class Recorder {
     private ColorStateList actionButtonColor;
     private Handler handler;
     private int id;
-    private Player player = new Player();
+    private Player player = Player.getCurrentInstance();
     private Runnable runnable;
 
 
@@ -55,7 +55,9 @@ public class Recorder {
         }
     }
 
-    //constructor - need context for path
+    /**
+     * Constructor
+     */
     private Recorder() {
         path = FileUtils.PATH;
     }
@@ -176,9 +178,9 @@ public class Recorder {
                 @Override
                 public void onClick(View view) {
                     if (!player.isPlaying()) {
-                            player.startPlaying(id + "_temp", playDialog);
+                            player.startPlaying(id + "_temp", playDialog, id);
                     } else {
-                        player.stopPlaying(playDialog);
+                        player.stopPlaying(playDialog, id);
                     }
                 }
             });

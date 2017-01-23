@@ -35,6 +35,7 @@ import android.widget.ListView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.Locale;
@@ -288,6 +289,9 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sets the new chosen language
+     */
     public void initializeNewChosenLanguage() {
         SharedPreferences myLanguagePreference = getSharedPreferences("getLanguage", Context.MODE_PRIVATE);
         if (myLanguagePreference.getString("updatedLanguage",null) != null) {
@@ -300,7 +304,8 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * changes app language
-     * @param lang
+     *
+     * @param lang new language, uses the language code (eg. en - English)
      * @param res
      */
     public void setLocale(String lang, Resources res) {
@@ -327,6 +332,7 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         contactManager.deleteMarked();
+        Player.getCurrentInstance().release();
     }
 
     @Override

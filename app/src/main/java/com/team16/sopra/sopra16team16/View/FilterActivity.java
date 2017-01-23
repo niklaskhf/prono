@@ -20,7 +20,6 @@ import com.team16.sopra.sopra16team16.R;
 /**
  * The user can change the filter and the sorter as desired
  */
-
 public class FilterActivity extends Activity implements AdapterView.OnItemSelectedListener{
 
     private static SQLiteDatabase database;
