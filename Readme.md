@@ -65,9 +65,10 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
 ## Installation
 Wenn das Android Gerät bereits Erlaubnis zur Installation von Unbekannten Quellen hat, wird die App mit der [pronoApp.apk-Datei](pronoApp.apk) automatisch installiert.
 Sollte die Berechtigung noch nötig sein:
-	1. Öffne Einstellungen/Sicherheit
-	2. Aktiviere 'Unbekannte Quellen'
-	3. Installiere App mit [pronoApp.apk](pronoApp.apk)
+
+1. Öffne Einstellungen/Sicherheit
+2. Aktiviere 'Unbekannte Quellen'
+3. Installiere App mit [pronoApp.apk](pronoApp.apk)
 
 
 ## Verwendung der App
