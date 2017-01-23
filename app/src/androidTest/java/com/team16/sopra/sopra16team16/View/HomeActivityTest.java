@@ -188,6 +188,8 @@ public class HomeActivityTest {
         assertTrue("searchAdapter wrong count 'first' & filter 'female'", fragment.getListAdapter().getCount() == 1);
         onView(isAssignableFrom(EditText.class)).perform(clearText());
         assertTrue("searchAdapter wrong count '' & filter 'female'", fragment.getListAdapter().getCount() == 2);
+
+        Filter.getCurrentInstance().resetFilter();
     }
 
 
