@@ -1,6 +1,6 @@
 # Prono 
 
-![contactList](doc/images/SoPraAppHomeScreen.png)
+<img src="doc/images/SoPraAppHomeScreen.png" width="350">
 
 Die Appliatkon 'Prono' ermöglicht das Verwalten von Kontakten, jedoch gibt es einen Bonus, um folgendes Problem möglichst zu vermeiden:
 
@@ -15,53 +15,62 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
 
 ## Features
 
- - Hinzufügen eines neuen Kontaktes:
+ - ### Hinzufügen eines neuen Kontaktes:
 
  	 Ein neuer Kontakt kann leicht über den 'Add'-Button hinzugefügt werden
- 	 ![createContact](doc/images/createGif.gif)
+ 	 <img src="doc/images/createGif.gif" width="350"> 
+ 	 
+<br>
+ - ### Bearbeiten eines Kontaktes:
 
- - Bearbeiten eines Kontaktes:
+ 	 Die Informationen, sowie die Aussprache, eines Kontaktes können bearbeitet werden 
+ 	 
+<br>
+ - ### Löschen eines Kontaktes:
 
- 	 Die Informationen, sowie die Aussprache, eines Kontaktes können bearbeitet werden
-
- - Löschen eines Kontaktes:
-
- 	 Ein Kontakt kann gelöscht (und kurzzeitig notfalls wieder hergestellt) werden
-
- - Durchsuchen der Kontakte:
+ 	 Ein Kontakt kann gelöscht (und kurzzeitig notfalls wieder hergestellt) werden 
+ 	 
+<br>
+ - ### Durchsuchen der Kontakte:
 
  	 Die Kontakte können über die Such-Funktion durchsucht werden
-	 ![searchContacts](doc/images/searchGif.gif)
-
- - Filtern/Sortieren der Kontakte über den 'Filter'-Button:
+	 <img src="doc/images/searchGif.gif" width="350"> 
+	 
+<br>
+ - ### Filtern/Sortieren der Kontakte über den 'Filter'-Button:
 
  	 Die angezeigten Kontakte können gefiltert (Land/Geschlecht) und sortiert (Vor-/Nachname) werden 
-
- - Favoriten für eine schnelle Übersicht verwalten:
+ 	 
+<br>
+ - ### Favoriten für eine schnelle Übersicht verwalten:
 
  	 Um häufig verwendete Kontakte schnell verfügbar zu haben, können diese als Favoriten markiert werden und leicht über die 'Favoriten' aufgerufen werden
- 	 ![favorite](doc/images/favoriteGif.gif)
-
- - 'Undo' einer Aktion (Löschen/Editieren):
+ 	 <img src="doc/images/favoriteGif.gif" width="350"> 
+ 	 
+<br>
+ - ### 'Undo' einer Aktion (Löschen/Editieren):
 
  	 Ausversehen einen Kontakt gelöscht/überschrieben? Für eine kurze Zeit lässt er sich wieder herstellen!
- 	 ![undoDelete](doc/images/undoDeleteGif.gif) ![undoEdit](doc/images/undoEditGif.gif)
-
- - Dateien exportieren, um sie später wieder importieren zu können (ebenfalls: Daten zurücksetzen):
+ 	 <img src="doc/images/undoDeleteGif.gif" width="350"> <img src="doc/images/undoEditGif.gif" width="350"> 
+ 	 
+<br>
+ - ### Dateien exportieren, um sie später wieder importieren zu können (ebenfalls: Daten zurücksetzen):
 
  	 Gerät zurücksetzen? Daten auf ein anderes Gerät verschieben? Alle Daten zurücksetzen? Klar.
- 	 ![backupImport](doc/images/backupResetImportGif)
- 	 _Benutzung auf eigene Gefahr, alle Daten können verloren gehen_
+ 	 <img src="doc/images/backupResetImportGif.gif" width="350">
+ 	 _Benutzung auf eigene Gefahr, alle Daten können verloren gehen_ 
+ 	 
 
 
 
-
+<br><br>
 ## Installation
 Wenn das Android Gerät bereits Erlaubnis zur Installation von Unbekannten Quellen hat, wird die App mit der [pronoApp.apk-Datei](pronoApp.apk) automatisch installiert.
 Sollte die Berechtigung noch nötig sein:
-	1. Öffne Einstellungen/Sicherheit
-	2. Aktiviere 'Unbekannte Quellen'
-	3. Installiere App mit [pronoApp.apk](pronoApp.apk)
+
+1. Öffne Einstellungen/Sicherheit
+2. Aktiviere 'Unbekannte Quellen'
+3. Installiere App mit [pronoApp.apk](pronoApp.apk)
 
 
 ## Verwendung der App
@@ -79,16 +88,14 @@ Ohne diese wird der Kontakt nicht erstellt.
 
 Um einen Kontakt zu finden gibt es mehrere Möglichkeiten:
 
-	1. Suche
-
+1. Suche
 	 Mit der Suchfunktion (Lupe rechts oben) lassen sich die Kontakte schnell durchsuchen.
 
-	2. Filtern
-
+2. Filtern
 	 Mit der Filterfunktion (Button links unten) lassen sich die angezeigten Kontakte eingrezen, um eventuell nur Kontakte aus einem Land angezeigt zu bekommen.
 	 Weiterhin lässt sich hier die Reihenfolge anpassen (Vor-/Nachname auf- bzw. absteigend).
 
-	3. Favoriten
+3. Favoriten
 	 Mit dem 'Stern' lassen sich Kontakte als Favoriten markieren. Favoriten lassen sich dann später schnell über das Menü (rechts-swipe bzw. Menü-Icon links oben) 'Favoriten' aufrufen.
 
 
@@ -96,21 +103,13 @@ Um einen Kontakt zu finden gibt es mehrere Möglichkeiten:
 
 Um einen Kontakt zu Bearbeiten folgt man diesen Schritten:
 
- 1. Kontakt öffnen
+ 1. Kontakt öffnen: In der Liste den Kontakt suchen und ihn durch einen Klick öffnen
 
-  In der Liste den Kontakt suchen und ihn durch einen Klick öffnen
+ 2. Editor öffnen: Auf den 'Editier'-Button rechts unten klicken
 
- 2. Editor öffnen
+ 3. Informationen eingeben: Gewünschte Informationen eingeben, evtl. Aufnahme aufnehmen
 
-  Auf den 'Editier'-Button rechts unten klicken
-
- 3. Informationen eingeben
-
-  Gewünschte Informationen eingeben, evtl. Aufnahme aufnehmen
-
- 4. Bestätigen
-
-  In dem Editor über den 'Bestätigen'-Button rechts unten bestätigen und den Kontakt speichern
+ 4. Bestätigen:  In dem Editor über den 'Bestätigen'-Button rechts unten bestätigen und den Kontakt speichern
 
 
 
