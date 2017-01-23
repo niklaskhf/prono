@@ -368,6 +368,7 @@ public class ContactManager{
     }
 
 
+
     /**
      * wipes all rows from the database, used for testing
      */

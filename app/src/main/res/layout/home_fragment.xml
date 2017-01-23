@@ -7,7 +7,7 @@
     android:layout_gravity="start"
     android:choiceMode="singleChoice"
     android:scrollbarStyle="outsideOverlay"
-    android:paddingBottom="55dp"
+    android:paddingBottom="80dp"
     android:clipToPadding="false"
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
