@@ -1,7 +1,6 @@
 # Prono 
 
 <img src="doc/images/SoPraAppHomeScreen.png" width="350">
-![contactList](doc/images/SoPraAppHomeScreen.png)
 
 Die Appliatkon 'Prono' ermöglicht das Verwalten von Kontakten, jedoch gibt es einen Bonus, um folgendes Problem möglichst zu vermeiden:
 
@@ -19,7 +18,7 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
  - Hinzufügen eines neuen Kontaktes:
 
  	 Ein neuer Kontakt kann leicht über den 'Add'-Button hinzugefügt werden
- 	 ![createContact](doc/images/createGif.gif)
+ 	 <img src="doc/images/createGif.gif" width="350">
 
  - Bearbeiten eines Kontaktes:
 
@@ -32,7 +31,7 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
  - Durchsuchen der Kontakte:
 
  	 Die Kontakte können über die Such-Funktion durchsucht werden
-	 ![searchContacts](doc/images/searchGif.gif)
+	 <img src="doc/images/searchGif.gif" width="350">
 
  - Filtern/Sortieren der Kontakte über den 'Filter'-Button:
 
@@ -41,17 +40,17 @@ Oder ein Kollege hat bereits die selbe Erfahrung gemacht, und kann dem Vertriebl
  - Favoriten für eine schnelle Übersicht verwalten:
 
  	 Um häufig verwendete Kontakte schnell verfügbar zu haben, können diese als Favoriten markiert werden und leicht über die 'Favoriten' aufgerufen werden
- 	 ![favorite](doc/images/favoriteGif.gif)
+ 	 <img src="doc/images/favoriteGif.gif" width="350">
 
  - 'Undo' einer Aktion (Löschen/Editieren):
 
  	 Ausversehen einen Kontakt gelöscht/überschrieben? Für eine kurze Zeit lässt er sich wieder herstellen!
- 	 ![undoDelete](doc/images/undoDeleteGif.gif) ![undoEdit](doc/images/undoEditGif.gif)
+ 	 <img src="doc/images/undoDeleteGif.gif" width="350"> <img src="doc/images/undoEditGif.gif" width="350">
 
  - Dateien exportieren, um sie später wieder importieren zu können (ebenfalls: Daten zurücksetzen):
 
  	 Gerät zurücksetzen? Daten auf ein anderes Gerät verschieben? Alle Daten zurücksetzen? Klar.
- 	 ![backupImport](doc/images/backupResetImportGif)
+ 	 <img src="doc/images/backupResetImportGif.gif" width="350">
  	 _Benutzung auf eigene Gefahr, alle Daten können verloren gehen_
 
 
