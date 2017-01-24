@@ -157,11 +157,11 @@ Ermöglicht es Kontakte zu löschen, den Editiermodus zu starten, sowie die Auss
 Wird von HomeActivity-ContactListFragment aufgerufen. 
 
 
-##Player
+## Player
 Klasse zum verwalten von Audiodateien. Abspielen und stoppen ist möglich.
 Implementiert wichtige Critical Features: “Audiodatei abspielen”. 
 
-##Recorder
+## Recorder
 Klasse zum aufnehmen von Audiodateien. Aufnahme und stoppen ist möglich.
 Implementiert wichtige Critical Features: “Audiodatei aufnehmen”. 
 
