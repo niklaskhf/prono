@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Freigeben für"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Freigeben für %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
-    <string name="about_to_delete">Sie sind gerade dabei</string>
+    <string name="about_to_delete">Lösche Kontakt</string>
     <string name="app_description">App Beschreibung</string>
     <string name="app_name">Prono</string>
     <string name="authors">Autoren</string>
@@ -41,7 +41,6 @@
     <string name="contactDeleted">Kontakt gelöscht</string>
     <string name="contactEdited">Kontakt geändert</string>
     <string name="contactRestored">Kontakt wiederhergestellt</string>
-    <string name="continue_">  zu löschen. Fortfahren?</string>
     <string name="country">Land</string>
     <string name="country_disabled_radioButton">aus</string>
     <string name="country_enabled_radioButton">an</string>
@@ -70,16 +69,19 @@
     <string name="legals">Legales</string>
     <string name="licence">Appache Licence 2.0</string>
     <string name="male">männlich</string>
-    <string name="missingKeyEntries">Der Nachname undeine Aufzeichnung der Aussprache sind erforderlich
+    <string name="missingKeyEntries">Der Nachname und eine Aufzeichnung der Aussprache sind erforderlich
         \n\nBitte geben Sie den Namen ein oder nehmen Sie eine Aussprache auf.</string>
+    <string name="no">NEIN</string>
     <string name="overwrite_data">Es werden all existierenden Daten gelöscht. Fortfahren?</string>
     <string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string>
+    <string name="reset">Zurücksetzen</string>
     <string msgid="146198913615257606" name="search_menu_title">"Suchen"</string>
     <string name="sorting_options">Sortier Optionen:</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
-    <string name="successful_export">Export erfolgreich!/n Gespeichert in</string>
+    <string name="successful_export">Export erfolgreich!\nGespeichert in</string>
     <string name="successful_import">Import erfolgreich</string>
     <string name="title">Titel</string>
     <string name="unknown">unbekannt</string>
+    <string name="yes">JA</string>
     <string name="z_a">Z-A</string>
 </resources>

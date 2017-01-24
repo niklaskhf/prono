@@ -594,7 +594,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="about_to_delete">About to delete </string>
+    <string name="about_to_delete">Delete</string>
     <string name="app_description">App Description</string>
     <string name="app_name">Prono</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -606,7 +606,6 @@
     <string name="contactDeleted">Deleted a contact</string>
     <string name="contactEdited">Edited a contact</string>
     <string name="contactRestored">Restored a contact</string>
-    <string name="continue_">. Continue?</string>
     <string name="country">Country</string>
     <string name="country_disabled_radioButton">off</string>
     <string name="country_enabled_radioButton">on</string>
@@ -636,15 +635,18 @@
     <string name="male">male</string>
     <string name="missingKeyEntries">The last name and a recording of the pronunciation are required.
         \n\nPlease enter the name/record a pronunciation.</string>
+    <string name="no">NO</string>
     <string name="overwrite_data">This will overwrite all existing data. Continue?</string>
     <string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string>
+    <string name="reset">Reset</string>
     <string name="search_menu_title">Search</string>
     <string name="sorting_options">Sorting Options:</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="successful_export">Export successful!/n Saved to </string>
+    <string name="successful_export">Export successful!\nSaved to </string>
     <string name="successful_import">Import successful</string>
     <string name="title">Title</string>
     <string name="unknown">unknown</string>
+    <string name="yes">YES</string>
     <string name="z_a">Z-A</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

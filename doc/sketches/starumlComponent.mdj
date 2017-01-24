@@ -11786,7 +11786,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+buildSearchQuery(search: String, filter: Filter): String",
+											"text": "+buildSearchQuery(search: Stringr): String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -11815,7 +11815,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-buildFilterExpression(filter: Filter): String",
+											"text": "-buildFilterExpression(): String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -18796,25 +18796,7 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": "String",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "in"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFZ0Hvi/U8hSLI=",
-									"_parent": {
-										"$ref": "AAAAAAFZ0Ht49071H/0="
-									},
-									"name": "filter",
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFZx76nwi3JVBI="
-									},
+									"type": "Stringr",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -18851,24 +18833,6 @@
 							"isStatic": false,
 							"isLeaf": false,
 							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFZ0HyUJ1AF6o8=",
-									"_parent": {
-										"$ref": "AAAAAAFZ0HxIZU+GiZU="
-									},
-									"name": "filter",
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFZx76nwi3JVBI="
-									},
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "in"
-								},
 								{
 									"_type": "UMLParameter",
 									"_id": "AAAAAAFZ0HyUKFAGqMo=",

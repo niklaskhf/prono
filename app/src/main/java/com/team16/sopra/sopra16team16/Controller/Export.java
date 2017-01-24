@@ -81,7 +81,7 @@ public class Export {
             zip(files, fileName);
 
             // tell the user
-            Toast.makeText(HomeActivity.contextOfApplication,  resources.getString(R.string.successful_export) + fileName, Toast.LENGTH_SHORT)
+            Toast.makeText(HomeActivity.contextOfApplication,  resources.getString(R.string.successful_export) + " " + fileName, Toast.LENGTH_SHORT)
                     .show();
         } catch (Exception e) {
             Toast.makeText(HomeActivity.contextOfApplication, resources.getString(R.string.failed_export), Toast.LENGTH_SHORT)

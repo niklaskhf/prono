@@ -4,29 +4,29 @@
     api-level="25"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1065515478149321"
+    timestamp="1070280138722059"
     token="6972275851635696624"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="2958" />
+        duration="4212" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="911" />
+        duration="1090" />
     <task
         name="verifier"
-        duration="107" />
+        duration="316" />
 
     <artifact
         location="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="1065515478149321"
+        timestamp="1070280138722059"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\outputs\apk\app-debug.apk"

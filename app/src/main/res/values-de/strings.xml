@@ -73,7 +73,7 @@
     <!--Filter-->
 
     <!--Export-->
-    <string name="successful_export">Export erfolgreich!/n Gespeichert in</string>
+    <string name="successful_export">Export erfolgreich!\nGespeichert in</string>
     <string name="failed_export">Export fehlgeschlagen</string>
     <!--Export-->
 

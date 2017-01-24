@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Открыть доступ"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Открыть доступ пользователю %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Свернуть"</string>
-    <string name="about_to_delete">Стерение</string>
+    <string name="about_to_delete">Удалитъ контакт</string>
     <string name="app_description">Описание приложения</string>
     <string name="app_name">Prono</string>
     <string name="authors">Авторы</string>
@@ -41,7 +41,6 @@
     <string name="contactDeleted">Контакт удален</string>
     <string name="contactEdited">Контакт изменен</string>
     <string name="contactRestored">Контакт востановлен</string>
-    <string name="continue_">. Продолжить?</string>
     <string name="country">Страна</string>
     <string name="country_disabled_radioButton">выкл</string>
     <string name="country_enabled_radioButton">вкл</string>
@@ -72,8 +71,10 @@
     <string name="male">мужской</string>
     <string name="missingKeyEntries">Фамилия и либо общие запись ими/фамилии или пользовательские запись произношении необходимы.
         \n\nПожалуйста, ведите имя или запишити произношение.</string>
+    <string name="no">НЕТ</string>
     <string name="overwrite_data">Это приведет к перезаписи всех существующих данных. Продолжать?</string>
     <string name="programmers">Кянан Аллахярлы\nНиклас Каммхофф\nМартин Штах</string>
+    <string name="reset">Сброс</string>
     <string msgid="146198913615257606" name="search_menu_title">"Поиск"</string>
     <string name="sorting_options">Варианты Сортировки:</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">">999"</string>
@@ -81,5 +82,6 @@
     <string name="successful_import">Импорт успешный!</string>
     <string name="title">Заглавие</string>
     <string name="unknown">неизвестный</string>
+    <string name="yes">ДА</string>
     <string name="z_a">Я-А</string>
 </resources>
