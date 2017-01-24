@@ -20,7 +20,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.R;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
 import com.team16.sopra.sopra16team16.View.NewContactActivity;
 
 import java.io.File;
@@ -57,7 +56,7 @@ public class Recorder {
     }
 
     /**
-     * Constructor
+     * Constructor, path is actualized
      */
     private Recorder() {
         path = FileUtils.PATH;
@@ -66,7 +65,9 @@ public class Recorder {
 
     /**
      * Starts recording
-     * * @param id id from the contact is the same as the id from the file
+     * @param id id from the contact is the same as the id from the file
+     * @param actionButton the Button which is clicked
+     * @param context context of the activity
      */
     public void startRecording(int id, final FloatingActionButton actionButton, final Context context) {
         this.id = id;
@@ -113,8 +114,10 @@ public class Recorder {
         actionButton.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));
     }
 
-    /**
-     * Stops die record of the name
+     /**
+     * Stops recording
+     * @param actionButton the Button which is clicked
+     * @param context context of the activity
      */
     public void stopRecording(FloatingActionButton actionButton, Context context) {
         try {
@@ -144,6 +147,8 @@ public class Recorder {
 
     /**
      * Shows an alert asking the user to confirm the recording.
+     * @param context context of the activity
+     * @param actionButton the Button which is clicked
      */
     private void confirmRecording(final Context context, final FloatingActionButton actionButton) {
         // get the dialog
@@ -211,14 +216,9 @@ public class Recorder {
 
     /**
      * Changes the status of the recorder.
-     *
      * @param status - the new status of the recorder
      */
     private void changeStatus(boolean status) {
         is_recording = status;
     }
-
-
-
-
 }

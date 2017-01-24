@@ -58,6 +58,7 @@ public class FileUtils {
 
     /**
      * Deletes a file
+     * @param from the file that is to be deleted
      */
     public static void deleteFile(String from) {
         File file = new File(from);

@@ -15,7 +15,7 @@ Verwendete Entwurfsmuster: Model-View-Controller, Singleton
 
 # Komponentendiagramm
 
-![Komponentendiagramm](sketches/Komponentendiagramm.png)
+![Komponentendiagramm](sketches/Model__Component Diagram_1.png)
 
 ## Komponente 1: MainView
 Die MainView-Komponente ist zuständig für die Darstellung des ‘Default’-GUIs.
@@ -68,8 +68,9 @@ Die DataController-Komponente stellt zwei Interfaces verfügbar:
  - ContactManager: Manipulation/Bereitstellung von Daten
  - Filter: Zugriff auf die Filter/Sortier-Einstellungen
 
-Die DataController-Komponente verwendet ein Interface:
+Die DataController-Komponente verwendet zwei Interfaces:
  - DBManager aus Datenbank: Um Zugriff auf die SQL-Datenbank zu erhalten  
+ - Player aus Audio: Um Audio-Dateien abzuspielen
 
 
 ## Komponente 4: Audio
@@ -99,44 +100,75 @@ Die Datenbank stellt den DBManager als Schnittstelle zur Verfügung, welches von
 
 # Klassendiagramme
 
-## Klassendiagramm Controller
+## Klassendiagramm DataController
 
-![Klassendiagramm Controller](sketches/cd_Controller.png)
+![Klassendiagramm DataController](sketches/Model1__DataController_2.png)
 
-## Klassendiagramm View
-![Klassendiagramm View](sketches/cd_View.png)
+## Klassendiagramm MainView
+![Klassendiagramm MainView](sketches/Model1__MainView_4.png)
 
-## Klassendiagramm Model
-![Klassendiagramm Model](sketches/cd_Model.png)
+## Klassendiagramm ContactView
+![Klassendiagramm ContactView](sketches/Model1__ContactView_5.png)
+
+## Klassendiagramm Audio
+![Klassendiagramm Audio](sketches/Model1__Audio_6.png)
+
+## Klassendiagramm Datenbank
+![Klassendiagramm Datenbank](sketches/Model1__Datenbank_7.png)
+
+## Klassendiagramm ExportImport
+![Klassendiagramm ExportImport](sketches/Model1__ExportImport_3.png)
 
 
 # Beschreibung der wichtigen Klassenhierarchie
 
 
 ## ContactManager:
-Manipuliert die Kontakt-Datenbank direkt, stellt Daten für den View bereit. 
-"Schnittstelle" zwischen Daten und Darstellung. 
-Erstellt Kontakte, editiert Kontakte, löscht Kontakte, provided Cursor.
+Manipuliert und stellt Daten bereit. Verwendet SQL-Datenbank von DBManager. 
+Stellt CursorAdapter für ContactListFragment bereit.
+Nutzt QueryBuilder, um SQL Ausdrücke für unterschiedliche Fälle zusammenzustellen.  
+
+
+## HomeActivity:
+Activity.
+Kern der View-Komponente.
+Bildet Ankerpunkt für andere Activities.
+Verwendet Fragments, um andere Zuständigkeiten darzustellen:
+AboutFragment
+ContactListFragment
+SettingsFragment 
+
 
 ## NewContactActivity:
-Android-Activity.
+Activity.
 Erlaubt es dem Nutzer Kontakte zu editieren/erstellen. 
 Implementiert wichtige Critical Features "Kontakt erstellen", "Kontakt editieren".
 Kontakterstellungs / -editierungs-UI.
+Wird von HomeActivity (erstellen) bzw. ContactViewerActivity (editieren) aufgerufen. 
 
-## HomeActivity:
-Android-Activity.
-Kern der View-Komponente.
-Implementiert wichtige Critical Features "Kontakte dursuchen", "Kontakte einsehen".
-Bildet Ankerpunkt für andere Activities.
-UI für Suche, Kontaktliste, Settings, Info.
+
+## ContactViewerActivity
+Activity.
+Erlaubt es dem Nutzer Kontakte einzusehen.
+Ermöglicht es Kontakte zu löschen, den Editiermodus zu starten, sowie die Aussprache anzuhören.
+Wird von HomeActivity-ContactListFragment aufgerufen. 
+
+
+## Player
+Klasse zum verwalten von Audiodateien. Abspielen und stoppen ist möglich.
+Implementiert wichtige Critical Features: “Audiodatei abspielen”. 
+
+## Recorder
+Klasse zum aufnehmen von Audiodateien. Aufnahme und stoppen ist möglich.
+Implementiert wichtige Critical Features: “Audiodatei aufnehmen”. 
+
 
 # GUI-Skizze
 
-![](sketches/Skizze-1.png)
-![](sketches/Skizze-2.png)
-![](sketches/Skizze-3.png)
-![](sketches/Skizze-4.png)
-![](sketches/Skizze-5.png)
-![](sketches/Skizze-6.png)
+<img src="doc/sketches/Skizze-1.png" width="350"> 
+<img src="doc/sketches/Skizze-2.png" width="350"> 
+<img src="doc/sketches/Skizze-3.png" width="350"> 
+<img src="doc/sketches/Skizze-4.png" width="350"> 
+<img src="doc/sketches/Skizze-5.png" width="350"> 
+<img src="doc/sketches/Skizze-6.png" width="350"> 
 

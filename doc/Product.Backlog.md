@@ -888,7 +888,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -899,7 +899,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -910,7 +910,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 3 Stunden
 
 
 
@@ -968,7 +968,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 4 Stunden
 
 
 
@@ -979,7 +979,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 2 Stunden
 
 
 
@@ -1046,6 +1046,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Enthaltene Tasks:
     - Englisch auswählen
     - Deutsch auswählen
+    - Russisch auswählen
+    - Türkisch auswählen
     - Einstellungs-Menü schließen
     
 
@@ -1056,7 +1058,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
 
 
 
@@ -1067,7 +1069,29 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 5 Stunden
+
+
+
+
+### Task 3 *Russisch auswählen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *das Sprachprofil Russisch wählen*, um *die Oberfläche in russischer Sprache zu sehen*.
+
+
+- Aufwandsschätzung: 4 Stunden
+- Tatsächliche Zeit: 5 Stunden
+
+
+
+
+### Task 4 *Türkisch auswählen*
+
+> Als *Vertriebsmitarbeiter* möchte ich *das Sprachprofil Türkisch wählen*, um *die Oberfläche in türkischer Sprache zu sehen*.
+
+
+- Aufwandsschätzung: 4 Stunden
+- Tatsächliche Zeit: 5 Stunden
 
 
 

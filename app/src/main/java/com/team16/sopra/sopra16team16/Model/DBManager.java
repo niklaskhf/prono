@@ -3,6 +3,8 @@ package com.team16.sopra.sopra16team16.Model;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.io.IOException;
+
 
 /**
  * Manages the databases/settings.
@@ -58,5 +60,12 @@ public class DBManager {
         close();
         dbHelper = DBHelper.getCurrentInstance(context);
         dbContacts = dbHelper.getWritableDatabase();
+    }
+
+    /**
+     * Calls the replaceDatabase method in DBHelper
+     */
+    public boolean replaceDatabase(String dbPath) throws IOException {
+        return dbHelper.replaceDatabase(dbPath);
     }
 }

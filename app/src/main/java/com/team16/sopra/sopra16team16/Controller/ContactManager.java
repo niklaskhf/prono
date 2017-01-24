@@ -54,6 +54,7 @@ public class ContactManager{
     }
 
     /**
+     * constructor
      * @param context Context object
      */
     private ContactManager(Context context) {

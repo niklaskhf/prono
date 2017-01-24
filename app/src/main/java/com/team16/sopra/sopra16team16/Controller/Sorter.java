@@ -37,6 +37,10 @@ public class Sorter {
         return direction;
     }
 
+    /**
+     * returns the sort criterion
+     * @return last for lastname or first for firstname
+     */
     public static String getSortedBy() {
         return sortedBy;
     }
