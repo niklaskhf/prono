@@ -58,6 +58,3 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [Readme](Readme.md)
 - [Entwurf](doc/Entwurf.md)
 - [Zeitabrechnung](doc/Zeitabrechnung.ods)
-
-### Fixed
--[Player]
