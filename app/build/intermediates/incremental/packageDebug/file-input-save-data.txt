@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jan 24 21:43:17 CET 2017
+#Tue Jan 24 21:55:58 CET 2017
 20.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -192,7 +192,7 @@
 425.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_cab_background_internal_bg.xml
 47.set=ANDROID_RESOURCE
 287.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png
-458.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\expand_less_icon.png
+458.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\org\\jacoco\\agent\\rt\\internal_b0d6a23\\asm\\xml\\asm-xml.dtd
 172.set=ANDROID_RESOURCE
 151.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 322.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -563,7 +563,7 @@
 166.set=ANDROID_RESOURCE
 101.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png
 287.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
-458.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
+458.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 134.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_48dp.png
 484.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\design_layout_snackbar.xml
 305.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\ic_fav_filled.xml
@@ -849,7 +849,7 @@
 424.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\design_snackbar_background.xml
 37.set=ANDROID_RESOURCE
 286.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png
-457.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar\\org\\jacoco\\agent\\rt\\internal_b0d6a23\\asm\\xml\\asm-xml.dtd
+457.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-mdpi-v4\\expand_less_icon.png
 149.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml
 150.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
 321.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -952,7 +952,7 @@
 354.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_textfield_search_material.xml
 67.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 84.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png
-457.set=JAVA_RESOURCE
+457.set=ANDROID_RESOURCE
 387.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_item_background_holo_light.xml
 84.set=ANDROID_RESOURCE
 335.set=ANDROID_RESOURCE
@@ -1219,7 +1219,7 @@
 156.set=ANDROID_RESOURCE
 100.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png
 286.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
-457.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\mergeJavaRes\\debug\\jars\\2\\1f\\main.jar
+457.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 133.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\abc_textfield_default_mtrl_alpha.9.png
 483.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_text_cursor_material.xml
 304.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png
@@ -1371,7 +1371,7 @@ count=517
 71.file=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png
 348.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 205.set=ANDROID_RESOURCE
-458.set=ANDROID_RESOURCE
+458.set=JAVA_RESOURCE
 85.set=JAVA_RESOURCE
 442.base=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\resources-debug.ap_
 336.set=ANDROID_RESOURCE

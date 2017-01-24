@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\add_new_contact_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\add_new_contact_icon.png"
-    },
-    {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\delete_icon.png",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\delete_icon.png"
+    },
+    {
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\add_new_contact_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-mdpi\\add_new_contact_icon.png"
     },
     {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\mic_icon.png",
