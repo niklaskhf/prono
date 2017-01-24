@@ -875,8 +875,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Enthaltene Tasks:
     - Nach Vornamen sortieren
-    - Nach Nachnamen sortieren
-    - Nach Land sortieren
+    - Nach Nachnamen sortieren    - 
 
 
 
@@ -900,18 +899,6 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 - Aufwandsschätzung: 4 Stunden
 - Tatsächliche Zeit: 3 Stunden
-
-
-
-
-### Task 3 *Nach Land sortieren*
-
-> Als *Vertriebsmitarbeiter* möchte ich *die angezeigten Einträge nach Land sortieren*, um *einen Kontakt schneller finden zu können*.
-
-
-- Aufwandsschätzung: 4 Stunden
-- Tatsächliche Zeit: 3 Stunden
-
 
 
 

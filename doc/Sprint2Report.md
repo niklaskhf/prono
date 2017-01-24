@@ -1,28 +1,23 @@
-# Sprint Report (1)
+# Sprint Report (2)
 
-In diesem Sprint wurden die bis zum [Meilenstein 4](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/milestones/1) erledigten User Stories abgearbeitet.
-
-
+In diesem Sprint wurden die Additional Features in [Meilenstein 5](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/milestones/2) hinzugefügt.
 
 ## Verbesserte Dokumente
+
 ### [Product.Backlog.md](/doc/Product.Backlog.md)
-    - Zweitname gelöscht, ist normalerweise in Vorname enthalten
-    - Doppelte User Stories gelöscht (wenn Feature auf Implementable Story von anderem Feature verwiesen hat)
-    - Rechtschreibfehler verbessert
-    - Readme.md wurde aktualisiert (Hinweise gelöscht, Appbeschreibung hinzugefügt)
-    - Echter Aufwand in Tasks wurde aktualisiert
-    - Task "Verwerfen bestätigen" gelöscht, da es für den Nutzer unnötig viele Klicks verursacht und die Nutzbarkeit verschlechtert
-    
+    - Folgender Task "Nach Ländern sortieren" wurde entfernt, da der Nutzen sich sehr mit "Nach Land filtern" überschneidet.
+    - Tatsächliche Zeiten wurden aktualisiert.
+
 ### [Entwurf.md](./doc/Entwurf.md)
-    - Komponentendiagramm aktualisiert
-    - Klassendiagramme aufgeteilt
-    - Beschreibungen von Komponenten/wichtigen Klassen verändert
-    
+    - Komponentendiagramm aktualisiert.
+    - Klassendiagramme aktualisiert.
+    - Beschreibungen von Komponenten/wichtigen Klassen aktualisiert.
+
 ### [Readme.md](../Readme.md)
-    - Hinweise gelöscht
-    - Appbeschreibung hinzugefügt
+    - App-Beschreibung aktualisiert.
+    - Feature-Beischreibungen hinzugefügt
+    - Anwendungsfälle aktualisiert.
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-[Testprotokolle, Jacoco](reports/)
-Hinweis: Permissions müssen manuell beim Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
+[Testprotokolle](./doc/sprint02/reports/), Jacoco Hinweis: Permissions müssen ggf. manuell vor Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
