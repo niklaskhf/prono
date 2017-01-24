@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="drawer">
+        <item>Favorites</item>
+        <item>Settings</item>
+        <item>About</item>
+    </string-array>
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>русский</item>
+        <item>Türk</item>
+    </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
@@ -550,6 +561,7 @@
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="UNDO">UNDO</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -582,15 +594,40 @@
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_settings">Settings</string>
+    <string name="app_description">App Description</string>
     <string name="app_name">Prono</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="authors">Authors</string>
+    <string name="backup">Backup</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="contactDeleted">Deleted a contact</string>
+    <string name="contactEdited">Edited a contact</string>
+    <string name="contactRestored">Restored a contact</string>
     <string name="contactsFileKey">contactsList</string>
+    <string name="country">Country</string>
+    <string name="country_disabled_radioButton">off</string>
+    <string name="country_enabled_radioButton">on</string>
+    <string name="emptyNameRecordError">You can\'t record for an empty name.</string>
+    <string name="female">female</string>
+    <string name="first">First</string>
+    <string name="firstName">First Name</string>
+    <string name="gender">Gender</string>
+    <string name="imports">Import</string>
+    <string name="keepNamePronunciation">Do you want to keep the generic name pronunciation in relation to the country?</string>
+    <string name="language">Language</string>
+    <string name="last">Last</string>
+    <string name="lastName">Last Name</string>
+    <string name="legals">Legals</string>
+    <string name="male">male</string>
+    <string name="missingKeyEntries">The last name and a recording of the pronunciation are required.
+        \n\nPlease enter the name/record a pronunciation.</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="title">Title</string>
+    <string name="unknown">unknown</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

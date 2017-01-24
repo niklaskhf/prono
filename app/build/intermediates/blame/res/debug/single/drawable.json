@@ -4,16 +4,20 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/side_nav_bar.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
-        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/design_fab_background.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
+        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_item_background_holo_light.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
-        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_item_background_holo_light.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
+        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/design_fab_background.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_fav_filled.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_fav_filled.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
@@ -30,6 +34,14 @@
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_mic_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_mic_black_24dp.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_clear_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_clear_black_24dp.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
@@ -56,12 +68,20 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ratingbar_small_material.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_stop_black_48dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_stop_black_48dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_switch_thumb_material.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_stop_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_stop_black_24dp.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
@@ -72,12 +92,20 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_seekbar_tick_mark_material.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_star_border_black_48dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_star_border_black_48dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/search_icon.png",
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/search_icon.png"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/navigation_empty_icon.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/navigation_empty_icon.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_male_gender.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_male_gender.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
@@ -92,6 +120,10 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/design_snackbar_background.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_play_arrow_black_48dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_play_arrow_black_48dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
@@ -100,8 +132,20 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_menu_share.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_check_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_check_black_24dp.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_female_gender.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_female_gender.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_play_arrow_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_play_arrow_black_24dp.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_launcher_web.png",
@@ -120,6 +164,10 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_textfield_search_material.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_drawer.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_drawer.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_menu_send.xml",
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_menu_send.xml"
     },
@@ -136,6 +184,10 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_menu_gallery.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_check_black_48dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_check_black_48dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ic_voice_search_api_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_voice_search_api_material.xml"
     },
@@ -148,12 +200,28 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_ab_back_material.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_star_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_star_black_24dp.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_play_circle_outline_black_48dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_play_circle_outline_black_48dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ratingbar_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ratingbar_material.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_fav_empty.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_fav_empty.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_mic_none_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_mic_none_black_24dp.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
@@ -162,6 +230,10 @@
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_clear_black_48dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_clear_black_48dp.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
@@ -176,6 +248,10 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_list_selector_holo_light.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_add_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_add_black_24dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_menu_manage.xml",
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_menu_manage.xml"
     },
@@ -188,12 +264,20 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/design_ic_visibility.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_search_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_search_black_24dp.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_text_cursor_material.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_arrow_back_black_24dp.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",

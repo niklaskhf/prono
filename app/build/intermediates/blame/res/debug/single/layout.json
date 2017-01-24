@@ -4,6 +4,10 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/drawer_list_item.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/about_fragment.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/about_fragment.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_dialog_title_material.xml"
     },
@@ -28,16 +32,12 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_screen_content_include.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
-        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_popup_menu_header_item_layout.xml"
-    },
-    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_menu_item_action_area.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/settings_view.xml",
-        "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/settings_view.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
@@ -168,6 +168,10 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_template_big_media.xml"
     },
     {
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/settings_fragment.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/settings_fragment.xml"
+    },
+    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
@@ -220,12 +224,12 @@
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_layout_snackbar_include.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/activity_filter.xml",
+        "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/activity_filter.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/favorite_contacts.xml",
-        "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/favorite_contacts.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_layout_snackbar_include.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
@@ -242,10 +246,6 @@
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/layout/design_navigation_menu.xml"
-    },
-    {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/info_view.xml",
-        "source": "/home/prime/git/sopra-team-16/app/src/main/res/layout/info_view.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/layout/contact_item.xml",

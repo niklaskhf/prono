@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,6 +13,7 @@
         android:gravity="left"
         android:orientation="vertical"
         android:descendantFocusability="blocksDescendants">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,8 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textSize="20sp"
-                android:text="First"
+                android:textSize="26sp"
+                android:text="@string/first"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -32,8 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:textSize="20sp"
-                android:text="Last"
+                android:textSize="26sp"
+                android:text="@string/last"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"/>
@@ -47,7 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="Title"
+                android:text="@string/title"
+                android:textSize="20sp"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"/>
@@ -56,7 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:text="Country"
+                android:text="@string/country"
+                android:textSize="20sp"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"/>
@@ -68,7 +72,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="Gender"
+                    android:text="@string/gender"
+                    android:background="@color/colorAccent"
                     android:textColor="@android:color/background_dark"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -76,32 +81,42 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/contact_gender"/>
+                    android:id="@+id/contact_gender"
+                    android:paddingLeft = "5dp"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/button_layout"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
+        android:layout_height="fill_parent"
+        android:gravity="end"
         android:orientation="horizontal"
-        android:weightSum="1"
         android:descendantFocusability="blocksDescendants">
-        <ImageButton
-            android:id="@+id/contact_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@drawable/play_icon"
-            android:focusable="false"
-            android:focusableInTouchMode="false"/>
-        <ImageButton
-            android:id="@+id/contact_fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@drawable/favorite_unmarked_icon"
-            android:focusable="false"
-            android:focusableInTouchMode="false"/>
-    </LinearLayout>
+
+
+            <ImageButton
+                android:id="@+id/contact_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="@null"
+                android:scaleType="fitXY"
+                android:layout_marginRight="10dp"/>
+
+            <ImageButton
+                android:id="@+id/contact_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="@null"
+                android:scaleType="fitXY"/>
+
+        </LinearLayout>
+
 </LinearLayout>

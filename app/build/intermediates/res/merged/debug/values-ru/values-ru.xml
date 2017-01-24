@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="drawer">
+        <item>Фавориты</item>
+        <item>Настройки</item>
+        <item>Про нас</item>
+    </string-array>
+    <string-array name="languages">
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>русский</item>
+        <item>Türk</item>
+    </string-array>
+    <string name="UNDO">ОБРАТНО</string>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Перейти на главный экран"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -19,6 +31,29 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Открыть доступ"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Открыть доступ пользователю %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Свернуть"</string>
+    <string name="app_description">Описание приложения</string>
+    <string name="authors">Авторы</string>
+    <string name="backup">Резервное копирование</string>
+    <string name="contactDeleted">Контакт удален</string>
+    <string name="contactEdited">Контакт изменен</string>
+    <string name="contactRestored">Контакт востановлен</string>
+    <string name="country">Страна</string>
+    <string name="emptyNameRecordError">Вы не можете записать для пустого имени.</string>
+    <string name="female">женский</string>
+    <string name="first">Имя</string>
+    <string name="firstName">Имя</string>
+    <string name="gender">Пол</string>
+    <string name="imports">Импорт</string>
+    <string name="keepNamePronunciation">Вы хотите оставить родовое имя произношение по отношению к стране?</string>
+    <string name="language">Язык</string>
+    <string name="last">Фамилия</string>
+    <string name="lastName">Фамилия</string>
+    <string name="legals">Юридическая</string>
+    <string name="male">мужской</string>
+    <string name="missingKeyEntries">Фамилия и либо общие запись ими/фамилии или пользовательские запись произношении необходимы.
+        Пожалуйста, введите имя или запишити произношение.</string>
     <string msgid="146198913615257606" name="search_menu_title">"Поиск"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">">999"</string>
+    <string name="title">Заглавие</string>
+    <string name="unknown">неизвестный</string>
 </resources>

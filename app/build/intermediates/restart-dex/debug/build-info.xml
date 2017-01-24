@@ -5,29 +5,29 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="972386914103"
+    timestamp="484238992902"
     token="4571270798863929225"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="1420" />
+        duration="1424" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="868" />
+        duration="1190" />
     <task
         name="verifier"
-        duration="38" />
+        duration="56" />
 
     <artifact
         location="/home/prime/git/sopra-team-16/app/build/outputs/apk/app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="972386914103"
+        timestamp="484238992902"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/prime/git/sopra-team-16/app/build/outputs/apk/app-debug.apk"

@@ -12,10 +12,6 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/menu/home.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/menu/context_menu.xml",
-        "source": "/home/prime/git/sopra-team-16/app/src/main/res/menu/context_menu.xml"
-    },
-    {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/menu/menu_main.xml",
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/menu/menu_main.xml"
     }
