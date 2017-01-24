@@ -68,8 +68,9 @@ Die DataController-Komponente stellt zwei Interfaces verfügbar:
  - ContactManager: Manipulation/Bereitstellung von Daten
  - Filter: Zugriff auf die Filter/Sortier-Einstellungen
 
-Die DataController-Komponente verwendet ein Interface:
+Die DataController-Komponente verwendet zwei Interfaces:
  - DBManager aus Datenbank: Um Zugriff auf die SQL-Datenbank zu erhalten  
+ - Player aus Audio: Um Audio-Dateien abzuspielen
 
 
 ## Komponente 4: Audio

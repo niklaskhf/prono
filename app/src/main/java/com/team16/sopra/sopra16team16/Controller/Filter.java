@@ -77,7 +77,7 @@ public class Filter {
     }
 
     /**
-     * Resets the filter.
+     * Resets the filter and sorter
      */
     public static void resetFilter() {
         Filter filter = Filter.getCurrentInstance();
