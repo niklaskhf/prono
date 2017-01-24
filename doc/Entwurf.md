@@ -123,23 +123,48 @@ Die Datenbank stellt den DBManager als Schnittstelle zur Verfügung, welches von
 # Beschreibung der wichtigen Klassenhierarchie
 
 
+# Beschreibung der wichtigen Klassenhierarchie
+
+
 ## ContactManager:
-Manipuliert die Kontakt-Datenbank direkt, stellt Daten für den View bereit. 
-"Schnittstelle" zwischen Daten und Darstellung. 
-Erstellt Kontakte, editiert Kontakte, löscht Kontakte, provided Cursor.
+Manipuliert und stellt Daten bereit. Verwendet SQL-Datenbank von DBManager. 
+Stellt CursorAdapter für ContactListFragment bereit.
+Nutzt QueryBuilder, um SQL Ausdrücke für unterschiedliche Fälle zusammenzustellen.  
+
+
+## HomeActivity:
+Activity.
+Kern der View-Komponente.
+Bildet Ankerpunkt für andere Activities.
+Verwendet Fragments, um andere Zuständigkeiten darzustellen:
+AboutFragment
+ContactListFragment
+SettingsFragment 
+
 
 ## NewContactActivity:
-Android-Activity.
+Activity.
 Erlaubt es dem Nutzer Kontakte zu editieren/erstellen. 
 Implementiert wichtige Critical Features "Kontakt erstellen", "Kontakt editieren".
 Kontakterstellungs / -editierungs-UI.
+Wird von HomeActivity (erstellen) bzw. ContactViewerActivity (editieren) aufgerufen. 
 
-## HomeActivity:
-Android-Activity.
-Kern der View-Komponente.
-Implementiert wichtige Critical Features "Kontakte dursuchen", "Kontakte einsehen".
-Bildet Ankerpunkt für andere Activities.
-UI für Suche, Kontaktliste, Settings, Info.
+
+## ContactViewerActivity
+Activity.
+Erlaubt es dem Nutzer Kontakte einzusehen.
+Ermöglicht es Kontakte zu löschen, den Editiermodus zu starten, sowie die Aussprache anzuhören.
+Wird von HomeActivity-ContactListFragment aufgerufen. 
+
+
+##Player
+Klasse zum verwalten von Audiodateien. Abspielen und stoppen ist möglich.
+Implementiert wichtige Critical Features: “Audiodatei abspielen”. 
+
+##Recorder
+Klasse zum aufnehmen von Audiodateien. Aufnahme und stoppen ist möglich.
+Implementiert wichtige Critical Features: “Audiodatei aufnehmen”. 
+
 
 # GUI-Skizze
 
