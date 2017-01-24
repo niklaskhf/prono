@@ -315,7 +315,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-        contactManager.deleteMarked();
         Player.getCurrentInstance().release();
     }
 
@@ -325,14 +324,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
         // Check which request we're responding to
         if (requestCode == 1) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.content_frame);
 
-                String action = data.getStringExtra("action");
+                final String action = data.getStringExtra("action");
                 if (action != null && action.equals("undo")) {
                     final int undoId = data.getIntExtra("undoId", -1);
                     Log.d("undoSnackbar", "showing snackbar for " + undoId);
@@ -348,6 +347,16 @@ public class HomeActivity extends AppCompatActivity {
                                 }
                             });
 
+                    snackbar.setCallback(new Snackbar.Callback() {
+                        @Override
+                        public void onDismissed(Snackbar snackbar, int event) {
+                            // delete all marked rows
+                            String action = data.getStringExtra("action");
+                            if (action != null && action.equals("undo")) {
+                                contactManager.deleteMarked();
+                            }
+                        }
+                    });
                     snackbar.show();
                 }
             }
