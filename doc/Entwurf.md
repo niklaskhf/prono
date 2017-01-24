@@ -168,10 +168,10 @@ Implementiert wichtige Critical Features: “Audiodatei aufnehmen”.
 
 # GUI-Skizze
 
-![](sketches/Skizze-1.png)
-![](sketches/Skizze-2.png)
-![](sketches/Skizze-3.png)
-![](sketches/Skizze-4.png)
-![](sketches/Skizze-5.png)
-![](sketches/Skizze-6.png)
+<img src="doc/sketches/Skizze-1.png" width="350"> 
+<img src="doc/sketches/Skizze-2.png" width="350"> 
+<img src="doc/sketches/Skizze-3.png" width="350"> 
+<img src="doc/sketches/Skizze-4.png" width="350"> 
+<img src="doc/sketches/Skizze-5.png" width="350"> 
+<img src="doc/sketches/Skizze-6.png" width="350"> 
 
