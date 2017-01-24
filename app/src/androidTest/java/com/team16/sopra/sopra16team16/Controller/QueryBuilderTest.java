@@ -17,9 +17,9 @@ public class QueryBuilderTest {
         Filter filter = Filter.getCurrentInstance();
         Sorter sorter = Sorter.getCurrentInstance();
 
-        String testQueryNo = queryBuilder.buildSearchQuery("", filter, sorter);
-        String testQueryOne = queryBuilder.buildSearchQuery("hello", filter, sorter);
-        String testQueryMultiple = queryBuilder.buildSearchQuery("how are you", filter, sorter);
+        String testQueryNo = queryBuilder.buildSearchQuery("");
+        String testQueryOne = queryBuilder.buildSearchQuery("hello");
+        String testQueryMultiple = queryBuilder.buildSearchQuery("how are you");
 
 
         String expectedQueryNo =
@@ -81,7 +81,7 @@ public class QueryBuilderTest {
         filter.setGender("MALE");
         sorter.setSortedBy("first");
         sorter.setDirection("DESC");
-        String testQueryFilter = queryBuilder.buildSearchQuery("filter", filter, sorter);
+        String testQueryFilter = queryBuilder.buildSearchQuery("filter");
 
         String expectedQueryFilter =
                 "SELECT test FROM " + ContactManager.TABLE_NAME + " WHERE (" +
@@ -97,7 +97,7 @@ public class QueryBuilderTest {
 
         filter.setGender("FEMALE");
         filter.setGender("UNKNOWN");
-        String testQueryNoFilter = queryBuilder.buildSearchQuery("nofilter", filter, sorter);
+        String testQueryNoFilter = queryBuilder.buildSearchQuery("nofilter");
 
         String expectedQueryNoFilter =
                 "SELECT test FROM " + ContactManager.TABLE_NAME + " WHERE (" +
@@ -117,7 +117,7 @@ public class QueryBuilderTest {
         filter.resetFilter();
 
         filter.setCountry("ger");
-        String testQueryCountry = queryBuilder.buildSearchQuery("country", filter, sorter);
+        String testQueryCountry = queryBuilder.buildSearchQuery("country");
 
         String expectedQueryCountry =
                 "SELECT test FROM " + ContactManager.TABLE_NAME + " WHERE (" +
@@ -133,7 +133,6 @@ public class QueryBuilderTest {
                         "ORDER BY last ASC;";
 
         assertTrue("country query is false", expectedQueryCountry.equals(testQueryCountry));
-        //assertTrue(testQueryCountry + " --- " + expectedQueryCountry, expectedQueryCountry.equals(testQueryCountry));
 
         filter.resetFilter();
     }
