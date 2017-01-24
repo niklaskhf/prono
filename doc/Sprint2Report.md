@@ -1,21 +1,20 @@
 # Sprint Report (2)
 
-In diesem Sprint wurden größtenteils die Additional Features implementiert.
-Ebenfalls wurde das unvollständige Aufnahmefeature vom vorherigen Sprint hinzugefügt. Außerdem wurde das Feature "Kontakt löschen" zu ende implementiert.
+In diesem Sprint wurden die Additional Features in [Meilenstein 5](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/milestones/2) hinzugefügt.
 
 ## Verbesserte Dokumente
-> [ProductBacklog.md](/doc/Product.Backlog.md)
-    - Folgender Task "Ländern sortieren" wurde rausgenommen, da       schon nach Ländern gefitert werden kann.
+> [Product.Backlog.md](/doc/Product.Backlog.md)
+    - Folgender Task "Nach Ländern sortieren" wurde entfernt, da der Nutzen sich sehr mit "Nach Land filtern" überschneidet.
     - Tatsächliche Zeiten wurden aktualisiert.
 
 > [Entwurf.md](./doc/Entwurf.md)
     - Komponentendiagramm aktualisiert.
-    - Methoden und Attribute in das Klassendiagramm hinzugefügt.
-    - Beschreibungen von Komponenten/wichtigen Klassen verändert.
+    - Klassendiagramme aktualisiert.
+    - Beschreibungen von Komponenten/wichtigen Klassen aktualisiert.
 
 > [Readme.md](../Readme.md)
     - komplett überbarbeitet
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-*TODO: Testprotokolle und Abdeckung hier einfügen*
+[Testprotokolle](./doc/sprint02/reports/), Jacoco Hinweis: Permissions müssen ggf. manuell vor Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
