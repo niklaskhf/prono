@@ -79,16 +79,25 @@ public class ContactCursorAdapter extends CursorAdapter {
 
         // assign values to TextViews
         tt1.setText(first);
+        if (first.equals("")) {
+            tt1.setVisibility(View.INVISIBLE);
+        }
 
 
         tt2.setText(last);
-
+        if (last.equals("")) {
+            tt2.setVisibility(View.INVISIBLE);
+        }
 
         tt3.setText(title);
-
+        if (title.equals("")) {
+            tt3.setVisibility(View.INVISIBLE);
+        }
 
         tt4.setText(country);
-
+        if (country.equals("")) {
+            tt4.setVisibility(View.INVISIBLE);
+        }
 
         tt5.setText(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
         genderSign.setVisibility(View.VISIBLE);
