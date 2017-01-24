@@ -15,7 +15,7 @@ Verwendete Entwurfsmuster: Model-View-Controller, Singleton
 
 # Komponentendiagramm
 
-![Komponentendiagramm](sketches/Komponentendiagramm.png)
+![Komponentendiagramm](sketches/Model_Component Digram_1.png)
 
 ## Komponente 1: MainView
 Die MainView-Komponente ist zuständig für die Darstellung des ‘Default’-GUIs.
@@ -100,15 +100,15 @@ Die Datenbank stellt den DBManager als Schnittstelle zur Verfügung, welches von
 
 # Klassendiagramme
 
-## Klassendiagramm Controller
+## Klassendiagramm DataController
 
-![Klassendiagramm Controller](sketches/cd_Controller.png)
+![Klassendiagramm DataController](sketches/Model1_DataController_2.png)
 
-## Klassendiagramm View
-![Klassendiagramm View](sketches/cd_View.png)
+## Klassendiagramm MainView
+![Klassendiagramm MainView](sketches/Model1_MainView.png)
 
-## Klassendiagramm Model
-![Klassendiagramm Model](sketches/cd_Model.png)
+## Klassendiagramm ExportImport
+![Klassendiagramm ExportImport](sketches/Model1_ExportImport_3.png)
 
 
 # Beschreibung der wichtigen Klassenhierarchie
