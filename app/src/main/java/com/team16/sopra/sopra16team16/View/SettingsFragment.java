@@ -138,7 +138,7 @@ public class SettingsFragment extends Fragment {
                         .show();
             }
         });
-        alertDialog.setNegativeButton(getString(R.string.data_reset), new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

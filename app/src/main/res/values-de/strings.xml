@@ -25,7 +25,7 @@
     <string name="backup">Backup</string>
     <string name="imports">Import</string>
     <string name="reset">Zurücksetzen</string>
-    <string name="overwrite_data">Es werden all existierenden Daten gelöscht. Fortfahren?</string>
+    <string name="overwrite_data">Es werden alle existierenden Daten gelöscht. Fortfahren?</string>
     <string name="cancel">Abbrechen</string>
     <string name="data_reset">Alle Daten zurückgesetzt</string>
     <!--Setting-->
@@ -49,13 +49,13 @@
     <string-array name="drawer">
         <item>Favoriten</item>
         <item>Einstellungen</item>
-        <item>Über uns</item>
+        <item>Über</item>
     </string-array>
     <!--Navigation Drawer-->
 
     <!--Notifications-->
     <string name="missingKeyEntries">Der Nachname und eine Aufzeichnung der Aussprache sind erforderlich
-        \n\nBitte geben Sie den Namen ein oder nehmen Sie eine Aussprache auf.</string>
+        \n\nBitte geben Sie den Namen ein bzw. nehmen Sie eine Aussprache auf.</string>
     <string name="keepNamePronunciation">Möchten Sie die geneische Namensaussprache in Relation zu den Ländern beibehalten?.</string>
     <string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string>
     <string name="contactDeleted">Kontakt gelöscht</string>
