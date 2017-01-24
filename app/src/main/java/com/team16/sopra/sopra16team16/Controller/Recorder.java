@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
 import com.team16.sopra.sopra16team16.View.NewContactActivity;
 
 import java.io.File;

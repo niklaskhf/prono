@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:text="@string/gender"
@@ -98,26 +98,32 @@
             android:id="@+id/filter_gender"
             android:textSize="18sp"/>
 
-        <RadioButton
-            android:id="@+id/filter_female_radioButton"
-            android:text="@string/female"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
-
-        <RadioButton
-            android:layout_toEndOf="@+id/filter_female_radioButton"
-            android:id="@+id/filter_male_radioButton"
-            android:text="@string/male"
-            android:layout_height="wrap_content"
+        <LinearLayout
             android:layout_width="wrap_content"
-
-            />
-
-        <RadioButton
-            android:id="@+id/filter_unknown_radioButton"
-            android:text="@string/unknown"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content" />
+            android:gravity="left"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/filter_female_radioButton"
+                android:text="@string/female"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+
+            <RadioButton
+                android:layout_toEndOf="@+id/filter_female_radioButton"
+                android:id="@+id/filter_male_radioButton"
+                android:text="@string/male"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+
+                />
+
+            <RadioButton
+                android:id="@+id/filter_unknown_radioButton"
+                android:text="@string/unknown"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -126,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:text="@string/country"
@@ -134,6 +140,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/filter_country_text"
             android:textSize="18sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -155,6 +167,7 @@
 
         </RadioGroup>
 
+        </LinearLayout>
 
 
 

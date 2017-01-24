@@ -20,7 +20,6 @@ public class ContactManager{
     private ContactCursorAdapter favoriteAdapter = null;
     private Context context;
     private QueryBuilder queryBuilder = null;
-    private Recorder recorder;
 
     private static SQLiteDatabase database;
 
