@@ -81,7 +81,6 @@ public class ContactCursorAdapter extends CursorAdapter {
         tt1.setText(first);
 
 
-
         tt2.setText(last);
 
 
