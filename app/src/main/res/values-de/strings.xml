@@ -24,6 +24,7 @@
     <string name="language">Sprache</string>
     <string name="backup">Backup</string>
     <string name="imports">Import</string>
+    <string name="reset">Zurücksetzen</string>
     <string name="overwrite_data">Es werden all existierenden Daten gelöscht. Fortfahren?</string>
     <string name="cancel">Abbrechen</string>
     <string name="data_reset">Alle Daten zurückgesetzt</string>
@@ -53,7 +54,7 @@
     <!--Navigation Drawer-->
 
     <!--Notifications-->
-    <string name="missingKeyEntries">Der Nachname undeine Aufzeichnung der Aussprache sind erforderlich
+    <string name="missingKeyEntries">Der Nachname und eine Aufzeichnung der Aussprache sind erforderlich
         \n\nBitte geben Sie den Namen ein oder nehmen Sie eine Aussprache auf.</string>
     <string name="keepNamePronunciation">Möchten Sie die geneische Namensaussprache in Relation zu den Ländern beibehalten?.</string>
     <string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string>
@@ -61,8 +62,9 @@
     <string name="contactRestored">Kontakt wiederhergestellt</string>
     <string name="contactEdited">Kontakt geändert</string>
     <string name="UNDO">RÜCKGÄNGIG</string>
-    <string name="about_to_delete">Sie sind gerade dabei</string>
-    <string name="continue_">  zu löschen. Fortfahren?</string>
+    <string name="about_to_delete">Lösche Kontakt</string>
+    <string name="yes">JA</string>
+    <string name="no">NEIN</string>
     <!--Notifications-->
 
     <!--Filter-->

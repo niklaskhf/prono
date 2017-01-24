@@ -24,6 +24,7 @@
     <string name="language">Dil</string>
     <string name="backup">Yedek</string>
     <string name="imports">Inthalat</string>
+    <string name="reset">Sıfırlamak</string>
     <string name="overwrite_data">Silinen tüm mevcut veri bulunmamaktadır. Devam etmek?</string>
     <string name="cancel">iptal etmek</string>
     <string name="data_reset">Tüm veriler sıfırlandı!</string>
@@ -62,8 +63,9 @@
     <string name="contactRestored">Bir kişiyi geri yükledi</string>
     <string name="contactEdited">Bir kişiyi düzenledi</string>
     <string name="UNDO">geri al</string>
-    <string name="about_to_delete">Siz üzeresiniz </string>
-    <string name="continue_">. Devam etmek?</string>
+    <string name="about_to_delete">Sil kontaktı</string>
+    <string name="yes">YOK</string>
+    <string name="no">EVET</string>
     <!--Notifications-->
 
     <!--Filter-->

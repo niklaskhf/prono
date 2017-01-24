@@ -23,6 +23,7 @@
     <string name="language">Language</string>
     <string name="backup">Backup</string>
     <string name="imports">Import</string>
+    <string name="reset">Reset</string>
     <string name="overwrite_data">This will overwrite all existing data. Continue?</string>
     <string name="cancel">Cancel</string>
     <string name="data_reset">All data reset!</string>
@@ -61,8 +62,9 @@
     <string name="contactRestored">Restored a contact</string>
     <string name="contactEdited">Edited a contact</string>
     <string name="UNDO">UNDO</string>
-    <string name="about_to_delete">About to delete </string>
-    <string name="continue_">. Continue?</string>
+    <string name="about_to_delete">Delete</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
     <!--Notifications-->
 
     <!--Filter-->

@@ -24,6 +24,7 @@
     <string name="language">Язык</string>
     <string name="backup">Резервное копирование</string>
     <string name="imports">Импорт</string>
+    <string name="reset">Сброс</string>
     <string name="overwrite_data">Это приведет к перезаписи всех существующих данных. Продолжать?</string>
     <string name="cancel">Отмена</string>
     <string name="data_reset">Все данные возвращены!</string>
@@ -62,8 +63,9 @@
     <string name="contactRestored">Контакт востановлен</string>
     <string name="contactEdited">Контакт изменен</string>
     <string name="UNDO">ОБРАТНО</string>
-    <string name="about_to_delete">Стерение</string>
-    <string name="continue_">. Продолжить?</string>
+    <string name="about_to_delete">Удалитъ контакт</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
     <!--Notifications-->
 
     <!--Filter-->

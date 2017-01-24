@@ -122,7 +122,7 @@ public class ContactViewerActivity extends AppCompatActivity {
         // build the AlertDialog to request confirmation
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
         
-        String message = getString(R.string.about_to_delete) + " "+ f +" " + l + getString(R.string.continue_);
+        String message = getString(R.string.about_to_delete) + " "+ f +" " + l + "?";
 
         // delete if user confirms with 'YES"
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -154,8 +154,8 @@ public class ContactViewerActivity extends AppCompatActivity {
         };
 
         alertBuilder.setMessage(message);
-        alertBuilder.setPositiveButton("YES", dialogClickListener);
-        alertBuilder.setNegativeButton("NO", dialogClickListener);
+        alertBuilder.setPositiveButton(getString(R.string.yes), dialogClickListener);
+        alertBuilder.setNegativeButton(getString(R.string.no), dialogClickListener);
         alertBuilder.show();
     }
 
