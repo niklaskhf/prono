@@ -123,9 +123,6 @@ Die Datenbank stellt den DBManager als Schnittstelle zur Verfügung, welches von
 # Beschreibung der wichtigen Klassenhierarchie
 
 
-# Beschreibung der wichtigen Klassenhierarchie
-
-
 ## ContactManager:
 Manipuliert und stellt Daten bereit. Verwendet SQL-Datenbank von DBManager. 
 Stellt CursorAdapter für ContactListFragment bereit.
