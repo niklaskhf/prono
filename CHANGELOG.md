@@ -44,7 +44,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 # Second sprint
 ## [v1.0] - 2017-01-25
-###
+### Added
 - [Additional Feature implementation](app/)
 
 ### Changed
