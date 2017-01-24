@@ -116,13 +116,14 @@ public class QueryBuilder {
 
         String deleted = ContactManager.COLUMN_DELETED + " = 0";
 
+        //country filter
         String country = "";
         if (filter.getCountry() != null) {
             country = " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
         }
 
+        //gender filter
         String gender = "";
-
         if(filter.getGenderList().size() != 0) {
 
             gender += " AND (" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
