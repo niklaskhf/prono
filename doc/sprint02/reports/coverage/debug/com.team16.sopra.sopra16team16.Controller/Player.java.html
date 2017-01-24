@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.media.MediaPlayer;
+import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
+import android.widget.ImageButton;
+
+import com.team16.sopra.sopra16team16.R;
+
+import java.io.IOException;
+
+/**
+ * Player contains methods for playing stored audio
+ */
+
+public class Player {
+    private static Player currentInstance;
+<span class="fc" id="L18">    private MediaPlayer player = new MediaPlayer();</span>
+    private int id;
+<span class="fc" id="L20">    private boolean isReleased = false;</span>
+
+    private String filename;
+
+<span class="fc" id="L24">    private boolean is_playing = false;</span>
+
+    /**
+     * Singleton getter
+     * @return the only instance of the class - Singleton
+     */
+    public static Player getCurrentInstance() {
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (currentInstance == null) {</span>
+<span class="fc" id="L32">            return currentInstance = new Player();</span>
+        } else {
+<span class="fc" id="L34">            return currentInstance;</span>
+        }
+    }
+
+    /**
+     * Constructor for Singleton
+     */
+<span class="fc" id="L41">    private Player() {</span>
+
+<span class="fc" id="L43">    }</span>
+
+    /**
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton the button which was clicked
+     */
+    public void startPlaying(int id, final ImageButton playButton) {
+<span class="fc" id="L51">        filename = FileUtils.PATH + id + &quot;.3gp&quot;;</span>
+
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (isPlaying()) {</span>
+            // do nothing
+        } else {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            if (isReleased) {</span>
+<span class="fc" id="L57">                player = new MediaPlayer();</span>
+<span class="fc" id="L58">                isReleased =false;</span>
+            }
+<span class="fc" id="L60">            changeStatus(true);</span>
+<span class="fc" id="L61">            player.reset();</span>
+<span class="fc" id="L62">            this.id = id;</span>
+<span class="fc" id="L63">            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="fc" id="L65">                    changeStatus(false);</span>
+<span class="fc" id="L66">                    playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="fc" id="L67">                }</span>
+            });
+
+            try {
+<span class="fc" id="L71">                player.setDataSource(filename);</span>
+<span class="fc" id="L72">                player.prepare();</span>
+<span class="fc" id="L73">                player.start();</span>
+<span class="fc" id="L74">                Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+<span class="fc" id="L75">                playButton.setImageResource(R.drawable.ic_stop_black_48dp);</span>
+
+<span class="fc" id="L77">            } catch (IOException e) {</span>
+<span class="fc" id="L78">                changeStatus(false);</span>
+<span class="fc" id="L79">                Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="fc" id="L80">            }</span>
+        }
+<span class="fc" id="L82">    }</span>
+
+    /**
+     * plays an audio file
+     * @param idString filename of the audio file, located in the /files/ directory (3temp.3gp -&gt; 3temp)
+     * @param playButton the button which was clicked
+     * @param id id of the contact currently being played
+     */
+    public void startPlaying(String idString, final ImageButton playButton, int id) {
+<span class="fc" id="L91">        filename = FileUtils.PATH + idString + &quot;.3gp&quot;;</span>
+
+<span class="fc" id="L93">        Log.d(&quot;player&quot;, &quot;trying to play this file: &quot; + filename);</span>
+
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if (!isPlaying()) {</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            if (isReleased) {</span>
+<span class="fc" id="L97">                player = new MediaPlayer();</span>
+<span class="fc" id="L98">                isReleased =false;</span>
+            }
+<span class="fc" id="L100">            changeStatus(true);</span>
+<span class="fc" id="L101">            this.id = id;</span>
+<span class="fc" id="L102">            player.reset();</span>
+<span class="fc" id="L103">            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="fc" id="L105">                    changeStatus(false);</span>
+<span class="fc" id="L106">                    playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="fc" id="L107">                }</span>
+            });
+
+            try {
+<span class="fc" id="L111">                player.setDataSource(filename);</span>
+<span class="fc" id="L112">                player.prepare();</span>
+<span class="fc" id="L113">                player.start();</span>
+<span class="fc" id="L114">                Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+<span class="fc" id="L115">                playButton.setImageResource(R.drawable.ic_stop_black_48dp);</span>
+
+<span class="nc" id="L117">            } catch (IOException e) {</span>
+<span class="nc" id="L118">                changeStatus(false);</span>
+<span class="nc" id="L119">                Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="fc" id="L120">            }</span>
+        }
+<span class="fc" id="L122">    }</span>
+
+
+    /**
+     * plays an audio file
+     * @param id id of the contact which audio file should be played
+     * @param playButton the button which was clicked
+     */
+    public void startPlaying(int id, final FloatingActionButton playButton) {
+<span class="fc" id="L131">        String filename = FileUtils.PATH + id + &quot;.3gp&quot;;</span>
+<span class="fc" id="L132">        Log.d(&quot;player&quot;, &quot;trying to play this file: &quot; + filename);</span>
+
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">        if (!isPlaying()) {</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">            if (isReleased) {</span>
+<span class="fc" id="L136">                player = new MediaPlayer();</span>
+<span class="fc" id="L137">                isReleased =false;</span>
+            }
+<span class="fc" id="L139">            changeStatus(true);</span>
+<span class="fc" id="L140">            player.reset();</span>
+<span class="fc" id="L141">            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {</span>
+                public void onCompletion(MediaPlayer mp) {
+<span class="fc" id="L143">                    changeStatus(false);</span>
+<span class="fc" id="L144">                    playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);</span>
+<span class="fc" id="L145">                }</span>
+            });
+
+            try {
+<span class="fc" id="L149">                player.setDataSource(filename);</span>
+<span class="fc" id="L150">                player.prepare();</span>
+<span class="fc" id="L151">                player.start();</span>
+<span class="fc" id="L152">                Log.d(&quot;player&quot;, &quot;playing &quot; + filename);</span>
+<span class="fc" id="L153">                playButton.setImageResource(R.drawable.ic_stop_black_24dp);</span>
+
+<span class="nc" id="L155">            } catch (IOException e) {</span>
+<span class="nc" id="L156">                changeStatus(false);</span>
+<span class="nc" id="L157">                Log.d(&quot;PlayerIOException&quot;, e.getMessage());</span>
+<span class="fc" id="L158">            }</span>
+        }
+<span class="fc" id="L160">    }</span>
+
+
+    /**
+     * stop playing an audio file
+     * @param playButton the button which was clicked
+     * @param id id of the contact calling the method
+     */
+    public void stopPlaying(FloatingActionButton playButton, int id) {
+<span class="pc bpc" id="L169" title="1 of 2 branches missed.">        if (this.id == id) {</span>
+<span class="fc" id="L170">            playButton.setImageResource(R.drawable.ic_play_arrow_black_24dp);</span>
+<span class="fc" id="L171">            changeStatus(false);</span>
+<span class="fc" id="L172">            player.reset();</span>
+            //player.release();
+        }
+<span class="fc" id="L175">    }</span>
+
+    /**
+     * stop playing an audio file
+     * @param playButton the button which was clicked
+     * @param id id of the contact calling the method
+     */
+    public void stopPlaying(ImageButton playButton, int id) {
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">        if (this.id == id) {</span>
+<span class="fc" id="L184">            playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);</span>
+<span class="fc" id="L185">            changeStatus(false);</span>
+<span class="fc" id="L186">            player.reset();</span>
+        }
+<span class="fc" id="L188">    }</span>
+
+    /**
+     * returns, whether an audio file is played
+     * @return true if an audio file is played, false otherwise
+     */
+    public boolean isPlaying() {
+<span class="fc" id="L195">        return is_playing;</span>
+    }
+
+    /**
+     * Releases the MediaPlayer object
+     */
+    public void release() {
+<span class="fc bfc" id="L202" title="All 2 branches covered.">        if (!isReleased) {</span>
+<span class="fc" id="L203">            player.release();</span>
+<span class="fc" id="L204">            isReleased = true;</span>
+<span class="fc" id="L205">            changeStatus(false);</span>
+        }
+<span class="fc" id="L207">    }</span>
+
+    /**
+     * Change the status of the Recorder
+     * @param status true if an audio file is played, false otherwise
+     */
+    private void changeStatus(boolean status) {
+<span class="fc" id="L214">        is_playing = status;</span>
+<span class="fc" id="L215">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

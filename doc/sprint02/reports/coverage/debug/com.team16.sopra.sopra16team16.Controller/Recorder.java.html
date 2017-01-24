@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Recorder.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Recorder.java</span></div><h1>Recorder.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.media.MediaRecorder;
+import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+import com.team16.sopra.sopra16team16.View.NewContactActivity;
+
+import java.io.IOException;
+
+/**
+ * Recorder contains method for recording audio
+ */
+public class Recorder {
+
+    public static Recorder currentInstance;
+    public String path;
+<span class="fc" id="L30">    private MediaRecorder recorder = null;</span>
+<span class="fc" id="L31">    private boolean is_recording = false;</span>
+    private ColorStateList actionButtonColor;
+    private Handler handler;
+    private int id;
+<span class="fc" id="L35">    private Player player = Player.getCurrentInstance();</span>
+    private Runnable runnable;
+<span class="fc" id="L37">    private Resources resources = HomeActivity.contextOfApplication.getResources();</span>
+
+
+    /**
+     * Singleton getter of the currentInstance
+     */
+    public static Recorder getInstance() {
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (currentInstance == null) {</span>
+<span class="fc" id="L45">            return currentInstance = new Recorder();</span>
+        } else {
+<span class="fc" id="L47">            return currentInstance;</span>
+        }
+    }
+
+    /**
+     * Constructor
+     */
+<span class="fc" id="L54">    private Recorder() {</span>
+<span class="fc" id="L55">        path = FileUtils.PATH;</span>
+<span class="fc" id="L56">    }</span>
+
+
+    /**
+     * Starts recording
+     * @param id id from the contact is the same as the id from the file
+     * @param actionButton the Button which is clicked
+     * @param context context of the activity
+     */
+    public void startRecording(int id, final FloatingActionButton actionButton, final Context context) {
+<span class="fc" id="L66">        this.id = id;</span>
+
+<span class="fc" id="L68">        Log.e(&quot;Recorder&quot;, &quot;ID: &quot; + id);</span>
+<span class="fc" id="L69">        String filename = path + id + &quot;_temp.3gp&quot;;</span>
+<span class="fc" id="L70">        Log.e(&quot;Recorder&quot;, &quot;Filename: &quot; + filename);</span>
+
+        // toggle recording state
+<span class="fc" id="L73">        changeStatus(true);</span>
+
+        // setup
+<span class="fc" id="L76">        recorder = new MediaRecorder();</span>
+        // TODO improve audio quality
+<span class="fc" id="L78">        recorder.setAudioSource(MediaRecorder.AudioSource.MIC); //AudioSource.MIC //AudioSource.VOICE_RECOGNITION</span>
+<span class="fc" id="L79">        recorder.setOutputFile(filename);</span>
+<span class="fc" id="L80">        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);</span>
+<span class="fc" id="L81">        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);</span>
+
+        try {
+<span class="fc" id="L84">            recorder.prepare();</span>
+<span class="nc" id="L85">        } catch (IOException e) {</span>
+<span class="nc" id="L86">            Log.e(&quot;RECORDER_LOG&quot;, e.getMessage());</span>
+<span class="nc" id="L87">            Log.d(&quot;RecorderException&quot;, e.getMessage());</span>
+<span class="nc" id="L88">            FileUtils.deleteFile(path + id + &quot;_temp.3gp&quot;);</span>
+<span class="fc" id="L89">        }</span>
+<span class="fc" id="L90">        recorder.start();</span>
+
+        // start runnable, will stop recording after 8 seconds
+<span class="fc" id="L93">        handler = new Handler();</span>
+<span class="fc" id="L94">        runnable = new Runnable() {</span>
+            @Override
+            public void run() {
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">                if (isPressed()) {</span>
+<span class="fc" id="L98">                    stopRecording(actionButton, context);</span>
+                }
+<span class="fc" id="L100">            }</span>
+        };
+<span class="fc" id="L102">        handler.postDelayed(runnable, 8000);</span>
+
+        // change recording icon and background to give user visual feedback
+<span class="fc" id="L105">        actionButton.setImageResource(R.drawable.ic_mic_none_black_24dp);</span>
+<span class="fc" id="L106">        actionButtonColor = actionButton.getBackgroundTintList();</span>
+<span class="fc" id="L107">        actionButton.setBackgroundTintList(ColorStateList.valueOf(Color.CYAN));</span>
+<span class="fc" id="L108">    }</span>
+
+     /**
+     * Stops recording
+     * @param actionButton the Button which is clicked
+     * @param context context of the activity
+     */
+    public void stopRecording(FloatingActionButton actionButton, Context context) {
+        try {
+<span class="fc" id="L117">            Log.e(&quot;Recorder&quot;, &quot;Aufnahme zu Ende&quot;);</span>
+            // toggle status to not recording
+<span class="fc" id="L119">            changeStatus(false);</span>
+            // interrupt limiting thread
+<span class="fc" id="L121">            handler.removeCallbacks(runnable);</span>
+            // stop recording
+<span class="fc" id="L123">            recorder.stop();</span>
+<span class="fc" id="L124">            recorder.reset();</span>
+<span class="fc" id="L125">            recorder.release();</span>
+<span class="fc" id="L126">            recorder = null;</span>
+
+            // update image and background of the button
+<span class="fc" id="L129">            actionButton.setImageResource(R.drawable.ic_mic_black_24dp);</span>
+<span class="fc" id="L130">            actionButton.setBackgroundTintList(actionButtonColor);</span>
+<span class="fc" id="L131">            confirmRecording(context, actionButton);</span>
+<span class="nc" id="L132">        } catch (RuntimeException e) {</span>
+            // throw error
+            // delete file
+<span class="nc" id="L135">            Log.d(&quot;RecorderException&quot;, e.getMessage());</span>
+<span class="nc" id="L136">            FileUtils.deleteFile(path + id + &quot;_temp.3gp&quot;);</span>
+<span class="fc" id="L137">        }</span>
+<span class="fc" id="L138">    }</span>
+
+    /**
+     * Shows an alert asking the user to confirm the recording.
+     * @param context context of the activity
+     * @param actionButton the Button which is clicked
+     */
+    private void confirmRecording(final Context context, final FloatingActionButton actionButton) {
+        // get the dialog
+<span class="fc" id="L147">        final AlertDialog alertDialog = new AlertDialog.Builder(context).create();</span>
+<span class="fc" id="L148">        alertDialog.setCanceledOnTouchOutside(false);</span>
+<span class="fc" id="L149">        alertDialog.show();</span>
+
+        // set the custom layout
+<span class="fc" id="L152">        Window win = alertDialog.getWindow();</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">        if (win != null) {</span>
+<span class="fc" id="L154">            win.setContentView(R.layout.confirm_record_dialog);</span>
+
+            // text
+<span class="fc" id="L157">            TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);</span>
+<span class="fc" id="L158">            textDialog.setText(resources.getString(R.string.keep_recording));</span>
+
+            // cancel
+<span class="fc" id="L161">            ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);</span>
+
+<span class="fc" id="L163">            cancelDialog.setOnClickListener(new View.OnClickListener() {</span>
+                @Override
+                public void onClick(View view) {
+<span class="fc" id="L166">                    alertDialog.dismiss();</span>
+<span class="fc" id="L167">                    FileUtils.deleteFile(FileUtils.PATH + id + &quot;_temp.3gp&quot;);</span>
+<span class="fc" id="L168">                }</span>
+            });
+
+
+            // play
+<span class="fc" id="L173">            final ImageButton playDialog = (ImageButton) win.findViewById(R.id.play_dialog);</span>
+
+<span class="fc" id="L175">            playDialog.setOnClickListener(new View.OnClickListener() {</span>
+                @Override
+                public void onClick(View view) {
+<span class="fc bfc" id="L178" title="All 2 branches covered.">                    if (!player.isPlaying()) {</span>
+<span class="fc" id="L179">                            player.startPlaying(id + &quot;_temp&quot;, playDialog, id);</span>
+                    } else {
+<span class="fc" id="L181">                        player.stopPlaying(playDialog, id);</span>
+                    }
+<span class="fc" id="L183">                }</span>
+            });
+
+
+            // confirm
+<span class="fc" id="L188">            ImageButton acceptDialog = (ImageButton) win.findViewById(R.id.accept_dialog);</span>
+
+<span class="fc" id="L190">            acceptDialog.setOnClickListener(new View.OnClickListener() {</span>
+                @Override
+                public void onClick(View view) {
+<span class="fc" id="L193">                    alertDialog.dismiss();</span>
+<span class="fc" id="L194">                    ((NewContactActivity)context).customRecordColor();</span>
+<span class="fc" id="L195">                }</span>
+            });
+        }
+
+<span class="fc" id="L199">    }</span>
+
+    /**
+     * true  --&gt; is recording
+     * false --&gt; is not recording
+     *
+     * @return is_recording value - boolean
+     */
+    public boolean isPressed() {
+<span class="fc" id="L208">        return is_recording;</span>
+    }
+
+    /**
+     * Changes the status of the recorder.
+     * @param status - the new status of the recorder
+     */
+    private void changeStatus(boolean status) {
+<span class="fc" id="L216">        is_recording = status;</span>
+<span class="fc" id="L217">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

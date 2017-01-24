@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FilterActivity.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.View</a> &gt; <span class="el_source">FilterActivity.java</span></div><h1>FilterActivity.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.View;
+
+import android.database.Cursor;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.RadioButton;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Filter;
+import com.team16.sopra.sopra16team16.Controller.Sorter;
+import com.team16.sopra.sopra16team16.R;
+
+/**
+ * The user can change the filter and the sorter as desired
+ */
+<span class="fc" id="L22">public class FilterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{</span>
+
+    RadioButton first_ASC;
+    RadioButton first_DESC;
+    RadioButton last_ASC;
+    RadioButton last_DESC;
+
+    RadioButton female;
+    RadioButton male;
+    RadioButton unknown;
+
+    RadioButton country_enabled;
+    RadioButton country_disabled;
+    Spinner spinner;
+
+<span class="fc" id="L37">    Filter filter = Filter.getCurrentInstance();</span>
+<span class="fc" id="L38">    Sorter sorter = Sorter.getCurrentInstance();</span>
+
+    @Override
+    protected void onCreate(Bundle saveInstanceState) {
+<span class="fc" id="L42">        super.onCreate(saveInstanceState);</span>
+<span class="fc" id="L43">        this.setContentView(R.layout.activity_filter);</span>
+
+<span class="fc" id="L45">        setTitle(getString(R.string.filter));</span>
+
+
+<span class="fc" id="L48">        getSupportActionBar().setDisplayHomeAsUpEnabled(true);</span>
+
+
+        //initialize gui elements
+<span class="fc" id="L52">        first_ASC = (RadioButton) findViewById(R.id.first_ASC_radioButton);</span>
+<span class="fc" id="L53">        first_DESC = (RadioButton) findViewById(R.id.first_DESC_radioButton);</span>
+<span class="fc" id="L54">        last_ASC = (RadioButton) findViewById(R.id.last_ASC_radioButton);</span>
+<span class="fc" id="L55">        last_DESC = (RadioButton) findViewById(R.id.last_DESC_radioButton);</span>
+<span class="fc" id="L56">        female = (RadioButton) findViewById(R.id.filter_female_radioButton);</span>
+<span class="fc" id="L57">        male = (RadioButton) findViewById(R.id.filter_male_radioButton);</span>
+<span class="fc" id="L58">        unknown = (RadioButton) findViewById(R.id.filter_unknown_radioButton);</span>
+<span class="fc" id="L59">        country_enabled = (RadioButton) findViewById(R.id.country_enabled_radioButton);</span>
+<span class="fc" id="L60">        country_disabled = (RadioButton) findViewById(R.id.country_disabled_radioButton);</span>
+
+<span class="fc" id="L62">        spinner = (Spinner) findViewById(R.id.country_spinner);</span>
+
+
+        //load settings
+<span class="fc" id="L66">        loadSettings();</span>
+
+<span class="fc" id="L68">        setCountryList();</span>
+
+        //initialize listeners
+        //RadioGroup doesn't work over different linear layouts, so check them manually
+<span class="fc" id="L72">        first_ASC.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View v) {
+<span class="fc" id="L74">                setCheck(first_ASC);</span>
+<span class="fc" id="L75">                sorter.setDirection(&quot;ASC&quot;);</span>
+<span class="fc" id="L76">                sorter.setSortedBy(ContactManager.COLUMN_FIRSTNAME);</span>
+<span class="fc" id="L77">            }</span>
+        });
+
+<span class="fc" id="L80">        first_DESC.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View v) {
+<span class="fc" id="L82">                setCheck(first_DESC);</span>
+<span class="fc" id="L83">                sorter.setDirection(&quot;DESC&quot;);</span>
+<span class="fc" id="L84">                sorter.setSortedBy(ContactManager.COLUMN_FIRSTNAME);</span>
+<span class="fc" id="L85">            }</span>
+        });
+
+<span class="fc" id="L88">        last_ASC.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View v) {
+<span class="fc" id="L90">                setCheck(last_ASC);</span>
+<span class="fc" id="L91">                sorter.setDirection(&quot;ASC&quot;);</span>
+<span class="fc" id="L92">                sorter.setSortedBy(ContactManager.COLUMN_LASTNAME);</span>
+<span class="fc" id="L93">            }</span>
+        });
+
+<span class="fc" id="L96">        last_DESC.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View v) {
+<span class="fc" id="L98">                setCheck(last_DESC);</span>
+<span class="fc" id="L99">                sorter.setDirection(&quot;DESC&quot;);</span>
+<span class="fc" id="L100">                sorter.setSortedBy(ContactManager.COLUMN_LASTNAME);</span>
+<span class="fc" id="L101">            }</span>
+        });
+
+<span class="fc" id="L104">        female.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View view) {
+<span class="fc bfc" id="L106" title="All 2 branches covered.">                if(!filter.setGender(&quot;FEMALE&quot;)) {</span>
+<span class="fc" id="L107">                    female.setChecked(false);</span>
+                }
+<span class="fc" id="L109">            }</span>
+        });
+<span class="fc" id="L111">        male.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View view) {
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">                if(!filter.setGender(&quot;MALE&quot;)) {</span>
+<span class="fc" id="L114">                    male.setChecked(false);</span>
+                }
+<span class="fc" id="L116">            }</span>
+        });
+<span class="fc" id="L118">        unknown.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View view) {
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">                if(!filter.setGender(&quot;UNKNOWN&quot;)) {</span>
+<span class="fc" id="L121">                    unknown.setChecked(false);</span>
+                }
+<span class="fc" id="L123">            }</span>
+        });
+<span class="fc" id="L125">        country_enabled.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View view) {
+<span class="nc" id="L127">                spinner.setVisibility(View.VISIBLE);</span>
+                //set the first item from the spinner as country filter
+<span class="nc" id="L129">                filter.setCountry(returnFirstItem());</span>
+<span class="nc" id="L130">            }</span>
+        });
+<span class="fc" id="L132">        country_disabled.setOnClickListener(new View.OnClickListener() {</span>
+            public void onClick(View view) {
+<span class="nc" id="L134">                spinner.setVisibility(View.INVISIBLE);</span>
+                //disable country filter
+<span class="nc" id="L136">                filter.setCountry(null);</span>
+<span class="nc" id="L137">            }</span>
+        });
+<span class="fc" id="L139">    }</span>
+
+    /**
+     * setCheck for the sorter
+     * @param button which is checked true
+     */
+    private void setCheck(RadioButton button) {
+<span class="fc" id="L146">        first_ASC.setChecked(false);</span>
+<span class="fc" id="L147">        first_DESC.setChecked(false);</span>
+<span class="fc" id="L148">        last_ASC.setChecked(false);</span>
+<span class="fc" id="L149">        last_DESC.setChecked(false);</span>
+<span class="fc" id="L150">        button.setChecked(true);</span>
+<span class="fc" id="L151">    }</span>
+
+    /**
+     * load the settings from the filter and sorter
+     */
+    private void loadSettings() {
+        //set the direction
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">        if(sorter.getSortedBy().equals(ContactManager.COLUMN_FIRSTNAME)) {</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">            if(sorter.getDirection().equals(&quot;ASC&quot;)) {</span>
+<span class="nc" id="L160">                setCheck(first_ASC);</span>
+            } else {
+<span class="nc" id="L162">                setCheck(first_DESC);</span>
+            }
+        } else {
+<span class="pc bpc" id="L165" title="1 of 2 branches missed.">            if(sorter.getDirection().equals(&quot;ASC&quot;)) {</span>
+<span class="fc" id="L166">                setCheck(last_ASC);</span>
+            } else {
+<span class="nc" id="L168">                setCheck(last_DESC);</span>
+            }
+        }
+
+        //set the gender filter
+<span class="fc bfc" id="L173" title="All 2 branches covered.">        for(int i = 0; i &lt; filter.getGenderList().size(); ++i) {</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">            if(filter.getGenderList().get(i) == null) {</span>
+<span class="nc" id="L175">                break;</span>
+            }
+<span class="fc bfc" id="L177" title="All 2 branches covered.">            if(filter.getGenderList().get(i).equals(&quot;FEMALE&quot;)) {</span>
+<span class="fc" id="L178">                female.setChecked(true);</span>
+            }
+<span class="fc bfc" id="L180" title="All 2 branches covered.">            if(filter.getGenderList().get(i).equals(&quot;MALE&quot;)) {</span>
+<span class="fc" id="L181">                male.setChecked(true);</span>
+            }
+<span class="fc bfc" id="L183" title="All 2 branches covered.">            if(filter.getGenderList().get(i).equals(&quot;UNKNOWN&quot;)){</span>
+<span class="fc" id="L184">                unknown.setChecked(true);</span>
+            }
+        }
+
+        //set the country filter
+<span class="pc bpc" id="L189" title="1 of 2 branches missed.">        if(filter.getCountry() == null) {</span>
+<span class="fc" id="L190">            country_disabled.setChecked(true);</span>
+<span class="fc" id="L191">            spinner.setVisibility(View.INVISIBLE);</span>
+        } else {
+<span class="nc" id="L193">            country_enabled.setChecked(true);</span>
+        }
+<span class="fc" id="L195">    }</span>
+
+    /**
+     * fills the spinner with all countries of the contacts
+     */
+    private void setCountryList() {
+<span class="fc" id="L201">        Cursor cursorCountries = ContactManager.getInstance(getApplicationContext()).getCountryList();</span>
+
+<span class="fc" id="L203">        String[] columns = new String[] { &quot;country&quot; };</span>
+<span class="fc" id="L204">        int[] temp = new int[] { android.R.id.text1 };</span>
+
+<span class="fc" id="L206">        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, cursorCountries, columns, temp, 0);</span>
+<span class="fc" id="L207">        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);</span>
+<span class="fc" id="L208">        spinner.setAdapter(adapter);</span>
+<span class="fc" id="L209">        spinner.setOnItemSelectedListener(this);</span>
+
+        //cursorCountries.close();
+
+        //load country from the filter
+<span class="fc" id="L214">        selectItem();</span>
+<span class="fc" id="L215">    }</span>
+
+    /**
+     * selects the country saved in the filter
+     */
+    private void selectItem() {
+<span class="pc bpc" id="L221" title="3 of 4 branches missed.">        if(Filter.getCountry() == null || spinner.getCount() == 0) return;</span>
+
+<span class="nc" id="L223">        Cursor cursorFilter = (Cursor) spinner.getItemAtPosition(0);</span>
+
+<span class="nc bnc" id="L225" title="All 2 branches missed.">        for(int i = 0; i &lt; spinner.getCount(); ++i) {</span>
+<span class="nc" id="L226">            cursorFilter.moveToPosition(i);</span>
+<span class="nc" id="L227">            String item = cursorFilter.getString(cursorFilter.getColumnIndex(ContactManager.COLUMN_COUNTRY));</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">            if(item.equals(Filter.getCountry())) {</span>
+<span class="nc" id="L229">                spinner.setSelection(i);</span>
+            }
+        }
+<span class="nc" id="L232">    }</span>
+
+    /**
+     * Returns the first item of the spinner
+     * @return first item from the spinner
+     */
+    private String returnFirstItem() {
+        //no country available
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        if(spinner.getCount() == 0) return null;</span>
+
+<span class="nc" id="L242">        Cursor cursorFilter = (Cursor) spinner.getItemAtPosition(0);</span>
+<span class="nc" id="L243">        cursorFilter.moveToPosition(0);</span>
+<span class="nc" id="L244">        String item = cursorFilter.getString(cursorFilter.getColumnIndex(ContactManager.COLUMN_COUNTRY));</span>
+<span class="nc" id="L245">        return item;</span>
+    }
+
+    @Override
+    /**
+     * close the activity
+     */
+    public void onBackPressed() {
+<span class="fc" id="L253">        super.onBackPressed();</span>
+<span class="fc" id="L254">        finish();</span>
+<span class="fc" id="L255">    }</span>
+
+    @Override
+    public void onItemSelected(AdapterView&lt;?&gt; adapterView, View view, int i, long l) {
+<span class="fc" id="L259">        String item = (String) ((TextView) view).getText();</span>
+<span class="pc bpc" id="L260" title="1 of 2 branches missed.">        if(country_enabled.isChecked()) {</span>
+<span class="nc" id="L261">            filter.setCountry(item);</span>
+        }
+<span class="fc" id="L263">    }</span>
+
+    @Override
+    public void onNothingSelected(AdapterView&lt;?&gt; adapterView) {
+
+<span class="nc" id="L268">    }</span>
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+<span class="pc bpc" id="L272" title="1 of 2 branches missed.">        switch(item.getItemId()) {</span>
+            case android.R.id.home:
+<span class="fc" id="L274">                onBackPressed();</span>
+<span class="fc" id="L275">                return true;</span>
+            default:
+<span class="nc" id="L277">                return super.onOptionsItemSelected(item);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FileUtils.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">FileUtils.java</span></div><h1>FileUtils.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.util.Log;
+
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+
+/**
+ * Contains methods for manipulating files, like copying/replacing.
+ */
+<span class="nc" id="L16">public class FileUtils {</span>
+
+<span class="fc" id="L18">    public static final String PATH = HomeActivity.contextOfApplication.getFilesDir().getPath() + &quot;/&quot;;</span>
+
+    /**
+     * Replaces the original file with the replacement file
+     * This assumes that both files are located in the same folder
+     * @param original - original file path
+     * @param replacement - replacement file path
+     */
+    public static void replaceFile(String original, String replacement) {
+<span class="fc" id="L27">        File temp = new File(replacement);</span>
+<span class="fc" id="L28">        File perm = new File(original);</span>
+
+<span class="pc bpc" id="L30" title="2 of 4 branches missed.">        if (perm.exists() &amp;&amp; temp.exists()) {</span>
+<span class="fc" id="L31">            perm.delete();</span>
+
+<span class="fc" id="L33">            Log.d(&quot;FileUtils&quot;, &quot;deleted &quot; + perm + &quot; while copying temp&quot;);</span>
+        }
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if (temp.exists()) {</span>
+<span class="fc" id="L36">            temp.renameTo(perm);</span>
+<span class="fc" id="L37">            Log.d(&quot;FileUtils&quot;, &quot;renamed &quot; + temp + &quot; to &quot; + perm);</span>
+        }
+<span class="fc" id="L39">    }</span>
+
+
+    /**
+     * Renames a file
+     * @param from original file
+     * @param to new path
+     */
+    public static void renameFile(String from, String to) {
+<span class="fc" id="L48">        File orig = new File(from);</span>
+<span class="fc" id="L49">        File repl = new File(to);</span>
+
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        if (orig.exists()) {</span>
+<span class="fc" id="L52">            orig.renameTo(repl);</span>
+<span class="fc" id="L53">            Log.d(&quot;FileUtils&quot;, &quot;renamed &quot; + from + &quot; to &quot; + to);</span>
+        }
+
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Deletes a file
+     * @param from the file that is to be deleted
+     */
+    public static void deleteFile(String from) {
+<span class="fc" id="L63">        File file = new File(from);</span>
+
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if(file.exists()) {</span>
+<span class="fc" id="L66">            file.delete();</span>
+<span class="fc" id="L67">            Log.d(&quot;FileUtils&quot;, &quot;deleted file &quot; + from);</span>
+        }
+<span class="fc" id="L69">    }</span>
+
+
+    /**
+     * Renames a temp audio file to the permanent version.
+     * @param id id of the contact - int
+     */
+    public static void confirmAudio(int id) {
+<span class="fc" id="L77">        String path = HomeActivity.contextOfApplication.getFilesDir().getPath() + &quot;/&quot;;</span>
+<span class="fc" id="L78">        File temp = new File(path + id + &quot;_temp.3gp&quot;);</span>
+<span class="fc" id="L79">        File perm = new File(path + id + &quot;.3gp&quot;);</span>
+
+<span class="pc bpc" id="L81" title="1 of 4 branches missed.">        if (perm.exists() &amp;&amp; temp.exists()) {</span>
+<span class="fc" id="L82">            FileUtils.renameFile(</span>
+                    path + id + &quot;.3gp&quot;,
+                    path + id + &quot;_undo.3gp&quot;
+            );
+        }
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">        if (temp.exists()) {</span>
+<span class="fc" id="L88">            temp.renameTo(perm);</span>
+<span class="fc" id="L89">            Log.d(&quot;recorder&quot;, &quot;renamed &quot; + temp + &quot; to &quot; + perm);</span>
+        }
+<span class="fc" id="L91">    }</span>
+
+    /**
+     * Deletes *temp.3gp files in the files directory.
+     */
+    public static void deleteTempFiles() {
+<span class="fc" id="L97">        File[] files = new File(PATH).listFiles();</span>
+
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        for (File f : files) {</span>
+<span class="fc" id="L100">            String fp = f.getPath();</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if (fp.length() &gt; 8) {</span>
+<span class="fc" id="L102">                String fpsub = fp.substring(fp.length() - 9, fp.length());</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">                if (fpsub.equals(&quot;_temp.3gp&quot;)) {</span>
+<span class="fc" id="L104">                    Log.d(&quot;deletingTempFile&quot;, fp);</span>
+<span class="fc" id="L105">                    new File(fp).delete();</span>
+                }
+            }
+        }
+<span class="fc" id="L109">    }</span>
+
+
+    /**
+     * Copies a file
+     *
+     * fromFile - FileInputStream - source
+     * toFile - FileOutputStream - target
+     */
+    public static void copyFile(FileInputStream fromFile, FileOutputStream toFile) throws IOException {
+<span class="fc" id="L119">        FileChannel fromChannel = null;</span>
+<span class="fc" id="L120">        FileChannel toChannel = null;</span>
+        try {
+<span class="fc" id="L122">            fromChannel = fromFile.getChannel();</span>
+<span class="fc" id="L123">            toChannel = toFile.getChannel();</span>
+<span class="fc" id="L124">            fromChannel.transferTo(0, fromChannel.size(), toChannel);</span>
+<span class="fc" id="L125">            Log.d(&quot;COPY&quot;, &quot;COPY&quot;);</span>
+        } finally {
+<span class="nc" id="L127">            try {</span>
+<span class="pc bpc" id="L128" title="3 of 4 branches missed.">                if (fromChannel != null) {</span>
+<span class="pc" id="L129">                    fromChannel.close();</span>
+                }
+            } finally {
+<span class="pc bpc" id="L132" title="7 of 8 branches missed.">                if (toChannel != null) {</span>
+<span class="pc" id="L133">                    toChannel.close();</span>
+                }
+            }
+<span class="fc" id="L136">        }</span>
+<span class="fc" id="L137">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

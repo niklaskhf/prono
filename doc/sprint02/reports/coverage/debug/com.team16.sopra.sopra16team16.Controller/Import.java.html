@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Import.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Import.java</span></div><h1>Import.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Environment;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.team16.sopra.sopra16team16.Model.DBHelper;
+import com.team16.sopra.sopra16team16.Model.DBManager;
+import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.FileChooser;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+/**
+ * Contains methods for importing data into the app.
+ */
+<span class="fc" id="L25">public class Import {</span>
+
+    private String importPath;
+<span class="fc" id="L28">    private Resources resources = HomeActivity.contextOfApplication.getResources();</span>
+
+    /**
+     * Triggers the importing dialog.
+     * @param context - Context that the FileChooser will be displayed in
+     */
+    public void importDBDialog(Context context) {
+<span class="fc" id="L35">        String data = Environment.getExternalStorageDirectory().toString();</span>
+
+        // let the user select a file
+<span class="fc" id="L38">        FileChooser fileChooser = new FileChooser((HomeActivity) context)</span>
+<span class="fc" id="L39">                .setFileListener(new FileChooser.FileSelectedListener() {</span>
+
+                    @Override
+                    public void fileSelected(File file) {
+                        // import the files from the selected path
+<span class="fc" id="L44">                        importPath = file.getPath();</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                        if (importPath.substring(importPath.length() - 4, importPath.length()).equals(&quot;.zip&quot;)</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">                                &amp;&amp; importPath.contains(&quot;pronoBackup&quot;)) {</span>
+<span class="fc" id="L48">                            importDB(importPath);</span>
+                        } else {
+<span class="fc" id="L50">                            Toast.makeText(HomeActivity.contextOfApplication, resources.getString(R.string.file_not_accepted),</span>
+<span class="fc" id="L51">                                    Toast.LENGTH_SHORT).show();</span>
+                        }
+<span class="fc" id="L53">                    }</span>
+                });
+<span class="fc" id="L55">        fileChooser.setExtension(&quot;.zip&quot;);</span>
+<span class="fc" id="L56">        fileChooser.showDialog();</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * Imports data from a zip file
+     *
+     * @param importPath new database - path
+     */
+    private void importDB(String importPath) {
+
+        try {
+            // unzip the files to the /files/import/ directory
+<span class="fc" id="L68">            unzip(importPath, &quot;/data/data/&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;/files/import/&quot;);
+
+            // move and replace the database file
+<span class="fc" id="L72">            String backupDBPath = &quot;/data/data/&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;/files/import/&quot; + DBHelper.DATABASE_NAME;
+
+<span class="fc" id="L75">            boolean result = DBManager.getCurrentInstance(HomeActivity.contextOfApplication).replaceDatabase(backupDBPath);</span>
+
+            // tell the user
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">            if (result) {</span>
+                try {
+                    // copy the audio files from ../files/import/ to /files/
+
+                    // wipe /files/ directory
+<span class="fc" id="L83">                    String filesPath = &quot;/data/data/&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                            + &quot;/files/&quot;;
+<span class="fc" id="L85">                    String importFilesPath = &quot;/data/data/&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                            + &quot;/files/import/&quot;;
+
+<span class="fc bfc" id="L88" title="All 2 branches covered.">                    for (File f : new File(filesPath).listFiles()) {</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">                        if (f.getPath().endsWith(&quot;.3gp&quot;)) {</span>
+<span class="nc" id="L90">                            f.delete();</span>
+                        }
+                    }
+
+                    // copy audio files from ../files/import/ to ../files/
+<span class="fc bfc" id="L95" title="All 2 branches covered.">                    for (File f : new File(importFilesPath).listFiles()) {</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">                        if (f.getPath().endsWith(&quot;.3gp&quot;)) {</span>
+<span class="fc" id="L97">                            FileUtils.renameFile(importFilesPath + f.getName(), filesPath + f.getName());</span>
+                        }
+                    }
+<span class="fc" id="L100">                    Toast.makeText(HomeActivity.contextOfApplication, resources.getString(R.string.successful_import),</span>
+<span class="fc" id="L101">                            Toast.LENGTH_SHORT).show();</span>
+<span class="nc" id="L102">                } catch (Exception e) {</span>
+<span class="nc" id="L103">                    Toast.makeText(HomeActivity.contextOfApplication, resources.getString(R.string.failed_import),</span>
+<span class="nc" id="L104">                            Toast.LENGTH_SHORT).show();</span>
+<span class="pc" id="L105">                }</span>
+            } else {
+<span class="nc" id="L107">                Toast.makeText(HomeActivity.contextOfApplication, resources.getString(R.string.failed_import),</span>
+<span class="nc" id="L108">                        Toast.LENGTH_SHORT).show();</span>
+            }
+
+            // open/close database
+<span class="fc" id="L112">            DBManager dbManager = DBManager.getCurrentInstance(HomeActivity.contextOfApplication);</span>
+<span class="fc" id="L113">            dbManager.close();</span>
+<span class="fc" id="L114">            dbManager.reopen();</span>
+<span class="fc" id="L115">            ContactManager contactManager = ContactManager.getInstance(HomeActivity.contextOfApplication);</span>
+<span class="fc" id="L116">            contactManager.open();</span>
+
+            // delete the now unnecessary database file in /files/
+<span class="fc" id="L119">            FileUtils.deleteFile(backupDBPath);</span>
+
+<span class="nc" id="L121">        } catch (Exception e) {</span>
+            // handle exception
+<span class="nc" id="L123">            Log.d(&quot;ImportIOEXception&quot;, e.getMessage());</span>
+<span class="fc" id="L124">        }</span>
+
+<span class="fc" id="L126">    }</span>
+
+    /**
+     * Unzips a zip file to the given location
+     * @param zipFile path - location of the zip file
+     * @param location path - where to put the file
+     * @throws IOException
+     */
+    private static void unzip(String zipFile, String location) throws IOException {
+        try {
+<span class="fc" id="L136">            File f = new File(location);</span>
+<span class="pc bpc" id="L137" title="1 of 2 branches missed.">            if (!f.isDirectory()) {</span>
+<span class="fc" id="L138">                f.mkdirs();</span>
+            }
+<span class="fc" id="L140">            ZipInputStream zin = new ZipInputStream(new FileInputStream(zipFile));</span>
+            try {
+<span class="fc" id="L142">                ZipEntry ze = null;</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">                while ((ze = zin.getNextEntry()) != null) {</span>
+<span class="fc" id="L144">                    String path = location + ze.getName();</span>
+
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">                    if (ze.isDirectory()) {</span>
+<span class="nc" id="L147">                        File unzipFile = new File(path);</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">                        if (!unzipFile.isDirectory()) {</span>
+<span class="nc" id="L149">                            unzipFile.mkdirs();</span>
+                        }
+<span class="nc" id="L151">                    } else {</span>
+<span class="fc" id="L152">                        FileOutputStream fout = new FileOutputStream(path, false);</span>
+                        try {
+<span class="fc bfc" id="L154" title="All 2 branches covered.">                            for (int c = zin.read(); c != -1; c = zin.read()) {</span>
+<span class="fc" id="L155">                                fout.write(c);</span>
+                            }
+<span class="fc" id="L157">                            zin.closeEntry();</span>
+                        } finally {
+<span class="pc" id="L159">                            fout.close();</span>
+<span class="fc" id="L160">                        }</span>
+                    }
+<span class="fc" id="L162">                }</span>
+            } finally {
+<span class="pc" id="L164">                zin.close();</span>
+<span class="fc" id="L165">            }</span>
+<span class="nc" id="L166">        } catch (Exception e) {</span>
+<span class="nc" id="L167">            Log.e(&quot;UNZIP&quot;, &quot;Unzip exception&quot;, e);</span>
+<span class="fc" id="L168">        }</span>
+<span class="fc" id="L169">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>
