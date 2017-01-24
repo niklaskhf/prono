@@ -626,7 +626,7 @@
     <string name="gender">Gender</string>
     <string name="imports">Import</string>
     <string name="keepNamePronunciation">Do you want to keep the generic name pronunciation in relation to the country?</string>
-    <string name="keep_recording">Do you want to keep recording this?</string>
+    <string name="keep_recording">Do you want to keep this recording?</string>
     <string name="language">Language</string>
     <string name="last">Last</string>
     <string name="lastName">Last Name</string>

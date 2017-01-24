@@ -1833,7 +1833,7 @@
         <item>English</item>
         <item>русский</item>
         <item>Türk</item>
-    </string-array><string name="no">NO</string><string name="keep_recording">Do you want to keep recording this?</string><string name="imports">Import</string><string name="backup">Backup</string><string name="contactEdited">Edited a contact</string><string name="sorting_options">Sorting Options:</string><string name="lastName">Last Name</string><string name="overwrite_data">This will overwrite all existing data. Continue?</string><string name="gender">Gender</string><string name="female">female</string><string name="UNDO">UNDO</string><string name="country_enabled_radioButton">on</string><string name="app_name">Prono</string><string name="failed_export">Export failed</string><string name="language">Language</string><string name="country_disabled_radioButton">off</string><string name="firstName">First Name</string><string name="successful_import">Import successful</string><string-array name="drawer">
+    </string-array><string name="no">NO</string><string name="keep_recording">Do you want to keep this recording?</string><string name="imports">Import</string><string name="backup">Backup</string><string name="contactEdited">Edited a contact</string><string name="sorting_options">Sorting Options:</string><string name="lastName">Last Name</string><string name="overwrite_data">This will overwrite all existing data. Continue?</string><string name="gender">Gender</string><string name="female">female</string><string name="UNDO">UNDO</string><string name="country_enabled_radioButton">on</string><string name="app_name">Prono</string><string name="failed_export">Export failed</string><string name="language">Language</string><string name="country_disabled_radioButton">off</string><string name="firstName">First Name</string><string name="successful_import">Import successful</string><string-array name="drawer">
         <item>Favorites</item>
         <item>Settings</item>
         <item>About</item>
@@ -1862,7 +1862,7 @@
         <item>Favorites</item>
         <item>Settings</item>
         <item>About</item>
-    </string-array><string name="contactEdited">Edited a contact</string><string name="keep_recording">Do you want to keep recording this?</string><string name="data_reset">All data reset!</string><string name="UNDO">UNDO</string><string name="licence">Appache Licence 2.0</string><string name="successful_export">Export successful!\nSaved to </string><string name="language">Language</string><string name="file_not_accepted">Import failed, file not accepted</string><string name="male">male</string><string name="editor">Editor</string><string-array name="languages">
+    </string-array><string name="contactEdited">Edited a contact</string><string name="keep_recording">Do you want to keep this recording?</string><string name="data_reset">All data reset!</string><string name="UNDO">UNDO</string><string name="licence">Appache Licence 2.0</string><string name="successful_export">Export successful!\nSaved to </string><string name="language">Language</string><string name="file_not_accepted">Import failed, file not accepted</string><string name="male">male</string><string name="editor">Editor</string><string-array name="languages">
         <item>Deutsch</item>
         <item>English</item>
         <item>русский</item>
