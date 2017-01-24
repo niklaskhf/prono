@@ -2,7 +2,7 @@
 
 <img src="doc/images/SoPraAppHomeScreen.png" width="350">
 
-Die Appliatkon 'Prono' ermöglicht das Verwalten von Kontakten, jedoch gibt es einen Bonus, um folgendes Problem möglichst zu vermeiden:
+'Prono' ermöglicht das Verwalten von Kontakten; jedoch gibt es einen Bonus, um folgendes Problem möglichst zu vermeiden:
 
  Namen verwenden oft die gleichen Buchstaben, oft auch in der selben Reihenfolge. Jedoch sieht die phonetische Schreibweise eines Namens sehr unterschiedlich aus, auch wenn die normale Schreibweise identisch ist. Oft kommt dies vor, wenn es eine unterschiedliche Herkunft der Person gibt. 
  In einem professionellen Umfeld ist der erste Eindruck wichtig, und wenn der Name falsch ausgesprochen wird ist das oft schon ein sehr schlechter Start.

@@ -53,11 +53,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [sketches](doc/sketches)
 - [Sprint Report](doc/Sprint2Report.md)
 - [Issues](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/issues)
-- [app](prono-app.apk)
+- [app](pronoApp.apk)
 - [Product.Backlog](doc/Product.Backlog.md)
 - [Readme](Readme.md)
 - [Entwurf](doc/Entwurf.md)
 - [Zeitabrechnung](doc/Zeitabrechnung.ods)
-
-### Fixed
--[Player]

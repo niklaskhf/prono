@@ -1294,8 +1294,8 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 - Akzeptanztests:
     - [ ] Es gibt eine Backup-Datei mit allen Datenbanken und Audiodateien
     - [ ] Die Backup-Datei endet auf .zip und enthält 'prono'
-    - [ ] Nach einem Import, sind alle Kontakte zur Zeit des Backups vorhanden
-    - [ ] Alle Kontakte nach einem Import, waren zur Zeit der Erstellung des Backups vorhanden
+    - [ ] Nach einem Import sind alle Kontakte zur Zeit des Backups vorhanden
+    - [ ] Alle Kontakte nach einem Import waren zur Zeit der Erstellung des Backups vorhanden
     
 - Enthaltene Implementable Stories:
     - Backup erstellen
