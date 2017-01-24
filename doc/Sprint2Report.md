@@ -20,4 +20,4 @@ In diesem Sprint wurden die Additional Features in [Meilenstein 5](https://sopra
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-[Testprotokolle](./doc/sprint02/reports/), Jacoco Hinweis: Permissions müssen ggf. manuell vor Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
+[Testprotokolle](./doc/sprint02), Jacoco Hinweis: Permissions müssen ggf. manuell vor Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
