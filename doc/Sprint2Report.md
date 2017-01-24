@@ -13,7 +13,9 @@ In diesem Sprint wurden die Additional Features in [Meilenstein 5](https://sopra
     - Beschreibungen von Komponenten/wichtigen Klassen aktualisiert.
 
 > [Readme.md](../Readme.md)
-    - komplett überbarbeitet
+    - App-Beschreibung aktualisiert.
+    - Feature-Beischreibungen hinzugefügt
+    - Anwendungsfälle aktualisiert.
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
