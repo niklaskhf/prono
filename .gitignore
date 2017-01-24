@@ -1,5 +1,4 @@
 # built application files
-*.apk
 *.ap_
 
 # files for the dex VM
@@ -46,13 +45,4 @@ Thumbs.db
 /*.properties
 /gradle.properties
 /.idea/workspace.xml
-<<<<<<< HEAD
 .idea
-=======
-/.idea/workspace.xml
-/.gradle/2.14.1/taskArtifacts/cache.properties.lock
-/.gradle/2.14.1/taskArtifacts/fileHashes.bin
-/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin
-/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin
-/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin
->>>>>>> 9ce517f4f088cf647e24d81392eb3cc1ef1ab9a0
