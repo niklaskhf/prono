@@ -4,7 +4,7 @@ In diesem Sprint wurden größtenteils die Additional Features implementiert.
 Ebenfalls wurde das unvollständige Aufnahmefeature vom vorherigen Sprint hinzugefügt. Außerdem wurde das Feature "Kontakt löschen" zu ende implementiert.
 
 ## Verbesserte Dokumente
-> [ProductBacklog.md](/doc/ProductBacklog.md)
+> [ProductBacklog.md](/doc/Product.Backlog.md)
     - Folgender Task "Ländern sortieren" wurde rausgenommen, da       schon nach Ländern gefitert werden kann.
     - Tatsächliche Zeiten wurden aktualisiert.
 
