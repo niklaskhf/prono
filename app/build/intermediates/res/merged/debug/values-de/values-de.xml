@@ -38,6 +38,7 @@
     <string name="authors">Autoren</string>
     <string name="backup">Backup</string>
     <string name="cancel">Abbrechen</string>
+    <string name="contact">Kontakt</string>
     <string name="contactDeleted">Kontakt gelöscht</string>
     <string name="contactEdited">Kontakt geändert</string>
     <string name="contactRestored">Kontakt wiederhergestellt</string>

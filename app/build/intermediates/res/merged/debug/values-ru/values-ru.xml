@@ -38,6 +38,7 @@
     <string name="authors">Авторы</string>
     <string name="backup">Резервное копирование</string>
     <string name="cancel">Отмена</string>
+    <string name="contact">контакт</string>
     <string name="contactDeleted">Контакт удален</string>
     <string name="contactEdited">Контакт изменен</string>
     <string name="contactRestored">Контакт востановлен</string>

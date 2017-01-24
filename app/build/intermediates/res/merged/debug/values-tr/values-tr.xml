@@ -38,6 +38,7 @@
     <string name="authors">Yazarlar</string>
     <string name="backup">Yedek</string>
     <string name="cancel">iptal etmek</string>
+    <string name="contact">temas</string>
     <string name="contactDeleted">Bir kişiyi sildi</string>
     <string name="contactEdited">Bir kişiyi düzenledi</string>
     <string name="contactRestored">Bir kişiyi geri yükledi</string>
