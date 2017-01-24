@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Export.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">Export.java</span></div><h1>Export.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Environment;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.team16.sopra.sopra16team16.Model.DBHelper;
+import com.team16.sopra.sopra16team16.Model.DBManager;
+import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.FileChooser;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
+
+/**
+ * Contains methods for exporting the app data.
+ */
+<span class="fc" id="L31">public class Export {</span>
+
+<span class="fc" id="L33">    private Resources resources = HomeActivity.contextOfApplication.getResources();</span>
+    /**
+     * Exports the database and all audio files into a zip file located on the sd card
+     */
+    public void exportDB() {
+        try {
+            // file path of audio files
+            // everything is located in /files/
+<span class="fc" id="L41">            File filesPath = new File(&quot;//data//data//&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;//files//&quot;);
+<span class="fc" id="L43">            File[] fileDir = filesPath.listFiles();</span>
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            for (int i = 0; i &lt; fileDir.length; i++) {</span>
+<span class="fc" id="L46">                Log.d(&quot;fileDir&quot;, &quot;fileDir[&quot; + Integer.toString(i) + &quot;]:&quot; + fileDir[i]);</span>
+            }
+
+<span class="fc" id="L49">            ArrayList&lt;String&gt; audios = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc bfc" id="L51" title="All 2 branches covered.">            for (File e : fileDir) {</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">                if (e.getName().endsWith(&quot;.3gp&quot;)) {</span>
+<span class="fc" id="L53">                    audios.add(e.toString());</span>
+                }
+            }
+
+            // String[] of files that will be zipped
+            // size is audio files + 1 (database file)
+<span class="fc" id="L59">            String[] files = new String[audios.size() + 1];</span>
+
+            // get the audio files
+            // 1 to skip the instant-run directory
+<span class="fc bfc" id="L63" title="All 2 branches covered.">            for (int i = 0; i &lt; audios.size(); i++) {</span>
+<span class="fc" id="L64">                    files[i] = audios.get(i);</span>
+            }
+
+            // get the database file
+<span class="fc" id="L68">            String dbPath = &quot;//data//data//&quot; + HomeActivity.contextOfApplication.getPackageName()</span>
+                    + &quot;//databases//&quot; + DBHelper.DATABASE_NAME;
+<span class="fc" id="L70">            files[files.length - 1] = dbPath;</span>
+
+            // name of the backup file is
+            // pronoBackupYYYYMMDD_HHMMSS.zip
+<span class="fc" id="L74">            SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyyMMdd_HHmmss&quot;);</span>
+<span class="fc" id="L75">            String currentDateandTime = sdf.format(new Date());</span>
+
+<span class="fc" id="L77">            String sd = Environment.getExternalStorageDirectory().toString();</span>
+<span class="fc" id="L78">            String fileName = sd + &quot;/pronoBackup&quot; + currentDateandTime + &quot;.zip&quot;;</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            for (int i = 0; i &lt; files.length; i++) {</span>
+<span class="fc" id="L81">                Log.d(&quot;file&quot;, &quot;files[&quot; + Integer.toString(i) + &quot;]:&quot; + files[i]);</span>
+            }
+
+            // create the zip file
+<span class="fc" id="L85">            zip(files, fileName);</span>
+
+            // tell the user
+<span class="fc" id="L88">            Toast.makeText(HomeActivity.contextOfApplication,  resources.getString(R.string.successful_export) + fileName, Toast.LENGTH_SHORT)</span>
+<span class="fc" id="L89">                    .show();</span>
+<span class="nc" id="L90">        } catch (Exception e) {</span>
+<span class="nc" id="L91">            Toast.makeText(HomeActivity.contextOfApplication, resources.getString(R.string.failed_export), Toast.LENGTH_SHORT)</span>
+<span class="nc" id="L92">                    .show();</span>
+<span class="nc" id="L93">            Log.d(&quot;EXPORT&quot;, e.getMessage());</span>
+<span class="fc" id="L94">        }</span>
+<span class="fc" id="L95">    }</span>
+
+
+    /**
+     * zips all files in files[] to the zip file zipFile
+     * @param files path - file array containing all files that are to be zipped
+     * @param zipFile path - zip file location
+     * @throws IOException
+     */
+    public static void zip(String[] files, String zipFile) throws IOException {
+<span class="fc" id="L105">        BufferedInputStream origin = null;</span>
+<span class="fc" id="L106">        ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));</span>
+<span class="fc" id="L107">        int BUFFER_SIZE = 8192;</span>
+
+        try {
+<span class="fc" id="L110">            byte data[] = new byte[BUFFER_SIZE];</span>
+
+<span class="fc bfc" id="L112" title="All 2 branches covered.">            for (int i = 0; i &lt; files.length; i++) {</span>
+<span class="fc" id="L113">                FileInputStream fi = new FileInputStream(files[i]);</span>
+<span class="fc" id="L114">                origin = new BufferedInputStream(fi, BUFFER_SIZE);</span>
+                try {
+<span class="fc" id="L116">                    ZipEntry entry = new ZipEntry(files[i].substring(files[i].lastIndexOf(&quot;/&quot;) + 1));</span>
+<span class="fc" id="L117">                    out.putNextEntry(entry);</span>
+                    int count;
+<span class="fc bfc" id="L119" title="All 2 branches covered.">                    while ((count = origin.read(data, 0, BUFFER_SIZE)) != -1) {</span>
+<span class="fc" id="L120">                        out.write(data, 0, count);</span>
+                    }
+                } finally {
+<span class="pc" id="L123">                    origin.close();</span>
+<span class="fc" id="L124">                }</span>
+            }
+        } finally {
+<span class="pc" id="L127">            out.close();</span>
+<span class="fc" id="L128">        }</span>
+<span class="fc" id="L129">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

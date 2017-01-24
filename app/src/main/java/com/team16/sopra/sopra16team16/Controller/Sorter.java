@@ -3,7 +3,6 @@ package com.team16.sopra.sopra16team16.Controller;
 /**
  * Sorts the results of a query
  */
-
 public class Sorter {
     private static String direction = "ASC";
     private static String sortedBy = ContactManager.COLUMN_LASTNAME;
@@ -23,7 +22,7 @@ public class Sorter {
     }
 
     /**
-     * There has to be a constructor
+     * Singleton constructor
      */
     private Sorter() {
 

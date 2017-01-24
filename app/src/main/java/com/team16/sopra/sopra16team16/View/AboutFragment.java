@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.R;
 
 /**
  * About fragment - used to display project information
- * Does literally nothing
  */
 public class AboutFragment extends Fragment {
     @Override
@@ -23,7 +21,6 @@ public class AboutFragment extends Fragment {
         TextView tvLicense = (TextView) view.findViewById(R.id.about_license);
 
 
-        // TODO write something nicer
         tvMot.setText(getString(R.string.eplan));
 
 

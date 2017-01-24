@@ -66,12 +66,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Storage Permissions
     private static final int REQUEST_ALL = 0;
-    private static final int REQUEST_MICROPHONE = 2;
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
+
     private static String[] PERMISSIONS_ALL = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -119,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
     /**
      * Hides the dropDown of the searchView
      *
-     * @param searchView
+     * @param searchView - SearchView object
      */
     public void hideSearchDropDown(SearchView searchView) {
         // id of AutoCompleteTextView
@@ -143,8 +138,7 @@ public class HomeActivity extends AppCompatActivity {
         filterQuery = new FilterQueryProvider() {
             @Override
             public Cursor runQuery(CharSequence charSequence) {
-                Cursor mCursor = null;
-                mCursor = contactManager.getSearchResults(charSequence.toString());
+                Cursor mCursor = contactManager.getSearchResults(charSequence.toString());
                 return mCursor;
             }
         };
@@ -155,7 +149,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
                 Log.i("listAdapter", "is now filterQuery");
-                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
                 listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery("")));
                 return true;
             }
@@ -163,7 +156,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemActionCollapse(MenuItem menuItem) {
                 Log.i("listAdapter", "is now default");
-                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(null);
                 listFragment.setListAdapter(contactManager.getCursorAdapterDefault());
                 return true;
             }
@@ -173,7 +165,6 @@ public class HomeActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //contactManager.getCursorAdapterDefault().setFilterQueryProvider(filterQuery);
                 listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
                 // hide the keyboard
                 searchView.clearFocus();
@@ -182,7 +173,6 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                //Log.i("listAdapter", "is now filterQuery");
                 listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(newText)));
                 return true;
             }
@@ -246,11 +236,6 @@ public class HomeActivity extends AppCompatActivity {
         // do we even have permissions?
         verifyStoragePermissions(this);
 
-        // populate the ListView
-        // set cursorAdapter
-        // moved this to permission request
-        //fragment.setListAdapter(contactManager.getCursorAdapterDefault());
-
     }
 
     /**
@@ -306,7 +291,7 @@ public class HomeActivity extends AppCompatActivity {
      * changes app language
      *
      * @param lang new language, uses the language code (eg. en - English)
-     * @param res
+     * @param res Resources
      */
     public void setLocale(String lang, Resources res) {
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -325,7 +310,6 @@ public class HomeActivity extends AppCompatActivity {
             CharSequence query = searchView.getQuery();
             listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
         }
-        //contactManager.open();
     }
 
     @Override
@@ -386,6 +370,8 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * Checks if searchView is visible, used for testing
+     *
+     * @return boolean - true: searchIcon is visible, false: searchIcon is invisible
      */
     public boolean searchVisible() {
         return !searchView.isIconified();
@@ -399,7 +385,7 @@ public class HomeActivity extends AppCompatActivity {
      * <p>
      * Currently unused, might be used later on!
      *
-     * @param activity
+     * @param activity Activity
      */
     public void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
@@ -451,7 +437,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * Opens a fragment depending on the position, that was clicked on
-     * @param position
+     * @param position item position in the listView
      */
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
@@ -522,7 +508,7 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * starts the filter activity
-     * @param view
+     * @param view View
      */
     public void openFilter(View view) {
         Intent intent = new Intent(this, FilterActivity.class);

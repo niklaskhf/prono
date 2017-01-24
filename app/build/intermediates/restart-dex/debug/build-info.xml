@@ -4,40 +4,33 @@
     api-level="25"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1061342766558721"
+    timestamp="1065515478149321"
     token="6972275851635696624"
-    verifier="COMPATIBLE" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="2958" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="911" />
     <task
         name="verifier"
-        duration="0" />
+        duration="107" />
 
     <artifact
-        location="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-        type="RESOURCES" />
+        location="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="1061111054652496"
+        timestamp="1065515478149321"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="1061342766558721"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-            type="RESOURCES" />
     </build>
 
 </instant-run>

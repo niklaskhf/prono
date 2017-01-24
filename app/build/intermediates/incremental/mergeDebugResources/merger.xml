@@ -1858,7 +1858,7 @@
         <item>English</item>
         <item>русский</item>
         <item>Türk</item>
-    </string-array><string name="contactEdited">Kontakt geändert</string><string name="imports">Import</string><string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string><string name="continue_">. Fortfahren?</string><string name="data_reset">Alle Daten zurückgesetzt</string></file><file path="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\src\main\res\values-en\strings.xml" qualifiers="en"><string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string><string name="legals">Legals</string><string name="title">Title</string><string name="failed_export">Export failed</string><string-array name="drawer">
+    </string-array><string name="contactEdited">Kontakt geändert</string><string name="imports">Import</string><string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string><string name="continue_">  zu löschen. Fortfahren?</string><string name="data_reset">Alle Daten zurückgesetzt</string></file><file path="D:\Dokumente\AndroidStudioProjects\sopra-team-16\app\src\main\res\values-en\strings.xml" qualifiers="en"><string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string><string name="legals">Legals</string><string name="title">Title</string><string name="failed_export">Export failed</string><string-array name="drawer">
         <item>Favorites</item>
         <item>Settings</item>
         <item>About</item>

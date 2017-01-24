@@ -78,7 +78,6 @@ public class NewContactActivity extends AppCompatActivity {
         setTitle(getString(R.string.editor));
         context = this;
 
-        //initialize();
 
         Bundle bundle = getIntent().getExtras();
 
@@ -361,7 +360,7 @@ public class NewContactActivity extends AppCompatActivity {
 
     /**
      * Checks if any temporary of permanent audio files associated to the id exist
-     * @return true - a file exists
+     * @return true - a file exists,
      *         false - no file exists
      */
     public boolean customRecordExists() {

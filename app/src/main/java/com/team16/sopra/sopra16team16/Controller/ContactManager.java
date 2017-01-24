@@ -90,7 +90,7 @@ public class ContactManager{
      * @param title   title - String
      * @param country country - String
      * @param gender  gender
-     * @return
+     * @return returns the count of rows affected, should return 1l
      */
     public long createContact(String first, String last, String title, String country, String gender) {
         long res = 0;
@@ -153,6 +153,8 @@ public class ContactManager{
      * @param title   title - String
      * @param country country - String
      * @param gender  gender
+     *
+     * @return returns the count of rows affected, should return 1l
      */
     public long updateContact(int id, String first, String last, String title, String country, String gender) {
         long res = 0;
@@ -166,8 +168,6 @@ public class ContactManager{
             values.put(COLUMN_COUNTRY, country);
             values.put(COLUMN_GENDER, gender);
 
-            // which row to update?
-            //res = database.replace(TABLE_NAME, null, values);
             res = database.update(TABLE_NAME, values, strFilter, null);
             database.setTransactionSuccessful();
         } catch(Exception e) {
@@ -185,6 +185,8 @@ public class ContactManager{
      *
      * @param id  unique id to identify the row
      * @param fav current value, result will be !fav
+     *
+     * @return returns the count of rows affected, should be 1
      */
     public int toggleFavorite(int id, int fav) {
         int res = 0;
@@ -212,6 +214,8 @@ public class ContactManager{
      *
      * @param id  unique id to identify the row
      * @param del current value, result will be !del
+     *
+     * @return returns the count of rows affected, should be 1
      */
     public int toggleDeleted(int id, int del) {
         if (id == -1) {
@@ -241,6 +245,8 @@ public class ContactManager{
      * Removes a row from the database
      *
      * @param id unique id of row that will be removed
+     *
+     * @return returns the count of rows affected, should be 1
      */
     public int deleteContact(int id) {
         int res = 0;
@@ -265,7 +271,8 @@ public class ContactManager{
      */
     public void deleteMarked() {
         // get all marked rows
-        Cursor mCursor = database.rawQuery("SELECT " + _ID + ", " + COLUMN_DELETED + " FROM " + TABLE_NAME + " WHERE " + COLUMN_DELETED + " = 1;", null);
+        Cursor mCursor = database.rawQuery("SELECT " + _ID + ", " +
+                COLUMN_DELETED + " FROM " + TABLE_NAME + " WHERE " + COLUMN_DELETED + " = 1;", null);
 
 
         if (mCursor != null) {
@@ -315,7 +322,7 @@ public class ContactManager{
 
 
     /**
-     * Update cursorAdapter with new dataset
+     * Update cursorAdapter with new data
      */
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
@@ -334,7 +341,7 @@ public class ContactManager{
      * Returns a cursor that includes all matches with any column.
      *
      * @param search search query - String
-     * @return Cursor
+     * @return Cursor populated with rows matching the search query
      */
     public Cursor getSearchResults(String search) {
         // cursor to return
@@ -342,9 +349,7 @@ public class ContactManager{
         // query to use
         String query;
         if (queryBuilder != null) {
-            Filter filter = Filter.getCurrentInstance();
-            Sorter sorter = Sorter.getCurrentInstance();
-            query = queryBuilder.buildSearchQuery(search, filter, sorter);
+            query = queryBuilder.buildSearchQuery(search);
 
         } else {
             throw new IllegalStateException("queryBuilder is null");
@@ -373,10 +378,10 @@ public class ContactManager{
      * wipes all rows from the database, used for testing
      */
     public void wipe() {
-        // wipe the database
+        // wipes the database
         database.delete(TABLE_NAME, null, null);
 
-        // wipe the files
+        // wipes the files
         File filesPath = new File("//data//data//" + context.getPackageName()
                 + "//files//");
 
@@ -393,7 +398,8 @@ public class ContactManager{
 
     /**
      * Returns a Cursor populated with the COLUMN_COUNTRY column values
-     * @return
+     *
+     * @return Cursor populated with values in the COLUMN_COUNTRY row of the database
      */
     public Cursor getCountryList() {
         database.beginTransaction();

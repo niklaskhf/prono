@@ -7,7 +7,7 @@ import java.io.IOException;
 
 
 /**
- * Manages the databases/settings.
+ * Manages the databases.
  */
 public class DBManager {
     private static DBManager currentInstance;
@@ -18,7 +18,7 @@ public class DBManager {
 
     /**
      * Singleton
-     * @param context
+     * @param context Context
      * @return returns the only instance of this class
      */
     public static DBManager getCurrentInstance(Context context) {
@@ -32,9 +32,10 @@ public class DBManager {
 
     /**
      * Constructor
-     * @param context
+     * @param context Context
      */
     private DBManager(Context context) {
+        this.context=context.getApplicationContext();
         dbHelper = DBHelper.getCurrentInstance(context);
     }
 
@@ -64,6 +65,9 @@ public class DBManager {
 
     /**
      * Calls the replaceDatabase method in DBHelper
+     *
+     * @return boolean - true if successful, false if not
+     * @throws IOException
      */
     public boolean replaceDatabase(String dbPath) throws IOException {
         return dbHelper.replaceDatabase(dbPath);

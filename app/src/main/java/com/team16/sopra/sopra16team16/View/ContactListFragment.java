@@ -15,7 +15,7 @@ import com.team16.sopra.sopra16team16.R;
 
 
 /**
- * Presents the contacts in a ListView
+ * Displays the contacts in a ListView
  */
 public class ContactListFragment extends ListFragment{
     private ContactManager contactManager;

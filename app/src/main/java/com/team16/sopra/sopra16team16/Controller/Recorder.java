@@ -5,17 +5,12 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.media.MediaRecorder;
-import android.os.Environment;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -23,10 +18,7 @@ import com.team16.sopra.sopra16team16.R;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 import com.team16.sopra.sopra16team16.View.NewContactActivity;
 
-import java.io.File;
 import java.io.IOException;
-
-import static android.os.Looper.getMainLooper;
 
 /**
  * Recorder contains method for recording audio
@@ -57,7 +49,7 @@ public class Recorder {
     }
 
     /**
-     * Constructor, path is actualized
+     * Constructor
      */
     private Recorder() {
         path = FileUtils.PATH;
@@ -133,8 +125,7 @@ public class Recorder {
             recorder.release();
             recorder = null;
 
-            // update image and background on the button
-
+            // update image and background of the button
             actionButton.setImageResource(R.drawable.ic_mic_black_24dp);
             actionButton.setBackgroundTintList(actionButtonColor);
             confirmRecording(context, actionButton);
@@ -210,6 +201,8 @@ public class Recorder {
     /**
      * true  --> is recording
      * false --> is not recording
+     *
+     * @return is_recording value - boolean
      */
     public boolean isPressed() {
         return is_recording;

@@ -27,6 +27,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertNotNull;
 
 
+/**
+ * NewContactActivity test class
+ */
 public class NewContactActivityTest {
 
     @Rule

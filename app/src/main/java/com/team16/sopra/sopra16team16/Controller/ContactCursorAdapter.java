@@ -21,7 +21,6 @@ import com.team16.sopra.sopra16team16.R;
  * used for the ContactListFragment
  */
 public class ContactCursorAdapter extends CursorAdapter {
-    private Context context;
     private ContactManager contactManager;
     private Player player;
 
@@ -33,7 +32,6 @@ public class ContactCursorAdapter extends CursorAdapter {
      */
     public ContactCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
-        this.context = context;
         contactManager = ContactManager.getInstance(context);
         player = Player.getCurrentInstance();
     }

@@ -26,6 +26,7 @@ public class FileChooser {
     private ListView list;
     private Dialog dialog;
     private File currentPath;
+    private FileSelectedListener fileListener;
 
     // filter on file extension
     private String extension = null;
@@ -47,13 +48,12 @@ public class FileChooser {
     /**
      * Sets the fileListener
      * @param fileListener fileListener to be used
-     * @return
+     * @return FileChooser object
      */
     public FileChooser setFileListener(FileSelectedListener fileListener) {
         this.fileListener = fileListener;
         return this;
     }
-    private FileSelectedListener fileListener;
 
     /**
      * Constructor
@@ -93,6 +93,8 @@ public class FileChooser {
 
     /**
      * Sort, filter and display the files for the given path.
+     *
+     * @param path - File
      */
     private void refresh(File path) {
         this.currentPath = path;
@@ -156,6 +158,9 @@ public class FileChooser {
 
     /**
      * Convert a relative filename into an actual File object.
+     *
+     * @param fileChosen - filePath
+     * @return File object from filePath
      */
     private File getChosenFile(String fileChosen) {
         if (fileChosen.equals(PARENT_DIR)) {

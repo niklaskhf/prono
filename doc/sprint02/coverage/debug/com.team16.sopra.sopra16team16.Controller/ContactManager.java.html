@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ContactManager.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=0;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">debugAndroidTest</a> &gt; <a href="index.source.html" class="el_package">com.team16.sopra.sopra16team16.Controller</a> &gt; <span class="el_source">ContactManager.java</span></div><h1>ContactManager.java</h1><pre class="source lang-java linenums">package com.team16.sopra.sopra16team16.Controller;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import com.team16.sopra.sopra16team16.Model.DBManager;
+
+import java.io.File;
+
+/**
+ * Contains methods for manipulating or receiving contact related data.
+ */
+public class ContactManager{
+<span class="fc" id="L17">    private static ContactManager currentInstance = null;</span>
+    private DBManager dbManager;
+<span class="fc" id="L19">    private ContactCursorAdapter cursorAdapter = null;</span>
+<span class="fc" id="L20">    private ContactCursorAdapter favoriteAdapter = null;</span>
+    private Context context;
+<span class="fc" id="L22">    private QueryBuilder queryBuilder = null;</span>
+
+    private static SQLiteDatabase database;
+
+    public final static String TABLE_NAME = &quot;contacts&quot;;
+
+    public final static String _ID = &quot;_id&quot;; // id
+    public static final String COLUMN_FIRSTNAME = &quot;first&quot;;
+    public static final String COLUMN_LASTNAME = &quot;last&quot;;
+    public static final String COLUMN_TITLE = &quot;title&quot;;
+    public static final String COLUMN_COUNTRY = &quot;country&quot;;
+    public static final String COLUMN_GENDER = &quot;gender&quot;;
+    public static final String COLUMN_FAVORITE = &quot;favorite&quot;;
+    public static final String COLUMN_DELETED = &quot;deleted&quot;;
+    private int id;
+
+<span class="fc" id="L38">    private String[] cols = new String[]{_ID, COLUMN_FIRSTNAME, COLUMN_LASTNAME, COLUMN_TITLE, COLUMN_COUNTRY, COLUMN_GENDER, COLUMN_FAVORITE, COLUMN_DELETED};</span>
+
+    /**
+     * Returns the current and only instance of the ContactManager class
+     *
+     * @param context Context object
+     * @return ContactManager object, used to manipulate and receive contact related data
+     */
+    public static ContactManager getInstance(Context context) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (currentInstance == null) {</span>
+<span class="fc" id="L48">            currentInstance = new ContactManager(context);</span>
+<span class="fc" id="L49">            return currentInstance;</span>
+        } else {
+<span class="fc" id="L51">            return currentInstance;</span>
+        }
+    }
+
+    /**
+     * constructor
+     * @param context Context object
+     */
+<span class="fc" id="L59">    private ContactManager(Context context) {</span>
+<span class="fc" id="L60">        dbManager = DBManager.getCurrentInstance(context);</span>
+<span class="fc" id="L61">        open();</span>
+<span class="fc" id="L62">        this.queryBuilder = new QueryBuilder(cols);</span>
+<span class="fc" id="L63">        this.context = context.getApplicationContext();</span>
+
+<span class="fc" id="L65">        Cursor lastIdCursor = database.rawQuery(&quot;SELECT MAX(_ID) FROM &quot; + TABLE_NAME + &quot;;&quot;, null);</span>
+
+<span class="fc" id="L67">        lastIdCursor.moveToFirst();</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (lastIdCursor.getCount() != 0) {</span>
+<span class="fc" id="L69">            id = lastIdCursor.getInt(0);</span>
+        } else {
+<span class="nc" id="L71">            id = 0;</span>
+        }
+<span class="fc" id="L73">        lastIdCursor.close();</span>
+<span class="fc" id="L74">        Log.i(&quot;id&quot;, Integer.toString(id));</span>
+<span class="fc" id="L75">    }</span>
+
+    /**
+     * Returns the last unique id in the database.
+     * @return the current incrementing unique id of the SQL table 'contacts'
+     */
+    public int getId() {
+<span class="fc" id="L82">        return id;</span>
+    }
+
+    /**
+     * Adds a new row to the table 'contacts'
+     *
+     * @param first   first name - String
+     * @param last    last name - String
+     * @param title   title - String
+     * @param country country - String
+     * @param gender  gender
+     * @return
+     */
+    public long createContact(String first, String last, String title, String country, String gender) {
+<span class="fc" id="L96">        long res = 0;</span>
+<span class="fc" id="L97">        database.beginTransaction();</span>
+        try{
+<span class="fc" id="L99">            ContentValues values = new ContentValues();</span>
+<span class="fc" id="L100">            values.put(_ID, ++id);</span>
+<span class="fc" id="L101">            values.put(COLUMN_FIRSTNAME, first);</span>
+<span class="fc" id="L102">            values.put(COLUMN_LASTNAME, last);</span>
+<span class="fc" id="L103">            values.put(COLUMN_TITLE, title);</span>
+<span class="fc" id="L104">            values.put(COLUMN_COUNTRY, country);</span>
+<span class="fc" id="L105">            values.put(COLUMN_GENDER, gender);</span>
+<span class="fc" id="L106">            values.put(COLUMN_FAVORITE, false);</span>
+<span class="fc" id="L107">            values.put(COLUMN_DELETED, false);</span>
+<span class="fc" id="L108">            res = database.insert(TABLE_NAME, null, values);</span>
+<span class="fc" id="L109">            database.setTransactionSuccessful();</span>
+<span class="nc" id="L110">        } catch(Exception e) {</span>
+<span class="nc" id="L111">            Log.i(&quot;createContactDb&quot;, e.getMessage());</span>
+        } finally {
+<span class="pc" id="L113">            database.endTransaction();</span>
+<span class="pc" id="L114">        }</span>
+<span class="fc" id="L115">        this.updateCursorAdapter();</span>
+<span class="fc" id="L116">        return res;</span>
+    }
+
+    /**
+     * Executes query on the 'contacts' table, only selects rows with COLUMN_DELETED = 0
+     *
+     * @return Cursor with rows based on query results
+     */
+    public Cursor selectContacts() {
+<span class="fc" id="L125">        Cursor mCursor = database.query(TABLE_NAME, cols, queryBuilder.defaultWhere()</span>
+<span class="fc" id="L126">                , null, null, null, queryBuilder.buildSorterExpression());</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">        if (mCursor != null) {</span>
+<span class="fc" id="L128">            mCursor.moveToFirst();</span>
+        }
+<span class="fc" id="L130">        return mCursor; // iterate to get each value.</span>
+    }
+
+    /**
+     * Executes query on the 'contacts' table, only selects rows with COLUMN_DELETED = 0
+     * and COLUMN_FAVORITE = 1
+     *
+     * @return Cursor with rows based on query results
+     */
+    public Cursor selectFavorites() {
+<span class="fc" id="L140">        Cursor mCursor = database.query(TABLE_NAME, cols, queryBuilder.favoriteWhere()</span>
+<span class="fc" id="L141">                , null, null, null, queryBuilder.buildSorterExpression());</span>
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">        if (mCursor != null) {</span>
+<span class="fc" id="L143">            mCursor.moveToFirst();</span>
+        }
+<span class="fc" id="L145">        return mCursor; // iterate to get each value.</span>
+    }
+
+    /**
+     * Updates a row with new values
+     *
+     * @param first   first name - String
+     * @param last    last name - String
+     * @param title   title - String
+     * @param country country - String
+     * @param gender  gender
+     */
+    public long updateContact(int id, String first, String last, String title, String country, String gender) {
+<span class="fc" id="L158">        long res = 0;</span>
+<span class="fc" id="L159">        database.beginTransaction();</span>
+        try {
+<span class="fc" id="L161">            String strFilter = &quot;_id=&quot; + id;</span>
+<span class="fc" id="L162">            ContentValues values = new ContentValues();</span>
+<span class="fc" id="L163">            values.put(COLUMN_FIRSTNAME, first);</span>
+<span class="fc" id="L164">            values.put(COLUMN_LASTNAME, last);</span>
+<span class="fc" id="L165">            values.put(COLUMN_TITLE, title);</span>
+<span class="fc" id="L166">            values.put(COLUMN_COUNTRY, country);</span>
+<span class="fc" id="L167">            values.put(COLUMN_GENDER, gender);</span>
+
+            // which row to update?
+            //res = database.replace(TABLE_NAME, null, values);
+<span class="fc" id="L171">            res = database.update(TABLE_NAME, values, strFilter, null);</span>
+<span class="fc" id="L172">            database.setTransactionSuccessful();</span>
+<span class="nc" id="L173">        } catch(Exception e) {</span>
+<span class="nc" id="L174">            Log.i(&quot;updateContactDb&quot;, e.getMessage());</span>
+        } finally {
+<span class="pc" id="L176">            database.endTransaction();</span>
+<span class="pc" id="L177">        }</span>
+<span class="fc" id="L178">        this.updateCursorAdapter();</span>
+<span class="fc" id="L179">        return res;</span>
+    }
+
+
+    /**
+     * Inverts the favorite value of a contact/row
+     *
+     * @param id  unique id to identify the row
+     * @param fav current value, result will be !fav
+     */
+    public int toggleFavorite(int id, int fav) {
+<span class="fc" id="L190">        int res = 0;</span>
+<span class="fc" id="L191">        database.beginTransaction();</span>
+        try {
+<span class="fc" id="L193">            Log.i(&quot;updating favorite&quot;, Integer.toString(id) + &quot; &quot; + Integer.toString(fav));</span>
+<span class="fc" id="L194">            String strFilter = &quot;_id=&quot; + id;</span>
+            // values to be changed
+<span class="fc" id="L196">            ContentValues values = new ContentValues();</span>
+<span class="fc" id="L197">            values.put(COLUMN_FAVORITE, (fav + 1) % 2);</span>
+
+            // update row with new values
+<span class="fc" id="L200">            res = database.update(TABLE_NAME, values, strFilter, null);</span>
+<span class="fc" id="L201">            database.setTransactionSuccessful();</span>
+        } finally {
+<span class="pc" id="L203">            database.endTransaction();</span>
+<span class="fc" id="L204">        }</span>
+
+<span class="fc" id="L206">        this.updateCursorAdapter();</span>
+<span class="fc" id="L207">        return res;</span>
+    }
+
+    /**
+     * Inverts the deleted value of a contact/row
+     *
+     * @param id  unique id to identify the row
+     * @param del current value, result will be !del
+     */
+    public int toggleDeleted(int id, int del) {
+<span class="pc bpc" id="L217" title="1 of 2 branches missed.">        if (id == -1) {</span>
+<span class="nc" id="L218">            throw new IllegalArgumentException(&quot;invalid id&quot;);</span>
+        }
+<span class="fc" id="L220">        int res = 0;</span>
+<span class="fc" id="L221">        database.beginTransaction();</span>
+        try {
+<span class="fc" id="L223">            Log.i(&quot;toggling deleted&quot;, &quot;on &quot; + Integer.toString(id) + &quot; from &quot; + Integer.toString(del) + &quot; to &quot; + (del+1) % 2);</span>
+<span class="fc" id="L224">            String strFilter = &quot;_id=&quot; + id;</span>
+            // values to be changed
+<span class="fc" id="L226">            ContentValues values = new ContentValues();</span>
+<span class="fc" id="L227">            values.put(COLUMN_DELETED, (del + 1) % 2);</span>
+
+            // update row with new values
+<span class="fc" id="L230">            res = database.update(TABLE_NAME, values, strFilter, null);</span>
+<span class="fc" id="L231">            database.setTransactionSuccessful();</span>
+        } finally {
+<span class="pc" id="L233">            database.endTransaction();</span>
+<span class="fc" id="L234">        }</span>
+
+<span class="fc" id="L236">        this.updateCursorAdapter();</span>
+<span class="fc" id="L237">        return res;</span>
+    }
+
+    /**
+     * Removes a row from the database
+     *
+     * @param id unique id of row that will be removed
+     */
+    public int deleteContact(int id) {
+<span class="fc" id="L246">        int res = 0;</span>
+<span class="fc" id="L247">        database.beginTransaction();</span>
+        try {
+<span class="fc" id="L249">            res = database.delete(TABLE_NAME, &quot;_id = ?&quot;, new String[]{Integer.toString(id)});</span>
+<span class="fc" id="L250">            Log.i(&quot;deleted&quot;, Integer.toString(id));</span>
+<span class="fc" id="L251">            database.setTransactionSuccessful();</span>
+<span class="fc" id="L252">            FileUtils.deleteFile(FileUtils.PATH + id + &quot;.3gp&quot;);</span>
+<span class="nc" id="L253">        } catch(Exception e) {</span>
+<span class="nc" id="L254">            Log.i(&quot;deleteContactDb&quot;, e.getMessage());</span>
+        } finally {
+<span class="pc" id="L256">            database.endTransaction();</span>
+<span class="pc" id="L257">        }</span>
+<span class="fc" id="L258">        this.updateCursorAdapter();</span>
+<span class="fc" id="L259">        return res;</span>
+    }
+
+    /**
+     * Deletes all rows marked for deletion.
+     *
+     */
+    public void deleteMarked() {
+        // get all marked rows
+<span class="fc" id="L268">        Cursor mCursor = database.rawQuery(&quot;SELECT &quot; + _ID + &quot;, &quot; + COLUMN_DELETED + &quot; FROM &quot; + TABLE_NAME + &quot; WHERE &quot; + COLUMN_DELETED + &quot; = 1;&quot;, null);</span>
+
+
+<span class="pc bpc" id="L271" title="1 of 2 branches missed.">        if (mCursor != null) {</span>
+<span class="fc" id="L272">            mCursor.moveToFirst();</span>
+<span class="fc bfc" id="L273" title="All 2 branches covered.">            for (int i = 0; i &lt; mCursor.getCount(); i++) {</span>
+<span class="fc" id="L274">                int row = mCursor.getInt(mCursor.getColumnIndexOrThrow(_ID));</span>
+<span class="fc" id="L275">                this.deleteContact(row);</span>
+<span class="fc" id="L276">                Log.d(&quot;deleteMarked&quot;, Integer.toString(row));</span>
+<span class="fc" id="L277">                i++;</span>
+<span class="fc" id="L278">                mCursor.moveToNext();</span>
+            }
+        }
+<span class="fc" id="L281">        mCursor.close();</span>
+<span class="fc" id="L282">    }</span>
+
+
+    /**
+     * Returns a ContactCursorAdapter, populates menu_item
+     *
+     * @return ContactCursorAdapter
+     */
+    public ContactCursorAdapter getCursorAdapterDefault() {
+<span class="fc bfc" id="L291" title="All 2 branches covered.">        if (cursorAdapter == null) {</span>
+<span class="fc" id="L292">            cursorAdapter = new ContactCursorAdapter(context, selectContacts());</span>
+<span class="fc" id="L293">            return cursorAdapter;</span>
+        } else {
+<span class="fc" id="L295">            cursorAdapter.changeCursor(selectContacts());</span>
+<span class="fc" id="L296">            return cursorAdapter;</span>
+        }
+    }
+
+    /**
+     * Returns a ContactCursorAdapter, populates menu_item
+     *
+     * @return ContactCursorAdapter
+     */
+    public ContactCursorAdapter getCursorAdapterFavorite() {
+<span class="fc bfc" id="L306" title="All 2 branches covered.">        if (favoriteAdapter == null) {</span>
+<span class="fc" id="L307">            favoriteAdapter = new ContactCursorAdapter(context, selectFavorites());</span>
+<span class="fc" id="L308">            return favoriteAdapter;</span>
+        } else {
+<span class="fc" id="L310">            favoriteAdapter.changeCursor(selectFavorites());</span>
+<span class="fc" id="L311">            return favoriteAdapter;</span>
+        }
+    }
+
+
+
+    /**
+     * Update cursorAdapter with new dataset
+     */
+    public void updateCursorAdapter() {
+<span class="fc bfc" id="L321" title="All 2 branches covered.">        if (cursorAdapter != null) {</span>
+<span class="fc" id="L322">            cursorAdapter.changeCursor(selectContacts());</span>
+<span class="fc" id="L323">            Log.d(&quot;cursorCount&quot;, Integer.toString(cursorAdapter.getCount()));</span>
+        }
+<span class="fc bfc" id="L325" title="All 2 branches covered.">        if (favoriteAdapter != null) {</span>
+<span class="fc" id="L326">            favoriteAdapter.changeCursor(selectFavorites());</span>
+        }
+
+<span class="fc" id="L329">    }</span>
+
+
+    /**
+     * Queries the table 'contacts' for the search String.
+     * Returns a cursor that includes all matches with any column.
+     *
+     * @param search search query - String
+     * @return Cursor
+     */
+    public Cursor getSearchResults(String search) {
+        // cursor to return
+<span class="fc" id="L341">        Cursor cursor = null;</span>
+        // query to use
+        String query;
+<span class="pc bpc" id="L344" title="1 of 2 branches missed.">        if (queryBuilder != null) {</span>
+<span class="fc" id="L345">            Filter filter = Filter.getCurrentInstance();</span>
+<span class="fc" id="L346">            Sorter sorter = Sorter.getCurrentInstance();</span>
+<span class="fc" id="L347">            query = queryBuilder.buildSearchQuery(search, filter, sorter);</span>
+
+<span class="fc" id="L349">        } else {</span>
+<span class="nc" id="L350">            throw new IllegalStateException(&quot;queryBuilder is null&quot;);</span>
+        }
+<span class="fc" id="L352">        Log.i(&quot;filterQuery&quot;, query);</span>
+
+        // perform the query
+<span class="fc" id="L355">        cursor = database.rawQuery(query, null);</span>
+<span class="fc" id="L356">        Log.i(&quot;filterCursor count&quot;, Integer.toString(cursor.getCount()));</span>
+
+<span class="fc" id="L358">        cursor.moveToFirst();</span>
+<span class="fc" id="L359">        return cursor;</span>
+    }
+
+
+    /**
+     * Opens a new database connection.
+     */
+    public void open() {
+<span class="fc" id="L367">        database = dbManager.getDbContacts();</span>
+<span class="fc" id="L368">    }</span>
+
+
+
+    /**
+     * wipes all rows from the database, used for testing
+     */
+    public void wipe() {
+        // wipe the database
+<span class="fc" id="L377">        database.delete(TABLE_NAME, null, null);</span>
+
+        // wipe the files
+<span class="fc" id="L380">        File filesPath = new File(&quot;//data//data//&quot; + context.getPackageName()</span>
+                + &quot;//files//&quot;);
+
+<span class="fc" id="L383">        File[] files = filesPath.listFiles();</span>
+
+<span class="pc bpc" id="L385" title="1 of 2 branches missed.">        if (files != null) {</span>
+<span class="fc bfc" id="L386" title="All 2 branches covered.">            for (int i = 0; i &lt; files.length; i++) {</span>
+<span class="fc bfc" id="L387" title="All 2 branches covered.">                if (files[i].getPath().endsWith(&quot;.3gp&quot;)) {</span>
+<span class="fc" id="L388">                    FileUtils.deleteFile(files[i].getPath());</span>
+                }
+            }
+        }
+<span class="fc" id="L392">    }</span>
+
+    /**
+     * Returns a Cursor populated with the COLUMN_COUNTRY column values
+     * @return
+     */
+    public Cursor getCountryList() {
+<span class="fc" id="L399">        database.beginTransaction();</span>
+<span class="fc" id="L400">        String query = &quot;select &quot; + ContactManager._ID + &quot;, &quot; + ContactManager.COLUMN_COUNTRY + &quot; from &quot;</span>
+                + ContactManager.TABLE_NAME + &quot; group by &quot; + ContactManager.COLUMN_COUNTRY;
+<span class="fc" id="L402">        Cursor cursorCountries = database.rawQuery(query, null);</span>
+<span class="fc" id="L403">        cursorCountries.moveToFirst();</span>
+<span class="fc" id="L404">        database.endTransaction();</span>
+
+<span class="fc" id="L406">        return cursorCountries;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

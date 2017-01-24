@@ -35,7 +35,9 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertTrue;
 
 
-
+/**
+ * Favorite feature test class
+ */
 public class FavoriteTest {
     private ContactManager contactManager;
     private ContactCursorAdapter contactCursorAdapter;

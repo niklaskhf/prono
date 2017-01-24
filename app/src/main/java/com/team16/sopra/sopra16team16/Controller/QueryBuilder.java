@@ -20,11 +20,9 @@ public class QueryBuilder {
      * Constructs a search query that finds all rows containing every word in searchWords as substring
      *
      * @param search search query from search bar - String
-     * @param filter Filter object
-     * @param sorter Sorter object
-     * @return complete SELECT FROM WHEN query
+     * @return complete SELECT FROM WHERE ORDER query
      */
-    public String buildSearchQuery(String search, Filter filter, Sorter sorter) {
+    public String buildSearchQuery(String search) {
         // get individual search words
         String[] searchWords = search.split(" ");
 
@@ -38,7 +36,7 @@ public class QueryBuilder {
         }
 
         //Expression for the filter, empty if there is no filter
-        String filterExpression = buildFilterExpression(filter);
+        String filterExpression = buildFilterExpression();
 
         // construct query
 
@@ -83,10 +81,10 @@ public class QueryBuilder {
     /**
      * if there is a filter, it adds an expression for it
      *
-     * @param filter Filter object
      * @return returns the filter WHERE part of the SQL query
      */
-    private String buildFilterExpression(Filter filter) {
+    private String buildFilterExpression() {
+        Filter filter = Filter.getCurrentInstance();
         String result = " AND " + ContactManager.COLUMN_DELETED + " = 0";
         if(filter.getCountry() != null) {
             result += " AND " + ContactManager.COLUMN_COUNTRY + " = '" + filter.getCountry() + "'";
@@ -96,7 +94,7 @@ public class QueryBuilder {
 
             result += " AND (" + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(0) + "'";
 
-            for(int i = 1; i < filter.getGenderList().size(); ++i) {
+            for(int i = 1; i < Filter.getGenderList().size(); ++i) {
                 result += " OR " + ContactManager.COLUMN_GENDER + " = '" + filter.getGenderList().get(i) + "'";
             }
             result += ")";

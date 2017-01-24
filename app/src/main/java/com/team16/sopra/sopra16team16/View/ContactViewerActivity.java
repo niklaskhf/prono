@@ -31,11 +31,6 @@ public class ContactViewerActivity extends AppCompatActivity {
     private String country = "";
     private String gender = "";
 
-    private String undoFirstName = "";
-    private String undoLastName = "";
-    private String undoTitle = "";
-    private String undoCountry = "";
-    private String undoGender = "";
 
     private int id;
 
@@ -53,7 +48,6 @@ public class ContactViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
 
-        //player = new Player();
         player = Player.getCurrentInstance();
 
         this.setContentView(R.layout.contact_viewer);
@@ -227,16 +221,12 @@ public class ContactViewerActivity extends AppCompatActivity {
 
     /**
      * Shows a snackbar allowing the user to undo editing the contact
+     *
+     * @param data - Intent - result from startActivityForResult
      */
     public void showSnackbar(final Intent data) {
         Log.d("showSnackar", "called");
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.contact_viewer_coord);
-
-        undoFirstName = data.getStringExtra("undoFirst");
-        undoLastName = data.getStringExtra("undoLast");
-        undoTitle = data.getStringExtra("undoTitle");
-        undoCountry = data.getStringExtra("undoCountry");
-        undoGender = data.getStringExtra("undoGender");
 
         Log.d("undoSnackbar", "showing snackbar for " + id);
         Snackbar snackbar = Snackbar

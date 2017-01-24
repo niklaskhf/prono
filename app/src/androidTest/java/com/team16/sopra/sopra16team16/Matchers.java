@@ -8,9 +8,8 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 /**
- * Created by moo on 1/18/2017.
+ * Matchers for testing purposes
  */
-
 public class Matchers {
 
     public static Matcher<View> withListSize (final int size) {

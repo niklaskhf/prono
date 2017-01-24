@@ -18,7 +18,7 @@ import org.junit.Rule;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by moo on 12/5/16.
+ * ContactCursorAdapter test class
  */
 
 public class ContactCursorAdapterTest {

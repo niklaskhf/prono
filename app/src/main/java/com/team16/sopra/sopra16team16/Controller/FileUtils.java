@@ -13,7 +13,6 @@ import java.nio.channels.FileChannel;
 /**
  * Contains methods for manipulating files, like copying/replacing.
  */
-
 public class FileUtils {
 
     public static final String PATH = HomeActivity.contextOfApplication.getFilesDir().getPath() + "/";
@@ -21,8 +20,8 @@ public class FileUtils {
     /**
      * Replaces the original file with the replacement file
      * This assumes that both files are located in the same folder
-     * @param original
-     * @param replacement
+     * @param original - original file path
+     * @param replacement - replacement file path
      */
     public static void replaceFile(String original, String replacement) {
         File temp = new File(replacement);

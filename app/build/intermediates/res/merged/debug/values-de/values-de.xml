@@ -41,7 +41,7 @@
     <string name="contactDeleted">Kontakt gelöscht</string>
     <string name="contactEdited">Kontakt geändert</string>
     <string name="contactRestored">Kontakt wiederhergestellt</string>
-    <string name="continue_">. Fortfahren?</string>
+    <string name="continue_">  zu löschen. Fortfahren?</string>
     <string name="country">Land</string>
     <string name="country_disabled_radioButton">aus</string>
     <string name="country_enabled_radioButton">an</string>

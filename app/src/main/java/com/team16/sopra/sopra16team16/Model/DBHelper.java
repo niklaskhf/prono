@@ -20,7 +20,7 @@ import java.io.IOException;
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper currentInstance = null;
     public static final String DATABASE_NAME = "DBcontact";
-    public static String DB_FILEPATH;
+    private static String DB_FILEPATH;
 
     private static final int DATABASE_VERSION = 2;
 
@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /**
      * Singleton to avoid open/closed connection chaos
-     * @param context
+     * @param context Context
      * @return current and only instance of the class
      */
     public static DBHelper getCurrentInstance(Context context) {
@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /**
      * Constructor
-     * @param context
+     * @param context Context
      */
     private DBHelper(Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
@@ -80,6 +80,9 @@ public class DBHelper extends SQLiteOpenHelper {
     /**
      * Copies the database file at the specified location over the current
      * internal application database.
+     *
+     * @return boolean - true if successful, false if not
+     * @throws IOException
      * */
     public boolean replaceDatabase(String dbPath) throws IOException {
 

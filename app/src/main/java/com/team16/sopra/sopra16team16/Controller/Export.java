@@ -1,15 +1,12 @@
 package com.team16.sopra.sopra16team16.Controller;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.Model.DBHelper;
-import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.R;
-import com.team16.sopra.sopra16team16.View.FileChooser;
 import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import java.io.BufferedInputStream;
@@ -22,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
@@ -96,12 +92,13 @@ public class Export {
 
 
     /**
-     * zips all files in files[] to the zip file zipFile
+     * zips all files in files[] to the .zip file zipFile
+     *
      * @param files path - file array containing all files that are to be zipped
      * @param zipFile path - zip file location
      * @throws IOException
      */
-    public static void zip(String[] files, String zipFile) throws IOException {
+    private static void zip(String[] files, String zipFile) throws IOException {
         BufferedInputStream origin = null;
         ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(zipFile)));
         int BUFFER_SIZE = 8192;

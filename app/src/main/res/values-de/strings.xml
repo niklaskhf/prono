@@ -62,7 +62,7 @@
     <string name="contactEdited">Kontakt geändert</string>
     <string name="UNDO">RÜCKGÄNGIG</string>
     <string name="about_to_delete">Sie sind gerade dabei</string>
-    <string name="continue_">. Fortfahren?</string>
+    <string name="continue_">  zu löschen. Fortfahren?</string>
     <!--Notifications-->
 
     <!--Filter-->

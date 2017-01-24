@@ -8,8 +8,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Created by moo on 12/5/16.
- */
+ * DBHelper test class
+ * */
 
 public class DBHelperTest {
 

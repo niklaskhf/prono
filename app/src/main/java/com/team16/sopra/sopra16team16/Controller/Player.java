@@ -1,6 +1,5 @@
 package com.team16.sopra.sopra16team16.Controller;
 
-import android.content.Context;
 import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
@@ -185,7 +184,6 @@ public class Player {
             playButton.setImageResource(R.drawable.ic_play_circle_outline_black_48dp);
             changeStatus(false);
             player.reset();
-            //player.release();
         }
     }
 

@@ -87,7 +87,7 @@ public class SettingsFragment extends Fragment {
         languageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                setGlobalLanguage(adapterView, i);
+                setGlobalLanguage(i);
             }
 
             @Override
@@ -175,10 +175,9 @@ public class SettingsFragment extends Fragment {
     /**
      * performs setLocale(lang) depending on language chosen in languageSpinner
      *
-     * @param adapterView
-     * @param i
+     * @param i position in spinner
      */
-    public void setGlobalLanguage(AdapterView<?> adapterView, int i) {
+    public void setGlobalLanguage(int i) {
         switch (i) {
             case 0:
                 setLocale("de");

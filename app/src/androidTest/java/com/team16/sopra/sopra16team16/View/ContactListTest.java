@@ -29,7 +29,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 
-
+/**
+ * ContactListFragment testClass
+ */
 public class ContactListTest {
 
     private ContactManager contactManager;

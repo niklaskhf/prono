@@ -22,7 +22,6 @@ import java.util.zip.ZipInputStream;
 /**
  * Contains methods for importing data into the app.
  */
-
 public class Import {
 
     private String importPath;
@@ -30,14 +29,12 @@ public class Import {
 
     /**
      * Triggers the importing dialog.
-     * @param context
+     * @param context - Context that the FileChooser will be displayed in
      */
     public void importDBDialog(Context context) {
         String data = Environment.getExternalStorageDirectory().toString();
 
         // let the user select a file
-        // THIS IS KIND OF BUGGED
-        // OPEN THE FINAL ROOT MIGHT CRASH THE APP
         FileChooser fileChooser = new FileChooser((HomeActivity) context)
                 .setFileListener(new FileChooser.FileSelectedListener() {
 
@@ -61,12 +58,10 @@ public class Import {
 
     /**
      * Imports data from a zip file
-     * DOES NOT VERIFY ANYTHING YET
-     * MIGHT CORRUPT EVERYTHING
      *
      * @param importPath new database - path
      */
-    public void importDB(String importPath) {
+    private void importDB(String importPath) {
 
         try {
             // unzip the files to the /files/import/ directory
@@ -124,7 +119,7 @@ public class Import {
             FileUtils.deleteFile(backupDBPath);
 
         } catch (Exception e) {
-            // handle exceptio
+            // handle exception
             Log.d("ImportIOEXception", e.getMessage());
         }
 
@@ -136,7 +131,7 @@ public class Import {
      * @param location path - where to put the file
      * @throws IOException
      */
-    public static void unzip(String zipFile, String location) throws IOException {
+    private static void unzip(String zipFile, String location) throws IOException {
         try {
             File f = new File(location);
             if (!f.isDirectory()) {

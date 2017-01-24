@@ -26,9 +26,8 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Created by moo on 1/18/2017.
+ * Drawer test class
  */
-
 public class DrawerFragmentTest {
     // test if all the fragments open as supposed
     // test if navigation works as intended

@@ -44,6 +44,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 
+/**
+ * FilterActivity test class
+ */
 public class FilterActivityTest {
 
     private ContactManager contactManager;

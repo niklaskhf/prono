@@ -3,13 +3,17 @@ package com.team16.sopra.sopra16team16.Controller;
 import java.util.ArrayList;
 
 /**
- * help to filter contacts
+ * Helps filtering contacts
  */
 public class Filter {
     private static String country = null;
     private static ArrayList<String> gender = new ArrayList<String>();
     private static Filter currentInstance;
 
+    /**
+     * Singleton getter
+     * @return returns the singleton instance of the class
+     */
     public static Filter getCurrentInstance() {
         if (currentInstance == null) {
             currentInstance = new Filter();
@@ -38,6 +42,7 @@ public class Filter {
     }
 
     /**
+     * genderList getter
      * @return an ArrayList with all filtered genders
      */
     public static ArrayList<String> getGenderList() {
@@ -80,22 +85,20 @@ public class Filter {
      * Resets the filter and sorter
      */
     public static void resetFilter() {
-        Filter filter = Filter.getCurrentInstance();
-        Sorter sorter = Sorter.getCurrentInstance();
         country  = null;
         boolean male = false;
         boolean female = false;
         boolean unknown = false;
-        for(int i = 0; i < filter.getGenderList().size(); ++i) {
-            if(filter.getGenderList().get(i).equals("MALE")) male = true;
-            if(filter.getGenderList().get(i).equals("FEMALE")) female = true;
-            if(filter.getGenderList().get(i).equals("UNKNOWN")) unknown = true;
+        for(int i = 0; i < getGenderList().size(); ++i) {
+            if(getGenderList().get(i).equals("MALE")) male = true;
+            if(getGenderList().get(i).equals("FEMALE")) female = true;
+            if(getGenderList().get(i).equals("UNKNOWN")) unknown = true;
         }
-        if(!male) filter.setGender("MALE");
-        if(!female) filter.setGender("FEMALE");
-        if(!unknown) filter.setGender("UNKNOWN");
+        if(!male) setGender("MALE");
+        if(!female) setGender("FEMALE");
+        if(!unknown) setGender("UNKNOWN");
 
-        sorter.setSortedBy("last");
-        sorter.setDirection("ASC");
+        Sorter.setSortedBy("last");
+        Sorter.setDirection("ASC");
     }
 }

@@ -2,7 +2,6 @@ package com.team16.sopra.sopra16team16.View;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,14 +14,12 @@ import android.widget.TextView;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Controller.Filter;
 import com.team16.sopra.sopra16team16.Controller.Sorter;
-import com.team16.sopra.sopra16team16.Model.DBManager;
 import com.team16.sopra.sopra16team16.R;
 
 /**
  * The user can change the filter and the sorter as desired
  */
 public class FilterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-
 
     RadioButton first_ASC;
     RadioButton first_DESC;
@@ -47,7 +44,6 @@ public class FilterActivity extends AppCompatActivity implements AdapterView.OnI
 
         setTitle(getString(R.string.filter));
 
-        ActionBar toolbar = getSupportActionBar();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -236,7 +232,7 @@ public class FilterActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     /**
-     *
+     * Returns the first item of the spinner
      * @return first item from the spinner
      */
     private String returnFirstItem() {
