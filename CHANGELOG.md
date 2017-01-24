@@ -28,7 +28,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 # First sprint
 ## [v0.3] - 2016-12-09
 ### Added
-- [Sprint Report](doc/sprint01/Sprint1Report.md)
+- [Sprint Report](doc/Sprint1Report.md)
 - [Test results](doc/sprint01/reports)
 - [Critical Feature implementation](app/)
 - [Issues](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/issues)
@@ -46,12 +46,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [v1.0] - 2017-01-25
 ### Added
 - [Additional Feature implementation](app/)
+- [Test results](doc/sprint02/reports)
 
 ### Changed
 - [CHANGELOG](doc/)
 - [sketches](doc/sketches)
-- [Sprint Report](doc/sprint01/Sprint1Report.md)
-- [Test results](doc/sprint01/reports)
+- [Sprint Report](doc/Sprint2Report.md)
 - [Issues](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/issues)
 - [app](prono-app.apk)
 - [Product.Backlog](doc/Product.Backlog.md)
