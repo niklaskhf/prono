@@ -24,5 +24,5 @@ In diesem Sprint wurden die bis zum [Meilenstein 4](https://sopra.informatik.uni
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-[Testprotokolle, Jacoco](reports/)
+[Testprotokolle, Jacoco](./doc/sprint01/reports/)
 Hinweis: Permissions müssen manuell beim Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
