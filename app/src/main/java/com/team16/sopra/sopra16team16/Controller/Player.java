@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 
 import com.team16.sopra.sopra16team16.R;
 
-import java.io.File;
 import java.io.IOException;
 
 /**

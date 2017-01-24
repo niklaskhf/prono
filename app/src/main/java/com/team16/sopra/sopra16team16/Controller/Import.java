@@ -74,7 +74,7 @@ public class Import {
             String backupDBPath = "/data/data/" + HomeActivity.contextOfApplication.getPackageName()
                     + "/files/import/" + DBHelper.DATABASE_NAME;
 
-            boolean result = DBHelper.getCurrentInstance(HomeActivity.contextOfApplication).replaceDatabase(backupDBPath);
+            boolean result = DBManager.getCurrentInstance(HomeActivity.contextOfApplication).replaceDatabase(backupDBPath);
 
             // tell the user
             if (result) {

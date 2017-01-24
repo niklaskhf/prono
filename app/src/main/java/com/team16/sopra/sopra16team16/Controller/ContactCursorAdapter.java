@@ -1,9 +1,6 @@
 package com.team16.sopra.sopra16team16.Controller;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -11,19 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-//import android.support.v4.widget.CursorAdapter;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Space;
 import android.widget.TextView;
 
-import com.team16.sopra.sopra16team16.Controller.ContactManager;
-import com.team16.sopra.sopra16team16.Controller.Player;
+
 import com.team16.sopra.sopra16team16.R;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 /**
  * CursorAdapter presenting data from the database in listitems,
