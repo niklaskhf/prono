@@ -41,7 +41,8 @@
         </activity>
         <activity
             android:name="com.team16.sopra.sopra16team16.View.FilterActivity"
-            android:label="Filter" >
+            android:label="Filter"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

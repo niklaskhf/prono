@@ -76,6 +76,7 @@ public class SettingsFragmentTest {
         onView(withId(R.id.drawer_layout)).perform(swipeRight());
         onData(anything()).inAdapterView(withId(R.id.left_drawer)).atPosition(1).check(matches(withText("Ayarlar")));
     }
+
     public static ViewAction swipeRight() {
         return new GeneralSwipeAction(Swipe.FAST, GeneralLocation.CENTER_LEFT,
                 GeneralLocation.CENTER_RIGHT, Press.THUMB);

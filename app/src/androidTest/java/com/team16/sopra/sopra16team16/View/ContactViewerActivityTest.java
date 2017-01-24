@@ -166,42 +166,4 @@ public class ContactViewerActivityTest {
         Espresso.pressBack();
     }
 
-    @Test
-    public void openContactTest4() {
-        onData(anything()).inAdapterView(withId(R.id.home_fragment)).atPosition(3)
-                .perform(click());
-        ContactViewerActivity nextActivity = (ContactViewerActivity) getInstrumentation().waitForMonitorWithTimeout(viewerMonitor, 5000);
-        assertNotNull(nextActivity);
-
-        TextView firstName = (TextView) nextActivity.findViewById(R.id.real_first_name);
-        TextView lastName = (TextView) nextActivity.findViewById(R.id.real_last_name);
-        TextView title = (TextView) nextActivity.findViewById(R.id.real_title);
-        TextView country = (TextView) nextActivity.findViewById(R.id.real_country);
-        ImageView gender = (ImageView) nextActivity.findViewById(R.id.gender_sign);
-
-        String genderTag = (String) gender.getTag();
-        assertTrue("first name wrong", firstName.getText().toString().equals("oui"));
-        assertTrue("last name wrong", lastName.getText().toString().equals("ouioui"));
-        assertTrue("title is wrong", title.getText().toString().equals("titlé"));
-        assertTrue("country is wrong", country.getText().toString().equals("francais"));
-        // lmao its too late for this
-        assertTrue("gender is wrong", gender.
-                getDrawable().
-                getConstantState()
-                ==
-                getTargetContext().getResources().
-                        getDrawable(android.R.drawable.sym_def_app_icon).
-                        getConstantState());
-
-        onView(withId(R.id.edit_button)).perform(click());
-        onView(withId(R.id.male_radioButton)).check(matches(isNotChecked()));
-        onView(withId(R.id.female_radioButton)).check(matches(isNotChecked()));
-        onView(withId(R.id.unkown_radioButton)).check(matches(isNotChecked()));
-
-        pressBack();
-
-
-        Espresso.pressBack();
-    }
-
 }

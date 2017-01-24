@@ -5,10 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.team16.sopra.sopra16team16.Model.DBManager;
-import com.team16.sopra.sopra16team16.View.HomeActivity;
 
 import java.io.File;
 
@@ -76,9 +74,14 @@ public class ContactManager{
         Log.i("id", Integer.toString(id));
     }
 
+    /**
+     * Returns the last unique id in the database.
+     * @return the current incrementing unique id of the SQL table 'contacts'
+     */
     public int getId() {
         return id;
     }
+
     /**
      * Adds a new row to the table 'contacts'
      *
@@ -119,8 +122,8 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectContacts() {
-        Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0"
-                , null, null, null, null);
+        Cursor mCursor = database.query(TABLE_NAME, cols, queryBuilder.defaultWhere()
+                , null, null, null, queryBuilder.buildSorterExpression());
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -134,8 +137,8 @@ public class ContactManager{
      * @return Cursor with rows based on query results
      */
     public Cursor selectFavorites() {
-        Cursor mCursor = database.query(TABLE_NAME, cols, COLUMN_DELETED + " = 0 AND " + COLUMN_FAVORITE + " = 1"
-                , null, null, null, null);
+        Cursor mCursor = database.query(TABLE_NAME, cols, queryBuilder.favoriteWhere()
+                , null, null, null, queryBuilder.buildSorterExpression());
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -317,10 +320,12 @@ public class ContactManager{
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
             cursorAdapter.changeCursor(selectContacts());
+            Log.d("cursorCount", Integer.toString(cursorAdapter.getCount()));
         }
         if (favoriteAdapter != null) {
             favoriteAdapter.changeCursor(selectFavorites());
         }
+
     }
 
 
@@ -356,20 +361,12 @@ public class ContactManager{
 
 
     /**
-     * Closes the database connection.
-     * Not really needed, handled by android kernel
-     */
-    /*
-    public void close() {
-        database.close();
-    }*/
-
-    /**
      * Opens a new database connection.
      */
     public void open() {
         database = dbManager.getDbContacts();
     }
+
 
 
     /**
@@ -394,6 +391,20 @@ public class ContactManager{
         }
     }
 
+    /**
+     * Returns a Cursor populated with the COLUMN_COUNTRY column values
+     * @return
+     */
+    public Cursor getCountryList() {
+        database.beginTransaction();
+        String query = "select " + ContactManager._ID + ", " + ContactManager.COLUMN_COUNTRY + " from "
+                + ContactManager.TABLE_NAME + " group by " + ContactManager.COLUMN_COUNTRY;
+        Cursor cursorCountries = database.rawQuery(query, null);
+        cursorCountries.moveToFirst();
+        database.endTransaction();
+
+        return cursorCountries;
+    }
 
 
 }

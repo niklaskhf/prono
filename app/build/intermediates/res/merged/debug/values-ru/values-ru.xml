@@ -12,6 +12,7 @@
         <item>Türk</item>
     </string-array>
     <string name="UNDO">ОБРАТНО</string>
+    <string name="a_z">А-Я</string>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Перейти на главный экран"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -31,29 +32,54 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Открыть доступ"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Открыть доступ пользователю %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Свернуть"</string>
+    <string name="about_to_delete">Стерение</string>
     <string name="app_description">Описание приложения</string>
+    <string name="app_name">Prono</string>
     <string name="authors">Авторы</string>
     <string name="backup">Резервное копирование</string>
+    <string name="cancel">Отмена</string>
     <string name="contactDeleted">Контакт удален</string>
     <string name="contactEdited">Контакт изменен</string>
     <string name="contactRestored">Контакт востановлен</string>
+    <string name="continue_">. Продолжить?</string>
     <string name="country">Страна</string>
+    <string name="country_disabled_radioButton">выкл</string>
+    <string name="country_enabled_radioButton">вкл</string>
+    <string name="data_reset">Все данные возвращены!</string>
+    <string name="editor">Редактор</string>
     <string name="emptyNameRecordError">Вы не можете записать для пустого имени.</string>
+    <string name="eplan">Приложение \'Prono\' был создан для EPLAN, как часть SoPra2016/17
+        в Университете Штутгарта. Цель приложения, чтобы дать пользователям возможность избежать
+        неловких ситуаций (где забиваетса произнашение имени), сохранив произношение имени, и быть
+        в состоянии проверить обратно на него и подготовиться к встрече с человеком</string>
+    <string name="failed_export">Не удалось выполнить экспорт</string>
+    <string name="failed_import">Не удалось выполнить импорт</string>
     <string name="female">женский</string>
+    <string name="file_not_accepted">Не удалось выполнить импорт, файл не принимается</string>
+    <string name="filter">Фильтр</string>
+    <string name="filter_options">Варианты Фильтра:</string>
     <string name="first">Имя</string>
     <string name="firstName">Имя</string>
     <string name="gender">Пол</string>
     <string name="imports">Импорт</string>
     <string name="keepNamePronunciation">Вы хотите оставить родовое имя произношение по отношению к стране?</string>
+    <string name="keep_recording">Вы хотите продолжить эту запись?</string>
     <string name="language">Язык</string>
     <string name="last">Фамилия</string>
     <string name="lastName">Фамилия</string>
     <string name="legals">Юридическая</string>
+    <string name="licence">Лицензия Apache 2.0</string>
     <string name="male">мужской</string>
     <string name="missingKeyEntries">Фамилия и либо общие запись ими/фамилии или пользовательские запись произношении необходимы.
-        Пожалуйста, введите имя или запишити произношение.</string>
+        \n\nПожалуйста, ведите имя или запишити произношение.</string>
+    <string name="overwrite_data">Это приведет к перезаписи всех существующих данных. Продолжать?</string>
+    <string name="programmers">Кянан Аллахярлы\nНиклас Каммхофф\nМартин Штах</string>
     <string msgid="146198913615257606" name="search_menu_title">"Поиск"</string>
+    <string name="sorting_options">Варианты Сортировки:</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">">999"</string>
+    <string name="successful_export">Экспорт успешный!/n Сохранить в </string>
+    <string name="successful_import">Импорт успешный!</string>
     <string name="title">Заглавие</string>
     <string name="unknown">неизвестный</string>
+    <string name="z_a">Я-А</string>
 </resources>

@@ -44,12 +44,16 @@ public class DBManager {
         return dbContacts=DBHelper.getCurrentInstance(context).getWritableDatabase();
     }
 
-    // closes the database dbContacts
+    /**
+     * Closes the database
+     */
     public void close(){
         dbContacts.close();
     }
 
-    // reopens the database dbContacts
+    /**
+     * Reopens the database
+     */
     public void reopen(){
         close();
         dbHelper = DBHelper.getCurrentInstance(context);

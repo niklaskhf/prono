@@ -88,7 +88,6 @@ public class FileUtils {
             temp.renameTo(perm);
             Log.d("recorder", "renamed " + temp + " to " + perm);
         }
-
     }
 
     /**

@@ -4,16 +4,16 @@
         "source": "/home/prime/git/sopra-team-16/app/src/main/res/drawable/side_nav_bar.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
-        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_item_background_holo_light.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
+        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/design_fab_background.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
-        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
-        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/drawable/design_fab_background.xml"
+        "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
+        "source": "/home/prime/git/sopra-team-16/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/drawable/abc_item_background_holo_light.xml"
     },
     {
         "merged": "/home/prime/git/sopra-team-16/app/build/intermediates/res/merged/debug/drawable/ic_fav_filled.xml",

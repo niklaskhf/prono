@@ -4,7 +4,13 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.RadioButton;
 import android.widget.SimpleCursorAdapter;
@@ -20,10 +26,8 @@ import com.team16.sopra.sopra16team16.R;
 /**
  * The user can change the filter and the sorter as desired
  */
+public class FilterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-public class FilterActivity extends Activity implements AdapterView.OnItemSelectedListener{
-
-    private static SQLiteDatabase database;
 
     RadioButton first_ASC;
     RadioButton first_DESC;
@@ -46,8 +50,12 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         super.onCreate(saveInstanceState);
         this.setContentView(R.layout.activity_filter);
 
-        DBManager dbManager = DBManager.getCurrentInstance(this);
-        database = dbManager.getDbContacts();
+        setTitle(getString(R.string.filter));
+
+        ActionBar toolbar = getSupportActionBar();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         //initialize gui elements
         first_ASC = (RadioButton) findViewById(R.id.first_ASC_radioButton);
@@ -66,7 +74,7 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
         //load settings
         loadSettings();
 
-        getCountryList();
+        setCountryList();
 
         //initialize listeners
         //RadioGroup doesn't work over different linear layouts, so check them manually
@@ -198,14 +206,8 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
     /**
      * fills the spinner with all countries of the contacts
      */
-    private void getCountryList() {
-
-        database.beginTransaction();
-        String query = "select " + ContactManager._ID + ", " + ContactManager.COLUMN_COUNTRY + " from "
-                + ContactManager.TABLE_NAME + " group by " + ContactManager.COLUMN_COUNTRY;
-        Cursor cursorCountries = database.rawQuery(query, null);
-        cursorCountries.moveToFirst();
-        database.endTransaction();
+    private void setCountryList() {
+        Cursor cursorCountries = ContactManager.getInstance(getApplicationContext()).getCountryList();
 
         String[] columns = new String[] { "country" };
         int[] temp = new int[] { android.R.id.text1 };
@@ -272,5 +274,16 @@ public class FilterActivity extends Activity implements AdapterView.OnItemSelect
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

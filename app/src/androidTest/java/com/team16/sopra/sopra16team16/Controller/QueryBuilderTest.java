@@ -28,6 +28,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND (" + ContactManager.COLUMN_GENDER + " = 'MALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'UNKNOWN') " +
@@ -38,6 +39,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%hello%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%hello%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%hello%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND (" + ContactManager.COLUMN_GENDER + " = 'MALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'UNKNOWN') " +
@@ -49,6 +51,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%how%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%how%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%how%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND (" + ContactManager.COLUMN_GENDER + " = 'MALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'UNKNOWN')" +
@@ -58,6 +61,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%are%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%are%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%are%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND (" + ContactManager.COLUMN_GENDER + " = 'MALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'UNKNOWN')" +
@@ -67,6 +71,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%you%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%you%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%you%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND (" + ContactManager.COLUMN_GENDER + " = 'MALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'UNKNOWN') " +
@@ -84,6 +89,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%filter%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%filter%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%filter%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND (" +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'UNKNOWN') " +
@@ -99,6 +105,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%nofilter%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%nofilter%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%nofilter%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "ORDER BY first DESC;";
 
         assertTrue("No words query is false", expectedQueryNo.equals(testQueryNo));
@@ -118,6 +125,7 @@ public class QueryBuilderTest {
                         ContactManager.COLUMN_LASTNAME + " LIKE '%country%' OR " +
                         ContactManager.COLUMN_COUNTRY + " LIKE '%country%' OR " +
                         ContactManager.COLUMN_TITLE + " LIKE '%country%') " +
+                        "AND " + ContactManager.COLUMN_DELETED + " = 0 " +
                         "AND " + ContactManager.COLUMN_COUNTRY + " = 'ger' " +
                         "AND (" + ContactManager.COLUMN_GENDER + " = 'MALE' OR " +
                         ContactManager.COLUMN_GENDER + " = 'FEMALE' OR " +
@@ -126,5 +134,7 @@ public class QueryBuilderTest {
 
         assertTrue("country query is false", expectedQueryCountry.equals(testQueryCountry));
         //assertTrue(testQueryCountry + " --- " + expectedQueryCountry, expectedQueryCountry.equals(testQueryCountry));
+
+        filter.resetFilter();
     }
 }

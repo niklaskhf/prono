@@ -12,9 +12,8 @@ import com.team16.sopra.sopra16team16.R;
 
 /**
  * About fragment - used to display project information
- * Does literally nothing interactive
+ * Does literally nothing
  */
-
 public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,16 +24,12 @@ public class AboutFragment extends Fragment {
 
 
         // TODO write something nicer
-        tvMot.setText("The app 'Prono' was created for EPLAN, as part of the SoPra2016/17 at the University of Stuttgart.\n" +
-                "The goal of the app is to give users a way to avoid embarrassing themselves, by saving the pronunciation of a name," +
-                " and being able to check back on it and prepare for meeting a person");
+        tvMot.setText(getString(R.string.eplan));
 
 
-        tvTeam.setText("Kenan Allahyarli\n" +
-                "Niklas Kammhoff\n" +
-                "Martin Stach");
+        tvTeam.setText(getString(R.string.programmers));
 
-        tvLicense.setText("Apache License 2.0");
+        tvLicense.setText(getString(R.string.licence));
         return view;
     }
 }

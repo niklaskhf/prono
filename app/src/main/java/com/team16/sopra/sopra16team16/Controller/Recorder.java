@@ -3,6 +3,7 @@ package com.team16.sopra.sopra16team16.Controller;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaRecorder;
@@ -19,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.R;
+import com.team16.sopra.sopra16team16.View.HomeActivity;
 import com.team16.sopra.sopra16team16.View.NewContactActivity;
 
 import java.io.File;
@@ -38,9 +40,9 @@ public class Recorder {
     private ColorStateList actionButtonColor;
     private Handler handler;
     private int id;
-    private Player player = new Player();
+    private Player player = Player.getCurrentInstance();
     private Runnable runnable;
-
+    private Resources resources = HomeActivity.contextOfApplication.getResources();
 
 
     /**
@@ -54,7 +56,9 @@ public class Recorder {
         }
     }
 
-    //constructor - need context for path
+    /**
+     * Constructor
+     */
     private Recorder() {
         path = FileUtils.PATH;
     }
@@ -154,7 +158,7 @@ public class Recorder {
 
             // text
             TextView textDialog = (TextView) win.findViewById(R.id.text_dialog);
-            textDialog.setText("Do you want to keep this recording?");
+            textDialog.setText(resources.getString(R.string.keep_recording));
 
             // cancel
             ImageButton cancelDialog = (ImageButton) win.findViewById(R.id.cancel_dialog);
@@ -175,9 +179,9 @@ public class Recorder {
                 @Override
                 public void onClick(View view) {
                     if (!player.isPlaying()) {
-                            player.startPlaying(id + "_temp", playDialog);
+                            player.startPlaying(id + "_temp", playDialog, id);
                     } else {
-                        player.stopPlaying(playDialog);
+                        player.stopPlaying(playDialog, id);
                     }
                 }
             });

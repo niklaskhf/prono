@@ -4,11 +4,8 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Loader;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,22 +17,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.team16.sopra.sopra16team16.Controller.Backup;
+import com.team16.sopra.sopra16team16.Controller.Export;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Import;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.Locale;
 
-
+/**
+ * Fragment allowing the user to see settings.
+ * These include:
+ *  - language selection
+ *  - export
+ *  - import
+ *  - reset
+ */
 public class SettingsFragment extends Fragment {
-    Backup backup = new Backup();
+    Export export = new Export();
+    Import importObject = new Import();
 
     Locale myLocale;
     TextView languageText;
     Spinner languageSpinner;
     String language;
     ArrayAdapter<CharSequence> languageAdapter;
-    boolean isFirstSelection = true;
 
 
     @Override
@@ -55,7 +60,7 @@ public class SettingsFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                backup.exportDB();
+                export.exportDB();
             }
         });
         importButton.setOnClickListener(new View.OnClickListener() {
@@ -101,14 +106,14 @@ public class SettingsFragment extends Fragment {
     public void confirmImportDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
-        alertDialog.setMessage("This will overwrite all existing data. Continue?");
+        alertDialog.setMessage(getString(R.string.overwrite_data));
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                backup.importDBDialog(getActivity());
+                importObject.importDBDialog(getActivity());
             }
         });
-        alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -124,16 +129,16 @@ public class SettingsFragment extends Fragment {
     public void confirmResetDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
-        alertDialog.setMessage("This will wipe all existing data. Continue?");
+        alertDialog.setMessage(getString(R.string.overwrite_data));
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 ContactManager.getInstance(getActivity()).wipe();
-                Toast.makeText(HomeActivity.contextOfApplication, "All data reset!", Toast.LENGTH_SHORT)
+                Toast.makeText(HomeActivity.contextOfApplication, getString(R.string.data_reset), Toast.LENGTH_SHORT)
                         .show();
             }
         });
-        alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+        alertDialog.setNegativeButton(getString(R.string.data_reset), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -188,7 +193,6 @@ public class SettingsFragment extends Fragment {
                 setLocale("tr");
                 break;
         }
-        isFirstSelection = false;
     }
 
     /**

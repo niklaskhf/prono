@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--Titles-->
+    <string name="app_name">Prono</string>
+    <string name="editor">Editor</string>
+    <string name="filter">Filter</string>
+    <!--Titles-->
+
     <!--ContanctEditor strings-->
     <string name="firstName">Vorname</string>
     <string name="first">Vorname</string>
@@ -18,8 +24,12 @@
     <string name="language">Sprache</string>
     <string name="backup">Backup</string>
     <string name="imports">Import</string>
+    <string name="overwrite_data">Es werden all existierenden Daten gelöscht. Fortfahren?</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="data_reset">Alle Daten zurückgesetzt</string>
     <!--Setting-->
 
+    <!--Spinner-->
     <string-array name="languages">
         <item>Deutsch</item>
         <item>English</item>
@@ -45,16 +55,50 @@
     <!--Notifications-->
     <string name="missingKeyEntries">Der Nachname undeine Aufzeichnung der Aussprache sind erforderlich
         \n\nBitte geben Sie den Namen ein oder nehmen Sie eine Aussprache auf.</string>
-
     <string name="keepNamePronunciation">Möchten Sie die geneische Namensaussprache in Relation zu den Ländern beibehalten?.</string>
     <string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string>
     <string name="contactDeleted">Kontakt gelöscht</string>
     <string name="contactRestored">Kontakt wiederhergestellt</string>
     <string name="contactEdited">Kontakt geändert</string>
     <string name="UNDO">RÜCKGÄNGIG</string>
-
-
+    <string name="about_to_delete">Sie sind gerade dabei</string>
+    <string name="continue_">. Fortfahren?</string>
     <!--Notifications-->
 
+    <!--Filter-->
+    <string name="country_enabled_radioButton">an</string>
+    <string name="country_disabled_radioButton">aus</string>
+    <!--Filter-->
+
+    <!--Export-->
+    <string name="successful_export">Export erfolgreich!/n Gespeichert in</string>
+    <string name="failed_export">Export fehlgeschlagen</string>
+    <!--Export-->
+
+    <!--Import-->
+    <string name="file_not_accepted">Import fehlgeschlagen, Datei wurde nicht anerkannt</string>
+    <string name="successful_import">Import erfolgreich</string>
+    <string name="failed_import">Import fehlgeschlagen</string>
+    <!--Import-->
+
+    <!--Recorder-->
+    <string name="keep_recording">Möchten Sie mit dieser Aufnahme fortfahren?</string>
+    <!--Recorder-->
+
+    <!--About-->
+    <string name="eplan">Die App \'Prono\' wurde für EPLAN im Rahmen der SoPra2016/17
+        an der Universität Stuttgart erstellt. Das Ziel der App ist es, den Benutzern
+        eine Möglichkeit zu geben, peinliche Situationen zu umgehen, indem sie die Aussprache
+        eines Namens speichern, diesen beliebig oft abspielen können, um sich auf ein Treffen vorzubereiten.</string>
+    <string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string>
+    <string name="licence">Appache Licence 2.0</string>
+    <!--About-->
+
+    <!--Filter-->
+    <string name="sorting_options">Sortier Optionen:</string>
+    <string name="filter_options">Filter Optionen:</string>
+    <string name="a_z">A-Z</string>
+    <string name="z_a">Z-A</string>
+    <!--Filter-->
 
 </resources>

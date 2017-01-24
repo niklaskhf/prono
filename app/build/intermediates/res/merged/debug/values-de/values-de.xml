@@ -12,6 +12,7 @@
         <item>Türk</item>
     </string-array>
     <string name="UNDO">RÜCKGÄNGIG</string>
+    <string name="a_z">A-Z</string>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Zur Startseite"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s: %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s: %3$s"</string>
@@ -31,29 +32,54 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Freigeben für"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Freigeben für %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
+    <string name="about_to_delete">Sie sind gerade dabei</string>
     <string name="app_description">App Beschreibung</string>
+    <string name="app_name">Prono</string>
     <string name="authors">Autoren</string>
     <string name="backup">Backup</string>
+    <string name="cancel">Abbrechen</string>
     <string name="contactDeleted">Kontakt gelöscht</string>
     <string name="contactEdited">Kontakt geändert</string>
     <string name="contactRestored">Kontakt wiederhergestellt</string>
+    <string name="continue_">. Fortfahren?</string>
     <string name="country">Land</string>
+    <string name="country_disabled_radioButton">aus</string>
+    <string name="country_enabled_radioButton">an</string>
+    <string name="data_reset">Alle Daten zurückgesetzt</string>
+    <string name="editor">Editor</string>
     <string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string>
+    <string name="eplan">Die App \'Prono\' wurde für EPLAN im Rahmen der SoPra2016/17
+        an der Universität Stuttgart erstellt. Das Ziel der App ist es, den Benutzern
+        eine Möglichkeit zu geben, peinliche Situationen zu umgehen, indem sie die Aussprache
+        eines Namens speichern, diesen beliebig oft abspielen können, um sich auf ein Treffen vorzubereiten.</string>
+    <string name="failed_export">Export fehlgeschlagen</string>
+    <string name="failed_import">Import fehlgeschlagen</string>
     <string name="female">weiblich</string>
+    <string name="file_not_accepted">Import fehlgeschlagen, Datei wurde nicht anerkannt</string>
+    <string name="filter">Filter</string>
+    <string name="filter_options">Filter Optionen:</string>
     <string name="first">Vorname</string>
     <string name="firstName">Vorname</string>
     <string name="gender">Geschlecht</string>
     <string name="imports">Import</string>
     <string name="keepNamePronunciation">Möchten Sie die geneische Namensaussprache in Relation zu den Ländern beibehalten?.</string>
+    <string name="keep_recording">Möchten Sie mit dieser Aufnahme fortfahren?</string>
     <string name="language">Sprache</string>
     <string name="last">Nachname</string>
     <string name="lastName">Nachname</string>
     <string name="legals">Legales</string>
+    <string name="licence">Appache Licence 2.0</string>
     <string name="male">männlich</string>
     <string name="missingKeyEntries">Der Nachname undeine Aufzeichnung der Aussprache sind erforderlich
         \n\nBitte geben Sie den Namen ein oder nehmen Sie eine Aussprache auf.</string>
+    <string name="overwrite_data">Es werden all existierenden Daten gelöscht. Fortfahren?</string>
+    <string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string>
     <string msgid="146198913615257606" name="search_menu_title">"Suchen"</string>
+    <string name="sorting_options">Sortier Optionen:</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="successful_export">Export erfolgreich!/n Gespeichert in</string>
+    <string name="successful_import">Import erfolgreich</string>
     <string name="title">Titel</string>
     <string name="unknown">unbekannt</string>
+    <string name="z_a">Z-A</string>
 </resources>

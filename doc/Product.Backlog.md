@@ -1030,7 +1030,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 3 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 3 Stunden
 
 
 ### Implementable Story 2 *Sprache auswählen*
@@ -1078,7 +1078,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 2 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 1 Stunde
 
 
 
@@ -1195,7 +1195,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 5 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 4 Stunden
      
     
 
@@ -1244,7 +1244,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 10 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -1270,7 +1270,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 
 - Aufwandsschätzung: 12 Stunden
-- Tatsächliche Zeit: 
+- Tatsächliche Zeit: 10 Stunden
 
 
 
@@ -1312,7 +1312,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *den Backup-Button klicken*, um *ein Backup der Daten zu erstellen*.
 
-- Aufwandsschätzung: 2 Stunden
+- Aufwandsschätzung: 3 Stunden
 - Tatsächliche Zeit: 2 Stunden
 
 
@@ -1320,7 +1320,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *Datenbanken und Audiodateien in einer.zip-Datei haben*, um *diese später importieren zu können*.
 
-- Aufwandsschätzung: 6 Stunden
+- Aufwandsschätzung: 7 Stunden
 - Tatsächliche Zeit: 4 Stunden
 
 
@@ -1355,7 +1355,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *eine Datei auswählen können*, um *eine Backup-Datei auszuwählen*.
 
-- Aufwandsschätzung: 4 Stunden
+- Aufwandsschätzung: 7 Stunden
 - Tatsächliche Zeit: 3 Stunden
 
 
@@ -1364,7 +1364,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 > Als *Vertriebsmitarbeiter* möchte ich *eine Backup-Datei unzippen*, um *die Daten in der App zu verwenden*.
 
 
-- Aufwandsschätzung: 5 Stunden
+- Aufwandsschätzung: 6 Stunden
 - Tatsächliche Zeit: 5 Stunden
 
 
@@ -1393,7 +1393,7 @@ Hier werden **alle** Anforderungen in Form von **User Stories** geordnet aufgeli
 
 > Als *Vertriebsmitarbeiter* möchte ich *alle Daten löschen*, um *keine Kontakte mehr zu haben*.
 
-- Aufwandsschätzung: 2 Stunden
+- Aufwandsschätzung: 5 Stunden
 - Tatsächliche Zeit: 3 Stunden
 
 

@@ -30,8 +30,11 @@ import com.team16.sopra.sopra16team16.R;
  * Presents the contacts in a ListView
  */
 public class ContactListFragment extends ListFragment{
+    private ContactManager contactManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        contactManager = ContactManager.getInstance(getActivity());
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
@@ -68,7 +71,12 @@ public class ContactListFragment extends ListFragment{
         Log.i("gender", genderView.getText().toString());
 
         getActivity().startActivityForResult(intent, 1);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        contactManager.updateCursorAdapter();
     }
 }
 

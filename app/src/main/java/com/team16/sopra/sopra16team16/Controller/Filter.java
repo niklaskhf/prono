@@ -5,7 +5,6 @@ import java.util.ArrayList;
 /**
  * help to filter contacts
  */
-
 public class Filter {
     private static String country = null;
     private static ArrayList<String> gender = new ArrayList<String>();
@@ -20,6 +19,9 @@ public class Filter {
         }
     }
 
+    /**
+     * Constructor
+     */
     private Filter() {
         //show all genders
         gender.add("MALE");
@@ -27,6 +29,10 @@ public class Filter {
         gender.add("UNKNOWN");
     }
 
+    /**
+     * Returns the filter value for 'country'
+     * @return String - country value of the filter
+     */
     public static String getCountry() {
         return country;
     }
@@ -38,6 +44,10 @@ public class Filter {
         return gender;
     }
 
+    /**
+     * Sets the country value of the filter
+     * @param newCountry - String new country value
+     */
     public static void setCountry(String newCountry) {
         country = newCountry;
     }
@@ -66,10 +76,13 @@ public class Filter {
         return true;
     }
 
-    //reset Filter
+    /**
+     * Resets the filter.
+     */
     public static void resetFilter() {
         Filter filter = Filter.getCurrentInstance();
         Sorter sorter = Sorter.getCurrentInstance();
+        country  = null;
         boolean male = false;
         boolean female = false;
         boolean unknown = false;

@@ -159,6 +159,39 @@ public class HomeActivityTest {
         assertTrue("searchView didnt close", !mActivityTestRules.getActivity().searchVisible());
     }
 
+    @Test
+    public void filterTest() {
+        onView(withId(R.id.action_search))
+                .perform(click());
+
+        ContactListFragment fragment = mActivityTestRules.getActivity().getFragment();
+        assertTrue("searchAdapter wrong count", fragment.getListAdapter().getCount() == 3);
+
+        onView(isAssignableFrom(EditText.class)).perform(clearText());
+        onView(isAssignableFrom(EditText.class)).perform(typeText("test"),
+                pressKey(KeyEvent.KEYCODE_ENTER));
+
+        assertTrue("searchAdapter wrong count 'test'", fragment.getListAdapter().getCount() == 0);
+
+        onView(isAssignableFrom(EditText.class)).perform(clearText());
+        onView(isAssignableFrom(EditText.class)).perform(typeText("first"),
+                pressKey(KeyEvent.KEYCODE_ENTER));
+
+        assertTrue("searchAdapter wrong count 'first'", fragment.getListAdapter().getCount() == 1);
+
+        onView(withId(R.id.addFilter)).perform(click());
+
+        onView(withId(R.id.filter_male_radioButton)).perform(click());
+        onView(withId(R.id.filter_unknown_radioButton)).perform(click());
+
+        Espresso.pressBack();
+        assertTrue("searchAdapter wrong count 'first' & filter 'female'", fragment.getListAdapter().getCount() == 1);
+        onView(isAssignableFrom(EditText.class)).perform(clearText());
+        assertTrue("searchAdapter wrong count '' & filter 'female'", fragment.getListAdapter().getCount() == 2);
+
+        Filter.getCurrentInstance().resetFilter();
+    }
+
 
     @Test
     public void searchVisibleTest() {

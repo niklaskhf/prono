@@ -2,17 +2,13 @@ package com.team16.sopra.sopra16team16.View;
 
 
 import android.support.test.InstrumentationRegistry;
-import android.support.test.annotation.UiThreadTest;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.espresso.assertion.ViewAssertions;
 import android.support.test.rule.ActivityTestRule;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Matchers;
 import com.team16.sopra.sopra16team16.R;
@@ -42,8 +38,8 @@ import static org.junit.Assert.assertTrue;
 
 public class FavoriteTest {
     private ContactManager contactManager;
-    private com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter contactCursorAdapter;
-    private com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter favoriteCursorAdapter;
+    private ContactCursorAdapter contactCursorAdapter;
+    private ContactCursorAdapter favoriteCursorAdapter;
 
     @Rule
     public ActivityTestRule<HomeActivity> mRule = new ActivityTestRule<>(HomeActivity.class);

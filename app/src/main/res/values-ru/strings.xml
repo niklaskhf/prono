@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--Titles-->
+    <string name="app_name">Prono</string>
+    <string name="editor">Редактор</string>
+    <string name="filter">Фильтр</string>
+    <!--Titles-->
+
     <!--ContanctEditor strings-->
     <string name="firstName">Имя</string>
     <string name="first">Имя</string>
@@ -18,8 +24,12 @@
     <string name="language">Язык</string>
     <string name="backup">Резервное копирование</string>
     <string name="imports">Импорт</string>
+    <string name="overwrite_data">Это приведет к перезаписи всех существующих данных. Продолжать?</string>
+    <string name="cancel">Отмена</string>
+    <string name="data_reset">Все данные возвращены!</string>
     <!--Setting-->
 
+    <!--Spinner-->
     <string-array name="languages">
         <item>Deutsch</item>
         <item>English</item>
@@ -44,7 +54,7 @@
 
     <!--Notifications-->
     <string name="missingKeyEntries">Фамилия и либо общие запись ими/фамилии или пользовательские запись произношении необходимы.
-        Пожалуйста, введите имя или запишити произношение.</string>
+        \n\nПожалуйста, ведите имя или запишити произношение.</string>
 
     <string name="keepNamePronunciation">Вы хотите оставить родовое имя произношение по отношению к стране?</string>
     <string name="emptyNameRecordError">Вы не можете записать для пустого имени.</string>
@@ -52,7 +62,44 @@
     <string name="contactRestored">Контакт востановлен</string>
     <string name="contactEdited">Контакт изменен</string>
     <string name="UNDO">ОБРАТНО</string>
-
+    <string name="about_to_delete">Стерение</string>
+    <string name="continue_">. Продолжить?</string>
     <!--Notifications-->
+
+    <!--Filter-->
+    <string name="country_enabled_radioButton">вкл</string>
+    <string name="country_disabled_radioButton">выкл</string>
+    <!--Filter-->
+
+    <!--Export-->
+    <string name="successful_export">Экспорт успешный!/n Сохранить в </string>
+    <string name="failed_export">Не удалось выполнить экспорт</string>
+    <!--Export-->
+
+    <!--Import-->
+    <string name="file_not_accepted">Не удалось выполнить импорт, файл не принимается</string>
+    <string name="successful_import">Импорт успешный!</string>
+    <string name="failed_import">Не удалось выполнить импорт</string>
+    <!--Import-->
+
+    <!--Recorder-->
+    <string name="keep_recording">Вы хотите продолжить эту запись?</string>
+    <!--Recorder-->
+
+    <!--About-->
+    <string name="eplan">Приложение \'Prono\' был создан для EPLAN, как часть SoPra2016/17
+        в Университете Штутгарта. Цель приложения, чтобы дать пользователям возможность избежать
+        неловких ситуаций (где забиваетса произнашение имени), сохранив произношение имени, и быть
+        в состоянии проверить обратно на него и подготовиться к встрече с человеком</string>
+    <string name="programmers">Кянан Аллахярлы\nНиклас Каммхофф\nМартин Штах</string>
+    <string name="licence">Лицензия Apache 2.0</string>
+    <!--About-->
+
+    <!--Filter-->
+    <string name="sorting_options">Варианты Сортировки:</string>
+    <string name="filter_options">Варианты Фильтра:</string>
+    <string name="a_z">А-Я</string>
+    <string name="z_a">Я-А</string>
+    <!--Filter-->
 
 </resources>

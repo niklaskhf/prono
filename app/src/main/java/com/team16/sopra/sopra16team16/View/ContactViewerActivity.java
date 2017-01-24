@@ -25,7 +25,6 @@ import com.team16.sopra.sopra16team16.R;
  * Displays information of a contact.
  * Allows editing and deleting the contacts information.
  */
-
 public class ContactViewerActivity extends AppCompatActivity {
 
     private ContactManager contactManager = null;
@@ -57,12 +56,12 @@ public class ContactViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
 
-        player = new Player();
+        //player = new Player();
+        player = Player.getCurrentInstance();
 
         this.setContentView(R.layout.contact_viewer);
         contactManager = ContactManager.getInstance(this.getApplicationContext());
 
-        // TODO FIX INTENT
         Bundle bundle = getIntent().getExtras();
 
         firstName = bundle.get("first").toString();
@@ -71,7 +70,6 @@ public class ContactViewerActivity extends AppCompatActivity {
         country = bundle.get("country").toString();
         gender = bundle.getString("gender");
         id = Integer.parseInt(bundle.get("id").toString());
-
         setTitle(firstName + " " + lastName);
 
         setTextViews();
@@ -109,7 +107,7 @@ public class ContactViewerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (player.isPlaying()) {
-                    player.stopPlaying(playButton);
+                    player.stopPlaying(playButton, id);
                 } else {
                     player.startPlaying(id, playButton);
                 }
@@ -133,9 +131,7 @@ public class ContactViewerActivity extends AppCompatActivity {
         // build the AlertDialog to request confirmation
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
         
-        String message = "About to delete " + f +
-                " " + l +
-                ". Continue?";
+        String message = getString(R.string.about_to_delete) + " "+ f +" " + l + getString(R.string.continue_);
 
         // delete if user confirms with 'YES"
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -247,11 +243,11 @@ public class ContactViewerActivity extends AppCompatActivity {
 
         Log.d("undoSnackbar", "showing snackbar for " + id);
         Snackbar snackbar = Snackbar
-                .make(coordinatorLayout, "Edited a contact", Snackbar.LENGTH_LONG)
-                .setAction("UNDO", new View.OnClickListener() {
+                .make(coordinatorLayout, getString(R.string.contactEdited), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.UNDO), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
+                        Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, getString(R.string.contactRestored), Snackbar.LENGTH_SHORT);
                         snackbarSuccess.show();
 
                         // replace the audio files
@@ -286,5 +282,11 @@ public class ContactViewerActivity extends AppCompatActivity {
         snackbar.show();
     }
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        player.release();
+    }
 
 }

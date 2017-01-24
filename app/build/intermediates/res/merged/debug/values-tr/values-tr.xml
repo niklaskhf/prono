@@ -11,7 +11,8 @@
         <item>русский</item>
         <item>Türk</item>
     </string-array>
-    <string name="UNDO">UNDO</string>
+    <string name="UNDO">geri al</string>
+    <string name="a_z">A-Z</string>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Ana ekrana git"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -31,35 +32,55 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Şununla paylaş"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"%s ile paylaş"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Daralt"</string>
-    <string name="action_settings">Settings</string>
+    <string name="about_to_delete">Siz üzeresiniz </string>
     <string name="app_description">Uygulama açıklaması</string>
     <string name="app_name">Prono</string>
     <string name="authors">Yazarlar</string>
     <string name="backup">Yedek</string>
+    <string name="cancel">iptal etmek</string>
     <string name="contactDeleted">Bir kişiyi sildi</string>
     <string name="contactEdited">Bir kişiyi düzenledi</string>
     <string name="contactRestored">Bir kişiyi geri yükledi</string>
-    <string name="contactsFileKey">contactsList</string>
+    <string name="continue_">. Devam etmek?</string>
     <string name="country">Ülke</string>
-    <string name="emptyNameRecordError">You can\'t record for an empty name.</string>
+    <string name="country_disabled_radioButton">kapali</string>
+    <string name="country_enabled_radioButton">açık</string>
+    <string name="data_reset">Tüm veriler sıfırlandı!</string>
+    <string name="editor">Editör</string>
+    <string name="emptyNameRecordError">Boş bir ad için kayıt yapamazsın.</string>
+    <string name="eplan">Uygulamanın \'PRONO\' SoPra2016/17 içinde EPLAN oldu
+         Stuttgart Üniversitesi yarattı. Uygulamanın amacı, kullanıcılara vermek
+         tartışmalar etrafında garip durumları çalışmak için bir yol vermek
+         Bir ad ekleyin, bu toplantıya hazırlanmak için, genellikle herhangi bir oynayabilirsiniz.</string>
+    <string name="failed_export">Ihracat başarısız</string>
+    <string name="failed_import">ithalat başarısız</string>
     <string name="female">kadın</string>
+    <string name="file_not_accepted">Ithalat başarısız, dosyayı kabul edilmez</string>
+    <string name="filter">Filtre</string>
+    <string name="filter_options">Filtre Seçenekleri:</string>
     <string name="first">İsim</string>
-    <string name="fistName">İsim</string>
+    <string name="firstName">İsim</string>
     <string name="gender">Cinsiyet</string>
     <string name="imports">Inthalat</string>
-    <string name="keepNamePronunciation">Do you want to keep the generic name pronunciation in relation to the country?</string>
+    <string name="keepNamePronunciation">Siz ülke ile ilgili isim geneische tartışma korumak ister misiniz?</string>
+    <string name="keep_recording">Bu kayıt ile devam etmek ister misiniz?</string>
     <string name="language">Dil</string>
     <string name="last">Soyadi</string>
     <string name="lastName">Soyadi</string>
     <string name="legals">Yasalardan</string>
+    <string name="licence">Appache lisansi 2.0</string>
     <string name="male">erkek</string>
-    <string name="missingKeyEntries">The last name and either generic recordings of the first/last name
-        or a custom recording of the pronunciation are required.
-        Please enter the name/record a pronunciation.</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="missingKeyEntries">Soyadın adı ve soyadın genel kayıtları
+        veya telaffuzun özel bir kaydı gereklidir.
+        \n\nLütfen ismi gir / kaydet bir telaffuz.</string>
+    <string name="overwrite_data">Silinen tüm mevcut veri bulunmamaktadır. Devam etmek?</string>
+    <string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string>
     <string msgid="146198913615257606" name="search_menu_title">"Ara"</string>
+    <string name="sorting_options">Sıralama Seçenekleri:</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="successful_export">Başarılı bir ihracat!/n Kaydedilir için</string>
+    <string name="successful_import">ithalat bir ihracat!</string>
     <string name="title">Başlık</string>
     <string name="unknown"> bilinmeyen</string>
+    <string name="z_a">Z-A</string>
 </resources>

@@ -3,17 +3,14 @@ package com.team16.sopra.sopra16team16.View;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -27,22 +24,18 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.FilterQueryProvider;
-import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.team16.sopra.sopra16team16.Controller.Backup;
 import com.team16.sopra.sopra16team16.Controller.ContactCursorAdapter;
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.R;
 
 import java.util.Locale;
@@ -67,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
     private MenuItem searchItem;
     private ArrayAdapter<String> drawerAdapter;
     private String updatedLanguage;
+    private FloatingActionButton filterButton;
 
 
 
@@ -90,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_home);
         contextOfApplication = this.getApplicationContext();
         contactManager = ContactManager.getInstance(this.getApplicationContext());
+        filterButton = (FloatingActionButton) findViewById(R.id.addFilter);
 
         // if app language differs from default language
         initializeNewChosenLanguage();
@@ -113,7 +108,6 @@ public class HomeActivity extends AppCompatActivity {
         searchItem = menu.findItem(R.id.action_search);
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-        // TODO discuss if this is the right approach
         // hide the dropdown from the searchbar
         hideSearchDropDown(searchView);
         // apply functionality to searchItem
@@ -295,6 +289,9 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Sets the new chosen language
+     */
     public void initializeNewChosenLanguage() {
         SharedPreferences myLanguagePreference = getSharedPreferences("getLanguage", Context.MODE_PRIVATE);
         if (myLanguagePreference.getString("updatedLanguage",null) != null) {
@@ -307,7 +304,8 @@ public class HomeActivity extends AppCompatActivity {
 
     /**
      * changes app language
-     * @param lang
+     *
+     * @param lang new language, uses the language code (eg. en - English)
      * @param res
      */
     public void setLocale(String lang, Resources res) {
@@ -334,6 +332,7 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         contactManager.deleteMarked();
+        Player.getCurrentInstance().release();
     }
 
     @Override
@@ -354,11 +353,11 @@ public class HomeActivity extends AppCompatActivity {
                     final int undoId = data.getIntExtra("undoId", -1);
                     Log.d("undoSnackbar", "showing snackbar for " + undoId);
                     Snackbar snackbar = Snackbar
-                            .make(coordinatorLayout, "Deleted a contact", Snackbar.LENGTH_LONG)
-                            .setAction("UNDO", new View.OnClickListener() {
+                            .make(coordinatorLayout, getString(R.string.contactDeleted), Snackbar.LENGTH_LONG)
+                            .setAction(getString(R.string.UNDO), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, "Restored a contact", Snackbar.LENGTH_SHORT);
+                                    Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, getString(R.string.contactRestored), Snackbar.LENGTH_SHORT);
                                     snackbarSuccess.show();
 
                                     contactManager.toggleDeleted(undoId, 1);
@@ -495,6 +494,7 @@ public class HomeActivity extends AppCompatActivity {
         addButton.setVisibility(View.INVISIBLE);
         mDrawerList.clearChoices();
         drawerAdapter.notifyDataSetChanged();
+        filterButton.setVisibility(View.INVISIBLE);
     }
 
     /**
@@ -516,6 +516,8 @@ public class HomeActivity extends AppCompatActivity {
                 .replace(R.id.content_frame, listFragment)
                 .commit();
         mDrawerList.clearChoices();
+
+        filterButton.setVisibility(View.VISIBLE);
     }
 
     /**

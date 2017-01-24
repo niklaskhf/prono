@@ -15,6 +15,8 @@ import java.io.FileFilter;
 import java.util.Arrays;
 
 /**
+ * Displays a FileChooser, allowing the user to choose a file from his external storage
+ *
  * https://rogerkeays.com/simple-android-file-chooser
  */
 public class FileChooser {
@@ -27,6 +29,11 @@ public class FileChooser {
 
     // filter on file extension
     private String extension = null;
+
+    /**
+     * Sets the extension value
+     * @param extension String - extension
+     */
     public void setExtension(String extension) {
         this.extension = (extension == null) ? null :
                 extension.toLowerCase();
@@ -36,12 +43,23 @@ public class FileChooser {
     public interface FileSelectedListener {
         void fileSelected(File file);
     }
+
+    /**
+     * Sets the fileListener
+     * @param fileListener fileListener to be used
+     * @return
+     */
     public FileChooser setFileListener(FileSelectedListener fileListener) {
         this.fileListener = fileListener;
         return this;
     }
     private FileSelectedListener fileListener;
 
+    /**
+     * Constructor
+     * Builds the dialog
+     * @param activity Activity for the FileChooser to be displayed in
+     */
     public FileChooser(Activity activity) {
         this.activity = activity;
         dialog = new Dialog(activity);
@@ -65,6 +83,9 @@ public class FileChooser {
         refresh(Environment.getExternalStorageDirectory());
     }
 
+    /**
+     * Shows the dialog window
+     */
     public void showDialog() {
         dialog.show();
     }

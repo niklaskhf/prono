@@ -22,12 +22,15 @@ import android.widget.TextView;
 
 import com.team16.sopra.sopra16team16.Controller.ContactManager;
 import com.team16.sopra.sopra16team16.Controller.FileUtils;
+import com.team16.sopra.sopra16team16.Controller.Player;
 import com.team16.sopra.sopra16team16.Controller.Recorder;
 import com.team16.sopra.sopra16team16.R;
 
 import java.io.File;
 
-
+/**
+ * Activity allowing the user to create/edit a contact.
+ */
 public class NewContactActivity extends AppCompatActivity {
 
     private ContactManager contactManager;
@@ -73,7 +76,7 @@ public class NewContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.contact_editor);
-        setTitle("Editor");
+        setTitle(getString(R.string.editor));
         context = this;
 
         //initialize();
@@ -117,6 +120,7 @@ public class NewContactActivity extends AppCompatActivity {
         if (recorder.isPressed()) {
             recorder.stopRecording(recordButton, this);
         }
+        Player.getCurrentInstance().release();
     }
 
     /**
@@ -208,7 +212,6 @@ public class NewContactActivity extends AppCompatActivity {
                         bundle.putString("undoCountry", undoCountry);
                         bundle.putString("undoGender", undoGender);
                         setResult(RESULT_OK, new Intent().putExtras(bundle));
-
                         // update contact in database
                         updateContact();
                         finish();
@@ -393,7 +396,7 @@ public class NewContactActivity extends AppCompatActivity {
      */
     public String getFirstString() {
         String value = firstNameEdit.getText().toString();
-        return trimSpaces(value);
+        return value.trim();
     }
 
     /**
@@ -403,7 +406,7 @@ public class NewContactActivity extends AppCompatActivity {
     public String getLastString() {
         String value = lastNameEdit.getText().toString();
 
-        return trimSpaces(value);
+        return value.trim();
     }
 
     /**
@@ -413,7 +416,7 @@ public class NewContactActivity extends AppCompatActivity {
     public String getTitleString() {
         String value = titleEdit.getText().toString();
 
-        return trimSpaces(value);
+        return value.trim();
     }
 
     /**
@@ -423,29 +426,7 @@ public class NewContactActivity extends AppCompatActivity {
     public String getCountryString() {
         String value = countryEdit.getText().toString();
 
-        return trimSpaces(value);
-    }
-
-    /**
-     * Trims spaces at the beginning or the end of a String,
-     * until none are left
-     * @param value - String - to be trimmed
-     * @return returns the trimmed String
-     */
-    public String trimSpaces(String value) {
-        if ( value.length() == 0) {
-            return "";
-        }
-        while (value.length() != 0 &&value.charAt(0) == ' ') {
-            value = value.substring(1);
-        }
-
-
-        while (value.length() != 0 && value.charAt(value.length() - 1) == ' ') {
-            value = value.substring(0, value.length() - 1);
-        }
-
-        return value;
+        return value.trim();
     }
 
 

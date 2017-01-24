@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:padding="20dp">
 
     <TextView
-        android:text="Sorting options:"
+        android:text="@string/sorting_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sort_text"
@@ -18,7 +19,7 @@
         android:gravity="left"
         android:orientation="horizontal">
         <TextView
-            android:text="First Name"
+            android:text="@string/firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/first_text"
@@ -48,7 +49,7 @@
         android:gravity="left"
         android:orientation="horizontal">
         <TextView
-            android:text="Last Name"
+            android:text="@string/lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/last_text"
@@ -78,7 +79,7 @@
         android:textSize="24sp"/>
 
     <TextView
-        android:text="Filter options:"
+        android:text="@string/filter_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/filter_text"
@@ -91,7 +92,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="Gender:"
+            android:text="@string/gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/filter_gender"
@@ -128,7 +129,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="Country:"
+            android:text="@string/country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/filter_country_text"
