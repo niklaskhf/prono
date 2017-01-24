@@ -107,6 +107,15 @@ Die Datenbank stellt den DBManager als Schnittstelle zur Verfügung, welches von
 ## Klassendiagramm MainView
 ![Klassendiagramm MainView](sketches/Model1__MainView_4.png)
 
+## Klassendiagramm ContactView
+![Klassendiagramm ContactView](sketches/Model1__CiontactView_5.png)
+
+## Klassendiagramm Audio
+![Klassendiagramm Audio](sketches/Model1__Audio_6.png)
+
+## Klassendiagramm Datenbank
+![Klassendiagramm Datenbank](sketches/Model1__Datenbank_7.png)
+
 ## Klassendiagramm ExportImport
 ![Klassendiagramm ExportImport](sketches/Model1__ExportImport_3.png)
 
