@@ -55,7 +55,7 @@
     <!--Navigation Drawer-->
 
     <!--Notifications-->
-    <string name="missingKeyEntries">Фамилия и либо общие запись ими/фамилии или пользовательские запись произношении необходимы.
+    <string name="missingKeyEntries">Фамилия и запись произношении имени необходимы.
         \n\nПожалуйста, ведите имя или запишити произношение.</string>
 
     <string name="keepNamePronunciation">Вы хотите оставить родовое имя произношение по отношению к стране?</string>
