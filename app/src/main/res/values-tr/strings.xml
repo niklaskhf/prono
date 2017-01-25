@@ -55,8 +55,7 @@
     <!--Navigation Drawer-->
 
     <!--Notifications-->
-    <string name="missingKeyEntries">Soyadın adı ve soyadın genel kayıtları
-        veya telaffuzun özel bir kaydı gereklidir.
+    <string name="missingKeyEntries">Soyadı ve tartışma kayıt gereklidir.
         \n\nLütfen ismi gir / kaydet bir telaffuz.</string>
     <string name="keepNamePronunciation">Siz ülke ile ilgili isim geneische tartışma korumak ister misiniz?</string>
     <string name="emptyNameRecordError">Boş bir ad için kayıt yapamazsın.</string>
