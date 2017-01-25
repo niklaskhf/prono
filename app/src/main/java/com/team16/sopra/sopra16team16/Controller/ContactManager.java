@@ -281,7 +281,6 @@ public class ContactManager{
                 int row = mCursor.getInt(mCursor.getColumnIndexOrThrow(_ID));
                 this.deleteContact(row);
                 Log.d("deleteMarked", Integer.toString(row));
-                i++;
                 mCursor.moveToNext();
             }
         }

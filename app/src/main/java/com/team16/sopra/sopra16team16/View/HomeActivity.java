@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
     private ArrayAdapter<String> drawerAdapter;
     private String updatedLanguage;
     private FloatingActionButton filterButton;
-
+    private Snackbar snackbar;
 
 
     // Storage Permissions
@@ -316,6 +316,14 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         Player.getCurrentInstance().release();
+        if (snackbar == null || !snackbar.isShown()) {
+            contactManager.deleteMarked();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -335,7 +343,7 @@ public class HomeActivity extends AppCompatActivity {
                 if (action != null && action.equals("undo")) {
                     final int undoId = data.getIntExtra("undoId", -1);
                     Log.d("undoSnackbar", "showing snackbar for " + undoId);
-                    Snackbar snackbar = Snackbar
+                    snackbar = Snackbar
                             .make(coordinatorLayout, getString(R.string.contactDeleted), Snackbar.LENGTH_LONG)
                             .setAction(getString(R.string.UNDO), new View.OnClickListener() {
                                 @Override

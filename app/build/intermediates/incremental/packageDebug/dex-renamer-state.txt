@@ -1,4 +1,4 @@
-#Tue Jan 24 22:40:14 CET 2017
+#Wed Jan 25 17:21:15 CET 2017
 base.0=D\:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_b8a8e1400acee49d8904e130e65d599a7ec2707b
 renamed.1=classes.dex
 renamed.0=classes2.dex

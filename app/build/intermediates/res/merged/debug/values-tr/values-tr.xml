@@ -70,8 +70,7 @@
     <string name="legals">Yasalardan</string>
     <string name="licence">Appache lisansi 2.0</string>
     <string name="male">erkek</string>
-    <string name="missingKeyEntries">Soyadın adı ve soyadın genel kayıtları
-        veya telaffuzun özel bir kaydı gereklidir.
+    <string name="missingKeyEntries">Soyadı ve tartışma kayıt gereklidir.
         \n\nLütfen ismi gir / kaydet bir telaffuz.</string>
     <string name="no">EVET</string>
     <string name="overwrite_data">Silinen tüm mevcut veri bulunmamaktadır. Devam etmek?</string>
