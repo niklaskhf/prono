@@ -75,6 +75,7 @@ public class QueryBuilder {
         // finish query
         query_EXPRESSION = query_EXPRESSION + ";";
 
+        Log.d("queryExpression", query_EXPRESSION);
         return query_EXPRESSION;
     }
 

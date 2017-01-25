@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -60,6 +61,7 @@ public class ContactListFragment extends ListFragment{
 
         getActivity().startActivityForResult(intent, 1);
     }
+
 
     @Override
     public void onResume() {

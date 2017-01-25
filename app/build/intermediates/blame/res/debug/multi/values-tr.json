@@ -12,7 +12,15 @@
                     "endOffset": 193
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 1629,
+                        "endLine": 53,
+                        "endColumn": 19,
+                        "endOffset": 1771
+                    }
                 }
             },
             {
@@ -25,7 +33,15 @@
                     "endOffset": 362
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 1208,
+                        "endLine": 39,
+                        "endColumn": 19,
+                        "endOffset": 1377
+                    }
                 }
             },
             {
@@ -37,7 +53,14 @@
                     "endOffset": 403
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 2367,
+                        "endColumn": 40,
+                        "endOffset": 2403
+                    }
                 }
             },
             {
@@ -49,7 +72,14 @@
                     "endOffset": 439
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 3990,
+                        "endColumn": 35,
+                        "endOffset": 4021
+                    }
                 }
             },
             {
@@ -61,7 +91,14 @@
                     "endOffset": 544
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 104,
+                        "endOffset": 155
+                    }
                 }
             },
             {
@@ -73,7 +110,14 @@
                     "endOffset": 652
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 160,
+                        "endColumn": 107,
+                        "endOffset": 263
+                    }
                 }
             },
             {
@@ -85,7 +129,14 @@
                     "endOffset": 775
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 268,
+                        "endColumn": 122,
+                        "endOffset": 386
+                    }
                 }
             },
             {
@@ -97,7 +148,14 @@
                     "endOffset": 874
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 391,
+                        "endColumn": 98,
+                        "endOffset": 485
+                    }
                 }
             },
             {
@@ -109,7 +167,14 @@
                     "endOffset": 986
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 490,
+                        "endColumn": 111,
+                        "endOffset": 597
+                    }
                 }
             },
             {
@@ -121,7 +186,14 @@
                     "endOffset": 1071
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 602,
+                        "endColumn": 84,
+                        "endOffset": 682
+                    }
                 }
             },
             {
@@ -133,7 +205,14 @@
                     "endOffset": 1177
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 687,
+                        "endColumn": 105,
+                        "endOffset": 788
+                    }
                 }
             },
             {
@@ -145,7 +224,14 @@
                     "endOffset": 1297
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 793,
+                        "endColumn": 119,
+                        "endOffset": 908
+                    }
                 }
             },
             {
@@ -157,7 +243,14 @@
                     "endOffset": 1376
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 913,
+                        "endColumn": 78,
+                        "endOffset": 987
+                    }
                 }
             },
             {
@@ -169,7 +262,14 @@
                     "endOffset": 1452
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 992,
+                        "endColumn": 75,
+                        "endOffset": 1063
+                    }
                 }
             },
             {
@@ -181,7 +281,14 @@
                     "endOffset": 1531
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1068,
+                        "endColumn": 78,
+                        "endOffset": 1142
+                    }
                 }
             },
             {
@@ -193,7 +300,14 @@
                     "endOffset": 1638
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1147,
+                        "endColumn": 106,
+                        "endOffset": 1249
+                    }
                 }
             },
             {
@@ -205,7 +319,14 @@
                     "endOffset": 1743
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1254,
+                        "endColumn": 104,
+                        "endOffset": 1354
+                    }
                 }
             },
             {
@@ -217,7 +338,14 @@
                     "endOffset": 1839
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1359,
+                        "endColumn": 95,
+                        "endOffset": 1450
+                    }
                 }
             },
             {
@@ -229,7 +357,14 @@
                     "endOffset": 1946
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1455,
+                        "endColumn": 106,
+                        "endOffset": 1557
+                    }
                 }
             },
             {
@@ -241,7 +376,14 @@
                     "endOffset": 2048
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1562,
+                        "endColumn": 101,
+                        "endOffset": 1659
+                    }
                 }
             },
             {
@@ -253,7 +395,14 @@
                     "endOffset": 2156
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1664,
+                        "endColumn": 107,
+                        "endOffset": 1767
+                    }
                 }
             },
             {
@@ -265,7 +414,14 @@
                     "endOffset": 2275
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1772,
+                        "endColumn": 118,
+                        "endOffset": 1886
+                    }
                 }
             },
             {
@@ -277,7 +433,14 @@
                     "endOffset": 2373
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1891,
+                        "endColumn": 97,
+                        "endOffset": 1984
+                    }
                 }
             },
             {
@@ -289,7 +452,14 @@
                     "endOffset": 2430
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 2409,
+                        "endColumn": 56,
+                        "endOffset": 2461
+                    }
                 }
             },
             {
@@ -301,7 +471,14 @@
                     "endOffset": 2494
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 1422,
+                        "endColumn": 63,
+                        "endOffset": 1481
+                    }
                 }
             },
             {
@@ -313,7 +490,14 @@
                     "endOffset": 2537
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 78,
+                        "endColumn": 42,
+                        "endOffset": 116
+                    }
                 }
             },
             {
@@ -325,7 +509,14 @@
                     "endOffset": 2582
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 1487,
+                        "endColumn": 44,
+                        "endOffset": 1527
+                    }
                 }
             },
             {
@@ -337,7 +528,14 @@
                     "endOffset": 2623
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 822,
+                        "endColumn": 40,
+                        "endOffset": 858
+                    }
                 }
             },
             {
@@ -349,7 +547,14 @@
                     "endOffset": 2670
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1054,
+                        "endColumn": 46,
+                        "endOffset": 1096
+                    }
                 }
             },
             {
@@ -361,7 +566,14 @@
                     "endOffset": 2712
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 208,
+                        "endColumn": 41,
+                        "endOffset": 245
+                    }
                 }
             },
             {
@@ -373,7 +585,14 @@
                     "endOffset": 2772
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 2173,
+                        "endColumn": 59,
+                        "endOffset": 2228
+                    }
                 }
             },
             {
@@ -385,7 +604,14 @@
                     "endOffset": 2835
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 2303,
+                        "endColumn": 62,
+                        "endOffset": 2361
+                    }
                 }
             },
             {
@@ -397,7 +623,14 @@
                     "endOffset": 2903
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 2234,
+                        "endColumn": 67,
+                        "endOffset": 2297
+                    }
                 }
             },
             {
@@ -409,7 +642,14 @@
                     "endOffset": 2944
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 512,
+                        "endColumn": 40,
+                        "endOffset": 548
+                    }
                 }
             },
             {
@@ -421,7 +661,14 @@
                     "endOffset": 3008
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 2650,
+                        "endColumn": 63,
+                        "endOffset": 2709
+                    }
                 }
             },
             {
@@ -433,7 +680,14 @@
                     "endOffset": 3069
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 71,
+                        "startColumn": 4,
+                        "startOffset": 2588,
+                        "endColumn": 60,
+                        "endOffset": 2644
+                    }
                 }
             },
             {
@@ -445,7 +699,14 @@
                     "endOffset": 3132
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1102,
+                        "endColumn": 62,
+                        "endOffset": 1160
+                    }
                 }
             },
             {
@@ -457,7 +718,14 @@
                     "endOffset": 3174
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 122,
+                        "endColumn": 41,
+                        "endOffset": 159
+                    }
                 }
             },
             {
@@ -469,7 +737,14 @@
                     "endOffset": 3257
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 2089,
+                        "endColumn": 82,
+                        "endOffset": 2167
+                    }
                 }
             },
             {
@@ -482,7 +757,15 @@
                     "endOffset": 3600
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 3327,
+                        "endLine": 94,
+                        "endColumn": 107,
+                        "endOffset": 3668
+                    }
                 }
             },
             {
@@ -494,7 +777,14 @@
                     "endOffset": 3660
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 77,
+                        "startColumn": 4,
+                        "startOffset": 2842,
+                        "endColumn": 59,
+                        "endOffset": 2897
+                    }
                 }
             },
             {
@@ -506,7 +796,14 @@
                     "endOffset": 3720
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 83,
+                        "startColumn": 4,
+                        "startOffset": 3099,
+                        "endColumn": 59,
+                        "endOffset": 3154
+                    }
                 }
             },
             {
@@ -518,7 +815,14 @@
                     "endOffset": 3761
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 599,
+                        "endColumn": 40,
+                        "endOffset": 635
+                    }
                 }
             },
             {
@@ -530,7 +834,14 @@
                     "endOffset": 3848
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 81,
+                        "startColumn": 4,
+                        "startOffset": 2943,
+                        "endColumn": 86,
+                        "endOffset": 3025
+                    }
                 }
             },
             {
@@ -542,7 +853,14 @@
                     "endOffset": 3890
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 165,
+                        "endColumn": 41,
+                        "endOffset": 202
+                    }
                 }
             },
             {
@@ -554,7 +872,14 @@
                     "endOffset": 3953
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 3926,
+                        "endColumn": 62,
+                        "endOffset": 3984
+                    }
                 }
             },
             {
@@ -566,7 +891,14 @@
                     "endOffset": 3992
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 344,
+                        "endColumn": 38,
+                        "endOffset": 378
+                    }
                 }
             },
             {
@@ -578,7 +910,14 @@
                     "endOffset": 4035
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 300,
+                        "endColumn": 42,
+                        "endOffset": 338
+                    }
                 }
             },
             {
@@ -590,7 +929,14 @@
                     "endOffset": 4079
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 554,
+                        "endColumn": 43,
+                        "endOffset": 593
+                    }
                 }
             },
             {
@@ -602,7 +948,14 @@
                     "endOffset": 4124
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 864,
+                        "endColumn": 44,
+                        "endOffset": 904
+                    }
                 }
             },
             {
@@ -614,7 +967,14 @@
                     "endOffset": 4241
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 1971,
+                        "endColumn": 116,
+                        "endOffset": 2083
+                    }
                 }
             },
             {
@@ -626,7 +986,14 @@
                     "endOffset": 4324
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 3202,
+                        "endColumn": 82,
+                        "endOffset": 3280
+                    }
                 }
             },
             {
@@ -638,7 +1005,14 @@
                     "endOffset": 4365
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 780,
+                        "endColumn": 40,
+                        "endOffset": 816
+                    }
                 }
             },
             {
@@ -650,7 +1024,14 @@
                     "endOffset": 4405
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 429,
+                        "endColumn": 39,
+                        "endOffset": 464
+                    }
                 }
             },
             {
@@ -662,7 +1043,14 @@
                     "endOffset": 4449
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 384,
+                        "endColumn": 43,
+                        "endOffset": 423
+                    }
                 }
             },
             {
@@ -674,7 +1062,14 @@
                     "endOffset": 4495
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 1533,
+                        "endColumn": 45,
+                        "endOffset": 1574
+                    }
                 }
             },
             {
@@ -686,7 +1081,14 @@
                     "endOffset": 4551
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 3763,
+                        "endColumn": 55,
+                        "endOffset": 3814
+                    }
                 }
             },
             {
@@ -698,7 +1100,14 @@
                     "endOffset": 4590
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 641,
+                        "endColumn": 38,
+                        "endOffset": 675
+                    }
                 }
             },
             {
@@ -731,7 +1140,14 @@
                     "endOffset": 4760
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 2504,
+                        "endColumn": 35,
+                        "endOffset": 2535
+                    }
                 }
             },
             {
@@ -743,7 +1159,14 @@
                     "endOffset": 4857
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 956,
+                        "endColumn": 96,
+                        "endOffset": 1048
+                    }
                 }
             },
             {
@@ -755,7 +1178,14 @@
                     "endOffset": 4945
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 3674,
+                        "endColumn": 87,
+                        "endOffset": 3757
+                    }
                 }
             },
             {
@@ -767,7 +1197,14 @@
                     "endOffset": 4990
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 910,
+                        "endColumn": 44,
+                        "endOffset": 950
+                    }
                 }
             },
             {
@@ -779,7 +1216,14 @@
                     "endOffset": 5069
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1989,
+                        "endColumn": 78,
+                        "endOffset": 2063
+                    }
                 }
             },
             {
@@ -791,7 +1235,14 @@
                     "endOffset": 5135
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 3859,
+                        "endColumn": 65,
+                        "endOffset": 3920
+                    }
                 }
             },
             {
@@ -803,7 +1254,14 @@
                     "endOffset": 5236
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\values-tr\\values-tr.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2068,
+                        "endColumn": 100,
+                        "endOffset": 2164
+                    }
                 }
             },
             {
@@ -815,7 +1273,14 @@
                     "endOffset": 5322
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 2755,
+                        "endColumn": 85,
+                        "endOffset": 2836
+                    }
                 }
             },
             {
@@ -827,7 +1292,14 @@
                     "endOffset": 5389
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 3031,
+                        "endColumn": 66,
+                        "endOffset": 3093
+                    }
                 }
             },
             {
@@ -839,7 +1311,14 @@
                     "endOffset": 5430
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 470,
+                        "endColumn": 40,
+                        "endOffset": 506
+                    }
                 }
             },
             {
@@ -851,7 +1330,14 @@
                     "endOffset": 5478
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 681,
+                        "endColumn": 47,
+                        "endOffset": 724
+                    }
                 }
             },
             {
@@ -863,7 +1349,14 @@
                     "endOffset": 5514
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 2467,
+                        "endColumn": 35,
+                        "endOffset": 2498
+                    }
                 }
             },
             {
@@ -875,7 +1368,14 @@
                     "endOffset": 5550
                 },
                 "from": {
-                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml"
+                    "file": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\values-tr\\strings.xml",
+                    "position": {
+                        "startLine": 103,
+                        "startColumn": 4,
+                        "startOffset": 4027,
+                        "endColumn": 35,
+                        "endOffset": 4058
+                    }
                 }
             }
         ]

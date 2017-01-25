@@ -49,7 +49,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - [Test results](doc/sprint02/reports)
 
 ### Changed
-- [CHANGELOG](doc/)
+- [CHANGELOG](CHANGELOG.md)
 - [sketches](doc/sketches)
 - [Sprint Report](doc/Sprint2Report.md)
 - [Issues](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/issues)

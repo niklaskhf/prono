@@ -61,7 +61,7 @@ import java.util.Locale;
     private ArrayAdapter&lt;String&gt; drawerAdapter;
     private String updatedLanguage;
     private FloatingActionButton filterButton;
-
+    private Snackbar snackbar;
 
 
     // Storage Permissions
@@ -308,74 +308,84 @@ import java.util.Locale;
         //update the listAdapter if return from FilterActivity
 <span class="pc bpc" id="L309" title="1 of 6 branches missed.">        if((listFragment != null) &amp;&amp; (searchView != null) &amp;&amp; (searchVisible())) {</span>
 <span class="fc" id="L310">            CharSequence query = searchView.getQuery();</span>
-<span class="fc" id="L311">            listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));</span>
+<span class="pc bpc" id="L311" title="1 of 2 branches missed.">            if (query != null) {</span>
+<span class="fc" id="L312">                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));</span>
+            }
         }
-<span class="fc" id="L313">    }</span>
+<span class="fc" id="L315">    }</span>
 
     @Override
     public void onPause() {
-<span class="fc" id="L317">        super.onPause();</span>
-<span class="fc" id="L318">        Player.getCurrentInstance().release();</span>
-<span class="fc" id="L319">    }</span>
+<span class="fc" id="L319">        super.onPause();</span>
+<span class="fc" id="L320">        Player.getCurrentInstance().release();</span>
+<span class="pc bpc" id="L321" title="1 of 4 branches missed.">        if (snackbar == null || !snackbar.isShown()) {</span>
+<span class="fc" id="L322">            contactManager.deleteMarked();</span>
+        }
+<span class="fc" id="L324">    }</span>
+
+    @Override
+    public void onStop() {
+<span class="fc" id="L328">        super.onStop();</span>
+<span class="fc" id="L329">    }</span>
 
     @Override
     public void onDestroy() {
-<span class="fc" id="L323">        super.onDestroy();</span>
-<span class="fc" id="L324">    }</span>
+<span class="fc" id="L333">        super.onDestroy();</span>
+<span class="fc" id="L334">    }</span>
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
         // Check which request we're responding to
-<span class="pc bpc" id="L329" title="1 of 2 branches missed.">        if (requestCode == 1) {</span>
+<span class="pc bpc" id="L339" title="1 of 2 branches missed.">        if (requestCode == 1) {</span>
             // Make sure the request was successful
-<span class="fc bfc" id="L331" title="All 2 branches covered.">            if (resultCode == RESULT_OK) {</span>
-<span class="fc" id="L332">                final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.content_frame);</span>
+<span class="fc bfc" id="L341" title="All 2 branches covered.">            if (resultCode == RESULT_OK) {</span>
+<span class="fc" id="L342">                final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.content_frame);</span>
 
-<span class="fc" id="L334">                final String action = data.getStringExtra(&quot;action&quot;);</span>
-<span class="pc bpc" id="L335" title="2 of 4 branches missed.">                if (action != null &amp;&amp; action.equals(&quot;undo&quot;)) {</span>
-<span class="fc" id="L336">                    final int undoId = data.getIntExtra(&quot;undoId&quot;, -1);</span>
-<span class="fc" id="L337">                    Log.d(&quot;undoSnackbar&quot;, &quot;showing snackbar for &quot; + undoId);</span>
-<span class="fc" id="L338">                    Snackbar snackbar = Snackbar</span>
-<span class="fc" id="L339">                            .make(coordinatorLayout, getString(R.string.contactDeleted), Snackbar.LENGTH_LONG)</span>
-<span class="fc" id="L340">                            .setAction(getString(R.string.UNDO), new View.OnClickListener() {</span>
+<span class="fc" id="L344">                final String action = data.getStringExtra(&quot;action&quot;);</span>
+<span class="pc bpc" id="L345" title="2 of 4 branches missed.">                if (action != null &amp;&amp; action.equals(&quot;undo&quot;)) {</span>
+<span class="fc" id="L346">                    final int undoId = data.getIntExtra(&quot;undoId&quot;, -1);</span>
+<span class="fc" id="L347">                    Log.d(&quot;undoSnackbar&quot;, &quot;showing snackbar for &quot; + undoId);</span>
+<span class="fc" id="L348">                    snackbar = Snackbar</span>
+<span class="fc" id="L349">                            .make(coordinatorLayout, getString(R.string.contactDeleted), Snackbar.LENGTH_LONG)</span>
+<span class="fc" id="L350">                            .setAction(getString(R.string.UNDO), new View.OnClickListener() {</span>
                                 @Override
                                 public void onClick(View view) {
-<span class="fc" id="L343">                                    Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, getString(R.string.contactRestored), Snackbar.LENGTH_SHORT);</span>
-<span class="fc" id="L344">                                    snackbarSuccess.show();</span>
+<span class="fc" id="L353">                                    Snackbar snackbarSuccess = Snackbar.make(coordinatorLayout, getString(R.string.contactRestored), Snackbar.LENGTH_SHORT);</span>
+<span class="fc" id="L354">                                    snackbarSuccess.show();</span>
 
-<span class="fc" id="L346">                                    contactManager.toggleDeleted(undoId, 1);</span>
-<span class="fc" id="L347">                                }</span>
+<span class="fc" id="L356">                                    contactManager.toggleDeleted(undoId, 1);</span>
+<span class="fc" id="L357">                                }</span>
                             });
 
-<span class="fc" id="L350">                    snackbar.setCallback(new Snackbar.Callback() {</span>
+<span class="fc" id="L360">                    snackbar.setCallback(new Snackbar.Callback() {</span>
                         @Override
                         public void onDismissed(Snackbar snackbar, int event) {
                             // delete all marked rows
-<span class="fc" id="L354">                            String action = data.getStringExtra(&quot;action&quot;);</span>
-<span class="pc bpc" id="L355" title="2 of 4 branches missed.">                            if (action != null &amp;&amp; action.equals(&quot;undo&quot;)) {</span>
-<span class="fc" id="L356">                                contactManager.deleteMarked();</span>
+<span class="fc" id="L364">                            String action = data.getStringExtra(&quot;action&quot;);</span>
+<span class="pc bpc" id="L365" title="2 of 4 branches missed.">                            if (action != null &amp;&amp; action.equals(&quot;undo&quot;)) {</span>
+<span class="fc" id="L366">                                contactManager.deleteMarked();</span>
                             }
-<span class="fc" id="L358">                        }</span>
+<span class="fc" id="L368">                        }</span>
                     });
-<span class="fc" id="L360">                    snackbar.show();</span>
+<span class="fc" id="L370">                    snackbar.show();</span>
                 }
             }
         }
-<span class="fc" id="L364">    }</span>
+<span class="fc" id="L374">    }</span>
 
     @Override
     public void onBackPressed() {
         // either close the open drawer
         // or close the app
-<span class="fc bfc" id="L370" title="All 2 branches covered.">        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {</span>
-<span class="fc" id="L371">            mDrawerLayout.closeDrawer(mDrawerList);</span>
-<span class="fc bfc" id="L372" title="All 2 branches covered.">        } else if (mode == 1) {</span>
-<span class="fc" id="L373">            toggleMainMode();</span>
+<span class="fc bfc" id="L380" title="All 2 branches covered.">        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {</span>
+<span class="fc" id="L381">            mDrawerLayout.closeDrawer(mDrawerList);</span>
+<span class="fc bfc" id="L382" title="All 2 branches covered.">        } else if (mode == 1) {</span>
+<span class="fc" id="L383">            toggleMainMode();</span>
         }
         else {
-<span class="fc" id="L376">            finish();</span>
+<span class="fc" id="L386">            finish();</span>
         }
-<span class="fc" id="L378">    }</span>
+<span class="fc" id="L388">    }</span>
 
     /**
      * Checks if searchView is visible, used for testing
@@ -383,7 +393,7 @@ import java.util.Locale;
      * @return boolean - true: searchIcon is visible, false: searchIcon is invisible
      */
     public boolean searchVisible() {
-<span class="fc bfc" id="L386" title="All 2 branches covered.">        return !searchView.isIconified();</span>
+<span class="fc bfc" id="L396" title="All 2 branches covered.">        return !searchView.isIconified();</span>
     }
 
 
@@ -398,50 +408,50 @@ import java.util.Locale;
      */
     public void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
-<span class="fc" id="L401">        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);</span>
-<span class="fc" id="L402">        int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);</span>
+<span class="fc" id="L411">        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);</span>
+<span class="fc" id="L412">        int micPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO);</span>
 
 
-<span class="pc bpc" id="L405" title="2 of 4 branches missed.">        if (permission != PackageManager.PERMISSION_GRANTED || micPermission != PackageManager.PERMISSION_GRANTED) {</span>
+<span class="pc bpc" id="L415" title="2 of 4 branches missed.">        if (permission != PackageManager.PERMISSION_GRANTED || micPermission != PackageManager.PERMISSION_GRANTED) {</span>
             // We don't have permission so prompt the user
-<span class="nc" id="L407">            ActivityCompat.requestPermissions(</span>
+<span class="nc" id="L417">            ActivityCompat.requestPermissions(</span>
                     activity,
                     PERMISSIONS_ALL,
                     REQUEST_ALL
             );
         } else {
-<span class="fc" id="L413">            listFragment.setListAdapter(contactManager.getCursorAdapterDefault());</span>
-<span class="fc" id="L414">            addNewContact();</span>
+<span class="fc" id="L423">            listFragment.setListAdapter(contactManager.getCursorAdapterDefault());</span>
+<span class="fc" id="L424">            addNewContact();</span>
         }
 
-<span class="fc" id="L417">    }</span>
+<span class="fc" id="L427">    }</span>
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-<span class="nc" id="L421">        final Activity activity = this;</span>
-<span class="nc bnc" id="L422" title="All 2 branches missed.">        switch (requestCode) {</span>
+<span class="nc" id="L431">        final Activity activity = this;</span>
+<span class="nc bnc" id="L432" title="All 2 branches missed.">        switch (requestCode) {</span>
             case REQUEST_ALL:
-<span class="nc bnc" id="L424" title="All 4 branches missed.">                if (grantResults[0] == PackageManager.PERMISSION_GRANTED &amp;&amp;</span>
+<span class="nc bnc" id="L434" title="All 4 branches missed.">                if (grantResults[0] == PackageManager.PERMISSION_GRANTED &amp;&amp;</span>
                         grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     // Permission Granted
                     // do nothing?
-<span class="nc" id="L428">                    addNewContact();</span>
-<span class="nc" id="L429">                    listFragment.setListAdapter(contactManager.getCursorAdapterDefault());</span>
+<span class="nc" id="L438">                    addNewContact();</span>
+<span class="nc" id="L439">                    listFragment.setListAdapter(contactManager.getCursorAdapterDefault());</span>
                 } else {
-<span class="nc" id="L431">                    addButton = (FloatingActionButton) findViewById(R.id.addNew);</span>
-<span class="nc" id="L432">                    addButton.setOnClickListener(new View.OnClickListener(){</span>
+<span class="nc" id="L441">                    addButton = (FloatingActionButton) findViewById(R.id.addNew);</span>
+<span class="nc" id="L442">                    addButton.setOnClickListener(new View.OnClickListener(){</span>
 
                         @Override
                         public void onClick(View view) {
-<span class="nc" id="L436">                            verifyStoragePermissions(activity);</span>
-<span class="nc" id="L437">                        }</span>
+<span class="nc" id="L446">                            verifyStoragePermissions(activity);</span>
+<span class="nc" id="L447">                        }</span>
                     });
                 }
-<span class="nc" id="L440">                break;</span>
+<span class="nc" id="L450">                break;</span>
             default:
-<span class="nc" id="L442">                super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span>
+<span class="nc" id="L452">                super.onRequestPermissionsResult(requestCode, permissions, grantResults);</span>
         }
-<span class="nc" id="L444">    }</span>
+<span class="nc" id="L454">    }</span>
 
 
     /**
@@ -450,79 +460,79 @@ import java.util.Locale;
      */
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
-<span class="fc" id="L453">        Fragment fragment = null;</span>
-<span class="fc" id="L454">        FragmentManager fragmentManager = getFragmentManager(); // For AppCompat use getSupportFragmentManager</span>
-<span class="fc bfc" id="L455" title="All 3 branches covered.">        switch(position) {</span>
+<span class="fc" id="L463">        Fragment fragment = null;</span>
+<span class="fc" id="L464">        FragmentManager fragmentManager = getFragmentManager(); // For AppCompat use getSupportFragmentManager</span>
+<span class="fc bfc" id="L465" title="All 3 branches covered.">        switch(position) {</span>
             default:
             case 0:
-<span class="fc" id="L458">                fragment = listFragment;</span>
-<span class="fc" id="L459">                listFragment.setListAdapter(contactManager.getCursorAdapterFavorite());</span>
-<span class="fc" id="L460">                break;</span>
+<span class="fc" id="L468">                fragment = listFragment;</span>
+<span class="fc" id="L469">                listFragment.setListAdapter(contactManager.getCursorAdapterFavorite());</span>
+<span class="fc" id="L470">                break;</span>
             case 1:
-<span class="fc" id="L462">                fragment = new SettingsFragment();</span>
-<span class="fc" id="L463">                break;</span>
+<span class="fc" id="L472">                fragment = new SettingsFragment();</span>
+<span class="fc" id="L473">                break;</span>
             case 2:
-<span class="fc" id="L465">                fragment = new AboutFragment();</span>
+<span class="fc" id="L475">                fragment = new AboutFragment();</span>
                 break;
         }
-<span class="pc bpc" id="L468" title="1 of 2 branches missed.">        if (fragment != null) {</span>
-<span class="fc" id="L469">            fragmentManager.beginTransaction()</span>
-<span class="fc" id="L470">                    .replace(R.id.content_frame, fragment)</span>
-<span class="fc" id="L471">                    .commit();</span>
+<span class="pc bpc" id="L478" title="1 of 2 branches missed.">        if (fragment != null) {</span>
+<span class="fc" id="L479">            fragmentManager.beginTransaction()</span>
+<span class="fc" id="L480">                    .replace(R.id.content_frame, fragment)</span>
+<span class="fc" id="L481">                    .commit();</span>
         }
-<span class="fc" id="L473">    }</span>
+<span class="fc" id="L483">    }</span>
 
 
     /**
      * Changes the toolbar/addButton to subMode (settings/about/favorites)
      */
     public void toggleSubMode() {
-<span class="fc" id="L480">        mode = 1;</span>
-<span class="fc" id="L481">        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);</span>
-<span class="fc" id="L482">        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L490">        mode = 1;</span>
+<span class="fc" id="L491">        myToolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);</span>
+<span class="fc" id="L492">        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {</span>
             @Override
             public void onClick(View view) {
-<span class="fc" id="L485">                toggleMainMode();</span>
-<span class="fc" id="L486">            }</span>
+<span class="fc" id="L495">                toggleMainMode();</span>
+<span class="fc" id="L496">            }</span>
         });
-<span class="fc" id="L488">        searchItem.setVisible(false);</span>
-<span class="fc" id="L489">        addButton.setVisibility(View.INVISIBLE);</span>
-<span class="fc" id="L490">        mDrawerList.clearChoices();</span>
-<span class="fc" id="L491">        drawerAdapter.notifyDataSetChanged();</span>
-<span class="fc" id="L492">        filterButton.setVisibility(View.INVISIBLE);</span>
-<span class="fc" id="L493">    }</span>
+<span class="fc" id="L498">        searchItem.setVisible(false);</span>
+<span class="fc" id="L499">        addButton.setVisibility(View.INVISIBLE);</span>
+<span class="fc" id="L500">        mDrawerList.clearChoices();</span>
+<span class="fc" id="L501">        drawerAdapter.notifyDataSetChanged();</span>
+<span class="fc" id="L502">        filterButton.setVisibility(View.INVISIBLE);</span>
+<span class="fc" id="L503">    }</span>
 
     /**
      * Changes the toolbar/addButton to mainMode (default listView of contacts)
      */
     public void toggleMainMode() {
-<span class="fc" id="L499">        mode = 0;</span>
-<span class="fc" id="L500">        myToolbar.setNavigationIcon(R.drawable.ic_drawer);</span>
-<span class="fc" id="L501">        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {</span>
+<span class="fc" id="L509">        mode = 0;</span>
+<span class="fc" id="L510">        myToolbar.setNavigationIcon(R.drawable.ic_drawer);</span>
+<span class="fc" id="L511">        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {</span>
             @Override
             public void onClick(View view) {
-<span class="fc" id="L504">                mDrawerLayout.openDrawer(mDrawerList);</span>
-<span class="fc" id="L505">            }</span>
+<span class="fc" id="L514">                mDrawerLayout.openDrawer(mDrawerList);</span>
+<span class="fc" id="L515">            }</span>
         });
-<span class="fc" id="L507">        searchItem.setVisible(true);</span>
-<span class="fc" id="L508">        addButton.setVisibility(View.VISIBLE);</span>
-<span class="fc" id="L509">        listFragment.setListAdapter(contactManager.getCursorAdapterDefault());</span>
-<span class="fc" id="L510">        fragmentManager.beginTransaction()</span>
-<span class="fc" id="L511">                .replace(R.id.content_frame, listFragment)</span>
-<span class="fc" id="L512">                .commit();</span>
-<span class="fc" id="L513">        mDrawerList.clearChoices();</span>
+<span class="fc" id="L517">        searchItem.setVisible(true);</span>
+<span class="fc" id="L518">        addButton.setVisibility(View.VISIBLE);</span>
+<span class="fc" id="L519">        listFragment.setListAdapter(contactManager.getCursorAdapterDefault());</span>
+<span class="fc" id="L520">        fragmentManager.beginTransaction()</span>
+<span class="fc" id="L521">                .replace(R.id.content_frame, listFragment)</span>
+<span class="fc" id="L522">                .commit();</span>
+<span class="fc" id="L523">        mDrawerList.clearChoices();</span>
 
-<span class="fc" id="L515">        filterButton.setVisibility(View.VISIBLE);</span>
-<span class="fc" id="L516">    }</span>
+<span class="fc" id="L525">        filterButton.setVisibility(View.VISIBLE);</span>
+<span class="fc" id="L526">    }</span>
 
     /**
      * starts the filter activity
      * @param view View
      */
     public void openFilter(View view) {
-<span class="fc" id="L523">        Intent intent = new Intent(this, FilterActivity.class);</span>
-<span class="fc" id="L524">        startActivity(intent);</span>
-<span class="fc" id="L525">    }</span>
+<span class="fc" id="L533">        Intent intent = new Intent(this, FilterActivity.class);</span>
+<span class="fc" id="L534">        startActivity(intent);</span>
+<span class="fc" id="L535">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span>Generated by the Android Gradle plugin 2.2.3</div></body></html>

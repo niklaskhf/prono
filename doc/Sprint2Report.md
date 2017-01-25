@@ -1,6 +1,7 @@
 # Sprint Report (2)
 
 In diesem Sprint wurden die Additional Features in [Meilenstein 5](https://sopra.informatik.uni-stuttgart.de/sopra-ws1617/sopra-team-16/milestones/2) hinzugefügt.
+Weiterhin wurden Verbesserungen an den Critical Features durchgeführt (UI, allgemeine Bugs).
 
 ## Verbesserte Dokumente
 
@@ -15,9 +16,9 @@ In diesem Sprint wurden die Additional Features in [Meilenstein 5](https://sopra
 
 ### [Readme.md](../Readme.md)
     - App-Beschreibung aktualisiert.
-    - Feature-Beischreibungen hinzugefügt
+    - Feature-Beischreibungen hinzugefügt.
     - Anwendungsfälle aktualisiert.
 
 ## Tests/Testprotokolle/Nachweis der Testabdeckung
 
-[Testprotokolle](./doc/sprint02/reports/), Jacoco Hinweis: Permissions müssen ggf. manuell vor Durchführen des Tests akzeptiert werden, bevor ein Timeout stattfindet und alle Tests fehlschlagen.
+[Testprotokolle](./doc/sprint02/reports/), _Hinweis: Permissions müssen ggf. manuell vor Durchführen des Tests akzeptiert werden. Der undoDeleteTest() muss manuell durch einen Klick auf 'Undo' fortgesetzt werden, da Espresso sich aus unerklärbaren Gründen im Idle-Zustand befindet._

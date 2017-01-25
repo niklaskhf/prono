@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,55 +18,56 @@ import com.team16.sopra.sopra16team16.R;
 /**
  * Displays the contacts in a ListView
  */
-<span class="fc" id="L20">public class ContactListFragment extends ListFragment{</span>
+<span class="fc" id="L21">public class ContactListFragment extends ListFragment{</span>
     private ContactManager contactManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-<span class="fc" id="L25">        contactManager = ContactManager.getInstance(getActivity());</span>
-<span class="fc" id="L26">        return inflater.inflate(R.layout.home_fragment, container, false);</span>
+<span class="fc" id="L26">        contactManager = ContactManager.getInstance(getActivity());</span>
+<span class="fc" id="L27">        return inflater.inflate(R.layout.home_fragment, container, false);</span>
     }
 
     @Override
     public void onActivityCreated(Bundle savedState) {
-<span class="fc" id="L31">        super.onActivityCreated(savedState);</span>
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L32">        super.onActivityCreated(savedState);</span>
+<span class="fc" id="L33">    }</span>
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         // opens a ContactViewerActivity with the contact information
-<span class="fc" id="L37">        super.onListItemClick(l, v, position, id);</span>
-<span class="fc" id="L38">        Intent intent = new Intent(getActivity(), ContactViewerActivity.class);</span>
-<span class="fc" id="L39">        TextView firstView = (TextView) v.findViewById(R.id.list_firstname);</span>
-<span class="fc" id="L40">        TextView lastView = (TextView) v.findViewById(R.id.list_lastname);</span>
-<span class="fc" id="L41">        TextView titleView = (TextView) v.findViewById(R.id.list_title);</span>
-<span class="fc" id="L42">        TextView countryView = (TextView) v.findViewById(R.id.list_country);</span>
-<span class="fc" id="L43">        TextView genderView = (TextView) v.findViewById(R.id.list_gender);</span>
+<span class="fc" id="L38">        super.onListItemClick(l, v, position, id);</span>
+<span class="fc" id="L39">        Intent intent = new Intent(getActivity(), ContactViewerActivity.class);</span>
+<span class="fc" id="L40">        TextView firstView = (TextView) v.findViewById(R.id.list_firstname);</span>
+<span class="fc" id="L41">        TextView lastView = (TextView) v.findViewById(R.id.list_lastname);</span>
+<span class="fc" id="L42">        TextView titleView = (TextView) v.findViewById(R.id.list_title);</span>
+<span class="fc" id="L43">        TextView countryView = (TextView) v.findViewById(R.id.list_country);</span>
+<span class="fc" id="L44">        TextView genderView = (TextView) v.findViewById(R.id.list_gender);</span>
 
-<span class="fc" id="L45">        String first = firstView.getText().toString();</span>
-<span class="fc" id="L46">        String last = lastView.getText().toString();</span>
-<span class="fc" id="L47">        String title = titleView.getText().toString();</span>
-<span class="fc" id="L48">        String country = countryView.getText().toString();</span>
-<span class="fc" id="L49">        String gender = genderView.getText().toString();</span>
+<span class="fc" id="L46">        String first = firstView.getText().toString();</span>
+<span class="fc" id="L47">        String last = lastView.getText().toString();</span>
+<span class="fc" id="L48">        String title = titleView.getText().toString();</span>
+<span class="fc" id="L49">        String country = countryView.getText().toString();</span>
+<span class="fc" id="L50">        String gender = genderView.getText().toString();</span>
 
-<span class="fc" id="L51">        Log.d(&quot;gender&quot;, gender);</span>
-<span class="fc" id="L52">        intent.putExtra(&quot;first&quot;, first);</span>
-<span class="fc" id="L53">        intent.putExtra(&quot;last&quot;, last);</span>
-<span class="fc" id="L54">        intent.putExtra(&quot;title&quot;, title);</span>
-<span class="fc" id="L55">        intent.putExtra(&quot;country&quot;, country);</span>
-<span class="fc" id="L56">        intent.putExtra(&quot;gender&quot;, gender);</span>
-<span class="fc" id="L57">        intent.putExtra(&quot;id&quot;, v.getTag().toString());</span>
-<span class="fc" id="L58">        Log.i(&quot;v.getTag()&quot;, v.getTag().toString());</span>
-<span class="fc" id="L59">        Log.i(&quot;gender&quot;, genderView.getText().toString());</span>
+<span class="fc" id="L52">        Log.d(&quot;gender&quot;, gender);</span>
+<span class="fc" id="L53">        intent.putExtra(&quot;first&quot;, first);</span>
+<span class="fc" id="L54">        intent.putExtra(&quot;last&quot;, last);</span>
+<span class="fc" id="L55">        intent.putExtra(&quot;title&quot;, title);</span>
+<span class="fc" id="L56">        intent.putExtra(&quot;country&quot;, country);</span>
+<span class="fc" id="L57">        intent.putExtra(&quot;gender&quot;, gender);</span>
+<span class="fc" id="L58">        intent.putExtra(&quot;id&quot;, v.getTag().toString());</span>
+<span class="fc" id="L59">        Log.i(&quot;v.getTag()&quot;, v.getTag().toString());</span>
+<span class="fc" id="L60">        Log.i(&quot;gender&quot;, genderView.getText().toString());</span>
 
-<span class="fc" id="L61">        getActivity().startActivityForResult(intent, 1);</span>
-<span class="fc" id="L62">    }</span>
+<span class="fc" id="L62">        getActivity().startActivityForResult(intent, 1);</span>
+<span class="fc" id="L63">    }</span>
+
 
     @Override
     public void onResume() {
-<span class="fc" id="L66">        super.onResume();</span>
-<span class="fc" id="L67">        contactManager.updateCursorAdapter();</span>
-<span class="fc" id="L68">    }</span>
+<span class="fc" id="L68">        super.onResume();</span>
+<span class="fc" id="L69">        contactManager.updateCursorAdapter();</span>
+<span class="fc" id="L70">    }</span>
 }
 
 

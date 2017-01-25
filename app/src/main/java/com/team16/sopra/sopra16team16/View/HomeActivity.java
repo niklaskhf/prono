@@ -308,7 +308,9 @@ public class HomeActivity extends AppCompatActivity {
         //update the listAdapter if return from FilterActivity
         if((listFragment != null) && (searchView != null) && (searchVisible())) {
             CharSequence query = searchView.getQuery();
-            listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+            if (query != null) {
+                listFragment.setListAdapter(new ContactCursorAdapter(getApplicationContext(), filterQuery.runQuery(query)));
+            }
         }
     }
 

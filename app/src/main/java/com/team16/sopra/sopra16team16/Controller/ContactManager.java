@@ -18,6 +18,7 @@ public class ContactManager{
     private DBManager dbManager;
     private ContactCursorAdapter cursorAdapter = null;
     private ContactCursorAdapter favoriteAdapter = null;
+    private ContactCursorAdapter searchAdapter = null;
     private Context context;
     private QueryBuilder queryBuilder = null;
 
@@ -319,9 +320,8 @@ public class ContactManager{
     }
 
 
-
     /**
-     * Update cursorAdapter with new data
+     * Update cursorAdapter and favoriteAdapter with new data
      */
     public void updateCursorAdapter() {
         if (cursorAdapter != null) {
@@ -331,7 +331,6 @@ public class ContactManager{
         if (favoriteAdapter != null) {
             favoriteAdapter.changeCursor(selectFavorites());
         }
-
     }
 
 
@@ -343,7 +342,6 @@ public class ContactManager{
      * @return Cursor populated with rows matching the search query
      */
     public Cursor getSearchResults(String search) {
-        // cursor to return
         Cursor cursor = null;
         // query to use
         String query;

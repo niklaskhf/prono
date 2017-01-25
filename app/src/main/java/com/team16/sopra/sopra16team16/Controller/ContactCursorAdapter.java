@@ -130,7 +130,6 @@ public class ContactCursorAdapter extends CursorAdapter {
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // toggle the icon
                 if (favValue == 1) {
                     Log.i("updateFavorite", Integer.toString(id) + " true->false");
@@ -144,9 +143,11 @@ public class ContactCursorAdapter extends CursorAdapter {
 
                 // toggle field in database
                 contactManager.toggleFavorite(id, favValue);
+                cursor.requery();
                 notifyDataSetChanged();
 
             }
         });
     }
+
 }
