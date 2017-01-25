@@ -632,7 +632,7 @@
     <string name="last">Last</string>
     <string name="lastName">Last Name</string>
     <string name="legals">Legals</string>
-    <string name="licence">Appache Licence 2.0</string>
+    <string name="licence">Apache Licence 2.0</string>
     <string name="male">male</string>
     <string name="missingKeyEntries">The last name and a recording of the pronunciation are required.
         \n\nPlease enter the name/record a pronunciation.</string>

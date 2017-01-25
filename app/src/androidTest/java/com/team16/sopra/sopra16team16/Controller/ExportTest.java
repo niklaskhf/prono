@@ -208,9 +208,16 @@ public class ExportTest {
 
         File foo = new File(Environment.getExternalStorageDirectory().getPath() + "/foo.zip");
         try {
-            foo.createNewFile();
-            onData(hasToString(startsWith("foo.zip")))
-                    .perform(click());
+            if (!foo.exists()) {
+                foo.createNewFile();
+            }
+            if (foo.exists()) {
+                onData(hasToString(startsWith("foo.zip")))
+                        .perform(click());
+            } else {
+                pressBack();
+            }
+
 
             foo.delete();
         } catch (IOException e) {
@@ -236,8 +243,7 @@ public class ExportTest {
         onView(withId(R.id.import_button)).perform(click());
         onView(withId(android.R.id.button1)).perform(click());
 
-        // TODO find something else for this
-        // crashes when there is more than one file prono*
+        // crashes when there is more than one file pronoBackup2*
         onData(hasToString(startsWith("pronoBackup2")))
                 .perform(click());
 
@@ -252,16 +258,16 @@ public class ExportTest {
         pressBack();
     }
 
-
     @After
     public void cleanup() {
-        File[] files = Environment.getExternalStorageDirectory().listFiles();
+        File[] filedir = Environment.getExternalStorageDirectory().listFiles();
 
-        for (File e : files) {
-            if (e.getPath().contains("prono")) {
+        for(File e:filedir){
+            if(e.getPath().contains("pronoBackup")) {
                 e.delete();
             }
         }
+
     }
 
 }

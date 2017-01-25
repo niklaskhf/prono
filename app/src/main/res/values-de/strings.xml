@@ -50,7 +50,7 @@
     <string-array name="drawer">
         <item>Favoriten</item>
         <item>Einstellungen</item>
-        <item>Über</item>
+        <item>Info</item>
     </string-array>
     <!--Navigation Drawer-->
 
@@ -91,10 +91,9 @@
     <!--About-->
     <string name="eplan">Die App \'Prono\' wurde für EPLAN im Rahmen der SoPra2016/17
         an der Universität Stuttgart erstellt. Das Ziel der App ist es, den Benutzern
-        eine Möglichkeit zu geben, peinliche Situationen zu umgehen, indem sie die Aussprache
-        eines Namens speichern, diesen beliebig oft abspielen können, um sich auf ein Treffen vorzubereiten.</string>
+        eine Möglichkeit eine Aussprache eines Namens zu speichern, um diese später abrufen zu können.</string>
     <string name="programmers">Kanan Allahyarli\nNiklas Kammhoff\nMartin Stach</string>
-    <string name="licence">Appache Licence 2.0</string>
+    <string name="licence">Apache Licence 2.0</string>
     <!--About-->
 
     <!--Filter-->

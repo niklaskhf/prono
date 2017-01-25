@@ -3,7 +3,7 @@
     <string-array name="drawer">
         <item>Favoriten</item>
         <item>Einstellungen</item>
-        <item>Über</item>
+        <item>Info</item>
     </string-array>
     <string-array name="languages">
         <item>Deutsch</item>
@@ -50,8 +50,7 @@
     <string name="emptyNameRecordError">Sie können nicht auf einen leeres Feld eine Audio aufnehmen</string>
     <string name="eplan">Die App \'Prono\' wurde für EPLAN im Rahmen der SoPra2016/17
         an der Universität Stuttgart erstellt. Das Ziel der App ist es, den Benutzern
-        eine Möglichkeit zu geben, peinliche Situationen zu umgehen, indem sie die Aussprache
-        eines Namens speichern, diesen beliebig oft abspielen können, um sich auf ein Treffen vorzubereiten.</string>
+        eine Möglichkeit eine Aussprache eines Namens zu speichern, um diese später abrufen zu können.</string>
     <string name="failed_export">Export fehlgeschlagen</string>
     <string name="failed_import">Import fehlgeschlagen</string>
     <string name="female">weiblich</string>
@@ -68,7 +67,7 @@
     <string name="last">Nachname</string>
     <string name="lastName">Nachname</string>
     <string name="legals">Legales</string>
-    <string name="licence">Appache Licence 2.0</string>
+    <string name="licence">Apache Licence 2.0</string>
     <string name="male">männlich</string>
     <string name="missingKeyEntries">Der Nachname und eine Aufzeichnung der Aussprache sind erforderlich
         \n\nBitte geben Sie den Namen ein bzw. nehmen Sie eine Aussprache auf.</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,7 +23,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:textSize="26sp"
+                android:textSize="21sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxEms="5"
                 android:text="@string/first"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
@@ -34,7 +37,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
-                android:textSize="26sp"
+                android:textSize="21sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxEms="5"
                 android:text="@string/last"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
@@ -50,7 +56,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="@string/title"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxEms="3"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -61,7 +70,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:text="@string/country"
-                android:textSize="20sp"
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxEms="5"
                 android:textColor="@android:color/background_dark"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -92,11 +104,12 @@
 
     <LinearLayout
         android:id="@+id/button_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="end"
         android:orientation="horizontal"
-        android:descendantFocusability="blocksDescendants">
+        android:descendantFocusability="blocksDescendants"
+        android:layout_alignParentRight="true">
 
 
             <ImageButton
@@ -122,4 +135,4 @@
 
         </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
