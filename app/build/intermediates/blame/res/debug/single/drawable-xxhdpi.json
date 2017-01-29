@@ -52,11 +52,11 @@
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-xxhdpi\\favorite_unmarked_icon.png"
     },
     {
-        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\expand_less_icon.png",
-        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-xxhdpi\\expand_less_icon.png"
-    },
-    {
         "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\mic_icon.png",
         "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-xxhdpi\\mic_icon.png"
+    },
+    {
+        "merged": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\expand_less_icon.png",
+        "source": "D:\\Dokumente\\AndroidStudioProjects\\sopra-team-16\\app\\src\\main\\res\\drawable-xxhdpi\\expand_less_icon.png"
     }
 ]

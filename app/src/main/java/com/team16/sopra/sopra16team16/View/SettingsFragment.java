@@ -95,7 +95,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 
@@ -158,16 +157,16 @@ public class SettingsFragment extends Fragment {
         Log.d("lang", myLocale.getDefault().getLanguage());
         switch (language) {
             case "de":
-                languageSpinner.setSelection(0, true);
+                languageSpinner.setSelection(0, false);
                 break;
             case "en":
-                languageSpinner.setSelection(1, true);
+                languageSpinner.setSelection(1, false);
                 break;
             case "ru":
-                languageSpinner.setSelection(2, true);
+                languageSpinner.setSelection(2, false);
                 break;
             case "tr":
-                languageSpinner.setSelection(3, true);
+                languageSpinner.setSelection(3, false);
                 break;
         }
     }
